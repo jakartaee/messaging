@@ -16,4 +16,4 @@ Directory or file | Notes
 :--- | :---
 `jms2.0a/src` | JMS 2.0a API source (java)
 `jms2.1/src` | JMS 2.1 API source (java)<br>JMS 2.1 was withdrawn and never released. This is the latest working version.
-<br>JMS 2.1 was withdrawn and never released. <br/>To rebuild, navigate to the directory and type `mvn javadoc:jar`  <br>Note that doclint is disabled in build.xml: see [JMS_SPEC-175](https://github.com/javaee/jms-spec/issues/175).
+<br>JMS 2.1 was withdrawn and never released. <br/>To rebuild, navigate to the directory and type `mvn javadoc:jar`  <br>Note that doclint is disabled in build.xml: see [JMS_SPEC-175](https://github.com/eclipse-ee4j/jms-api/issues/175).
