@@ -48,8 +48,7 @@
           
           
           <links>
-            <link>http://docs.oracle.com/javaee/7/api/</link>
-            <link>http://docs.oracle.com/javase/7/docs/api/</link>
+            <link>https://javaee.github.io/javaee-spec/javadocs/</link>
           </links>          
         </configuration>
       </plugin>
@@ -58,8 +57,8 @@
          <artifactId>maven-compiler-plugin</artifactId>
          <version>2.3.2</version>
          <configuration>
-            <source>1.7</source>
-            <target>1.7</target>
+            <source>1.8</source>
+            <target>1.8</target>
          </configuration>
       </plugin>      
       <!-- configure where the javadocs will be placed, so that after we commit them they will appear in the jms-spec website -->
