@@ -11,6 +11,4 @@ This project uses `maven` as build tool, sources follows maven project structure
 
 ## Build from Source
 
-Navigate to the directory and Type `mvn clean package` to produce java api jar file. `mvn javadoc:jar` will produce java doc jar file.  
-
-Note that `doclint` is disabled in jms2.1/pom.xml: For more info see issue [JMS_SPEC-175](https://github.com/eclipse-ee4j/jms-api/issues/175).
+Navigate to the directory and Type `mvn clean package` to produce java api jar file. `mvn javadoc:jar` will produce java doc jar file.
