@@ -21,26 +21,29 @@ import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import static javax.jms.JMSContext.AUTO_ACKNOWLEDGE;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * This annotation may be used to specify the session mode
- * to be used when injecting a {@code javax.jms.JMSContext} object.
- * The meaning and possible values of session mode are the same as for the 
- * {@code ConnectionFactory} method {@code createContext(int sessionMode)}.
- * 
+ * This annotation may be used to specify the session mode to be used when injecting a {@code javax.jms.JMSContext}
+ * object. The meaning and possible values of session mode are the same as for the {@code ConnectionFactory} method
+ * {@code createContext(int sessionMode)}.
+ *
  * @version JMS 2.0
  * @since JMS 2.0
- * 
- * @see javax.jms.JMSContext#createContext(int) 
+ *
+ * @see javax.jms.JMSContext#createContext(int)
  */
 @Retention(RUNTIME)
-@Target({METHOD, FIELD, PARAMETER, TYPE})
+@Target({ METHOD, FIELD, PARAMETER, TYPE })
 public @interface JMSSessionMode {
+
     /**
      * Specifies the session mode used when injecting a {@code javax.jms.JMSContext} object.
+     *
+     * @return The session mode used when injecting a {@code javax.jms.JMSContext} object.
      */
-    int value() default JMSContext.AUTO_ACKNOWLEDGE;
+    int value() default AUTO_ACKNOWLEDGE;
 }

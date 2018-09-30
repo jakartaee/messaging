@@ -16,116 +16,131 @@
 
 package javax.jms;
 
-import java.lang.annotation.ElementType;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
 import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * An application may use this annotation to specify a JMS {@code 
- * ConnectionFactory} resource that it requires in its operational 
- * environment. This provides information that can be used at the 
- * application's deployment to provision the required resource
- * and allows an application to be deployed into a Java EE environment 
- * with more minimal administrative configuration.
+ * An application may use this annotation to specify a JMS {@code
+ * ConnectionFactory} resource that it requires in its operational environment. This provides information that can be
+ * used at the application's deployment to provision the required resource and allows an application to be deployed into
+ * a Java EE environment with more minimal administrative configuration.
  * <p>
- * The {@code ConnectionFactory} resource may be configured by 
- * setting the annotation elements for commonly used properties. 
- * Additional properties may be specified using the {@code properties}
- * element. Once defined, a {@code ConnectionFactory} resource may be referenced by a
- * component in the same way as any other {@code ConnectionFactory} resource,
- * for example by using the {@code lookup} element of the {@code Resource}
+ * The {@code ConnectionFactory} resource may be configured by setting the annotation elements for commonly used
+ * properties. Additional properties may be specified using the {@code properties} element. Once defined, a
+ * {@code ConnectionFactory} resource may be referenced by a component in the same way as any other
+ * {@code ConnectionFactory} resource, for example by using the {@code lookup} element of the {@code Resource}
  * annotation.
- * 
+ *
  * @version JMS 2.0
  * @since JMS 2.0
- * 
+ *
  * @see javax.annotation.Resource
  */
-@Target({ ElementType.TYPE })
-@Retention(RetentionPolicy.RUNTIME)
+@Target(TYPE)
+@Retention(RUNTIME)
 public @interface JMSConnectionFactoryDefinition {
 
-	/**
-	 * Description of this JMS connection factory.
-	 */
-	String description() default "";
+    /**
+     * Description of this JMS connection factory.
+     *
+     * @return The description of this JMS connection factory.
+     */
+    String description() default "";
 
-	/**
-	 * JNDI name of the JMS connection factory being defined.
-	 */
-	String name();
+    /**
+     * JNDI name of the JMS connection factory being defined.
+     *
+     * @return The JNDI name of the JMS connection factory being defined.
+     */
+    String name();
 
-	/**
-	 * Fully qualified name of the JMS connection factory interface.
-	 * Permitted values are
-	 * {@code javax.jms.ConnectionFactory} or
-	 * {@code javax.jms.QueueConnectionFactory} or
-	 * {@code javax.jms.TopicConnectionFactory}.
-	 * If not specified then {@code javax.jms.ConnectionFactory} will be used. 
-	 */
-	String interfaceName() default "javax.jms.ConnectionFactory";
-	
-	/**
-	 * Fully-qualified name of the JMS connection factory implementation class.
-	 * Ignored if a resource adapter is used.
-	 */
-	String className() default "";
+    /**
+     * Fully qualified name of the JMS connection factory interface. Permitted values are
+     * {@code javax.jms.ConnectionFactory} or {@code javax.jms.QueueConnectionFactory} or
+     * {@code javax.jms.TopicConnectionFactory}. If not specified then {@code javax.jms.ConnectionFactory} will be used.
+     *
+     * @return The fully qualified name of the JMS connection factory interface.
+     */
+    String interfaceName() default "javax.jms.ConnectionFactory";
 
-	/**
-	 * Resource adapter name.
-	 * If not specified then the application server will define the default behaviour,
-	 * which may or may not involve the use of a resource adapter.
-	 */
-	String resourceAdapter() default "";
+    /**
+     * Fully-qualified name of the JMS connection factory implementation class. Ignored if a resource adapter is used.
+     *
+     * @return The fully-qualified name of the JMS connection factory implementation class.
+     */
+    String className() default "";
 
-	/**
-	 * User name to use for connection authentication.
-	 */
-	String user() default "";
+    /**
+     * Resource adapter name. If not specified then the application server will define the default behaviour, which may or
+     * may not involve the use of a resource adapter.
+     *
+     * @return The resource adapter name.
+     */
+    String resourceAdapter() default "";
 
-	/**
-	 * Password to use for connection authentication.
-	 */
-	String password() default "";
+    /**
+     * User name to use for connection authentication.
+     *
+     * @return The user name to use for connection authentication.
+     */
+    String user() default "";
 
-	/**
-	 * Client id to use for connection.
-	 */
-	String clientId() default "";
+    /**
+     * Password to use for connection authentication.
+     *
+     * @return The password to use for connection authentication.
+     */
+    String password() default "";
 
-	/**
-	 * JMS connection factory property. This may be a vendor-specific property
-	 * or a less commonly used {@code ConnectionFactory} property.
-	 * <p>
-	 * Properties are specified using the format:
-	 * <i>propertyName=propertyValue</i> with one property per array element.
-	 */
-	String[] properties() default {};
+    /**
+     * Client id to use for connection.
+     *
+     * @return The client id to use for connection.
+     */
+    String clientId() default "";
 
-	/**
-	 * Set to {@code false} if connections should not participate in
-	 * transactions.
-	 * <p>
-	 * Default is to enlist in a transaction when one is active or becomes
-	 * active.
-	 */
-	boolean transactional() default true;
+    /**
+     * JMS connection factory property. This may be a vendor-specific property or a less commonly used
+     * {@code ConnectionFactory} property.
+     *
+     * <p>
+     * Properties are specified using the format: <i>propertyName=propertyValue</i> with one property per array element.
+     *
+     * @return The JMS connection factory property.
+     */
+    String[] properties() default {};
 
-	/**
-	 * Maximum number of connections that should be concurrently allocated for a
-	 * connection pool.
-	 * <p>
-	 * Default is vendor-specific.
-	 */
-	int maxPoolSize() default -1;
+    /**
+     * Set to {@code false} if connections should not participate in transactions.
+     *
+     * <p>
+     * Default is to enlist in a transaction when one is active or becomes active.
+     *
+     * @return Whether connections should participate in transactions.
+     */
+    boolean transactional() default true;
 
-	/**
-	 * Minimum number of connections that should be concurrently allocated for a
-	 * connection pool.
-	 * <p>
-	 * Default is vendor-specific.
-	 */ 
-	int minPoolSize() default -1;
+    /**
+     * Maximum number of connections that should be concurrently allocated for a connection pool.
+     *
+     * <p>
+     * Default is vendor-specific.
+     *
+     * @return The maximum number of connections that should be concurrently allocated for a connection pool.
+     */
+    int maxPoolSize() default -1;
+
+    /**
+     * Minimum number of connections that should be concurrently allocated for a connection pool.
+     *
+     * <p>
+     * Default is vendor-specific.
+     *
+     * @return The minimum number of connections that should be concurrently allocated for a connection pool.
+     */
+    int minPoolSize() default -1;
 
 }

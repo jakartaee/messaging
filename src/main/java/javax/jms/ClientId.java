@@ -23,27 +23,29 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * This annotation specifies that a callback method on a JMS message-driven bean
- * must use the specified client identifier.
+ * This annotation specifies that a callback method on a JMS message-driven bean must use the specified client
+ * identifier.
  * <p>
- * The method must also be annotated with either {@code TopicListener} or
- * {@code QueueListener}. If it is not then deployment will fail.
+ * The method must also be annotated with either {@code TopicListener} or {@code QueueListener}. If it is not then
+ * deployment will fail.
  * <p>
- * 
+ *
  * @see TopicListener
  * @see QueueListener
- * 
+ *
  * @version JMS 2.1
  * @since JMS 2.1
- * 
+ *
  */
 @Retention(RUNTIME)
 @Target({ METHOD })
 public @interface ClientId {
 
-	/**
-	 * The client identifier that will be used.
-	 */
-	String value();
+    /**
+     * The client identifier that will be used.
+     *
+     * @return The client identifier that will be used.
+     */
+    String value();
 
 }

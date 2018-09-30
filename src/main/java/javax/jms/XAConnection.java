@@ -17,58 +17,47 @@
 package javax.jms;
 
 /**
- * The {@code XAConnection} interface extends the capability of
- * {@code Connection} by providing an {@code XASession} (optional).
- * 
- * <P>
- * The {@code XAConnection} interface is optional. JMS providers are not required
- * to support this interface. This interface is for use by JMS providers to
- * support transactional environments. Client programs are strongly encouraged
- * to use the transactional support available in their environment, rather than
- * use these XA interfaces directly.
- * 
+ * The {@code XAConnection} interface extends the capability of {@code Connection} by providing an {@code XASession}
+ * (optional).
+ *
+ * <p>
+ * The {@code XAConnection} interface is optional. JMS providers are not required to support this interface. This
+ * interface is for use by JMS providers to support transactional environments. Client programs are strongly encouraged
+ * to use the transactional support available in their environment, rather than use these XA interfaces directly.
+ *
  * @see javax.jms.XAQueueConnection
  * @see javax.jms.XATopicConnection
- * 
+ *
  * @version JMS 2.0
  * @since JMS 1.0
- * 
  */
-
 public interface XAConnection extends Connection {
 
-	/**
-	 * Creates an {@code XASession} object.
-	 * 
-	 * @return a newly created {@code XASession}
-	 * 
-	 * @exception JMSException
-	 *                if the {@code XAConnection} object fails to create an
-	 *                {@code XASession} due to some internal error.
-	 * 
-	 * @since JMS 1.1
-	 * 
-	 */
+    /**
+     * Creates an {@code XASession} object.
+     *
+     * @return a newly created {@code XASession}
+     *
+     * @exception JMSException if the {@code XAConnection} object fails to create an {@code XASession} due to some internal
+     * error.
+     *
+     * @since JMS 1.1
+     */
+    XASession createXASession() throws JMSException;
 
-	XASession createXASession() throws JMSException;
-
-	/**
-	 * Creates an {@code Session} object.
-	 * 
-	 * @param transacted
-	 *            usage undefined
-	 * @param acknowledgeMode
-	 *            usage undefined
-	 * 
-	 * @return a newly created {@code Session}
-	 * 
-	 * @exception JMSException
-	 *                if the {@code XAConnection} object fails to create a
-	 *                {@code Session} due to some internal error.
-	 * 
-	 * @since JMS 1.1
-	 * 
-	 */
-	Session createSession(boolean transacted, int acknowledgeMode)
-			throws JMSException;
+    /**
+     * Creates an {@code Session} object.
+     *
+     * @param transacted usage undefined
+     * @param acknowledgeMode usage undefined
+     *
+     * @return a newly created {@code Session}
+     *
+     * @exception JMSException if the {@code XAConnection} object fails to create a {@code Session} due to some internal
+     * error.
+     *
+     * @since JMS 1.1
+     */
+    @Override
+    Session createSession(boolean transacted, int acknowledgeMode) throws JMSException;
 }

@@ -17,43 +17,38 @@
 package javax.jms;
 
 /**
- * <P> This exception must be thrown when a provider rejects a user 
- *     name/password submitted by a client. It may also be thrown for any case 
- *     where a security restriction prevents a method from completing.
- * 
+ * This exception must be thrown when a provider rejects a user name/password submitted by a client. It may also be
+ * thrown for any case where a security restriction prevents a method from completing.
+ *
  * @version JMS 2.0
  * @since JMS 1.0
- * 
+ *
  **/
-
 public class JMSSecurityException extends JMSException {
-  
-  /**
-   * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
-   */
-  private static final long serialVersionUID = -7512859695190450217L;
 
-  /** Constructs a {@code JMSSecurityException} with the specified 
-   *  reason and error code.
-   *
-   *  @param  reason        a description of the exception
-   *  @param  errorCode     a string specifying the vendor-specific
-   *                        error code
-   *                        
-   **/
-  public 
-  JMSSecurityException(String reason, String errorCode) {
-    super(reason, errorCode);
-  }
+    /**
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
+     */
+    private static final long serialVersionUID = -7512859695190450217L;
 
-  /** Constructs a {@code JMSSecurityException} with the specified 
-   *  reason. The error code defaults to null.
-   *
-   *  @param  reason        a description of the exception
-   **/
-  public 
-  JMSSecurityException(String reason) {
-    super(reason);
-  }
+    /**
+     * Constructs a {@code JMSSecurityException} with the specified reason and error code.
+     *
+     * @param reason a description of the exception
+     * @param errorCode a string specifying the vendor-specific error code
+     *
+     **/
+    public JMSSecurityException(String reason, String errorCode) {
+        super(reason, errorCode);
+    }
+
+    /**
+     * Constructs a {@code JMSSecurityException} with the specified reason. The error code defaults to null.
+     *
+     * @param reason a description of the exception
+     **/
+    public JMSSecurityException(String reason) {
+        super(reason);
+    }
 
 }

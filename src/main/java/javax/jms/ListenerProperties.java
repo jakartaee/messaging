@@ -24,20 +24,19 @@ import java.lang.annotation.Target;
 
 /**
  * Containing annotation for annotations of type {@code ListenerProperty}.
+ *
  * <p>
- * This annotation is used internally when a method or class is annotated with
- * more than one {@code ListenerProperty} annotation. Applications do not need
- * to use this annotation directly.
- * 
- * @see ListenerProperty <p>
+ * This annotation is used internally when a method or class is annotated with more than one {@code ListenerProperty}
+ * annotation. Applications do not need to use this annotation directly.
+ *
+ * @see ListenerProperty
  * @version JMS 2.1
  * @since JMS 2.1
- * 
  */
-@Target({ METHOD })
+@Target(METHOD)
 @Retention(RUNTIME)
 public @interface ListenerProperties {
 
-	ListenerProperty[] value();
+    ListenerProperty[] value();
 
 }

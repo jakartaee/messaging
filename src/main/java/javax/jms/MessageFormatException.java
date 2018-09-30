@@ -17,51 +17,45 @@
 package javax.jms;
 
 /**
- * <P> This exception must be thrown when a JMS client 
- *     attempts to use a data type not supported by a message or attempts to 
- *     read data in a message as the wrong type. It must also be thrown when 
- *     equivalent type errors are made with message property values. For 
- *     example, this exception must be thrown if 
- *     {@code StreamMessage.writeObject} is given an unsupported class or 
- *     if {@code StreamMessage.readShort} is used to read a 
- *     {@code boolean} value. Note that the special case of a failure 
- *     caused by an attempt to read improperly formatted {@code String} 
- *     data as numeric values must throw the 
- *     {@code java.lang.NumberFormatException}.
- * 
+ * This exception must be thrown when a JMS client attempts to use a data type not supported by a message or attempts to
+ * read data in a message as the wrong type.
+ *
+ * <p>
+ * It must also be thrown when equivalent type errors are made with message
+ * property values. For example, this exception must be thrown if {@code StreamMessage.writeObject} is given an
+ * unsupported class or if {@code StreamMessage.readShort} is used to read a {@code boolean} value. Note that the
+ * special case of a failure caused by an attempt to read improperly formatted {@code String} data as numeric values
+ * must throw the {@code java.lang.NumberFormatException}.
+ *
  * @version JMS 2.0
  * @since JMS 1.0
- * 
+ *
  **/
-
 public class MessageFormatException extends JMSException {
-  
-  /**
-   * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
-   */
-  private static final long serialVersionUID = -3642297253594750138L;
 
-  /** Constructs a {@code MessageFormatException} with the specified 
-   *  reason and error code.
-   *
-   *  @param  reason        a description of the exception
-   *  @param  errorCode     a string specifying the vendor-specific
-   *                        error code
-   *                        
-   **/
-  public 
-  MessageFormatException(String reason, String errorCode) {
-    super(reason, errorCode);
-  }
+    /**
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
+     */
+    private static final long serialVersionUID = -3642297253594750138L;
 
-  /** Constructs a {@code MessageFormatException} with the specified 
-   *  reason. The error code defaults to null.
-   *
-   *  @param  reason        a description of the exception
-   **/
-  public 
-  MessageFormatException(String reason) {
-    super(reason);
-  }
+    /**
+     * Constructs a {@code MessageFormatException} with the specified reason and error code.
+     *
+     * @param reason a description of the exception
+     * @param errorCode a string specifying the vendor-specific error code
+     *
+     **/
+    public MessageFormatException(String reason, String errorCode) {
+        super(reason, errorCode);
+    }
+
+    /**
+     * Constructs a {@code MessageFormatException} with the specified reason. The error code defaults to null.
+     *
+     * @param reason a description of the exception
+     **/
+    public MessageFormatException(String reason) {
+        super(reason);
+    }
 
 }

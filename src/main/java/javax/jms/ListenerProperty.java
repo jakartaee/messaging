@@ -24,44 +24,46 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * This annotation specifies an arbitrary activation property to be used by a
- * callback method on a JMS message-driven bean must use the specified message
- * selector. It may be specified either on the callback method or on the
+ * This annotation specifies an arbitrary activation property to be used by a callback method on a JMS message-driven
+ * bean must use the specified message selector. It may be specified either on the callback method or on the
  * message-driven bean class.
+ *
  * <p>
- * If this annotation is specified on a method of a message-driven bean class
- * then that method must also be annotated with {@code QueueListener} or
- * {@code TopicListener}. If it is not then deployment will fail.
+ * If this annotation is specified on a method of a message-driven bean class then that method must also be annotated
+ * with {@code QueueListener} or {@code TopicListener}. If it is not then deployment will fail.
+ *
  * <p>
- * If this annotation is specified on the message-driven bean class then at
- * least one method must be annotated with {@code QueueListener} or
- * {@code TopicListener}. If no method is annotated with {@code QueueListener}
- * or {@code TopicListener} then deployment will fail.
+ * If this annotation is specified on the message-driven bean class then at least one method must be annotated with
+ * {@code QueueListener} or {@code TopicListener}. If no method is annotated with {@code QueueListener} or
+ * {@code TopicListener} then deployment will fail.
+ *
  * <p>
- * If this annotation is used to specify the same property on both a method of a
- * message-driven bean class and on the message-driven bean class itself then
- * deployment will fail.
+ * If this annotation is used to specify the same property on both a method of a message-driven bean class and on the
+ * message-driven bean class itself then deployment will fail.
+ *
  * <p>
- * Multiple {@code JMSListenerProperty} annotations may be used to set multiple
- * properties on the same callback method.
- * 
+ * Multiple {@code JMSListenerProperty} annotations may be used to set multiple properties on the same callback method.
+ *
  * @version JMS 2.1
  * @since JMS 2.1
- * 
  */
 @Repeatable(ListenerProperties.class)
 @Retention(RUNTIME)
-@Target({ METHOD })
+@Target(METHOD)
 public @interface ListenerProperty {
 
-	/**
-	 * Name of the activation property
-	 */
-	String name();
+    /**
+     * Name of the activation property
+     *
+     * @return The name of the activation property
+     */
+    String name();
 
-	/**
-	 * Value of the activation property
-	 */
-	String value();
+    /**
+     * Value of the activation property
+     *
+     * @return The value of the activation property
+     */
+    String value();
 
 }
