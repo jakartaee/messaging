@@ -16,34 +16,28 @@
 
 package javax.jms;
 
-/** An {@code XAQueueSession} provides a regular {@code QueueSession},
-  * which can be used to
-  * create {@code QueueReceiver}, {@code QueueSender}, and 
-  *{@code QueueBrowser} objects (optional).
-  *
-  * <P>The {@code XAQueueSession} interface is optional. JMS providers 
-  * are not required to support this interface. This interface is for 
-  * use by JMS providers to support transactional environments. 
-  * Client programs are strongly encouraged to use the transactional support
-  * available in their environment, rather than use these XA
-  * interfaces directly. 
-  *
-  * @see javax.jms.XASession
-  * 
-  * @version JMS 2.0
-  * @since JMS 1.0
-  * 
-  */
-
+/**
+ * An {@code XAQueueSession} provides a regular {@code QueueSession}, which can be used to create {@code QueueReceiver},
+ * {@code QueueSender}, and {@code QueueBrowser} objects (optional).
+ *
+ * <p>
+ * The {@code XAQueueSession} interface is optional. JMS providers are not required to support this interface. This
+ * interface is for use by JMS providers to support transactional environments. Client programs are strongly encouraged
+ * to use the transactional support available in their environment, rather than use these XA interfaces directly.
+ *
+ * @see javax.jms.XASession
+ *
+ * @version JMS 2.0
+ * @since JMS 1.0
+ */
 public interface XAQueueSession extends XASession {
 
-    /** Gets the queue session associated with this {@code XAQueueSession}.
-      *  
-      * @return the queue session object
-      *  
-      * @exception JMSException if an internal error occurs.
-      */ 
- 
-    QueueSession
-    getQueueSession() throws JMSException;
+    /**
+     * Gets the queue session associated with this {@code XAQueueSession}.
+     *
+     * @return the queue session object
+     *
+     * @exception JMSException if an internal error occurs.
+     */
+    QueueSession getQueueSession() throws JMSException;
 }

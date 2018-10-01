@@ -17,60 +17,49 @@
 package javax.jms;
 
 /**
- * This unchecked exception must be thrown when a provider rejects a user
- * name/password submitted by a client, or for any case where a security
- * restriction prevents a method from completing, and the method signature does
- * not permit a {@code JMSSecurityException} to be thrown.
- * 
+ * This unchecked exception must be thrown when a provider rejects a user name/password submitted by a client, or for
+ * any case where a security restriction prevents a method from completing, and the method signature does not permit a
+ * {@code JMSSecurityException} to be thrown.
+ *
  * @version JMS 2.0
  * @since JMS 2.0
- * 
+ *
  **/
-
 public class JMSSecurityRuntimeException extends JMSRuntimeException {
-  
-  /**
-   * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 2.0 version
-   */
-  private static final long serialVersionUID = 1020149469192845616L;
-	
-	/**
-	 * Constructs a {@code JMSSecurityRuntimeException} with the specified detail message
-	 * 
-	 * @param detailMessage
-	 *            a description of the exception
-	 **/
-	public JMSSecurityRuntimeException(String detailMessage) {
-		super(detailMessage);
-	}
 
-	/**
-	 * Constructs a {@code JMSSecurityRuntimeException} with the specified detail message
-	 * and error code.
-	 * 
-	 * @param detailMessage
-	 *            a description of the exception
-	 * @param errorCode
-	 *            a provider-specific error code
-	 **/
-	public JMSSecurityRuntimeException(String detailMessage, String errorCode) {
-		super(detailMessage,errorCode);
-	}
+    /**
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 2.0 version
+     */
+    private static final long serialVersionUID = 1020149469192845616L;
 
+    /**
+     * Constructs a {@code JMSSecurityRuntimeException} with the specified detail message
+     *
+     * @param detailMessage a description of the exception
+     **/
+    public JMSSecurityRuntimeException(String detailMessage) {
+        super(detailMessage);
+    }
 
-	/**
-	 * Constructs a {@code JMSSecurityRuntimeException} with the specified detail message,
-	 * error code and cause
-	 * 
-	 * @param detailMessage
-	 *            a description of the exception
-	 * @param errorCode
-	 *            a provider-specific error code
-	 * @param cause
-	 *            the underlying cause of this exception
-	 */
-	public JMSSecurityRuntimeException(String detailMessage, String errorCode, Throwable cause) {
-		super(detailMessage,errorCode,cause);
-	}
-  
+    /**
+     * Constructs a {@code JMSSecurityRuntimeException} with the specified detail message and error code.
+     *
+     * @param detailMessage a description of the exception
+     * @param errorCode a provider-specific error code
+     **/
+    public JMSSecurityRuntimeException(String detailMessage, String errorCode) {
+        super(detailMessage, errorCode);
+    }
+
+    /**
+     * Constructs a {@code JMSSecurityRuntimeException} with the specified detail message, error code and cause
+     *
+     * @param detailMessage a description of the exception
+     * @param errorCode a provider-specific error code
+     * @param cause the underlying cause of this exception
+     */
+    public JMSSecurityRuntimeException(String detailMessage, String errorCode, Throwable cause) {
+        super(detailMessage, errorCode, cause);
+    }
+
 }

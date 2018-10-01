@@ -16,35 +16,28 @@
 
 package javax.jms;
 
-/** A {@code TemporaryQueue} object is a unique {@code Queue} object 
-  * created for the duration of a {@code Connection}. It is a 
-  * system-defined queue that can be consumed only by the 
-  * {@code Connection} that created it.
-  *
-  *<P>A {@code TemporaryQueue} object can be created at either the 
-  * {@code Session} or {@code QueueSession} level. Creating it at the
-  * {@code Session} level allows to the {@code TemporaryQueue} to 
-  * participate in transactions with objects from the Pub/Sub  domain. 
-  * If it is created at the {@code QueueSession}, it will only
-  * be able participate in transactions with objects from the PTP domain.
-  *
-  * @see Session#createTemporaryQueue()
-  * @see QueueSession#createTemporaryQueue()
-  * 
-  * @version JMS 2.0
-  * @since JMS 1.0
-  * 
-  */
-
+/**
+ * A {@code TemporaryQueue} object is a unique {@code Queue} object created for the duration of a {@code Connection}. It
+ * is a system-defined queue that can be consumed only by the {@code Connection} that created it.
+ *
+ * <p>
+ * A {@code TemporaryQueue} object can be created at either the {@code Session} or {@code QueueSession} level. Creating
+ * it at the {@code Session} level allows to the {@code TemporaryQueue} to participate in transactions with objects from
+ * the Pub/Sub domain. If it is created at the {@code QueueSession}, it will only be able participate in transactions
+ * with objects from the PTP domain.
+ *
+ * @see Session#createTemporaryQueue()
+ * @see QueueSession#createTemporaryQueue()
+ *
+ * @version JMS 2.0
+ * @since JMS 1.0
+ */
 public interface TemporaryQueue extends Queue {
 
-    /** Deletes this temporary queue. If there are existing receivers
-      * still using it, a {@code JMSException} will be thrown.
-      *  
-      * @exception JMSException if the JMS provider fails to delete the 
-      *                         temporary queue due to some internal error.
-      */
-
-    void 
-    delete() throws JMSException; 
+    /**
+     * Deletes this temporary queue. If there are existing receivers still using it, a {@code JMSException} will be thrown.
+     *
+     * @exception JMSException if the JMS provider fails to delete the temporary queue due to some internal error.
+     */
+    void delete() throws JMSException;
 }

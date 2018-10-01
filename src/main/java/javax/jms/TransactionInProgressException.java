@@ -17,46 +17,38 @@
 package javax.jms;
 
 /**
- * <P> This exception is thrown when an 
- *     operation is invalid because a transaction is in progress. 
- *     For instance, an attempt to call {@code Session.commit} when a 
- *     session is part of a distributed transaction should throw a 
- *     {@code TransactionInProgressException}.
+ * This exception is thrown when an operation is invalid because a transaction is in progress. For instance, an attempt
+ * to call {@code Session.commit} when a session is part of a distributed transaction should throw a
+ * {@code TransactionInProgressException}.
  *
- * 
  * @version JMS 2.0
  * @since JMS 1.0
- * 
  */
-
 public class TransactionInProgressException extends JMSException {
-  
-  /**
-   * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
-   */
-  private static final long serialVersionUID = -5611340150426335231L;
 
-  /** Constructs a {@code TransactionInProgressException} with the 
-   *  specified reason and error code.
-   *
-   *  @param  reason        a description of the exception
-   *  @param  errorCode     a string specifying the vendor-specific
-   *                        error code
-   *                        
-   **/
-  public 
-  TransactionInProgressException(String reason, String errorCode) {
-    super(reason, errorCode);
-  }
+    /**
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
+     */
+    private static final long serialVersionUID = -5611340150426335231L;
 
-  /** Constructs a {@code TransactionInProgressException} with the 
-   *  specified reason. The error code defaults to null.
-   *
-   *  @param  reason        a description of the exception
-   **/
-  public 
-  TransactionInProgressException(String reason) {
-    super(reason);
-  }
+    /**
+     * Constructs a {@code TransactionInProgressException} with the specified reason and error code.
+     *
+     * @param reason a description of the exception
+     * @param errorCode a string specifying the vendor-specific error code
+     *
+     **/
+    public TransactionInProgressException(String reason, String errorCode) {
+        super(reason, errorCode);
+    }
+
+    /**
+     * Constructs a {@code TransactionInProgressException} with the specified reason. The error code defaults to null.
+     *
+     * @param reason a description of the exception
+     **/
+    public TransactionInProgressException(String reason) {
+        super(reason);
+    }
 
 }

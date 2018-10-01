@@ -16,60 +16,47 @@
 
 package javax.jms;
 
-/** A client uses a {@code TopicConnectionFactory} object to create 
-  * {@code TopicConnection} objects with a publish/subscribe JMS provider.
-  *
-  * <P>A{@code  TopicConnectionFactory} can be used to create a 
-  * {@code TopicConnection}, from which specialized topic-related objects
-  * can be  created. A more general, and recommended approach 
-  * is to use the {@code ConnectionFactory} object.
-  *  
-  * <P> The {@code TopicConnectionFactory} object
-  * should be used to support existing code.
-  *
-  * @see javax.jms.ConnectionFactory
-  * 
-  * @version JMS 2.0
-  * @since JMS 1.0
-  * 
-  */
-
+/**
+ * A client uses a {@code TopicConnectionFactory} object to create {@code TopicConnection} objects with a
+ * publish/subscribe JMS provider.
+ *
+ * <p>
+ * A{@code  TopicConnectionFactory} can be used to create a {@code TopicConnection}, from which specialized
+ * topic-related objects can be created. A more general, and recommended approach is to use the
+ * {@code ConnectionFactory} object.
+ *
+ * <p>
+ * The {@code TopicConnectionFactory} object should be used to support existing code.
+ *
+ * @see javax.jms.ConnectionFactory
+ *
+ * @version JMS 2.0
+ * @since JMS 1.0
+ */
 public interface TopicConnectionFactory extends ConnectionFactory {
 
-    /** Creates a topic connection with the default user identity.
-      * The connection is created in stopped mode. No messages 
-      * will be delivered until the {@code Connection.start} method
-      * is explicitly called.
-      *
-      * @return a newly created topic connection
-      *
-      * @exception JMSException if the JMS provider fails to create a topic 
-      *                         connection due to some internal error.
-      * @exception JMSSecurityException if client authentication fails due to 
-      *                                 an invalid user name or password.
-      */ 
+    /**
+     * Creates a topic connection with the default user identity. The connection is created in stopped mode. No messages
+     * will be delivered until the {@code Connection.start} method is explicitly called.
+     *
+     * @return a newly created topic connection
+     *
+     * @exception JMSException if the JMS provider fails to create a topic connection due to some internal error.
+     * @exception JMSSecurityException if client authentication fails due to an invalid user name or password.
+     */
+    TopicConnection createTopicConnection() throws JMSException;
 
-    TopicConnection
-    createTopicConnection() throws JMSException;
-
-
-    /** Creates a topic connection with the specified user identity.
-      * The connection is created in stopped mode. No messages 
-      * will be delivered until the {@code Connection.start} method
-      * is explicitly called.
-      *  
-      * @param userName the caller's user name
-      * @param password the caller's password
-      *  
-      * @return a newly created topic connection
-      *
-      * @exception JMSException if the JMS provider fails to create a topic 
-      *                         connection due to some internal error.
-      * @exception JMSSecurityException if client authentication fails due to 
-      *                                 an invalid user name or password.
-      */ 
-
-    TopicConnection
-    createTopicConnection(String userName, String password) 
-					     throws JMSException;
+    /**
+     * Creates a topic connection with the specified user identity. The connection is created in stopped mode. No messages
+     * will be delivered until the {@code Connection.start} method is explicitly called.
+     *
+     * @param userName the caller's user name
+     * @param password the caller's password
+     *
+     * @return a newly created topic connection
+     *
+     * @exception JMSException if the JMS provider fails to create a topic connection due to some internal error.
+     * @exception JMSSecurityException if client authentication fails due to an invalid user name or password.
+     */
+    TopicConnection createTopicConnection(String userName, String password) throws JMSException;
 }

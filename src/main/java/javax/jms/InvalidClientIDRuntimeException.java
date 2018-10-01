@@ -17,59 +17,47 @@
 package javax.jms;
 
 /**
- * This unchecked exception must be thrown when a client attempts to set a
- * connection's client ID to a value that is rejected by a provider, and the
- * method signature does not permit a {@code InvalidClientIDException} to
- * be thrown.
- * 
+ * This unchecked exception must be thrown when a client attempts to set a connection's client ID to a value that is
+ * rejected by a provider, and the method signature does not permit a {@code InvalidClientIDException} to be thrown.
+ *
  * @version JMS 2.0
  * @since JMS 2.0
- * 
+ *
  **/
-
 public class InvalidClientIDRuntimeException extends JMSRuntimeException {
-  
-  /**
-   * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 2.0 version
-   */
-  private static final long serialVersionUID = -1997236208457896631L;
-	
-	/**
-	 * Constructs a {@code InvalidClientIDRuntimeException} with the specified detail message
-	 * 
-	 * @param detailMessage
-	 *            a description of the exception
-	 **/
-	public InvalidClientIDRuntimeException(String detailMessage) {
-		super(detailMessage);
-	}
 
-	/**
-	 * Constructs a {@code InvalidClientIDRuntimeException} with the specified detail message
-	 * and error code.
-	 * 
-	 * @param detailMessage
-	 *            a description of the exception
-	 * @param errorCode
-	 *            a provider-specific error code
-	 **/
-	public InvalidClientIDRuntimeException(String detailMessage, String errorCode) {
-		super(detailMessage,errorCode);
-	}
+    /**
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 2.0 version
+     */
+    private static final long serialVersionUID = -1997236208457896631L;
 
+    /**
+     * Constructs a {@code InvalidClientIDRuntimeException} with the specified detail message
+     *
+     * @param detailMessage a description of the exception
+     **/
+    public InvalidClientIDRuntimeException(String detailMessage) {
+        super(detailMessage);
+    }
 
-	/**
-	 * Constructs a {@code InvalidClientIDRuntimeException} with the specified detail message,
-	 * error code and cause
-	 * 
-	 * @param detailMessage
-	 *            a description of the exception
-	 * @param errorCode
-	 *            a provider-specific error code
-	 * @param cause
-	 *            the underlying cause of this exception
-	 */
-	public InvalidClientIDRuntimeException(String detailMessage, String errorCode, Throwable cause) {
-		super(detailMessage, errorCode, cause);
-	}
+    /**
+     * Constructs a {@code InvalidClientIDRuntimeException} with the specified detail message and error code.
+     *
+     * @param detailMessage a description of the exception
+     * @param errorCode a provider-specific error code
+     **/
+    public InvalidClientIDRuntimeException(String detailMessage, String errorCode) {
+        super(detailMessage, errorCode);
+    }
+
+    /**
+     * Constructs a {@code InvalidClientIDRuntimeException} with the specified detail message, error code and cause
+     *
+     * @param detailMessage a description of the exception
+     * @param errorCode a provider-specific error code
+     * @param cause the underlying cause of this exception
+     */
+    public InvalidClientIDRuntimeException(String detailMessage, String errorCode, Throwable cause) {
+        super(detailMessage, errorCode, cause);
+    }
 }

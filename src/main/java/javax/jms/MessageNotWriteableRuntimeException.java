@@ -17,60 +17,47 @@
 package javax.jms;
 
 /**
- * <P>
- * This unchecked exception must be thrown when a JMS client attempts to write
- * to a read-only message.
- * 
+ * This unchecked exception must be thrown when a JMS client attempts to write to a read-only message.
+ *
  * @version JMS 2.0
  * @since JMS 2.0
- * 
  **/
-
 public class MessageNotWriteableRuntimeException extends JMSRuntimeException {
-  
-  /**
-   * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 2.0 version
-   */
-  private static final long serialVersionUID = 6075922984499850209L;
 
-	/**
-	 * Constructs a {@code MessageNotWriteableRuntimeException} with the
-	 * specified reason and error code.
-	 * 
-	 * @param reason
-	 *            a description of the exception
-	 * @param errorCode
-	 *            a string specifying the vendor-specific error code
-	 * 
-	 **/
-	public MessageNotWriteableRuntimeException(String reason, String errorCode) {
-		super(reason, errorCode);
-	}
+    /**
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 2.0 version
+     */
+    private static final long serialVersionUID = 6075922984499850209L;
 
-	/**
-	 * Constructs a {@code MessageNotWriteableRuntimeException} with the
-	 * specified reason. The error code defaults to null.
-	 * 
-	 * @param reason
-	 *            a description of the exception
-	 **/
-	public MessageNotWriteableRuntimeException(String reason) {
-		super(reason);
-	}
-	
-	/**
-	 * Constructs a {@code MessageNotWriteableRuntimeException} with the specified detail message,
-	 * error code and cause
-	 * 
-	 * @param detailMessage
-	 *            a description of the exception
-	 * @param errorCode
-	 *            a provider-specific error code
-	 * @param cause
-	 *            the underlying cause of this exception
-	 */
-	public MessageNotWriteableRuntimeException(String detailMessage, String errorCode, Throwable cause) {
-		super(detailMessage,errorCode,cause);
-	}
+    /**
+     * Constructs a {@code MessageNotWriteableRuntimeException} with the specified reason and error code.
+     *
+     * @param reason a description of the exception
+     * @param errorCode a string specifying the vendor-specific error code
+     *
+     **/
+    public MessageNotWriteableRuntimeException(String reason, String errorCode) {
+        super(reason, errorCode);
+    }
+
+    /**
+     * Constructs a {@code MessageNotWriteableRuntimeException} with the specified reason. The error code defaults to null.
+     *
+     * @param reason a description of the exception
+     **/
+    public MessageNotWriteableRuntimeException(String reason) {
+        super(reason);
+    }
+
+    /**
+     * Constructs a {@code MessageNotWriteableRuntimeException} with the specified detail message, error code and cause
+     *
+     * @param detailMessage a description of the exception
+     * @param errorCode a provider-specific error code
+     * @param cause the underlying cause of this exception
+     */
+    public MessageNotWriteableRuntimeException(String detailMessage, String errorCode, Throwable cause) {
+        super(detailMessage, errorCode, cause);
+    }
 
 }
