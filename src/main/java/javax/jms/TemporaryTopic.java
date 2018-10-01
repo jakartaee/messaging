@@ -16,36 +16,29 @@
 
 package javax.jms;
 
-/** A {@code TemporaryTopic} object is a unique {@code Topic} object 
-  * created for the duration of a {@code Connection}. It is a 
-  * system-defined topic that can be consumed only by the 
-  * {@code Connection} that created it.
-  *
-  *<P>A {@code TemporaryTopic} object can be created either at the 
-  * {@code Session} or {@code TopicSession} level. Creating it at the
-  * {@code Session} level allows the {@code TemporaryTopic} to participate
-  * in the same transaction with objects from the PTP domain. 
-  * If a {@code TemporaryTopic} is  created at the 
-  * {@code TopicSession}, it will only
-  * be able participate in transactions with objects from the Pub/Sub domain.
-  *
-  * @see Session#createTemporaryTopic()
-  * @see TopicSession#createTemporaryTopic()
-  * 
-  * @version JMS 2.0
-  * @since JMS 1.0
-  * 
-  */
-
+/**
+ * A {@code TemporaryTopic} object is a unique {@code Topic} object created for the duration of a {@code Connection}. It
+ * is a system-defined topic that can be consumed only by the {@code Connection} that created it.
+ *
+ * <p>
+ * A {@code TemporaryTopic} object can be created either at the {@code Session} or {@code TopicSession} level. Creating
+ * it at the {@code Session} level allows the {@code TemporaryTopic} to participate in the same transaction with objects
+ * from the PTP domain. If a {@code TemporaryTopic} is created at the {@code TopicSession}, it will only be able
+ * participate in transactions with objects from the Pub/Sub domain.
+ *
+ * @see Session#createTemporaryTopic()
+ * @see TopicSession#createTemporaryTopic()
+ *
+ * @version JMS 2.0
+ * @since JMS 1.0
+ */
 public interface TemporaryTopic extends Topic {
 
-    /** Deletes this temporary topic. If there are existing subscribers
-      * still using it, a {@code JMSException} will be thrown.
-      *  
-      * @exception JMSException if the JMS provider fails to delete the
-      *                         temporary topic due to some internal error.
-      */
-
-    void 
-    delete() throws JMSException; 
+    /**
+     * Deletes this temporary topic. If there are existing subscribers still using it, a {@code JMSException} will be
+     * thrown.
+     *
+     * @exception JMSException if the JMS provider fails to delete the temporary topic due to some internal error.
+     */
+    void delete() throws JMSException;
 }

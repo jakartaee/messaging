@@ -23,28 +23,28 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * This annotation specifies that a callback method on a JMS message-driven bean
- * that has been configured to consume messages from a topic using a durable
- * subscription must use the specified durable subscription name.
+ * This annotation specifies that a callback method on a JMS message-driven bean that has been configured to consume
+ * messages from a topic using a durable subscription must use the specified durable subscription name.
+ *
  * <p>
- * The method must also be annotated with {@code TopicListener} and
- * {@code DurableSubscription}. If it is not then deployment will fail.
- * <p>
- * 
+ * The method must also be annotated with {@code TopicListener} and {@code DurableSubscription}. If it is not then
+ * deployment will fail.
+ *
  * @see TopicListener
  * @see DurableSubscription
- * 
+ *
  * @version JMS 2.1
  * @since JMS 2.1
- * 
  */
 @Retention(RUNTIME)
-@Target({ METHOD })
+@Target(METHOD)
 public @interface SubscriptionName {
 
-	/**
-	 * The subscription name that will be used.
-	 */
-	String value();
+    /**
+     * The subscription name that will be used.
+     *
+     * @return The subscription name.
+     */
+    String value();
 
 }

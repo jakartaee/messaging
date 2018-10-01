@@ -16,58 +16,61 @@
 
 package javax.jms;
 
-import java.lang.annotation.ElementType;
+import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
 import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Specifies that a callback method parameter must be set to the specified
- * message header value. This annotation may be applied to parameters on a
- * callback method on a JMS message-driven bean that has been annotated with the
- * {@code JMSQueueListener} , {@code JMSNonDurableTopicListener} or
- * {@code JMSDurableTopicListener} annotation.
+ * Specifies that a callback method parameter must be set to the specified message header value. This annotation may be
+ * applied to parameters on a callback method on a JMS message-driven bean that has been annotated with the
+ * {@code JMSQueueListener} , {@code JMSNonDurableTopicListener} or {@code JMSDurableTopicListener} annotation.
+ *
  * <p>
- * The parameter type must match the header type as shown in the following
- * table. If it does not then deployment will fail.
- * <p>
+ * The parameter type must match the header type as shown in the following table. If it does not then deployment will
+ * fail.
+ *
  * <pre>
  * +-------------------+------------------------------------------------+
  * | Annotation                                     | Parameter         |
  * |                                                | type              |
  * +-------------------+------------------------------------------------+
- * | @MessageHeader(Header.JMSCorrelationID)        | String            |     
- * | @MessageHeader(Header.JMSCorrelationIDAsBytes) | byte[]            | 
- * | @MessageHeader(Header.JMSDeliveryMode)         | Integer or int    | 
- * | @MessageHeader(Header.JMSDeliveryTime)         | Long or long      | 
- * | @MessageHeader(Header.JMSDestination)          | Destination       | 
- * | @MessageHeader(Header.JMSExpiration)           | Long or long      | 
- * | @MessageHeader(Header.JMSMessageID)            | String            | 
+ * | @MessageHeader(Header.JMSCorrelationID)        | String            |
+ * | @MessageHeader(Header.JMSCorrelationIDAsBytes) | byte[]            |
+ * | @MessageHeader(Header.JMSDeliveryMode)         | Integer or int    |
+ * | @MessageHeader(Header.JMSDeliveryTime)         | Long or long      |
+ * | @MessageHeader(Header.JMSDestination)          | Destination       |
+ * | @MessageHeader(Header.JMSExpiration)           | Long or long      |
+ * | @MessageHeader(Header.JMSMessageID)            | String            |
  * | @MessageHeader(Header.JMSPriority)             | Integer or int    |
- * | @MessageHeader(Header.JMSRedelivered)          | Boolean or boolean| 
- * | @MessageHeader(Header.JMSReplyTo)              | Destination       | 
- * | @MessageHeader(Header.JMSTimestamp)            | Long or long      | 
- * | @MessageHeader(Header.JMSType)                 | String            | 
+ * | @MessageHeader(Header.JMSRedelivered)          | Boolean or boolean|
+ * | @MessageHeader(Header.JMSReplyTo)              | Destination       |
+ * | @MessageHeader(Header.JMSTimestamp)            | Long or long      |
+ * | @MessageHeader(Header.JMSType)                 | String            |
  * +-------------------+------------------------------------------------+
  * </pre>
- * 
+ *
  * @version JMS 2.1
  * @since JMS 2.1
- * 
+ *
  * @see MessageProperty
- * 
+ *
  */
-@Target({ ElementType.PARAMETER })
-@Retention(RetentionPolicy.RUNTIME)
+@Target(PARAMETER)
+@Retention(RUNTIME)
 public @interface MessageHeader {
 
     /**
      * Specifies the header field to be used
+     *
+     * @return The header field to be used
      */
     Header value();
 
     public enum Header {
-        JMSCorrelationID, JMSCorrelationIDAsBytes, JMSDeliveryMode, JMSDeliveryTime, JMSDestination, JMSExpiration, JMSMessageID, JMSPriority, JMSRedelivered, JMSReplyTo, JMSTimestamp, JMSType
+        JMSCorrelationID, JMSCorrelationIDAsBytes, JMSDeliveryMode, JMSDeliveryTime, JMSDestination, JMSExpiration, JMSMessageID, JMSPriority, JMSRedelivered,
+        JMSReplyTo, JMSTimestamp, JMSType
     }
 
 }

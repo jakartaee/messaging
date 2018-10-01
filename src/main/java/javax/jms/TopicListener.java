@@ -23,39 +23,38 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * This annotation designates a callback method on a JMS message-driven bean
- * that will receive messages from a topic, and specifies the topic from which
- * messages will be received.
+ * This annotation designates a callback method on a JMS message-driven bean that will receive messages from a topic,
+ * and specifies the topic from which messages will be received.
+ *
  * <p>
- * By default a non-durable subscription is used. The
- * {@code DurableSubscription} annotation may be used in conjunction with this
- * annotation to specify that a durable subscription is required.
+ * By default a non-durable subscription is used. The {@code DurableSubscription} annotation may be used in conjunction
+ * with this annotation to specify that a durable subscription is required.
+ *
  * <p>
- * This annotation may only be used if the JMS message-driven bean implements
- * the {@code JMSMessageDrivenBean} marker interface and does not implement the
- * {@code MessageListener} interface. If this annotation is used on a
- * message-driven bean that implements the {@code MessageListener} interface
- * then deployment will fail.
+ * This annotation may only be used if the JMS message-driven bean implements the {@code JMSMessageDrivenBean} marker
+ * interface and does not implement the {@code MessageListener} interface. If this annotation is used on a
+ * message-driven bean that implements the {@code MessageListener} interface then deployment will fail.
+ *
  * <p>
- * Only one method may be designated as a callback method. If more than one
- * method on a JMS message-driven bean is annotated with {@code QueueListener}
- * or {@code TopicListener} then deployment will fail.
- * 
+ * Only one method may be designated as a callback method. If more than one method on a JMS message-driven bean is
+ * annotated with {@code QueueListener} or {@code TopicListener} then deployment will fail.
+ *
  * @see JMSMessageDrivenBean
  * @see QueueListener
  * @see DurableSubscription
- * 
+ *
  * @version JMS 2.1
  * @since JMS 2.1
- * 
  */
 @Retention(RUNTIME)
-@Target({ METHOD })
+@Target(METHOD)
 public @interface TopicListener {
 
-	/**
-	 * Lookup name of the Topic from which messages will be received.
-	 */
-	String value() default "";
+    /**
+     * Lookup name of the Topic from which messages will be received.
+     *
+     * @return The lookup name of the Topic.
+     */
+    String value() default "";
 
 }

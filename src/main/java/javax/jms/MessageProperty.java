@@ -16,30 +16,29 @@
 
 package javax.jms;
 
-import java.lang.annotation.ElementType;
+import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
 import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Specifies that a callback method parameter must be set to the specified
- * message property value. This annotation may be applied to parameters on a
- * callback method on a JMS message-driven bean that has been annotated with the
- * {@code JMSQueueListener} , {@code JMSNonDurableTopicListener} or
- * {@code JMSDurableTopicListener} annotation.
+ * Specifies that a callback method parameter must be set to the specified message property value. This annotation may
+ * be applied to parameters on a callback method on a JMS message-driven bean that has been annotated with the
+ * {@code JMSQueueListener} , {@code JMSNonDurableTopicListener} or {@code JMSDurableTopicListener} annotation.
+ *
  * <p>
  * The parameter must have a type appropriate to the specified property.
+ *
  * <p>
- * The method that will be used by the application server or resource adapter to
- * obtain the property value will depend on the parameter type. The table below
- * defines the method that will be used to obtain the value of a parameter
+ * The method that will be used by the application server or resource adapter to obtain the property value will depend
+ * on the parameter type. The table below defines the method that will be used to obtain the value of a parameter
  * annotated with {@code @MessageProperty("foo")}.
+ *
  * <p>
- * If the method parameter is not one of the types listed then deployment must
- * fail.
- * <p>
- * 
- * <PRE>
+ * If the method parameter is not one of the types listed then deployment must fail.
+ *
+ * <pre>
  * +-------------------------------------------------------+
  * | Parameter | Set to                                    |
  * | type      |                                           |
@@ -60,27 +59,28 @@ import java.lang.annotation.Target;
  * | Double    | (Double)message.getObjectProperty("foo")  |
  * | String    | message.getStringProperty("foo")          |
  * |-------------------------------------------------------+
- * </PRE>
+ * </pre>
+ *
  * <p>
- * Note that only {@code getObjectProperty} and {@code getStringObject} can
- * return a null value. This means that if the specified property is not set
- * then the parameter must be an object type ({@code Boolean}, {@code Byte},
- * {@code Short}, {@code Integer}, {@code Long}, {@code Float}, {@code Double}
- * or {@code String}), in which case the parameter will be set to null. *
- * 
+ * Note that only {@code getObjectProperty} and {@code getStringObject} can return a null value. This means that if the
+ * specified property is not set then the parameter must be an object type ({@code Boolean}, {@code Byte},
+ * {@code Short}, {@code Integer}, {@code Long}, {@code Float}, {@code Double} or {@code String}), in which case the
+ * parameter will be set to null. *
+ *
  * @see MessageHeader
- * 
+ *
  * @version JMS 2.1
  * @since JMS 2.1
- * 
  */
-@Target({ ElementType.PARAMETER })
-@Retention(RetentionPolicy.RUNTIME)
+@Target(PARAMETER)
+@Retention(RUNTIME)
 public @interface MessageProperty {
 
-	/**
-	 * Specifies the name of the message property to be used
-	 */
-	String value();
+    /**
+     * Specifies the name of the message property to be used
+     *
+     * @return The name of the message property to be used
+     */
+    String value();
 
 }

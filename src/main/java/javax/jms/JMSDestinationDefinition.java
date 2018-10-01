@@ -22,76 +22,80 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * An application may use this annotation to specify a JMS {@code 
- * Destination} resource that it requires in its operational 
- * environment. This provides information that can be used at the 
- * application's deployment to provision the required resource
- * and allows an application to be deployed into a Java EE environment 
- * with more minimal administrative configuration.
+ * An application may use this annotation to specify a JMS {@code
+ * Destination} resource that it requires in its operational environment. This provides information that can be used at
+ * the application's deployment to provision the required resource and allows an application to be deployed into a Java
+ * EE environment with more minimal administrative configuration.
+ *
  * <p>
- * The {@code Destination} resource may be configured by 
- * setting the annotation elements for commonly used properties. 
- * Additional properties may be specified using the {@code properties}
- * element. Once defined, a {@code Destination} resource may be referenced by a
- * component in the same way as any other {@code Destination} resource,
- * for example by using the {@code lookup} element of the {@code Resource}
- * annotation.
- * 
+ * The {@code Destination} resource may be configured by setting the annotation elements for commonly used properties.
+ * Additional properties may be specified using the {@code properties} element. Once defined, a {@code Destination}
+ * resource may be referenced by a component in the same way as any other {@code Destination} resource, for example by
+ * using the {@code lookup} element of the {@code Resource} annotation.
+ *
  * @see javax.annotation.Resource
- * 
+ *
  * @version JMS 2.0
  * @since JMS 2.0
- * 
+ *
  */
-@Target({ElementType.TYPE})
+@Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface JMSDestinationDefinition {
 
     /**
-     *  Description of this JMS destination.
+     * Description of this JMS destination.
+     *
+     * @return The description of this JMS destination.
      */
     String description() default "";
 
     /**
-     *  JNDI name of the destination resource being defined.
+     * JNDI name of the destination resource being defined.
+     *
+     * @return The JNDI name of the destination resource being defined.
      */
     String name();
 
-	/**
-	 * Fully qualified name of the JMS destination interface.
-	 * Permitted values are
-	 * {@code javax.jms.Queue} or
-	 * {@code javax.jms.Topic}.
-	 */
-	String interfaceName();
-	
-	/**
-	 * Fully-qualified name of the JMS destination implementation class.
-	 * Ignored if a resource adapter is used unless the resource adapter 
-	 * defines more than one JMS destination implementation class for the specified interface
-	 */
-	String className() default "";
-
-	/**
-	 * Resource adapter name.
-	 * If not specified then the application server will define the default behaviour,
-	 * which may or may not involve the use of a resource adapter.
-	 */
-	String resourceAdapter() default "";
+    /**
+     * Fully qualified name of the JMS destination interface. Permitted values are {@code javax.jms.Queue} or
+     * {@code javax.jms.Topic}.
+     *
+     * @return The fully qualified name of the JMS destination interface.
+     */
+    String interfaceName();
 
     /**
-     *  Name of the queue or topic.
+     * Fully-qualified name of the JMS destination implementation class. Ignored if a resource adapter is used unless the
+     * resource adapter defines more than one JMS destination implementation class for the specified interface.
+     *
+     * @return The fully-qualified name of the JMS destination implementation class.
+     */
+    String className() default "";
+
+    /**
+     * Resource adapter name. If not specified then the application server will define the default behaviour, which may or
+     * may not involve the use of a resource adapter.
+     *
+     * @return The resource adapter name.
+     */
+    String resourceAdapter() default "";
+
+    /**
+     * Name of the queue or topic.
+     *
+     * @return The name of the queue or topic.
      */
     String destinationName() default "";
 
     /**
-     *  JMS destination property.  This may be a vendor-specific property
-     *  or a less commonly used {@code ConnectionFactory} property.
-     *  <p>
-     *  Properties are specified using the format:
-     *  <i>propertyName=propertyValue</i> with one property per array element.
+     * JMS destination property. This may be a vendor-specific property or a less commonly used {@code ConnectionFactory}
+     * property.
+     *
+     * <p>
+     * Properties are specified using the format: <i>propertyName=propertyValue</i> with one property per array element.
+     *
+     * @return The JMS destination properties.
      */
     String[] properties() default {};
 }
-
-

@@ -20,53 +20,53 @@
 
 </HEAD>
 <BODY>
-<P>
+<p>
 The Java Message Service (JMS) API provides a common way for Java programs to create, send, receive and read an enterprise messaging system's messages. 
 
 <H3>JMS Applications</H3>
 
-<P>A JMS application is composed of the following parts:</P>
+<p>A JMS application is composed of the following parts:</P>
 
-<UL>
-  <LI>JMS provider - a messaging system that implements the JMS API
+<ul>
+  <li>JMS provider - a messaging system that implements the JMS API
       in addition to the other administrative and control functionality required 
       of a full-featured messaging product</LI>
-  <LI>JMS clients - the Java language programs that send and receive 
+  <li>JMS clients - the Java language programs that send and receive 
       messages</LI>
 
-  <LI>Messages - objects that are used to communicate information between the 
+  <li>Messages - objects that are used to communicate information between the 
       clients of an application</LI>
-  <LI>Administered objects - provider-specific objects that clients look up
+  <li>Administered objects - provider-specific objects that clients look up
       and use to interact portably with a JMS provider</LI>
-  <LI>Non-JMS clients - clients that use a message system's native 
+  <li>Non-JMS clients - clients that use a message system's native 
       client API instead of the JMS API. If the application predated the 
       availability of the JMS API, it is likely that it will include both JMS 
       clients and non-JMS clients.</LI>
-</UL>
+</ul>
 
 <H3>Administration</H3>
 
-<P>JMS providers differ significantly in their implementations of 
+<p>JMS providers differ significantly in their implementations of 
 underlying messaging technology. There are also major 
 differences in how a JMS provider's system is installed and administered.</P>
 
-<P>For JMS clients to be portable, they must be isolated from these 
+<p>For JMS clients to be portable, they must be isolated from these 
 proprietary aspects of a provider. This is done by defining JMS administered
 objects that are created and customised by a provider's administrator and 
 later used by clients. The client uses them through JMS interfaces that are 
 portable. The administrator creates them using provider-specific facilities.</P>
 
-<P>There are two types of JMS administered objects:</P>
+<p>There are two types of JMS administered objects:</P>
 
-<UL>
-  <LI>{@code ConnectionFactory} - the object a client uses to create a 
+<ul>
+  <li>{@code ConnectionFactory} - the object a client uses to create a 
       connection with a JMS provider</LI>
-  <LI>{@code Destination} - the object a client uses to specify the 
+  <li>{@code Destination} - the object a client uses to specify the 
       destination of messages it is sending and the source of messages 
       it receives</LI>
-</UL>
+</ul>
 
-<P>Administered objects are placed by an administrator in a JNDI (Java Naming and Directory 
+<p>Administered objects are placed by an administrator in a JNDI (Java Naming and Directory 
 Interface) namespace.
 A JMS client typically notes in its documentation the JMS administered objects 
 it requires and how the JNDI names of these objects should be provided to it.</P>
@@ -99,7 +99,7 @@ and receiving messages. However they all share a common set of interfaces for re
 messages and message destinations and to provide various utility features.
 <p>
 All interfaces are in the {@code javax.jms} package. 
-<P>
+<p>
 <h4>Interfaces common to multiple APIs</h4>
 <p>
 The main interfaces common to multiple APIs are as follows:
@@ -170,14 +170,14 @@ It means giving a message to a JMS provider for delivery to a destination.
 
 <H3>Developing a JMS Application</H3>
 
-<P>Broadly speaking, a JMS application is one or more JMS clients that exchange 
+<p>Broadly speaking, a JMS application is one or more JMS clients that exchange 
 messages. The application may also involve non-JMS clients; however, these 
 clients use the JMS provider's native API in place of the JMS API.</P>
 
-<P>A JMS application can be architected and deployed as a unit. In many cases, 
+<p>A JMS application can be architected and deployed as a unit. In many cases, 
 JMS clients are added incrementally to an existing application.</P>
 
-<P>The message definitions used by an application may originate with JMS, or they 
+<p>The message definitions used by an application may originate with JMS, or they 
 may have been defined by the non-JMS part of the application.</P>
 
 <H3>Developing a JMS Client</H3>

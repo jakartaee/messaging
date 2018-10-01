@@ -17,60 +17,51 @@
 package javax.jms;
 
 /**
- * <P>This unchecked exception is thrown when a provider is unable to allocate the 
- *    resources required by a method. For example, this exception should be 
- *    thrown when a call to 
- *    {@code ConnectionFactory.createContext} fails due to a
- *    lack of JMS provider resources.
- * 
+ * This unchecked exception is thrown when a provider is unable to allocate the resources required by a method.
+ *
+ * <p>
+ * For example, this exception should be thrown when a call to {@code ConnectionFactory.createContext} fails due to a
+ * lack of JMS provider resources.
+ *
  * @version JMS 2.0
  * @since JMS 2.0
- * 
  **/
-
 public class ResourceAllocationRuntimeException extends JMSRuntimeException {
-  
-  /**
-   * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 2.0 version
-   */
-  private static final long serialVersionUID = -1306897975610715374L;
 
-  /** Constructs a {@code ResourceAllocationRuntimeException} with the specified 
-   *  reason and error code.
-   *
-   *  @param  reason        a description of the exception
-   *  @param  errorCode     a string specifying the vendor-specific
-   *                        error code
-   *                        
-   **/
-  public 
-  ResourceAllocationRuntimeException(String reason, String errorCode) {
-    super(reason, errorCode);
-  }
+    /**
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 2.0 version
+     */
+    private static final long serialVersionUID = -1306897975610715374L;
 
-  /** Constructs a {@code ResourceAllocationRuntimeException} with the specified 
-   *  reason. The error code defaults to null.
-   *
-   *  @param  reason        a description of the exception
-   **/
-  public 
-  ResourceAllocationRuntimeException(String reason) {
-    super(reason);
-  }
-  
-	/**
-	 * Constructs a {@code ResourceAllocationRuntimeException} with the specified detail message,
-	 * error code and cause
-	 * 
-	 * @param detailMessage
-	 *            a description of the exception
-	 * @param errorCode
-	 *            a provider-specific error code
-	 * @param cause
-	 *            the underlying cause of this exception
-	 */
-	public ResourceAllocationRuntimeException(String detailMessage, String errorCode, Throwable cause) {
-		super(detailMessage,errorCode,cause);
-	}
+    /**
+     * Constructs a {@code ResourceAllocationRuntimeException} with the specified reason and error code.
+     *
+     * @param reason a description of the exception
+     * @param errorCode a string specifying the vendor-specific error code
+     *
+     **/
+    public ResourceAllocationRuntimeException(String reason, String errorCode) {
+        super(reason, errorCode);
+    }
+
+    /**
+     * Constructs a {@code ResourceAllocationRuntimeException} with the specified reason. The error code defaults to null.
+     *
+     * @param reason a description of the exception
+     **/
+    public ResourceAllocationRuntimeException(String reason) {
+        super(reason);
+    }
+
+    /**
+     * Constructs a {@code ResourceAllocationRuntimeException} with the specified detail message, error code and cause
+     *
+     * @param detailMessage a description of the exception
+     * @param errorCode a provider-specific error code
+     * @param cause the underlying cause of this exception
+     */
+    public ResourceAllocationRuntimeException(String detailMessage, String errorCode, Throwable cause) {
+        super(detailMessage, errorCode, cause);
+    }
 
 }

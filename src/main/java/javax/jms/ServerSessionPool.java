@@ -16,40 +16,34 @@
 
 package javax.jms;
 
-/** A {@code ServerSessionPool} object is an object implemented by an 
-  * application server to provide a pool of {@code ServerSession} objects 
-  * for processing the messages of a {@code ConnectionConsumer} (optional).
-  *
-  * <P>Its only method is {@code getServerSession}. The JMS API does not 
-  * architect how the pool is implemented. It could be a static pool of 
-  * {@code ServerSession} objects, or it could use a sophisticated 
-  * algorithm to dynamically create {@code ServerSession} objects as 
-  * needed.
-  *
-  * <P>If the {@code ServerSessionPool} is out of 
-  * {@code ServerSession} objects, the {@code getServerSession} call 
-  * may block. If a {@code ConnectionConsumer} is blocked, it cannot 
-  * deliver new messages until a {@code ServerSession} is 
-  * eventually returned.
-  *
-  * @see javax.jms.ServerSession
-  * 
-  * @version JMS 2.0
-  * @since JMS 1.0
-  * 
-  */
-
+/**
+ * A {@code ServerSessionPool} object is an object implemented by an application server to provide a pool of
+ * {@code ServerSession} objects for processing the messages of a {@code ConnectionConsumer} (optional).
+ *
+ * <p>
+ * Its only method is {@code getServerSession}. The JMS API does not architect how the pool is implemented. It could be
+ * a static pool of {@code ServerSession} objects, or it could use a sophisticated algorithm to dynamically create
+ * {@code ServerSession} objects as needed.
+ *
+ * <p>
+ * If the {@code ServerSessionPool} is out of {@code ServerSession} objects, the {@code getServerSession} call may
+ * block. If a {@code ConnectionConsumer} is blocked, it cannot deliver new messages until a {@code ServerSession} is
+ * eventually returned.
+ *
+ * @see javax.jms.ServerSession
+ *
+ * @version JMS 2.0
+ * @since JMS 1.0
+ */
 public interface ServerSessionPool {
 
-    /** Return a server session from the pool.
-      *
-      * @return a server session from the pool
-      *  
-      * @exception JMSException if an application server fails to
-      *                         return a {@code ServerSession} out of its
-      *                         server session pool.
-      */ 
-
-    ServerSession
-    getServerSession() throws JMSException;
+    /**
+     * Return a server session from the pool.
+     *
+     * @return a server session from the pool
+     *
+     * @exception JMSException if an application server fails to return a {@code ServerSession} out of its server session
+     * pool.
+     */
+    ServerSession getServerSession() throws JMSException;
 }

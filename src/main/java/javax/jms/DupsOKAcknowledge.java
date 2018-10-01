@@ -24,37 +24,36 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * This annotation specifies that a callback method on a JMS message-driven bean
- * must receive messages with an acknowledgement type of dups-ok-acknowledge. It
- * may be specified either on the callback method or on the message-driven bean
- * class.
+ * This annotation specifies that a callback method on a JMS message-driven bean must receive messages with an
+ * acknowledgement type of dups-ok-acknowledge. It may be specified either on the callback method or on the
+ * message-driven bean class.
+ *
  * <p>
- * The message-driven bean must also be configured to use a transaction
- * management type of BEAN. This may be configured by specifying the annotation
- * {code @TransactionManagement(value=TransactionManagementType.BEAN)} on the
- * message-driven bean. If a transaction management type of BEAN is not
- * configured then it is recommended that deployment will fail.
+ * The message-driven bean must also be configured to use a transaction management type of BEAN. This may be configured
+ * by specifying the annotation {code @TransactionManagement(value=TransactionManagementType.BEAN)} on the
+ * message-driven bean. If a transaction management type of BEAN is not configured then it is recommended that
+ * deployment will fail.
+ *
  * <p>
- * If this annotation is specified on a method of a message-driven bean class
- * then that method must also be annotated with {@code QueueListener} or
- * {@code TopicListener}. If it is not then deployment will fail.
+ * If this annotation is specified on a method of a message-driven bean class then that method must also be annotated
+ * with {@code QueueListener} or {@code TopicListener}. If it is not then deployment will fail.
+ *
  * <p>
- * If this annotation is specified on the message-driven bean class then at
- * least one method must be annotated with {@code QueueListener} or
- * {@code TopicListener}. If no method is annotated with {@code QueueListener}
- * or {@code TopicListener} then deployment will fail.
+ * If this annotation is specified on the message-driven bean class then at least one method must be annotated with
+ * {@code QueueListener} or {@code TopicListener}. If no method is annotated with {@code QueueListener} or
+ * {@code TopicListener} then deployment will fail.
+ *
  * <p>
- * If either this annotation or {@code AutoAcknowledge} are specified on both
- * a method of a message-driven bean class and on the message-driven bean class
- * itself then deployment will fail.
- * 
+ * If either this annotation or {@code AutoAcknowledge} are specified on both a method of a message-driven bean class
+ * and on the message-driven bean class itself then deployment will fail.
+ *
  * @see QueueListener
  * @see TopicListener
  * @see DupsOKAcknowledge
- * 
+ *
  * @version JMS 2.1
  * @since JMS 2.1
- * 
+ *
  */
 @Retention(RUNTIME)
 @Target({ METHOD, TYPE })
