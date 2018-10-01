@@ -17,60 +17,48 @@
 package javax.jms;
 
 /**
- * <P> This unchecked exception is thrown when an 
- *     operation is invalid because a transaction is in progress. 
- *     For instance, an attempt to call {@code JMSContext.commit} when the 
- *     context is part of a distributed transaction should throw a 
- *     {@code TransactionInProgressRuntimeException}.
- * 
+ * This unchecked exception is thrown when an operation is invalid because a transaction is in progress. For instance,
+ * an attempt to call {@code JMSContext.commit} when the context is part of a distributed transaction should throw a
+ * {@code TransactionInProgressRuntimeException}.
+ *
  * @version JMS 2.0
  * @since JMS 2.0
- * 
  */
 public class TransactionInProgressRuntimeException extends JMSRuntimeException {
-  
-  /**
-   * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 2.0 version
-   */
-  private static final long serialVersionUID = -916492460069513065L;
 
-	/**
-	 * Constructs a {@code TransactionInProgressRuntimeException} with the
-	 * specified detail message
-	 * 
-	 * @param detailMessage
-	 *            a description of the exception
-	 **/
-	public TransactionInProgressRuntimeException(String detailMessage) {
-		super(detailMessage);
-	}
+    /**
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 2.0 version
+     */
+    private static final long serialVersionUID = -916492460069513065L;
 
-	/**
-	 * Constructs a {@code TransactionInProgressRuntimeException} with the
-	 * specified detail message and error code.
-	 * 
-	 * @param detailMessage
-	 *            a description of the exception
-	 * @param errorCode
-	 *            a provider-specific error code
-	 **/
-	public TransactionInProgressRuntimeException(String detailMessage, String errorCode) {
-		super(detailMessage, errorCode);
-	}
-	
-	/**
-	 * Constructs a {@code TransactionInProgressRuntimeException} with the
-	 * specified detail message, error code and cause
-	 * 
-	 * @param detailMessage
-	 *            a description of the exception
-	 * @param errorCode
-	 *            a provider-specific error code
-	 * @param cause
-	 *            the underlying cause of this exception
-	 */
-	public TransactionInProgressRuntimeException(String detailMessage, String errorCode, Throwable cause) {
-		super(detailMessage, errorCode, cause);
-	}
+    /**
+     * Constructs a {@code TransactionInProgressRuntimeException} with the specified detail message
+     *
+     * @param detailMessage a description of the exception
+     **/
+    public TransactionInProgressRuntimeException(String detailMessage) {
+        super(detailMessage);
+    }
+
+    /**
+     * Constructs a {@code TransactionInProgressRuntimeException} with the specified detail message and error code.
+     *
+     * @param detailMessage a description of the exception
+     * @param errorCode a provider-specific error code
+     **/
+    public TransactionInProgressRuntimeException(String detailMessage, String errorCode) {
+        super(detailMessage, errorCode);
+    }
+
+    /**
+     * Constructs a {@code TransactionInProgressRuntimeException} with the specified detail message, error code and cause
+     *
+     * @param detailMessage a description of the exception
+     * @param errorCode a provider-specific error code
+     * @param cause the underlying cause of this exception
+     */
+    public TransactionInProgressRuntimeException(String detailMessage, String errorCode, Throwable cause) {
+        super(detailMessage, errorCode, cause);
+    }
 
 }

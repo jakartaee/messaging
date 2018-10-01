@@ -17,42 +17,37 @@
 package javax.jms;
 
 /**
- * <P> This exception must be thrown when a JMS client attempts to read a 
- *     write-only message.
- * 
+ * This exception must be thrown when a JMS client attempts to read a write-only message.
+ *
  * @version JMS 2.0
  * @since JMS 1.0
- * 
+ *
  **/
-
 public class MessageNotReadableException extends JMSException {
-  
-  /**
-   * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
-   */
-  private static final long serialVersionUID = 8044835867550650748L;
 
-  /** Constructs a {@code MessageNotReadableException} with the specified 
-   *  reason and error code.
-   *
-   *  @param  reason        a description of the exception
-   *  @param  errorCode     a string specifying the vendor-specific
-   *                        error code
-   *                        
-   **/
-  public 
-  MessageNotReadableException(String reason, String errorCode) {
-    super(reason, errorCode);
-  }
+    /**
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
+     */
+    private static final long serialVersionUID = 8044835867550650748L;
 
-  /** Constructs a {@code MessageNotReadableException} with the specified 
-   *  reason. The error code defaults to null.
-   *
-   *  @param  reason        a description of the exception
-   **/
-  public 
-  MessageNotReadableException(String reason) {
-    super(reason);
-  }
+    /**
+     * Constructs a {@code MessageNotReadableException} with the specified reason and error code.
+     *
+     * @param reason a description of the exception
+     * @param errorCode a string specifying the vendor-specific error code
+     *
+     **/
+    public MessageNotReadableException(String reason, String errorCode) {
+        super(reason, errorCode);
+    }
+
+    /**
+     * Constructs a {@code MessageNotReadableException} with the specified reason. The error code defaults to null.
+     *
+     * @param reason a description of the exception
+     **/
+    public MessageNotReadableException(String reason) {
+        super(reason);
+    }
 
 }

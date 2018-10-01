@@ -17,43 +17,38 @@
 package javax.jms;
 
 /**
- * <P> This exception must be thrown when a 
- *     destination either is not understood by a provider or is no 
- *     longer valid.
+ * <p>
+ * This exception must be thrown when a destination either is not understood by a provider or is no longer valid.
  *
  * @version JMS 2.0
  * @since JMS 1.0
  *
  **/
-
 public class InvalidDestinationException extends JMSException {
-  
-  /**
-   * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
-   */
-  private static final long serialVersionUID = -8588063794606036755L;
 
-  /** Constructs an {@code InvalidDestinationException} with the specified 
-   *  reason and error code.
-   *
-   *  @param  reason        a description of the exception
-   *  @param  errorCode     a string specifying the vendor-specific 
-   *                        error code
-   *                        
-   **/
-  public 
-  InvalidDestinationException(String reason, String errorCode) {
-    super(reason, errorCode);
-  }
+    /**
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
+     */
+    private static final long serialVersionUID = -8588063794606036755L;
 
-  /** Constructs an {@code InvalidDestinationException} with the specified 
-   *  reason. The error code defaults to null.
-   *
-   *  @param  reason        a description of the exception
-   **/
-  public 
-  InvalidDestinationException(String reason) {
-    super(reason);
-  }
+    /**
+     * Constructs an {@code InvalidDestinationException} with the specified reason and error code.
+     *
+     * @param reason a description of the exception
+     * @param errorCode a string specifying the vendor-specific error code
+     *
+     **/
+    public InvalidDestinationException(String reason, String errorCode) {
+        super(reason, errorCode);
+    }
+
+    /**
+     * Constructs an {@code InvalidDestinationException} with the specified reason. The error code defaults to null.
+     *
+     * @param reason a description of the exception
+     **/
+    public InvalidDestinationException(String reason) {
+        super(reason);
+    }
 
 }

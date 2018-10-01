@@ -17,43 +17,39 @@
 package javax.jms;
 
 /**
- * <P> This exception must be thrown when a 
- *     client attempts to set a connection's client ID to a value that 
- *     is rejected by a provider.
+ * <p>
+ * This exception must be thrown when a client attempts to set a connection's client ID to a value that is rejected by a
+ * provider.
  *
  * @version JMS 2.0
  * @since JMS 1.0
- * 
+ *
  **/
-
 public class InvalidClientIDException extends JMSException {
-  
-  /**
-   * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
-   */
-  private static final long serialVersionUID = 2410181719763491702L;
 
-  /** Constructs an {@code InvalidClientIDException} with the specified 
-   *  reason and error code.
-   *
-   *  @param  reason        a description of the exception
-   *  @param  errorCode     a string specifying the vendor-specific
-   *                        error code
-   *                        
-   **/
-  public 
-  InvalidClientIDException(String reason, String errorCode) {
-    super(reason, errorCode);
-  }
+    /**
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
+     */
+    private static final long serialVersionUID = 2410181719763491702L;
 
-  /** Constructs an {@code InvalidClientIDException} with the specified 
-   *  reason. The error code defaults to null.
-   *
-   *  @param  reason        a description of the exception
-   **/
-  public 
-  InvalidClientIDException(String reason) {
-    super(reason);
-  }
+    /**
+     * Constructs an {@code InvalidClientIDException} with the specified reason and error code.
+     *
+     * @param reason a description of the exception
+     * @param errorCode a string specifying the vendor-specific error code
+     *
+     **/
+    public InvalidClientIDException(String reason, String errorCode) {
+        super(reason, errorCode);
+    }
+
+    /**
+     * Constructs an {@code InvalidClientIDException} with the specified reason. The error code defaults to null.
+     *
+     * @param reason a description of the exception
+     **/
+    public InvalidClientIDException(String reason) {
+        super(reason);
+    }
 
 }

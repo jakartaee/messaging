@@ -17,47 +17,41 @@
 package javax.jms;
 
 /**
- * <P> This exception is thrown when a method is 
- *     invoked at an illegal or inappropriate time or if the provider is 
- *     not in an appropriate state for the requested operation. For example, 
- *     this exception must be thrown if {@code Session.commit} is 
- *     called on a non-transacted session. This exception is also called when
- *     a domain inappropriate method is called, such as calling 
- *     {@code TopicSession.CreateQueueBrowser}.
+ * <p>
+ * This exception is thrown when a method is invoked at an illegal or inappropriate time or if the provider is not in an
+ * appropriate state for the requested operation. For example, this exception must be thrown if {@code Session.commit}
+ * is called on a non-transacted session. This exception is also called when a domain inappropriate method is called,
+ * such as calling {@code TopicSession.CreateQueueBrowser}.
  *
  * @version JMS 2.0
  * @since JMS 1.0
- * 
+ *
  **/
-
 public class IllegalStateException extends JMSException {
-	
-  /**
-   * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
-   */
-  private static final long serialVersionUID = -6850763061112244487L;
 
-  /** Constructs an {@code IllegalStateException} with the specified reason
-   *  and error code.
-   *
-   *  @param  reason        a description of the exception
-   *  @param  errorCode     a string specifying the vendor-specific
-   *                        error code
-   *                        
-   **/
-  public 
-  IllegalStateException(String reason, String errorCode) {
-    super(reason, errorCode);
-  }
+    /**
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
+     */
+    private static final long serialVersionUID = -6850763061112244487L;
 
-  /** Constructs an {@code IllegalStateException} with the specified 
-   *  reason. The error code defaults to null.
-   *
-   *  @param  reason        a description of the exception
-   **/
-  public 
-  IllegalStateException(String reason) {
-    super(reason);
-  }
+    /**
+     * Constructs an {@code IllegalStateException} with the specified reason and error code.
+     *
+     * @param reason a description of the exception
+     * @param errorCode a string specifying the vendor-specific error code
+     *
+     **/
+    public IllegalStateException(String reason, String errorCode) {
+        super(reason, errorCode);
+    }
+
+    /**
+     * Constructs an {@code IllegalStateException} with the specified reason. The error code defaults to null.
+     *
+     * @param reason a description of the exception
+     **/
+    public IllegalStateException(String reason) {
+        super(reason);
+    }
 
 }

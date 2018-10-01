@@ -17,58 +17,48 @@
 package javax.jms;
 
 /**
- * This unchecked exception must be thrown when a JMS client attempts to give a
- * provider a message selector with invalid syntax, and the method signature
- * does not permit a {@code InvalidSelectorException} to be thrown.
+ * This unchecked exception must be thrown when a JMS client attempts to give a provider a message selector with invalid
+ * syntax, and the method signature does not permit a {@code InvalidSelectorException} to be thrown.
  *
  * @version JMS 2.0
  * @since JMS 2.0
- * 
+ *
  **/
-
 public class InvalidSelectorRuntimeException extends JMSRuntimeException {
-  
-  /**
-   * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 2.0 version
-   */
-  private static final long serialVersionUID = 1974783946275023548L;
 
-	/**
-	 * Constructs a {@code InvalidSelectorRuntimeException} with the specified detail message
-	 * 
-	 * @param detailMessage
-	 *            a description of the exception
-	 **/
-	public InvalidSelectorRuntimeException(String detailMessage) {
-		super(detailMessage);
-	}
-	
-	/**
-	 * Constructs a {@code InvalidSelectorRuntimeException} with the specified detail message
-	 * and error code.
-	 * 
-	 * @param detailMessage
-	 *            a description of the exception
-	 * @param errorCode
-	 *            a provider-specific error code
-	 **/
-	public InvalidSelectorRuntimeException(String detailMessage, String errorCode) {
-		super(detailMessage,errorCode);
-	}
+    /**
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 2.0 version
+     */
+    private static final long serialVersionUID = 1974783946275023548L;
 
-	/**
-	 * Constructs a {@code InvalidSelectorRuntimeException} with the specified detail message,
-	 * error code and cause
-	 * 
-	 * @param detailMessage
-	 *            a description of the exception
-	 * @param errorCode
-	 *            a provider-specific error code
-	 * @param cause
-	 *            the underlying cause of this exception
-	 */
-	public InvalidSelectorRuntimeException(String detailMessage, String errorCode, Throwable cause) {
-		super(detailMessage,errorCode,cause);
-	}
-  
+    /**
+     * Constructs a {@code InvalidSelectorRuntimeException} with the specified detail message
+     *
+     * @param detailMessage a description of the exception
+     **/
+    public InvalidSelectorRuntimeException(String detailMessage) {
+        super(detailMessage);
+    }
+
+    /**
+     * Constructs a {@code InvalidSelectorRuntimeException} with the specified detail message and error code.
+     *
+     * @param detailMessage a description of the exception
+     * @param errorCode a provider-specific error code
+     **/
+    public InvalidSelectorRuntimeException(String detailMessage, String errorCode) {
+        super(detailMessage, errorCode);
+    }
+
+    /**
+     * Constructs a {@code InvalidSelectorRuntimeException} with the specified detail message, error code and cause
+     *
+     * @param detailMessage a description of the exception
+     * @param errorCode a provider-specific error code
+     * @param cause the underlying cause of this exception
+     */
+    public InvalidSelectorRuntimeException(String detailMessage, String errorCode, Throwable cause) {
+        super(detailMessage, errorCode, cause);
+    }
+
 }

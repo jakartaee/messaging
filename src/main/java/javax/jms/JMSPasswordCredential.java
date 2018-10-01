@@ -26,27 +26,30 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * This annotation may be used to specify the userName and password
- * to be used when injecting a {@code javax.jms.JMSContext} object.
- * 
+ * This annotation may be used to specify the userName and password to be used when injecting a
+ * {@code javax.jms.JMSContext} object.
+ *
  * @see javax.jms.ConnectionFactory#createContext(java.lang.String, java.lang.String)
- * 
+ *
  * @version JMS 2.0
  * @since JMS 2.0
- * 
  */
 @Retention(RUNTIME)
-@Target({METHOD, FIELD, PARAMETER, TYPE})
+@Target({ METHOD, FIELD, PARAMETER, TYPE })
 public @interface JMSPasswordCredential {
 
     /**
      * Specifies the userName to be used when injecting a {@code javax.jms.JMSContext} object
+     *
+     * @return The userName to be used when injecting a {@code javax.jms.JMSContext} object
      */
     String userName();
-    
+
     /**
      * Specifies the password to be used when injecting a {@code javax.jms.JMSContext} object
+     *
+     * @return the password to be used when injecting a {@code javax.jms.JMSContext} object
      */
     String password();
-    
+
 }

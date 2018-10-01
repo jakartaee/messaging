@@ -17,43 +17,36 @@
 package javax.jms;
 
 /**
- * <P> This exception must be thrown when a 
- *     call to {@code Session.commit} results in a rollback of the current 
- *     transaction.
- * 
+ * This exception must be thrown when a call to {@code Session.commit} results in a rollback of the current transaction.
+ *
  * @version JMS 2.0
  * @since JMS 1.0
- * 
  */
-
 public class TransactionRolledBackException extends JMSException {
-  
-  /**
-   * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
-   */
-  private static final long serialVersionUID = 9157976009672865857L;
 
-  /** Constructs a {@code TransactionRolledBackException} with the 
-   *  specified reason and error code.
-   *
-   *  @param  reason        a description of the exception
-   *  @param  errorCode     a string specifying the vendor-specific
-   *                        error code
-   *                        
-   **/
-  public 
-  TransactionRolledBackException(String reason, String errorCode) {
-    super(reason, errorCode);
-  }
+    /**
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
+     */
+    private static final long serialVersionUID = 9157976009672865857L;
 
-  /** Constructs a {@code TransactionRolledBackException} with the 
-   *  specified reason. The error code defaults to null.
-   *
-   *  @param  reason        a description of the exception
-   **/
-  public 
-  TransactionRolledBackException(String reason) {
-    super(reason);
-  }
+    /**
+     * Constructs a {@code TransactionRolledBackException} with the specified reason and error code.
+     *
+     * @param reason a description of the exception
+     * @param errorCode a string specifying the vendor-specific error code
+     *
+     **/
+    public TransactionRolledBackException(String reason, String errorCode) {
+        super(reason, errorCode);
+    }
+
+    /**
+     * Constructs a {@code TransactionRolledBackException} with the specified reason. The error code defaults to null.
+     *
+     * @param reason a description of the exception
+     **/
+    public TransactionRolledBackException(String reason) {
+        super(reason);
+    }
 
 }

@@ -16,24 +16,23 @@
 
 package javax.jms;
 
-import java.lang.annotation.ElementType;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
 import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- *  Specifies one or more {@code JMSConnectionFactoryDefinition}
- *  annotations.
- *  
+ * Specifies one or more {@code JMSConnectionFactoryDefinition} annotations.
+ *
  * @version JMS 2.0
  * @since JMS 2.0
  *
- *  @see JMSConnectionFactoryDefinition
+ * @see JMSConnectionFactoryDefinition
  */
-@Target({ElementType.TYPE})
-@Retention(RetentionPolicy.RUNTIME)
+@Target(TYPE)
+@Retention(RUNTIME)
 public @interface JMSConnectionFactoryDefinitions {
 
-	JMSConnectionFactoryDefinition[] value();
+    JMSConnectionFactoryDefinition[] value();
 }
-
