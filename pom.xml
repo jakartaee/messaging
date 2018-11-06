@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.eclipse.ee4j</groupId>
         <artifactId>project</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.4</version>
     </parent>
 
     <groupId>jakarta.jms</groupId>
@@ -45,23 +45,6 @@
             
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.0.1</version>
-                <configuration>
-                    <includePom>true</includePom>
-                </configuration>
-                <executions>
-                    <execution>
-                       <id>attach-sources</id>
-                       <goals>
-                           <goal>jar-no-fork</goal> 
-                       </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.8</version>
                 <configuration>
@@ -75,13 +58,15 @@
                     </groups>
                 
                     <!-- Specifies the text to be placed at the bottom of each output file. -->
-                    <bottom>Copyright 1997-2017 Oracle and/or its affiliates. All rights reserved. Use is subject to &lt;a href="doc-files/speclicense.html" target="_top"&gt;licence terms&lt;/a&gt;</bottom>
+                    <bottom>Copyright 1997-2018 Oracle America Inc. All rights reserved. Use is subject to &lt;a
+                        href="http://java.net/downloads/jms-spec/Licences/JSR 368 Java Message Service EDR 10.8.15.pdf"&gt;licence
+                        terms&lt;/a&gt; &lt;br/&gt;</bottom>
                     
                     <!-- Specifies the header text to be placed at the top of each output file, to the right of the upper navigation bar. -->
-                    <header>JMS 2.0 revision a</header>
+                    <header>JMS 2.1</header>
                     
                     <!-- Specifies the footer text to be placed at the top of each output file, to the right of the lower navigation bar. -->
-                    <footer>JMS 2.0 revision a</footer>
+                    <footer>JMS 2.1</footer>
 
                     <links>
                         <link>https://javaee.github.io/javaee-spec/javadocs/</link>
@@ -96,62 +81,7 @@
                      </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>clirr-maven-plugin</artifactId>
-                <version>2.8</version>
-                <configuration>
-                    <includes>
-                        <include>javax/jms/**</include>
-                    </includes>
-                    <comparisonArtifacts>
-                        <comparisonArtifact>
-                            <groupId>javax.jms</groupId>
-                            <artifactId>javax.jms-api</artifactId>
-                            <version>2.0.1</version>
-                        </comparisonArtifact>
-                    </comparisonArtifacts>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>check-jms-2.0.1-compliance</id>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                     </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>release</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.6</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <gpgArguments>
-                                <arg>--pinentry-mode</arg>
-                                <arg>loopback</arg>
-                            </gpgArguments>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
 </project>
