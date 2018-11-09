@@ -12,4 +12,4 @@ __However it is not used to directly generate the JMS API jar published in Maven
 
 ## Build from Source
 
-Navigate to the directory and Type `mvn clean package` to produce java api jar file. `mvn javadoc:jar` will produce java doc jar file.
+Navigate to the directory and Type `mvn clean package` to produce java api jar file. `mvn javadoc:jar` will produce javadoc jar file.  
