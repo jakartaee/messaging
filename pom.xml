@@ -32,6 +32,17 @@
     <url>https://projects.eclipse.org/projects/ee4j.jms</url>
 
     <build>
+        <resources>
+            <resource>
+                <directory>${project.basedir}</directory>
+                <includes>
+                    <include>LICENSE.md</include>
+                    <include>NOTICE.md</include>
+                </includes>
+                <targetPath>META-INF</targetPath>
+            </resource>
+        </resources>
+    
         <plugins>
            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
