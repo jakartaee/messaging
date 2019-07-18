@@ -46,7 +46,7 @@ import java.lang.annotation.Target;
  * If this annotation is specified on both a method of a message-driven bean class and on the message-driven bean class
  * itself then deployment will fail.
  *
- * @version Jakarta Messaging 2.1
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  */
 @Retention(RUNTIME)
