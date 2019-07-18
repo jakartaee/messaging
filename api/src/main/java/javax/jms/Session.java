@@ -99,7 +99,7 @@ import java.io.Serializable;
  * @see javax.jms.TopicSession
  * @see javax.jms.XASession
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface Session extends Runnable, AutoCloseable {

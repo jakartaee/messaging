@@ -62,7 +62,7 @@ import java.io.Serializable;
  * {@code JMSContext} objects that use the same connection. All these {@code JMSContext} objects are application-managed
  * and must be closed when no longer needed by calling their {@code close} method.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  *
  */

@@ -21,7 +21,7 @@ package javax.jms;
  * to call {@code Session.commit} when a session is part of a distributed transaction should throw a
  * {@code TransactionInProgressException}.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public class TransactionInProgressException extends JMSException {

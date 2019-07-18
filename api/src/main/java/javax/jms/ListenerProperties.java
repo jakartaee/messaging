@@ -30,7 +30,7 @@ import java.lang.annotation.Target;
  * annotation. Applications do not need to use this annotation directly.
  *
  * @see ListenerProperty
- * @version JMS 2.1
+ * @version Jakarta Messaging 2.1
  * @since JMS 2.1
  */
 @Target(METHOD)

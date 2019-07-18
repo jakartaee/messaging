@@ -69,7 +69,7 @@ import java.lang.annotation.Target;
  *
  * @see MessageHeader
  *
- * @version JMS 2.1
+ * @version Jakarta Messaging 2.1
  * @since JMS 2.1
  */
 @Target(PARAMETER)

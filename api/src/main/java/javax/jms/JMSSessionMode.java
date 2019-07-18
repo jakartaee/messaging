@@ -31,7 +31,7 @@ import java.lang.annotation.Target;
  * object. The meaning and possible values of session mode are the same as for the {@code ConnectionFactory} method
  * {@code createContext(int sessionMode)}.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  *
  * @see javax.jms.JMSContext#createContext(int)

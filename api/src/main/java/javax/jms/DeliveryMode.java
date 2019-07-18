@@ -35,7 +35,7 @@ package javax.jms;
  * A message is guaranteed to be delivered once and only once by a Jakarta Messaging provider if the delivery mode of the message is
  * {@code PERSISTENT} and if the destination has a sufficient message retention policy.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface DeliveryMode {

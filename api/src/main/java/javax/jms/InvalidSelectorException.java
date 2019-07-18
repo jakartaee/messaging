@@ -20,7 +20,7 @@ package javax.jms;
  * <p>
  * This exception must be thrown when a Jakarta Messaging client attempts to give a provider a message selector with invalid syntax.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  *
  **/

@@ -73,7 +73,7 @@ import java.util.Enumeration;
  * @see javax.jms.StreamMessage
  * @see javax.jms.TextMessage
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface MapMessage extends Message {

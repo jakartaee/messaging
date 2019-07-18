@@ -21,7 +21,7 @@ package javax.jms;
  * an attempt to call {@code JMSContext.commit} when the context is part of a distributed transaction should throw a
  * {@code TransactionInProgressRuntimeException}.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  */
 public class TransactionInProgressRuntimeException extends JMSRuntimeException {

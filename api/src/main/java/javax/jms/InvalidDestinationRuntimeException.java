@@ -20,7 +20,7 @@ package javax.jms;
  * This unchecked exception must be thrown when a destination either is not understood by a provider or is no longer
  * valid, and the method signature does not permit a {@code InvalidDestinationException} to be thrown.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  *
  **/

@@ -33,7 +33,7 @@ import java.lang.annotation.Target;
  * @see TopicListener
  * @see DurableSubscription
  *
- * @version JMS 2.1
+ * @version Jakarta Messaging 2.1
  * @since JMS 2.1
  */
 @Retention(RUNTIME)

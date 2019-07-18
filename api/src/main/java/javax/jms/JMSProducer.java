@@ -51,7 +51,7 @@ import java.util.Set;
  * Instances of {@code JMSProducer} are intended to be lightweight objects which can be created freely and which do not
  * consume significant resources. This interface therefore does not provide a {@code close} method.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  *
  */

@@ -46,7 +46,7 @@ package javax.jms;
  *
  * @see javax.jms.JMSContext
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  *
  */

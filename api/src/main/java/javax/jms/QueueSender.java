@@ -53,7 +53,7 @@ package javax.jms;
  * @see javax.jms.Session#createProducer(Destination)
  * @see javax.jms.QueueSession#createSender(Queue)
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface QueueSender extends MessageProducer {

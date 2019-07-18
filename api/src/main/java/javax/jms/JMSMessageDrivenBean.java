@@ -33,7 +33,7 @@ package javax.jms;
  * @see DurableSubscription
  * @see QueueListener
  *
- * @version JMS 2.1
+ * @version Jakarta Messaging 2.1
  * @since JMS 2.1
  *
  */

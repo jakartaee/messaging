@@ -37,7 +37,7 @@ package javax.jms;
  * @see javax.jms.StreamMessage
  * @see java.lang.String
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface TextMessage extends Message {

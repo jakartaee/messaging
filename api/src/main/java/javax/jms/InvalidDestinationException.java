@@ -20,7 +20,7 @@ package javax.jms;
  * <p>
  * This exception must be thrown when a destination either is not understood by a provider or is no longer valid.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  *
  **/

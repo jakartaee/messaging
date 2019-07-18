@@ -44,7 +44,7 @@ import java.lang.annotation.Target;
  * <p>
  * Multiple {@code JMSListenerProperty} annotations may be used to set multiple properties on the same callback method.
  *
- * @version JMS 2.1
+ * @version Jakarta Messaging 2.1
  * @since JMS 2.1
  */
 @Repeatable(ListenerProperties.class)

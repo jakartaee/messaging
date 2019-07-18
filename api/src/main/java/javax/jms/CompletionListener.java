@@ -32,7 +32,7 @@ package javax.jms;
  * @see javax.jms.JMSProducer#setAsync(javax.jms.CompletionListener)
  * @see javax.jms.JMSProducer#getAsync()
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  *
  */

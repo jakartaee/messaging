@@ -46,7 +46,7 @@ import javax.transaction.xa.XAResource;
  *
  * @see javax.jms.Session
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface XASession extends Session {

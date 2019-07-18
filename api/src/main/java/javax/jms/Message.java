@@ -467,7 +467,7 @@ import java.util.Enumeration;
  * <p>
  * SQL comments are not supported.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  *
  * @see javax.jms.MessageConsumer#receive()

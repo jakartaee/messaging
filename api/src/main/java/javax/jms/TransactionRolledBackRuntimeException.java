@@ -20,7 +20,7 @@ package javax.jms;
  * This unchecked exception must be thrown when a call to {@code JMSContext.commit} results in a rollback of the current
  * transaction.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  */
 public class TransactionRolledBackRuntimeException extends JMSRuntimeException {

@@ -20,7 +20,7 @@ package javax.jms;
  * This exception must be thrown when an unexpected end of stream has been reached when a {@code StreamMessage} or
  * {@code BytesMessage} is being read.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  *
  **/

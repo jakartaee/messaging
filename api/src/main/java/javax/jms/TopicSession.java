@@ -40,7 +40,7 @@ package javax.jms;
  * @see javax.jms.TopicConnection#createTopicSession(boolean, int)
  * @see javax.jms.XATopicSession#getTopicSession()
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface TopicSession extends Session {

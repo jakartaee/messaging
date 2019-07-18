@@ -21,7 +21,7 @@ package javax.jms;
  * This exception must be thrown when a client attempts to set a connection's client ID to a value that is rejected by a
  * provider.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  *
  **/

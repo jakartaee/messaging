@@ -20,7 +20,7 @@ package javax.jms;
  * This unchecked exception must be thrown when a client attempts to set a connection's client ID to a value that is
  * rejected by a provider, and the method signature does not permit a {@code InvalidClientIDException} to be thrown.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  *
  **/

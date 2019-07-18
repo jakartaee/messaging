@@ -21,7 +21,7 @@ import java.util.Enumeration;
 /**
  * A {@code ConnectionMetaData} object provides information describing the {@code Connection} object.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface ConnectionMetaData {

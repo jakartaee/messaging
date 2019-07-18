@@ -45,7 +45,7 @@ package javax.jms;
  * @see javax.jms.QueueSender
  * @see javax.jms.Session#createProducer
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  *
  */

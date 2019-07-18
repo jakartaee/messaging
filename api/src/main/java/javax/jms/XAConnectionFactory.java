@@ -35,7 +35,7 @@ package javax.jms;
  * interface is for use by Jakarta Messaging providers to support transactional environments. Client programs are strongly encouraged
  * to use the transactional support available in their environment, rather than use these XA interfaces directly.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface XAConnectionFactory {

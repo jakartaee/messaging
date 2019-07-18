@@ -21,7 +21,7 @@ package javax.jms;
  * any case where a security restriction prevents a method from completing, and the method signature does not permit a
  * {@code JMSSecurityException} to be thrown.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  *
  **/

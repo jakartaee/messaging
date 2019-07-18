@@ -24,7 +24,7 @@ package javax.jms;
  * or more consumers of the same session can assume that the {@code onMessage} method is not called with the next
  * message until the session has completed the last call.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  *
  */

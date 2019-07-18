@@ -20,7 +20,7 @@ package javax.jms;
  * This unchecked exception must be thrown when a Jakarta Messaging client attempts to give a provider a message selector with invalid
  * syntax, and the method signature does not permit a {@code InvalidSelectorException} to be thrown.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  *
  **/

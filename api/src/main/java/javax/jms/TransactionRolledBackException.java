@@ -19,7 +19,7 @@ package javax.jms;
 /**
  * This exception must be thrown when a call to {@code Session.commit} results in a rollback of the current transaction.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public class TransactionRolledBackException extends JMSException {

@@ -40,7 +40,7 @@ import java.util.Enumeration;
  * @see javax.jms.QueueSession#createBrowser
  * @see javax.jms.QueueReceiver
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface QueueBrowser extends AutoCloseable {

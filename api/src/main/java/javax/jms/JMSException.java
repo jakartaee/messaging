@@ -30,7 +30,7 @@ package javax.jms;
  * appropriate, this lower-level exception can be linked to the Jakarta Messaging API exception.
  * </ul>
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  *
  **/

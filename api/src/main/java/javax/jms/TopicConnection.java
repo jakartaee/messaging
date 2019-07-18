@@ -32,7 +32,7 @@ package javax.jms;
  * @see javax.jms.ConnectionFactory
  * @see javax.jms.TopicConnectionFactory
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface TopicConnection extends Connection {

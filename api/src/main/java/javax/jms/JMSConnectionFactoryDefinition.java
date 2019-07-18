@@ -34,7 +34,7 @@ import java.lang.annotation.Target;
  * {@code ConnectionFactory} resource, for example by using the {@code lookup} element of the {@code Resource}
  * annotation.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  *
  * @see javax.annotation.Resource

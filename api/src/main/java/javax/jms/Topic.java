@@ -45,7 +45,7 @@ package javax.jms;
  * @see Session#createProducer(Destination)
  * @see javax.jms.TopicSession#createTopic(String)
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface Topic extends Destination {

@@ -27,7 +27,7 @@ package javax.jms;
  *
  * @see javax.jms.XAConnection
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface XAQueueConnection extends XAConnection, QueueConnection {

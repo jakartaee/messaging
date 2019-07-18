@@ -23,7 +23,7 @@ package javax.jms;
  * In additional to the detailMessage and cause fields inherited from {@code Throwable}, this class also allows a
  * provider-specific errorCode to be set.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  *
  **/

@@ -51,7 +51,7 @@ import java.lang.annotation.Target;
  * +-------------------+------------------------------------------------+
  * </pre>
  *
- * @version JMS 2.1
+ * @version Jakarta Messaging 2.1
  * @since JMS 2.1
  *
  * @see MessageProperty

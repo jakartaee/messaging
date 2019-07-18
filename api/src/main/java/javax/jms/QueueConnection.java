@@ -38,7 +38,7 @@ package javax.jms;
  * @see javax.jms.ConnectionFactory
  * @see javax.jms.QueueConnectionFactory
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface QueueConnection extends Connection {

@@ -23,7 +23,7 @@ package javax.jms;
  * is called on a non-transacted session. This exception is also called when a domain inappropriate method is called,
  * such as calling {@code TopicSession.CreateQueueBrowser}.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  *
  **/

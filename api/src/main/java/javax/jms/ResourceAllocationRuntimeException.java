@@ -23,7 +23,7 @@ package javax.jms;
  * For example, this exception should be thrown when a call to {@code ConnectionFactory.createContext} fails due to a
  * lack of Jakarta Messaging provider resources.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  **/
 public class ResourceAllocationRuntimeException extends JMSRuntimeException {

@@ -49,7 +49,7 @@ package javax.jms;
  * @see javax.jms.TopicSubscriber
  * @see javax.jms.Session
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface MessageConsumer extends AutoCloseable {

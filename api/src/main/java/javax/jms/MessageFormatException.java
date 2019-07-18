@@ -27,7 +27,7 @@ package javax.jms;
  * special case of a failure caused by an attempt to read improperly formatted {@code String} data as numeric values
  * must throw the {@code java.lang.NumberFormatException}.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  *
  **/

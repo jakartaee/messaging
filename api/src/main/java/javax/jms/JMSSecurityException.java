@@ -20,7 +20,7 @@ package javax.jms;
  * This exception must be thrown when a provider rejects a user name/password submitted by a client. It may also be
  * thrown for any case where a security restriction prevents a method from completing.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  *
  **/

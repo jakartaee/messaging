@@ -76,7 +76,7 @@ package javax.jms;
  * @see javax.jms.Queue
  * @see javax.jms.Topic
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  *
  */

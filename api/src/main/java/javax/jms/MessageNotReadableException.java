@@ -19,7 +19,7 @@ package javax.jms;
 /**
  * This exception must be thrown when a Jakarta Messaging client attempts to read a write-only message.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  *
  **/
