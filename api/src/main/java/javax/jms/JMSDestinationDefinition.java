@@ -22,7 +22,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * An application may use this annotation to specify a JMS {@code
+ * An application may use this annotation to specify a Jakarta Messaging {@code
  * Destination} resource that it requires in its operational environment. This provides information that can be used at
  * the application's deployment to provision the required resource and allows an application to be deployed into a Java
  * EE environment with more minimal administrative configuration.
@@ -44,9 +44,9 @@ import java.lang.annotation.Target;
 public @interface JMSDestinationDefinition {
 
     /**
-     * Description of this JMS destination.
+     * Description of this Jakarta Messaging destination.
      *
-     * @return The description of this JMS destination.
+     * @return The description of this Jakarta Messaging destination.
      */
     String description() default "";
 
@@ -58,18 +58,18 @@ public @interface JMSDestinationDefinition {
     String name();
 
     /**
-     * Fully qualified name of the JMS destination interface. Permitted values are {@code javax.jms.Queue} or
+     * Fully qualified name of the Jakarta Messaging destination interface. Permitted values are {@code javax.jms.Queue} or
      * {@code javax.jms.Topic}.
      *
-     * @return The fully qualified name of the JMS destination interface.
+     * @return The fully qualified name of the Jakarta Messaging destination interface.
      */
     String interfaceName();
 
     /**
-     * Fully-qualified name of the JMS destination implementation class. Ignored if a resource adapter is used unless the
-     * resource adapter defines more than one JMS destination implementation class for the specified interface.
+     * Fully-qualified name of the Jakarta Messaging destination implementation class. Ignored if a resource adapter is used unless the
+     * resource adapter defines more than one Jakarta Messaging destination implementation class for the specified interface.
      *
-     * @return The fully-qualified name of the JMS destination implementation class.
+     * @return The fully-qualified name of the Jakarta Messaging destination implementation class.
      */
     String className() default "";
 
@@ -89,13 +89,13 @@ public @interface JMSDestinationDefinition {
     String destinationName() default "";
 
     /**
-     * JMS destination property. This may be a vendor-specific property or a less commonly used {@code ConnectionFactory}
+     * Jakarta Messaging destination property. This may be a vendor-specific property or a less commonly used {@code ConnectionFactory}
      * property.
      *
      * <p>
      * Properties are specified using the format: <i>propertyName=propertyValue</i> with one property per array element.
      *
-     * @return The JMS destination properties.
+     * @return The Jakarta Messaging destination properties.
      */
     String[] properties() default {};
 }

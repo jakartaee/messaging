@@ -21,7 +21,7 @@ package javax.jms;
  * {@code ServerSession} objects for processing the messages of a {@code ConnectionConsumer} (optional).
  *
  * <p>
- * Its only method is {@code getServerSession}. The JMS API does not architect how the pool is implemented. It could be
+ * Its only method is {@code getServerSession}. The Jakarta Messaging API does not architect how the pool is implemented. It could be
  * a static pool of {@code ServerSession} objects, or it could use a sophisticated algorithm to dynamically create
  * {@code ServerSession} objects as needed.
  *

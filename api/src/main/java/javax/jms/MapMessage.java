@@ -85,7 +85,7 @@ public interface MapMessage extends Message {
      *
      * @return the {@code boolean} value with the specified name
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageFormatException if this type conversion is invalid.
      */
     boolean getBoolean(String name) throws JMSException;
@@ -97,7 +97,7 @@ public interface MapMessage extends Message {
      *
      * @return the {@code byte} value with the specified name
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageFormatException if this type conversion is invalid.
      */
     byte getByte(String name) throws JMSException;
@@ -109,7 +109,7 @@ public interface MapMessage extends Message {
      *
      * @return the {@code short} value with the specified name
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageFormatException if this type conversion is invalid.
      */
     short getShort(String name) throws JMSException;
@@ -121,7 +121,7 @@ public interface MapMessage extends Message {
      *
      * @return the Unicode character value with the specified name
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageFormatException if this type conversion is invalid.
      */
     char getChar(String name) throws JMSException;
@@ -133,7 +133,7 @@ public interface MapMessage extends Message {
      *
      * @return the {@code int} value with the specified name
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageFormatException if this type conversion is invalid.
      */
     int getInt(String name) throws JMSException;
@@ -145,7 +145,7 @@ public interface MapMessage extends Message {
      *
      * @return the {@code long} value with the specified name
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageFormatException if this type conversion is invalid.
      */
     long getLong(String name) throws JMSException;
@@ -157,7 +157,7 @@ public interface MapMessage extends Message {
      *
      * @return the {@code float} value with the specified name
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageFormatException if this type conversion is invalid.
      */
     float getFloat(String name) throws JMSException;
@@ -169,7 +169,7 @@ public interface MapMessage extends Message {
      *
      * @return the {@code double} value with the specified name
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageFormatException if this type conversion is invalid.
      */
     double getDouble(String name) throws JMSException;
@@ -181,7 +181,7 @@ public interface MapMessage extends Message {
      *
      * @return the {@code String} value with the specified name; if there is no item by this name, a null value is returned
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageFormatException if this type conversion is invalid.
      */
     String getString(String name) throws JMSException;
@@ -194,7 +194,7 @@ public interface MapMessage extends Message {
      * @return a copy of the byte array value with the specified name; if there is no item by this name, a null value is
      * returned.
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageFormatException if this type conversion is invalid.
      */
     byte[] getBytes(String name) throws JMSException;
@@ -216,7 +216,7 @@ public interface MapMessage extends Message {
      * was set as an {@code int}, an {@code Integer} is returned); if there is no item by this name, a null value is
      * returned
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      */
     Object getObject(String name) throws JMSException;
 
@@ -225,7 +225,7 @@ public interface MapMessage extends Message {
      *
      * @return an enumeration of all the names in this {@code MapMessage}
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      */
     Enumeration getMapNames() throws JMSException;
 
@@ -235,7 +235,7 @@ public interface MapMessage extends Message {
      * @param name the name of the {@code boolean}
      * @param value the {@code boolean} value to set in the Map
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
@@ -247,7 +247,7 @@ public interface MapMessage extends Message {
      * @param name the name of the {@code byte}
      * @param value the {@code byte} value to set in the Map
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
@@ -259,7 +259,7 @@ public interface MapMessage extends Message {
      * @param name the name of the {@code short}
      * @param value the {@code short} value to set in the Map
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
@@ -271,7 +271,7 @@ public interface MapMessage extends Message {
      * @param name the name of the Unicode character
      * @param value the Unicode character value to set in the Map
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
@@ -283,7 +283,7 @@ public interface MapMessage extends Message {
      * @param name the name of the {@code int}
      * @param value the {@code int} value to set in the Map
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
@@ -295,7 +295,7 @@ public interface MapMessage extends Message {
      * @param name the name of the {@code long}
      * @param value the {@code long} value to set in the Map
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
@@ -307,7 +307,7 @@ public interface MapMessage extends Message {
      * @param name the name of the {@code float}
      * @param value the {@code float} value to set in the Map
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
@@ -319,7 +319,7 @@ public interface MapMessage extends Message {
      * @param name the name of the {@code double}
      * @param value the {@code double} value to set in the Map
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
@@ -331,7 +331,7 @@ public interface MapMessage extends Message {
      * @param name the name of the {@code String}
      * @param value the {@code String} value to set in the Map
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
@@ -344,7 +344,7 @@ public interface MapMessage extends Message {
      * @param value the byte array value to set in the Map; the array is copied so that the value for {@code name} will not
      * be altered by future modifications
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception IllegalArgumentException if the name is null, or if the name is an empty string.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
@@ -358,7 +358,7 @@ public interface MapMessage extends Message {
      * @param offset the initial offset within the byte array
      * @param length the number of bytes to use
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
@@ -374,7 +374,7 @@ public interface MapMessage extends Message {
      * @param name the name of the Java object
      * @param value the Java object value to set in the Map
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageFormatException if the object is invalid.
      * @exception MessageNotWriteableException if the message is in read-only mode.
@@ -388,7 +388,7 @@ public interface MapMessage extends Message {
      *
      * @return true if the item exists
      *
-     * @exception JMSException if the JMS provider fails to determine if the item exists due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to determine if the item exists due to some internal error.
      */
     boolean itemExists(String name) throws JMSException;
 }

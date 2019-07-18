@@ -21,9 +21,9 @@ package javax.jms;
  * asynchronously.
  *
  * <p>
- * When the sending of the message is complete, the JMS provider notifies the application by calling the
+ * When the sending of the message is complete, the Jakarta Messaging provider notifies the application by calling the
  * {@code onCompletion(Message)} method of the specified completion listener. If the sending if the message fails for
- * any reason, and an exception cannot be thrown by the {@code send} method, then the JMS provider calls the
+ * any reason, and an exception cannot be thrown by the {@code send} method, then the Jakarta Messaging provider calls the
  * {@code onException(Exception)} method of the specified completion listener.
  *
  * @see javax.jms.MessageProducer#send(javax.jms.Message,int,int,long,javax.jms.CompletionListener)

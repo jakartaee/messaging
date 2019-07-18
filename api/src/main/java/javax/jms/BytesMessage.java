@@ -30,7 +30,7 @@ package javax.jms;
  * message types should be used instead.
  *
  * <p>
- * Although the JMS API allows the use of message properties with byte messages, they are typically not used, since the
+ * Although the Jakarta Messaging API allows the use of message properties with byte messages, they are typically not used, since the
  * inclusion of properties may affect the format.
  *
  * <p>
@@ -78,7 +78,7 @@ public interface BytesMessage extends Message {
      * for reading the message is currently located.
      *
      * @return number of bytes in the message
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageNotReadableException if the message is in write-only mode.
      * @since JMS 1.1
      */
@@ -89,7 +89,7 @@ public interface BytesMessage extends Message {
      *
      * @return the {@code boolean} value read
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageEOFException if unexpected end of bytes stream has been reached.
      * @exception MessageNotReadableException if the message is in write-only mode.
      */
@@ -100,7 +100,7 @@ public interface BytesMessage extends Message {
      *
      * @return the next byte from the bytes message stream as a signed 8-bit {@code byte}
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageEOFException if unexpected end of bytes stream has been reached.
      * @exception MessageNotReadableException if the message is in write-only mode.
      */
@@ -111,7 +111,7 @@ public interface BytesMessage extends Message {
      *
      * @return the next byte from the bytes message stream, interpreted as an unsigned 8-bit number
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageEOFException if unexpected end of bytes stream has been reached.
      * @exception MessageNotReadableException if the message is in write-only mode.
      */
@@ -122,7 +122,7 @@ public interface BytesMessage extends Message {
      *
      * @return the next two bytes from the bytes message stream, interpreted as a signed 16-bit number
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageEOFException if unexpected end of bytes stream has been reached.
      * @exception MessageNotReadableException if the message is in write-only mode.
      */
@@ -133,7 +133,7 @@ public interface BytesMessage extends Message {
      *
      * @return the next two bytes from the bytes message stream, interpreted as an unsigned 16-bit integer
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageEOFException if unexpected end of bytes stream has been reached.
      * @exception MessageNotReadableException if the message is in write-only mode.
      */
@@ -144,7 +144,7 @@ public interface BytesMessage extends Message {
      *
      * @return the next two bytes from the bytes message stream as a Unicode character
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageEOFException if unexpected end of bytes stream has been reached.
      * @exception MessageNotReadableException if the message is in write-only mode.
      */
@@ -155,7 +155,7 @@ public interface BytesMessage extends Message {
      *
      * @return the next four bytes from the bytes message stream, interpreted as an {@code int}
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageEOFException if unexpected end of bytes stream has been reached.
      * @exception MessageNotReadableException if the message is in write-only mode.
      */
@@ -166,7 +166,7 @@ public interface BytesMessage extends Message {
      *
      * @return the next eight bytes from the bytes message stream, interpreted as a {@code long}
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageEOFException if unexpected end of bytes stream has been reached.
      * @exception MessageNotReadableException if the message is in write-only mode.
      */
@@ -177,7 +177,7 @@ public interface BytesMessage extends Message {
      *
      * @return the next four bytes from the bytes message stream, interpreted as a {@code float}
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageEOFException if unexpected end of bytes stream has been reached.
      * @exception MessageNotReadableException if the message is in write-only mode.
      */
@@ -188,7 +188,7 @@ public interface BytesMessage extends Message {
      *
      * @return the next eight bytes from the bytes message stream, interpreted as a {@code double}
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageEOFException if unexpected end of bytes stream has been reached.
      * @exception MessageNotReadableException if the message is in write-only mode.
      */
@@ -204,7 +204,7 @@ public interface BytesMessage extends Message {
      *
      * @return a Unicode string from the bytes message stream
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageEOFException if unexpected end of bytes stream has been reached.
      * @exception MessageNotReadableException if the message is in write-only mode.
      */
@@ -227,7 +227,7 @@ public interface BytesMessage extends Message {
      * @return the total number of bytes read into the buffer, or -1 if there is no more data because the end of the stream
      * has been reached
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageNotReadableException if the message is in write-only mode.
      */
     int readBytes(byte[] value) throws JMSException;
@@ -254,7 +254,7 @@ public interface BytesMessage extends Message {
      * @return the total number of bytes read into the buffer, or -1 if there is no more data because the end of the stream
      * has been reached
      *
-     * @exception JMSException if the JMS provider fails to read the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to read the message due to some internal error.
      * @exception MessageNotReadableException if the message is in write-only mode.
      */
     int readBytes(byte[] value, int length) throws JMSException;
@@ -265,7 +265,7 @@ public interface BytesMessage extends Message {
      *
      * @param value the {@code boolean} value to be written
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
     void writeBoolean(boolean value) throws JMSException;
@@ -275,7 +275,7 @@ public interface BytesMessage extends Message {
      *
      * @param value the {@code byte} value to be written
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
     void writeByte(byte value) throws JMSException;
@@ -285,7 +285,7 @@ public interface BytesMessage extends Message {
      *
      * @param value the {@code short} to be written
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
     void writeShort(short value) throws JMSException;
@@ -295,7 +295,7 @@ public interface BytesMessage extends Message {
      *
      * @param value the {@code char} value to be written
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
     void writeChar(char value) throws JMSException;
@@ -305,7 +305,7 @@ public interface BytesMessage extends Message {
      *
      * @param value the {@code int} to be written
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
     void writeInt(int value) throws JMSException;
@@ -315,7 +315,7 @@ public interface BytesMessage extends Message {
      *
      * @param value the {@code long} to be written
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
     void writeLong(long value) throws JMSException;
@@ -326,7 +326,7 @@ public interface BytesMessage extends Message {
      *
      * @param value the {@code float} value to be written
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
     void writeFloat(float value) throws JMSException;
@@ -338,7 +338,7 @@ public interface BytesMessage extends Message {
      *
      * @param value the {@code double} value to be written
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
     void writeDouble(double value) throws JMSException;
@@ -353,7 +353,7 @@ public interface BytesMessage extends Message {
      *
      * @param value the {@code String} value to be written
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
     void writeUTF(String value) throws JMSException;
@@ -363,7 +363,7 @@ public interface BytesMessage extends Message {
      *
      * @param value the byte array to be written
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
     void writeBytes(byte[] value) throws JMSException;
@@ -375,7 +375,7 @@ public interface BytesMessage extends Message {
      * @param offset the initial offset within the byte array
      * @param length the number of bytes to use
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
     void writeBytes(byte[] value, int offset, int length) throws JMSException;
@@ -389,7 +389,7 @@ public interface BytesMessage extends Message {
      *
      * @param value the object in the Java programming language ("Java object") to be written; it must not be null
      *
-     * @exception JMSException if the JMS provider fails to write the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to write the message due to some internal error.
      * @exception MessageFormatException if the object is of an invalid type.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      * @exception java.lang.NullPointerException if the parameter {@code value} is null.
@@ -399,7 +399,7 @@ public interface BytesMessage extends Message {
     /**
      * Puts the message body in read-only mode and repositions the stream of bytes to the beginning.
      *
-     * @exception JMSException if the JMS provider fails to reset the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to reset the message due to some internal error.
      * @exception MessageFormatException if the message has an invalid format.
      */
     void reset() throws JMSException;

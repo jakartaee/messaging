@@ -18,21 +18,21 @@ package javax.jms;
 
 /**
  * A {@code ServerSession} object is an application server object that is used by a server to associate a thread with a
- * JMS session (optional).
+ * Jakarta Messaging session (optional).
  *
  * <p>
  * A {@code ServerSession} implements two methods:
  *
  * <ul>
- * <li>{@code getSession} - returns the {@code ServerSession}'s JMS session.
+ * <li>{@code getSession} - returns the {@code ServerSession}'s Jakarta Messaging session.
  * <li>{@code start} - starts the execution of the {@code ServerSession} thread and results in the execution of the JMS
  * session's {@code run} method.
  * </ul>
  *
  * <p>
- * A {@code ConnectionConsumer} implemented by a JMS provider uses a {@code ServerSession} to process one or more
+ * A {@code ConnectionConsumer} implemented by a Jakarta Messaging provider uses a {@code ServerSession} to process one or more
  * messages that have arrived. It does this by getting a {@code ServerSession} from the {@code ConnectionConsumer}'s
- * {@code ServerSessionPool}; getting the {@code ServerSession}'s JMS session; loading it with the messages; and then
+ * {@code ServerSessionPool}; getting the {@code ServerSession}'s Jakarta Messaging session; loading it with the messages; and then
  * starting the {@code ServerSession}.
  *
  * <p>
@@ -44,8 +44,8 @@ package javax.jms;
  * cycle starts again.
  *
  * <p>
- * Note that the JMS API does not architect how the {@code ConnectionConsumer} loads the {@code Session} with messages.
- * Since both the {@code ConnectionConsumer} and {@code Session} are implemented by the same JMS provider, they can
+ * Note that the Jakarta Messaging API does not architect how the {@code ConnectionConsumer} loads the {@code Session} with messages.
+ * Since both the {@code ConnectionConsumer} and {@code Session} are implemented by the same Jakarta Messaging provider, they can
  * accomplish the load using a private mechanism.
  *
  * @see javax.jms.ServerSessionPool
@@ -63,7 +63,7 @@ public interface ServerSession {
      *
      * @return the server session's session
      *
-     * @exception JMSException if the JMS provider fails to get the associated session for this {@code ServerSession} due to
+     * @exception JMSException if the Jakarta Messaging provider fails to get the associated session for this {@code ServerSession} due to
      * some internal error.
      **/
     Session getSession() throws JMSException;
@@ -71,7 +71,7 @@ public interface ServerSession {
     /**
      * Cause the {@code Session}'s {@code run} method to be called to process messages that were just assigned to it.
      *
-     * @exception JMSException if the JMS provider fails to start the server session to process messages due to some
+     * @exception JMSException if the Jakarta Messaging provider fails to start the server session to process messages due to some
      * internal error.
      */
     void start() throws JMSException;

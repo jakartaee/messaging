@@ -37,7 +37,7 @@ public interface TemporaryQueue extends Queue {
     /**
      * Deletes this temporary queue. If there are existing receivers still using it, a {@code JMSException} will be thrown.
      *
-     * @exception JMSException if the JMS provider fails to delete the temporary queue due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to delete the temporary queue due to some internal error.
      */
     void delete() throws JMSException;
 }

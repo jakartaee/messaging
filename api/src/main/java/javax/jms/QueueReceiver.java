@@ -20,7 +20,7 @@ package javax.jms;
  * A client uses a {@code QueueReceiver} object to receive messages that have been delivered to a queue.
  *
  * <p>
- * Although it is possible to have multiple {@code QueueReceiver}s for the same queue, the JMS API does not define how
+ * Although it is possible to have multiple {@code QueueReceiver}s for the same queue, the Jakarta Messaging API does not define how
  * messages are distributed between the {@code QueueReceiver}s.
  *
  * <p>
@@ -51,7 +51,7 @@ public interface QueueReceiver extends MessageConsumer {
      *
      * @return this receiver's {@code Queue}
      *
-     * @exception JMSException if the JMS provider fails to get the queue for this queue receiver due to some internal
+     * @exception JMSException if the Jakarta Messaging provider fails to get the queue for this queue receiver due to some internal
      * error.
      */
     Queue getQueue() throws JMSException;

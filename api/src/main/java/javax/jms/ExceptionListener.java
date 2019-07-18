@@ -17,7 +17,7 @@
 package javax.jms;
 
 /**
- * If a JMS provider detects a serious problem with a {@code Connection} object, it informs the {@code Connection}
+ * If a Jakarta Messaging provider detects a serious problem with a {@code Connection} object, it informs the {@code Connection}
  * object's {@code ExceptionListener}, if one has been registered. It does this by calling the listener's
  * {@code onException} method, passing it a {@code JMSException} argument describing the problem.
  *
@@ -26,7 +26,7 @@ package javax.jms;
  * messages, so they would have no other way to learn that their connection has failed.
  *
  * <p>
- * A JMS provider should attempt to resolve connection problems itself before it notifies the client of them.
+ * A Jakarta Messaging provider should attempt to resolve connection problems itself before it notifies the client of them.
  *
  * @see javax.jms.Connection#setExceptionListener(ExceptionListener)
  *
@@ -37,9 +37,9 @@ package javax.jms;
 public interface ExceptionListener {
 
     /**
-     * Notifies user of a JMS exception.
+     * Notifies user of a Jakarta Messaging exception.
      *
-     * @param exception the JMS exception
+     * @param exception the Jakarta Messaging exception
      */
     void onException(JMSException exception);
 }

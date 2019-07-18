@@ -26,7 +26,7 @@ package javax.jms;
 public class TransactionRolledBackRuntimeException extends JMSRuntimeException {
 
     /**
-     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 2.0 version
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Jakarta Messaging 2.0 version
      */
     private static final long serialVersionUID = 2157965166257651703L;
 

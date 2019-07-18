@@ -54,7 +54,7 @@ public interface TopicSession extends Session {
      *
      * <p>
      * Note that this method is not for creating the physical topic. The physical creation of topics is an administrative
-     * task and is not to be initiated by the JMS API. The one exception is the creation of temporary topics, which is
+     * task and is not to be initiated by the Jakarta Messaging API. The one exception is the creation of temporary topics, which is
      * accomplished with the {@code createTemporaryTopic} method.
      *
      * @param topicName the name of this {@code Topic}
@@ -130,7 +130,7 @@ public interface TopicSession extends Session {
      *
      * <p>
      * A durable subscription is used by an application which needs to receive all the messages published on a topic,
-     * including the ones published when there is no active consumer associated with it. The JMS provider retains a record
+     * including the ones published when there is no active consumer associated with it. The Jakarta Messaging provider retains a record
      * of this durable subscription and ensures that all messages from the topic's publishers are retained until they are
      * delivered to, and acknowledged by, a consumer on this durable subscription or until they have expired.
      *
@@ -204,7 +204,7 @@ public interface TopicSession extends Session {
      *
      * <p>
      * A durable subscription is used by an application which needs to receive all the messages published on a topic,
-     * including the ones published when there is no active consumer associated with it. The JMS provider retains a record
+     * including the ones published when there is no active consumer associated with it. The Jakarta Messaging provider retains a record
      * of this durable subscription and ensures that all messages from the topic's publishers are retained until they are
      * delivered to, and acknowledged by, a consumer on this durable subscription or until they have expired.
      *

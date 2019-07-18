@@ -38,7 +38,7 @@ package javax.jms;
  * is the time the client sends the message, not the time the transaction is committed).
  *
  * <p>
- * A JMS provider should do its best to expire messages accurately; however, the JMS API does not define the accuracy
+ * A Jakarta Messaging provider should do its best to expire messages accurately; however, the Jakarta Messaging API does not define the accuracy
  * provided.
  *
  * @see javax.jms.TopicPublisher
@@ -55,10 +55,10 @@ public interface MessageProducer extends AutoCloseable {
      * Specify whether message IDs may be disabled.
      *
      * <p>
-     * Since message IDs take some effort to create and increase a message's size, some JMS providers may be able to
+     * Since message IDs take some effort to create and increase a message's size, some Jakarta Messaging providers may be able to
      * optimise message overhead if they are given a hint that the message ID is not used by an application. By calling this
-     * method, a JMS application enables this potential optimisation for all messages sent using this
-     * {@code MessageProducer}. If the JMS provider accepts this hint, these messages must have the message ID set to null;
+     * method, a Jakarta Messaging application enables this potential optimisation for all messages sent using this
+     * {@code MessageProducer}. If the Jakarta Messaging provider accepts this hint, these messages must have the message ID set to null;
      * if the provider ignores the hint, the message ID must be set to its normal unique value.
      *
      * <p>
@@ -66,7 +66,7 @@ public interface MessageProducer extends AutoCloseable {
      *
      * @param value indicates if message IDs may be disabled
      *
-     * @exception JMSException if the JMS provider fails to set message ID to disabled due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set message ID to disabled due to some internal error.
      */
     void setDisableMessageID(boolean value) throws JMSException;
 
@@ -75,7 +75,7 @@ public interface MessageProducer extends AutoCloseable {
      *
      * @return an indication of whether message IDs are disabled
      *
-     * @exception JMSException if the JMS provider fails to determine if message IDs are disabled due to some internal
+     * @exception JMSException if the Jakarta Messaging provider fails to determine if message IDs are disabled due to some internal
      * error.
      */
     boolean getDisableMessageID() throws JMSException;
@@ -84,10 +84,10 @@ public interface MessageProducer extends AutoCloseable {
      * Specify whether message timestamps may be disabled.
      *
      * <p>
-     * Since timestamps take some effort to create and increase a message's size, some JMS providers may be able to optimise
+     * Since timestamps take some effort to create and increase a message's size, some Jakarta Messaging providers may be able to optimise
      * message overhead if they are given a hint that the timestamp is not used by an application. By calling this method, a
-     * JMS application enables this potential optimisation for all messages sent using this {@code MessageProducer}. If the
-     * JMS provider accepts this hint, these messages must have the timestamp set to zero; if the provider ignores the hint,
+     * Jakarta Messaging application enables this potential optimisation for all messages sent using this {@code MessageProducer}. If the
+     * Jakarta Messaging provider accepts this hint, these messages must have the timestamp set to zero; if the provider ignores the hint,
      * the timestamp must be set to its normal value.
      *
      * <p>
@@ -95,7 +95,7 @@ public interface MessageProducer extends AutoCloseable {
      *
      * @param value indicates whether message timestamps may be disabled
      *
-     * @exception JMSException if the JMS provider fails to set timestamps to disabled due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set timestamps to disabled due to some internal error.
      */
     void setDisableMessageTimestamp(boolean value) throws JMSException;
 
@@ -104,7 +104,7 @@ public interface MessageProducer extends AutoCloseable {
      *
      * @return an indication of whether message timestamps are disabled
      *
-     * @exception JMSException if the JMS provider fails to determine if timestamps are disabled due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to determine if timestamps are disabled due to some internal error.
      */
     boolean getDisableMessageTimestamp() throws JMSException;
 
@@ -117,7 +117,7 @@ public interface MessageProducer extends AutoCloseable {
      * @param deliveryMode the message delivery mode for this message producer; legal values are
      * {@code DeliveryMode.NON_PERSISTENT} and {@code DeliveryMode.PERSISTENT}
      *
-     * @exception JMSException if the JMS provider fails to set the delivery mode due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the delivery mode due to some internal error.
      *
      * @see javax.jms.MessageProducer#getDeliveryMode
      * @see javax.jms.DeliveryMode#NON_PERSISTENT
@@ -132,7 +132,7 @@ public interface MessageProducer extends AutoCloseable {
      *
      * @return the message delivery mode for this message producer
      *
-     * @exception JMSException if the JMS provider fails to get the delivery mode due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the delivery mode due to some internal error.
      *
      * @see javax.jms.MessageProducer#setDeliveryMode
      */
@@ -142,13 +142,13 @@ public interface MessageProducer extends AutoCloseable {
      * Sets the producer's default priority.
      *
      * <p>
-     * The JMS API defines ten levels of priority value, with 0 as the lowest priority and 9 as the highest. Clients should
+     * The Jakarta Messaging API defines ten levels of priority value, with 0 as the lowest priority and 9 as the highest. Clients should
      * consider priorities 0-4 as gradations of normal priority and priorities 5-9 as gradations of expedited priority.
      * Priority is set to 4 by default.
      *
      * @param defaultPriority the message priority for this message producer; must be a value between 0 and 9
      *
-     * @exception JMSException if the JMS provider fails to set the priority due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the priority due to some internal error.
      *
      * @see javax.jms.MessageProducer#getPriority
      * @see javax.jms.Message#DEFAULT_PRIORITY
@@ -160,7 +160,7 @@ public interface MessageProducer extends AutoCloseable {
      *
      * @return the message priority for this message producer
      *
-     * @exception JMSException if the JMS provider fails to get the priority due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the priority due to some internal error.
      *
      * @see javax.jms.MessageProducer#setPriority
      */
@@ -175,7 +175,7 @@ public interface MessageProducer extends AutoCloseable {
      *
      * @param timeToLive the message time to live in milliseconds; zero is unlimited
      *
-     * @exception JMSException if the JMS provider fails to set the time to live due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the time to live due to some internal error.
      *
      * @see javax.jms.MessageProducer#getTimeToLive
      * @see javax.jms.Message#DEFAULT_TIME_TO_LIVE
@@ -188,14 +188,14 @@ public interface MessageProducer extends AutoCloseable {
      *
      * @return the message time to live in milliseconds; zero is unlimited
      *
-     * @exception JMSException if the JMS provider fails to get the time to live due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the time to live due to some internal error.
      *
      * @see javax.jms.MessageProducer#setTimeToLive
      */
     long getTimeToLive() throws JMSException;
 
     /**
-     * Sets the minimum length of time in milliseconds that must elapse after a message is sent before the JMS provider may
+     * Sets the minimum length of time in milliseconds that must elapse after a message is sent before the Jakarta Messaging provider may
      * deliver the message to a consumer.
      *
      * <p>
@@ -206,7 +206,7 @@ public interface MessageProducer extends AutoCloseable {
      *
      * @param deliveryDelay the delivery delay in milliseconds.
      *
-     * @exception JMSException if the JMS provider fails to set the delivery delay due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the delivery delay due to some internal error.
      *
      * @see javax.jms.MessageProducer#getDeliveryDelay
      * @see javax.jms.Message#DEFAULT_DELIVERY_DELAY
@@ -216,12 +216,12 @@ public interface MessageProducer extends AutoCloseable {
     void setDeliveryDelay(long deliveryDelay) throws JMSException;
 
     /**
-     * Gets the minimum length of time in milliseconds that must elapse after a message is sent before the JMS provider may
+     * Gets the minimum length of time in milliseconds that must elapse after a message is sent before the Jakarta Messaging provider may
      * deliver the message to a consumer.
      *
      * @return the delivery delay in milliseconds.
      *
-     * @exception JMSException if the JMS provider fails to get the delivery delay due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the delivery delay due to some internal error.
      *
      * @see javax.jms.MessageProducer#setDeliveryDelay
      *
@@ -234,7 +234,7 @@ public interface MessageProducer extends AutoCloseable {
      *
      * @return this producer's {@code Destination}
      *
-     * @exception JMSException if the JMS provider fails to get the destination for this {@code MessageProducer} due to some
+     * @exception JMSException if the Jakarta Messaging provider fails to get the destination for this {@code MessageProducer} due to some
      * internal error.
      *
      * @since JMS 1.1
@@ -260,7 +260,7 @@ public interface MessageProducer extends AutoCloseable {
      *
      * @exception IllegalStateException this method has been called by a <tt>CompletionListener</tt> callback method on its
      * own <tt>MessageProducer</tt>
-     * @exception JMSException if the JMS provider fails to close the producer due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to close the producer due to some internal error.
      */
     @Override
     void close() throws JMSException;
@@ -270,7 +270,7 @@ public interface MessageProducer extends AutoCloseable {
      *
      * @param message the message to send
      *
-     * @exception JMSException if the JMS provider fails to send the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to send the message due to some internal error.
      * @exception MessageFormatException if an invalid message is specified.
      * @exception InvalidDestinationException if a client uses this method with a {@code MessageProducer} with an invalid
      * destination.
@@ -291,7 +291,7 @@ public interface MessageProducer extends AutoCloseable {
      * @param priority the priority for this message
      * @param timeToLive the message's lifetime (in milliseconds)
      *
-     * @exception JMSException if the JMS provider fails to send the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to send the message due to some internal error.
      * @exception MessageFormatException if an invalid message is specified.
      * @exception InvalidDestinationException if a client uses this method with a {@code MessageProducer} with an invalid
      * destination.
@@ -308,13 +308,13 @@ public interface MessageProducer extends AutoCloseable {
      * delivery mode, priority, and time to live.
      *
      * <p>
-     * Typically, a message producer is assigned a destination at creation time; however, the JMS API also supports
+     * Typically, a message producer is assigned a destination at creation time; however, the Jakarta Messaging API also supports
      * unidentified message producers, which require that the destination be supplied every time a message is sent.
      *
      * @param destination the destination to send this message to
      * @param message the message to send
      *
-     * @exception JMSException if the JMS provider fails to send the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to send the message due to some internal error.
      * @exception MessageFormatException if an invalid message is specified.
      * @exception InvalidDestinationException if a client uses this method with an invalid destination.
      * @exception java.lang.UnsupportedOperationException if a client uses this method with a {@code MessageProducer} that
@@ -330,7 +330,7 @@ public interface MessageProducer extends AutoCloseable {
      * live.
      *
      * <p>
-     * Typically, a message producer is assigned a destination at creation time; however, the JMS API also supports
+     * Typically, a message producer is assigned a destination at creation time; however, the Jakarta Messaging API also supports
      * unidentified message producers, which require that the destination be supplied every time a message is sent.
      *
      * @param destination the destination to send this message to
@@ -339,7 +339,7 @@ public interface MessageProducer extends AutoCloseable {
      * @param priority the priority for this message
      * @param timeToLive the message's lifetime (in milliseconds)
      *
-     * @exception JMSException if the JMS provider fails to send the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to send the message due to some internal error.
      * @exception MessageFormatException if an invalid message is specified.
      * @exception InvalidDestinationException if a client uses this method with an invalid destination.
      * @exception java.lang.UnsupportedOperationException if a client uses this method with a {@code MessageProducer} that
@@ -353,10 +353,10 @@ public interface MessageProducer extends AutoCloseable {
     /**
      * Sends a message using the {@code MessageProducer}'s default delivery mode, priority, and time to live, performing
      * part of the work involved in sending the message in a separate thread and notifying the specified
-     * <tt>CompletionListener</tt> when the operation has completed. JMS refers to this as an "asynchronous send".
+     * <tt>CompletionListener</tt> when the operation has completed. Jakarta Messaging refers to this as an "asynchronous send".
      *
      * <p>
-     * When the message has been successfully sent the JMS provider invokes the callback method <tt>onCompletion</tt> on an
+     * When the message has been successfully sent the Jakarta Messaging provider invokes the callback method <tt>onCompletion</tt> on an
      * application-specified <tt>CompletionListener</tt> object. Only when that callback has been invoked can the
      * application be sure that the message has been successfully sent with the same degree of confidence as if a normal
      * synchronous send had been performed. An application which requires this degree of confidence must therefore wait for
@@ -367,23 +367,23 @@ public interface MessageProducer extends AutoCloseable {
      * implemented.
      *
      * <p>
-     * In some JMS providers, a normal synchronous send involves sending the message to a remote JMS server and then waiting
+     * In some Jakarta Messaging providers, a normal synchronous send involves sending the message to a remote Jakarta Messaging server and then waiting
      * for an acknowledgement to be received before returning. It is expected that such a provider would implement an
-     * asynchronous send by sending the message to the remote JMS server and then returning without waiting for an
-     * acknowledgement. When the acknowledgement is received, the JMS provider would notify the application by invoking the
+     * asynchronous send by sending the message to the remote Jakarta Messaging server and then returning without waiting for an
+     * acknowledgement. When the acknowledgement is received, the Jakarta Messaging provider would notify the application by invoking the
      * <tt>onCompletion</tt> method on the application-specified <tt>CompletionListener</tt> object. If for some reason the
-     * acknowledgement is not received the JMS provider would notify the application by invoking the
+     * acknowledgement is not received the Jakarta Messaging provider would notify the application by invoking the
      * <tt>CompletionListener</tt>'s <tt>onException</tt> method.
      *
      * <p>
-     * In those cases where the JMS specification permits a lower level of reliability, a normal synchronous send might not
+     * In those cases where the Jakarta Messaging specification permits a lower level of reliability, a normal synchronous send might not
      * wait for an acknowledgement. In that case it is expected that an asynchronous send would be similar to a synchronous
-     * send: the JMS provider would send the message to the remote JMS server and then return without waiting for an
-     * acknowledgement. However the JMS provider would still notify the application that the send had completed by invoking
+     * send: the Jakarta Messaging provider would send the message to the remote Jakarta Messaging server and then return without waiting for an
+     * acknowledgement. However the Jakarta Messaging provider would still notify the application that the send had completed by invoking
      * the <tt>onCompletion</tt> method on the application-specified <tt>CompletionListener</tt> object.
      *
      * <p>
-     * It is up to the JMS provider to decide exactly what is performed in the calling thread and what, if anything, is
+     * It is up to the Jakarta Messaging provider to decide exactly what is performed in the calling thread and what, if anything, is
      * performed asynchronously, so long as it satisfies the requirements given below:
      *
      * <p>
@@ -394,24 +394,24 @@ public interface MessageProducer extends AutoCloseable {
      *
      * <p>
      * <b>Exceptions</b>: If an exception is encountered during the call to the <tt>send</tt> method then an appropriate
-     * exception should be thrown in the thread that is calling the <tt>send</tt> method. In this case the JMS provider must
+     * exception should be thrown in the thread that is calling the <tt>send</tt> method. In this case the Jakarta Messaging provider must
      * not invoke the <tt>CompletionListener</tt>'s <tt>onCompletion</tt> or <tt>onException</tt> method. If an exception is
-     * encountered which cannot be thrown in the thread that is calling the <tt>send</tt> method then the JMS provider must
+     * encountered which cannot be thrown in the thread that is calling the <tt>send</tt> method then the Jakarta Messaging provider must
      * call the <tt>CompletionListener</tt>'s <tt>onException</tt> method. In both cases if an exception occurs it is
      * undefined whether or not the message was successfully sent.
      *
      * <p>
-     * <b>Message order</b>: If the same <tt>MessageProducer</tt> is used to send multiple messages then JMS message
+     * <b>Message order</b>: If the same <tt>MessageProducer</tt> is used to send multiple messages then Jakarta Messaging message
      * ordering requirements must be satisfied. This applies even if a combination of synchronous and asynchronous sends has
      * been performed. The application is not required to wait for an asynchronous send to complete before sending the next
      * message.
      *
      * <p>
      * <b>Close, commit or rollback</b>: If the <tt>close</tt> method is called on the <tt>MessageProducer</tt> or its
-     * <tt>Session</tt> or <tt>Connection</tt> then the JMS provider must block until any incomplete send operations have
+     * <tt>Session</tt> or <tt>Connection</tt> then the Jakarta Messaging provider must block until any incomplete send operations have
      * been completed and all {@code CompletionListener} callbacks have returned before closing the object and returning. If
      * the session is transacted (uses a local transaction) then when the <tt>Session</tt>'s <tt>commit</tt> or
-     * <tt>rollback</tt> method is called the JMS provider must block until any incomplete send operations have been
+     * <tt>rollback</tt> method is called the Jakarta Messaging provider must block until any incomplete send operations have been
      * completed and all {@code CompletionListener} callbacks have returned before performing the commit or rollback.
      * Incomplete sends should be allowed to complete normally unless an error occurs.
      *
@@ -426,8 +426,8 @@ public interface MessageProducer extends AutoCloseable {
      * cause a {@code JMSException} to be thrown though this is not guaranteed.
      *
      * <p>
-     * <b>Message headers</b> JMS defines a number of message header fields and message properties which must be set by the
-     * "JMS provider on send". If the send is asynchronous these fields and properties may be accessed on the sending client
+     * <b>Message headers</b> Jakarta Messaging defines a number of message header fields and message properties which must be set by the
+     * "Jakarta Messaging provider on send". If the send is asynchronous these fields and properties may be accessed on the sending client
      * only after the <tt>CompletionListener</tt> has been invoked. If the <tt>CompletionListener</tt>'s
      * <tt>onException</tt> method is called then the state of these message header fields and properties is undefined.
      *
@@ -442,10 +442,10 @@ public interface MessageProducer extends AutoCloseable {
      * application thread might be using the session at the same time.
      *
      * <p>
-     * <b>Use of the <tt>CompletionListener</tt> by the JMS provider</b>: A session will only invoke one
+     * <b>Use of the <tt>CompletionListener</tt> by the Jakarta Messaging provider</b>: A session will only invoke one
      * <tt>CompletionListener</tt> callback method at a time. For a given <tt>MessageProducer</tt>, callbacks (both
      * {@code onCompletion} and {@code onException}) will be performed in the same order as the corresponding calls to the
-     * asynchronous send method. A JMS provider must not invoke the <tt>CompletionListener</tt> from the thread that is
+     * asynchronous send method. A Jakarta Messaging provider must not invoke the <tt>CompletionListener</tt> from the thread that is
      * calling the asynchronous <tt>send</tt> method.
      *
      * <p>
@@ -456,10 +456,10 @@ public interface MessageProducer extends AutoCloseable {
      * <p>
      * After the <tt>send</tt> method has returned, the application must not attempt to read the headers, properties or body
      * of the <tt>Message</tt> object until the <tt>CompletionListener</tt>'s <tt>onCompletion</tt> or <tt>onException</tt>
-     * method has been called. This is because the JMS provider may be modifying the <tt>Message</tt> object in another
-     * thread during this time. The JMS provider may throw an <tt>JMSException</tt> if the application attempts to access or
+     * method has been called. This is because the Jakarta Messaging provider may be modifying the <tt>Message</tt> object in another
+     * thread during this time. The Jakarta Messaging provider may throw an <tt>JMSException</tt> if the application attempts to access or
      * modify the <tt>Message</tt> object after the <tt>send</tt> method has returned and before the
-     * <tt>CompletionListener</tt> has been invoked. If the JMS provider does not throw an exception then the behaviour is
+     * <tt>CompletionListener</tt> has been invoked. If the Jakarta Messaging provider does not throw an exception then the behaviour is
      * undefined.
      *
      * @param message the message to send
@@ -483,10 +483,10 @@ public interface MessageProducer extends AutoCloseable {
     /**
      * Sends a message, specifying delivery mode, priority and time to live, performing part of the work involved in sending
      * the message in a separate thread and notifying the specified <tt>CompletionListener</tt> when the operation has
-     * completed. JMS refers to this as an "asynchronous send".
+     * completed. Jakarta Messaging refers to this as an "asynchronous send".
      *
      * <p>
-     * When the message has been successfully sent the JMS provider invokes the callback method <tt>onCompletion</tt> on an
+     * When the message has been successfully sent the Jakarta Messaging provider invokes the callback method <tt>onCompletion</tt> on an
      * application-specified <tt>CompletionListener</tt> object. Only when that callback has been invoked can the
      * application be sure that the message has been successfully sent with the same degree of confidence as if a normal
      * synchronous send had been performed. An application which requires this degree of confidence must therefore wait for
@@ -497,23 +497,23 @@ public interface MessageProducer extends AutoCloseable {
      * implemented.
      *
      * <p>
-     * In some JMS providers, a normal synchronous send involves sending the message to a remote JMS server and then waiting
+     * In some Jakarta Messaging providers, a normal synchronous send involves sending the message to a remote Jakarta Messaging server and then waiting
      * for an acknowledgement to be received before returning. It is expected that such a provider would implement an
-     * asynchronous send by sending the message to the remote JMS server and then returning without waiting for an
-     * acknowledgement. When the acknowledgement is received, the JMS provider would notify the application by invoking the
+     * asynchronous send by sending the message to the remote Jakarta Messaging server and then returning without waiting for an
+     * acknowledgement. When the acknowledgement is received, the Jakarta Messaging provider would notify the application by invoking the
      * <tt>onCompletion</tt> method on the application-specified <tt>CompletionListener</tt> object. If for some reason the
-     * acknowledgement is not received the JMS provider would notify the application by invoking the
+     * acknowledgement is not received the Jakarta Messaging provider would notify the application by invoking the
      * <tt>CompletionListener</tt>'s <tt>onException</tt> method.
      *
      * <p>
-     * In those cases where the JMS specification permits a lower level of reliability, a normal synchronous send might not
+     * In those cases where the Jakarta Messaging specification permits a lower level of reliability, a normal synchronous send might not
      * wait for an acknowledgement. In that case it is expected that an asynchronous send would be similar to a synchronous
-     * send: the JMS provider would send the message to the remote JMS server and then return without waiting for an
-     * acknowledgement. However the JMS provider would still notify the application that the send had completed by invoking
+     * send: the Jakarta Messaging provider would send the message to the remote Jakarta Messaging server and then return without waiting for an
+     * acknowledgement. However the Jakarta Messaging provider would still notify the application that the send had completed by invoking
      * the <tt>onCompletion</tt> method on the application-specified <tt>CompletionListener</tt> object.
      *
      * <p>
-     * It is up to the JMS provider to decide exactly what is performed in the calling thread and what, if anything, is
+     * It is up to the Jakarta Messaging provider to decide exactly what is performed in the calling thread and what, if anything, is
      * performed asynchronously, so long as it satisfies the requirements given below:
      *
      * <p>
@@ -524,24 +524,24 @@ public interface MessageProducer extends AutoCloseable {
      *
      * <p>
      * <b>Exceptions</b>: If an exception is encountered during the call to the <tt>send</tt> method then an appropriate
-     * exception should be thrown in the thread that is calling the <tt>send</tt> method. In this case the JMS provider must
+     * exception should be thrown in the thread that is calling the <tt>send</tt> method. In this case the Jakarta Messaging provider must
      * not invoke the <tt>CompletionListener</tt>'s <tt>onCompletion</tt> or <tt>onException</tt> method. If an exception is
-     * encountered which cannot be thrown in the thread that is calling the <tt>send</tt> method then the JMS provider must
+     * encountered which cannot be thrown in the thread that is calling the <tt>send</tt> method then the Jakarta Messaging provider must
      * call the <tt>CompletionListener</tt>'s <tt>onException</tt> method. In both cases if an exception occurs it is
      * undefined whether or not the message was successfully sent.
      *
      * <p>
-     * <b>Message order</b>: If the same <tt>MessageProducer</tt> is used to send multiple messages then JMS message
+     * <b>Message order</b>: If the same <tt>MessageProducer</tt> is used to send multiple messages then Jakarta Messaging message
      * ordering requirements must be satisfied. This applies even if a combination of synchronous and asynchronous sends has
      * been performed. The application is not required to wait for an asynchronous send to complete before sending the next
      * message.
      *
      * <p>
      * <b>Close, commit or rollback</b>: If the <tt>close</tt> method is called on the <tt>MessageProducer</tt> or its
-     * <tt>Session</tt> or <tt>Connection</tt> then the JMS provider must block until any incomplete send operations have
+     * <tt>Session</tt> or <tt>Connection</tt> then the Jakarta Messaging provider must block until any incomplete send operations have
      * been completed and all {@code CompletionListener} callbacks have returned before closing the object and returning. If
      * the session is transacted (uses a local transaction) then when the <tt>Session</tt>'s <tt>commit</tt> or
-     * <tt>rollback</tt> method is called the JMS provider must block until any incomplete send operations have been
+     * <tt>rollback</tt> method is called the Jakarta Messaging provider must block until any incomplete send operations have been
      * completed and all {@code CompletionListener} callbacks have returned before performing the commit or rollback.
      * Incomplete sends should be allowed to complete normally unless an error occurs.
      *
@@ -556,8 +556,8 @@ public interface MessageProducer extends AutoCloseable {
      * cause a {@code JMSException} to be thrown though this is not guaranteed.
      *
      * <p>
-     * <b>Message headers</b> JMS defines a number of message header fields and message properties which must be set by the
-     * "JMS provider on send". If the send is asynchronous these fields and properties may be accessed on the sending client
+     * <b>Message headers</b> Jakarta Messaging defines a number of message header fields and message properties which must be set by the
+     * "Jakarta Messaging provider on send". If the send is asynchronous these fields and properties may be accessed on the sending client
      * only after the <tt>CompletionListener</tt> has been invoked. If the <tt>CompletionListener</tt>'s
      * <tt>onException</tt> method is called then the state of these message header fields and properties is undefined.
      *
@@ -572,10 +572,10 @@ public interface MessageProducer extends AutoCloseable {
      * application thread might be using the session at the same time.
      *
      * <p>
-     * <b>Use of the <tt>CompletionListener</tt> by the JMS provider</b>: A session will only invoke one
+     * <b>Use of the <tt>CompletionListener</tt> by the Jakarta Messaging provider</b>: A session will only invoke one
      * <tt>CompletionListener</tt> callback method at a time. For a given <tt>MessageProducer</tt>, callbacks (both
      * {@code onCompletion} and {@code onException}) will be performed in the same order as the corresponding calls to the
-     * asynchronous send method. A JMS provider must not invoke the <tt>CompletionListener</tt> from the thread that is
+     * asynchronous send method. A Jakarta Messaging provider must not invoke the <tt>CompletionListener</tt> from the thread that is
      * calling the asynchronous <tt>send</tt> method.
      *
      * <p>
@@ -586,10 +586,10 @@ public interface MessageProducer extends AutoCloseable {
      * <p>
      * After the <tt>send</tt> method has returned, the application must not attempt to read the headers, properties or body
      * of the <tt>Message</tt> object until the <tt>CompletionListener</tt>'s <tt>onCompletion</tt> or <tt>onException</tt>
-     * method has been called. This is because the JMS provider may be modifying the <tt>Message</tt> object in another
-     * thread during this time. The JMS provider may throw an <tt>JMSException</tt> if the application attempts to access or
+     * method has been called. This is because the Jakarta Messaging provider may be modifying the <tt>Message</tt> object in another
+     * thread during this time. The Jakarta Messaging provider may throw an <tt>JMSException</tt> if the application attempts to access or
      * modify the <tt>Message</tt> object after the <tt>send</tt> method has returned and before the
-     * <tt>CompletionListener</tt> has been invoked. If the JMS provider does not throw an exception then the behaviour is
+     * <tt>CompletionListener</tt> has been invoked. If the Jakarta Messaging provider does not throw an exception then the behaviour is
      * undefined.
      *
      * @param message the message to send
@@ -616,15 +616,15 @@ public interface MessageProducer extends AutoCloseable {
     /**
      * Sends a message to a destination for an unidentified message producer, using the {@code MessageProducer}'s default
      * delivery mode, priority, and time to live, performing part of the work involved in sending the message in a separate
-     * thread and notifying the specified <tt>CompletionListener</tt> when the operation has completed. JMS refers to this
+     * thread and notifying the specified <tt>CompletionListener</tt> when the operation has completed. Jakarta Messaging refers to this
      * as an "asynchronous send".
      *
      * <p>
-     * Typically, a message producer is assigned a destination at creation time; however, the JMS API also supports
+     * Typically, a message producer is assigned a destination at creation time; however, the Jakarta Messaging API also supports
      * unidentified message producers, which require that the destination be supplied every time a message is sent.
      *
      * <p>
-     * When the message has been successfully sent the JMS provider invokes the callback method <tt>onCompletion</tt> on an
+     * When the message has been successfully sent the Jakarta Messaging provider invokes the callback method <tt>onCompletion</tt> on an
      * application-specified <tt>CompletionListener</tt> object. Only when that callback has been invoked can the
      * application be sure that the message has been successfully sent with the same degree of confidence as if a normal
      * synchronous send had been performed. An application which requires this degree of confidence must therefore wait for
@@ -635,23 +635,23 @@ public interface MessageProducer extends AutoCloseable {
      * implemented.
      *
      * <p>
-     * In some JMS providers, a normal synchronous send involves sending the message to a remote JMS server and then waiting
+     * In some Jakarta Messaging providers, a normal synchronous send involves sending the message to a remote Jakarta Messaging server and then waiting
      * for an acknowledgement to be received before returning. It is expected that such a provider would implement an
-     * asynchronous send by sending the message to the remote JMS server and then returning without waiting for an
-     * acknowledgement. When the acknowledgement is received, the JMS provider would notify the application by invoking the
+     * asynchronous send by sending the message to the remote Jakarta Messaging server and then returning without waiting for an
+     * acknowledgement. When the acknowledgement is received, the Jakarta Messaging provider would notify the application by invoking the
      * <tt>onCompletion</tt> method on the application-specified <tt>CompletionListener</tt> object. If for some reason the
-     * acknowledgement is not received the JMS provider would notify the application by invoking the
+     * acknowledgement is not received the Jakarta Messaging provider would notify the application by invoking the
      * <tt>CompletionListener</tt>'s <tt>onException</tt> method.
      *
      * <p>
-     * In those cases where the JMS specification permits a lower level of reliability, a normal synchronous send might not
+     * In those cases where the Jakarta Messaging specification permits a lower level of reliability, a normal synchronous send might not
      * wait for an acknowledgement. In that case it is expected that an asynchronous send would be similar to a synchronous
-     * send: the JMS provider would send the message to the remote JMS server and then return without waiting for an
-     * acknowledgement. However the JMS provider would still notify the application that the send had completed by invoking
+     * send: the Jakarta Messaging provider would send the message to the remote Jakarta Messaging server and then return without waiting for an
+     * acknowledgement. However the Jakarta Messaging provider would still notify the application that the send had completed by invoking
      * the <tt>onCompletion</tt> method on the application-specified <tt>CompletionListener</tt> object.
      *
      * <p>
-     * It is up to the JMS provider to decide exactly what is performed in the calling thread and what, if anything, is
+     * It is up to the Jakarta Messaging provider to decide exactly what is performed in the calling thread and what, if anything, is
      * performed asynchronously, so long as it satisfies the requirements given below:
      *
      * <p>
@@ -662,24 +662,24 @@ public interface MessageProducer extends AutoCloseable {
      *
      * <p>
      * <b>Exceptions</b>: If an exception is encountered during the call to the <tt>send</tt> method then an appropriate
-     * exception should be thrown in the thread that is calling the <tt>send</tt> method. In this case the JMS provider must
+     * exception should be thrown in the thread that is calling the <tt>send</tt> method. In this case the Jakarta Messaging provider must
      * not invoke the <tt>CompletionListener</tt>'s <tt>onCompletion</tt> or <tt>onException</tt> method. If an exception is
-     * encountered which cannot be thrown in the thread that is calling the <tt>send</tt> method then the JMS provider must
+     * encountered which cannot be thrown in the thread that is calling the <tt>send</tt> method then the Jakarta Messaging provider must
      * call the <tt>CompletionListener</tt>'s <tt>onException</tt> method. In both cases if an exception occurs it is
      * undefined whether or not the message was successfully sent.
      *
      * <p>
-     * <b>Message order</b>: If the same <tt>MessageProducer</tt> is used to send multiple messages then JMS message
+     * <b>Message order</b>: If the same <tt>MessageProducer</tt> is used to send multiple messages then Jakarta Messaging message
      * ordering requirements must be satisfied. This applies even if a combination of synchronous and asynchronous sends has
      * been performed. The application is not required to wait for an asynchronous send to complete before sending the next
      * message.
      *
      * <p>
      * <b>Close, commit or rollback</b>: If the <tt>close</tt> method is called on the <tt>MessageProducer</tt> or its
-     * <tt>Session</tt> or <tt>Connection</tt> then the JMS provider must block until any incomplete send operations have
+     * <tt>Session</tt> or <tt>Connection</tt> then the Jakarta Messaging provider must block until any incomplete send operations have
      * been completed and all {@code CompletionListener} callbacks have returned before closing the object and returning. If
      * the session is transacted (uses a local transaction) then when the <tt>Session</tt>'s <tt>commit</tt> or
-     * <tt>rollback</tt> method is called the JMS provider must block until any incomplete send operations have been
+     * <tt>rollback</tt> method is called the Jakarta Messaging provider must block until any incomplete send operations have been
      * completed and all {@code CompletionListener} callbacks have returned before performing the commit or rollback.
      * Incomplete sends should be allowed to complete normally unless an error occurs.
      *
@@ -694,8 +694,8 @@ public interface MessageProducer extends AutoCloseable {
      * cause a {@code JMSException} to be thrown though this is not guaranteed.
      *
      * <p>
-     * <b>Message headers</b> JMS defines a number of message header fields and message properties which must be set by the
-     * "JMS provider on send". If the send is asynchronous these fields and properties may be accessed on the sending client
+     * <b>Message headers</b> Jakarta Messaging defines a number of message header fields and message properties which must be set by the
+     * "Jakarta Messaging provider on send". If the send is asynchronous these fields and properties may be accessed on the sending client
      * only after the <tt>CompletionListener</tt> has been invoked. If the <tt>CompletionListener</tt>'s
      * <tt>onException</tt> method is called then the state of these message header fields and properties is undefined.
      *
@@ -710,10 +710,10 @@ public interface MessageProducer extends AutoCloseable {
      * application thread might be using the session at the same time.
      *
      * <p>
-     * <b>Use of the <tt>CompletionListener</tt> by the JMS provider</b>: A session will only invoke one
+     * <b>Use of the <tt>CompletionListener</tt> by the Jakarta Messaging provider</b>: A session will only invoke one
      * <tt>CompletionListener</tt> callback method at a time. For a given <tt>MessageProducer</tt>, callbacks (both
      * {@code onCompletion} and {@code onException}) will be performed in the same order as the corresponding calls to the
-     * asynchronous send method. A JMS provider must not invoke the <tt>CompletionListener</tt> from the thread that is
+     * asynchronous send method. A Jakarta Messaging provider must not invoke the <tt>CompletionListener</tt> from the thread that is
      * calling the asynchronous <tt>send</tt> method.
      *
      * <p>
@@ -724,10 +724,10 @@ public interface MessageProducer extends AutoCloseable {
      * <p>
      * After the <tt>send</tt> method has returned, the application must not attempt to read the headers, properties or body
      * of the <tt>Message</tt> object until the <tt>CompletionListener</tt>'s <tt>onCompletion</tt> or <tt>onException</tt>
-     * method has been called. This is because the JMS provider may be modifying the <tt>Message</tt> object in another
-     * thread during this time. The JMS provider may throw an <tt>JMSException</tt> if the application attempts to access or
+     * method has been called. This is because the Jakarta Messaging provider may be modifying the <tt>Message</tt> object in another
+     * thread during this time. The Jakarta Messaging provider may throw an <tt>JMSException</tt> if the application attempts to access or
      * modify the <tt>Message</tt> object after the <tt>send</tt> method has returned and before the
-     * <tt>CompletionListener</tt> has been invoked. If the JMS provider does not throw an exception then the behaviour is
+     * <tt>CompletionListener</tt> has been invoked. If the Jakarta Messaging provider does not throw an exception then the behaviour is
      * undefined.
      *
      * @param destination the destination to send this message to
@@ -751,14 +751,14 @@ public interface MessageProducer extends AutoCloseable {
     /**
      * Sends a message to a destination for an unidentified message producer, specifying delivery mode, priority and time to
      * live, performing part of the work involved in sending the message in a separate thread and notifying the specified
-     * <tt>CompletionListener</tt> when the operation has completed. JMS refers to this as an "asynchronous send".
+     * <tt>CompletionListener</tt> when the operation has completed. Jakarta Messaging refers to this as an "asynchronous send".
      *
      * <p>
-     * Typically, a message producer is assigned a destination at creation time; however, the JMS API also supports
+     * Typically, a message producer is assigned a destination at creation time; however, the Jakarta Messaging API also supports
      * unidentified message producers, which require that the destination be supplied every time a message is sent.
      *
      * <p>
-     * When the message has been successfully sent the JMS provider invokes the callback method <tt>onCompletion</tt> on an
+     * When the message has been successfully sent the Jakarta Messaging provider invokes the callback method <tt>onCompletion</tt> on an
      * application-specified <tt>CompletionListener</tt> object. Only when that callback has been invoked can the
      * application be sure that the message has been successfully sent with the same degree of confidence as if a normal
      * synchronous send had been performed. An application which requires this degree of confidence must therefore wait for
@@ -769,23 +769,23 @@ public interface MessageProducer extends AutoCloseable {
      * implemented.
      *
      * <p>
-     * In some JMS providers, a normal synchronous send involves sending the message to a remote JMS server and then waiting
+     * In some Jakarta Messaging providers, a normal synchronous send involves sending the message to a remote Jakarta Messaging server and then waiting
      * for an acknowledgement to be received before returning. It is expected that such a provider would implement an
-     * asynchronous send by sending the message to the remote JMS server and then returning without waiting for an
-     * acknowledgement. When the acknowledgement is received, the JMS provider would notify the application by invoking the
+     * asynchronous send by sending the message to the remote Jakarta Messaging server and then returning without waiting for an
+     * acknowledgement. When the acknowledgement is received, the Jakarta Messaging provider would notify the application by invoking the
      * <tt>onCompletion</tt> method on the application-specified <tt>CompletionListener</tt> object. If for some reason the
-     * acknowledgement is not received the JMS provider would notify the application by invoking the
+     * acknowledgement is not received the Jakarta Messaging provider would notify the application by invoking the
      * <tt>CompletionListener</tt>'s <tt>onException</tt> method.
      *
      * <p>
-     * In those cases where the JMS specification permits a lower level of reliability, a normal synchronous send might not
+     * In those cases where the Jakarta Messaging specification permits a lower level of reliability, a normal synchronous send might not
      * wait for an acknowledgement. In that case it is expected that an asynchronous send would be similar to a synchronous
-     * send: the JMS provider would send the message to the remote JMS server and then return without waiting for an
-     * acknowledgement. However the JMS provider would still notify the application that the send had completed by invoking
+     * send: the Jakarta Messaging provider would send the message to the remote Jakarta Messaging server and then return without waiting for an
+     * acknowledgement. However the Jakarta Messaging provider would still notify the application that the send had completed by invoking
      * the <tt>onCompletion</tt> method on the application-specified <tt>CompletionListener</tt> object.
      *
      * <p>
-     * It is up to the JMS provider to decide exactly what is performed in the calling thread and what, if anything, is
+     * It is up to the Jakarta Messaging provider to decide exactly what is performed in the calling thread and what, if anything, is
      * performed asynchronously, so long as it satisfies the requirements given below:
      *
      * <p>
@@ -796,24 +796,24 @@ public interface MessageProducer extends AutoCloseable {
      *
      * <p>
      * <b>Exceptions</b>: If an exception is encountered during the call to the <tt>send</tt> method then an appropriate
-     * exception should be thrown in the thread that is calling the <tt>send</tt> method. In this case the JMS provider must
+     * exception should be thrown in the thread that is calling the <tt>send</tt> method. In this case the Jakarta Messaging provider must
      * not invoke the <tt>CompletionListener</tt>'s <tt>onCompletion</tt> or <tt>onException</tt> method. If an exception is
-     * encountered which cannot be thrown in the thread that is calling the <tt>send</tt> method then the JMS provider must
+     * encountered which cannot be thrown in the thread that is calling the <tt>send</tt> method then the Jakarta Messaging provider must
      * call the <tt>CompletionListener</tt>'s <tt>onException</tt> method. In both cases if an exception occurs it is
      * undefined whether or not the message was successfully sent.
      *
      * <p>
-     * <b>Message order</b>: If the same <tt>MessageProducer</tt> is used to send multiple messages then JMS message
+     * <b>Message order</b>: If the same <tt>MessageProducer</tt> is used to send multiple messages then Jakarta Messaging message
      * ordering requirements must be satisfied. This applies even if a combination of synchronous and asynchronous sends has
      * been performed. The application is not required to wait for an asynchronous send to complete before sending the next
      * message.
      *
      * <p>
      * <b>Close, commit or rollback</b>: If the <tt>close</tt> method is called on the <tt>MessageProducer</tt> or its
-     * <tt>Session</tt> or <tt>Connection</tt> then the JMS provider must block until any incomplete send operations have
+     * <tt>Session</tt> or <tt>Connection</tt> then the Jakarta Messaging provider must block until any incomplete send operations have
      * been completed and all {@code CompletionListener} callbacks have returned before closing the object and returning. If
      * the session is transacted (uses a local transaction) then when the <tt>Session</tt>'s <tt>commit</tt> or
-     * <tt>rollback</tt> method is called the JMS provider must block until any incomplete send operations have been
+     * <tt>rollback</tt> method is called the Jakarta Messaging provider must block until any incomplete send operations have been
      * completed and all {@code CompletionListener} callbacks have returned before performing the commit or rollback.
      * Incomplete sends should be allowed to complete normally unless an error occurs.
      *
@@ -828,8 +828,8 @@ public interface MessageProducer extends AutoCloseable {
      * cause a {@code JMSException} to be thrown though this is not guaranteed.
      *
      * <p>
-     * <b>Message headers</b> JMS defines a number of message header fields and message properties which must be set by the
-     * "JMS provider on send". If the send is asynchronous these fields and properties may be accessed on the sending client
+     * <b>Message headers</b> Jakarta Messaging defines a number of message header fields and message properties which must be set by the
+     * "Jakarta Messaging provider on send". If the send is asynchronous these fields and properties may be accessed on the sending client
      * only after the <tt>CompletionListener</tt> has been invoked. If the <tt>CompletionListener</tt>'s
      * <tt>onException</tt> method is called then the state of these message header fields and properties is undefined.
      *
@@ -844,10 +844,10 @@ public interface MessageProducer extends AutoCloseable {
      * application thread might be using the session at the same time.
      *
      * <p>
-     * <b>Use of the <tt>CompletionListener</tt> by the JMS provider</b>: A session will only invoke one
+     * <b>Use of the <tt>CompletionListener</tt> by the Jakarta Messaging provider</b>: A session will only invoke one
      * <tt>CompletionListener</tt> callback method at a time. For a given <tt>MessageProducer</tt>, callbacks (both
      * {@code onCompletion} and {@code onException}) will be performed in the same order as the corresponding calls to the
-     * asynchronous send method. A JMS provider must not invoke the <tt>CompletionListener</tt> from the thread that is
+     * asynchronous send method. A Jakarta Messaging provider must not invoke the <tt>CompletionListener</tt> from the thread that is
      * calling the asynchronous <tt>send</tt> method.
      *
      * <p>
@@ -858,10 +858,10 @@ public interface MessageProducer extends AutoCloseable {
      * <p>
      * After the <tt>send</tt> method has returned, the application must not attempt to read the headers, properties or body
      * of the <tt>Message</tt> object until the <tt>CompletionListener</tt>'s <tt>onCompletion</tt> or <tt>onException</tt>
-     * method has been called. This is because the JMS provider may be modifying the <tt>Message</tt> object in another
-     * thread during this time. The JMS provider may throw an <tt>JMSException</tt> if the application attempts to access or
+     * method has been called. This is because the Jakarta Messaging provider may be modifying the <tt>Message</tt> object in another
+     * thread during this time. The Jakarta Messaging provider may throw an <tt>JMSException</tt> if the application attempts to access or
      * modify the <tt>Message</tt> object after the <tt>send</tt> method has returned and before the
-     * <tt>CompletionListener</tt> has been invoked. If the JMS provider does not throw an exception then the behaviour is
+     * <tt>CompletionListener</tt> has been invoked. If the Jakarta Messaging provider does not throw an exception then the behaviour is
      * undefined.
      *
      * @param destination the destination to send this message to

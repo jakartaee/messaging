@@ -42,7 +42,7 @@ package javax.jms;
  *
  * <p>
  * If a client needs to receive all the messages published on a topic, including the ones published while the subscriber
- * is inactive, it uses a durable {@code TopicSubscriber}. The JMS provider retains a record of this durable
+ * is inactive, it uses a durable {@code TopicSubscriber}. The Jakarta Messaging provider retains a record of this durable
  * subscription and insures that all messages from the topic's publishers are retained until they are acknowledged by
  * this durable subscriber or they have expired.
  *
@@ -82,7 +82,7 @@ public interface TopicSubscriber extends MessageConsumer {
      *
      * @return this subscriber's {@code Topic}
      *
-     * @exception JMSException if the JMS provider fails to get the topic for this topic subscriber due to some internal
+     * @exception JMSException if the Jakarta Messaging provider fails to get the topic for this topic subscriber due to some internal
      * error.
      */
     Topic getTopic() throws JMSException;
@@ -92,7 +92,7 @@ public interface TopicSubscriber extends MessageConsumer {
      *
      * @return true if locally published messages are being inhibited
      *
-     * @exception JMSException if the JMS provider fails to get the {@code NoLocal} attribute for this topic subscriber due
+     * @exception JMSException if the Jakarta Messaging provider fails to get the {@code NoLocal} attribute for this topic subscriber due
      * to some internal error.
      */
     boolean getNoLocal() throws JMSException;

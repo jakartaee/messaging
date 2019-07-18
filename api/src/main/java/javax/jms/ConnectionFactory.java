@@ -18,27 +18,27 @@ package javax.jms;
 
 /**
  * A {@code ConnectionFactory} object encapsulates a set of connection configuration parameters that has been defined by
- * an administrator. A client uses it to create a connection with a JMS provider.
+ * an administrator. A client uses it to create a connection with a Jakarta Messaging provider.
  *
  * <p>
- * A {@code ConnectionFactory} object is a JMS administered object and supports concurrent use.
+ * A {@code ConnectionFactory} object is a Jakarta Messaging administered object and supports concurrent use.
  *
  * <p>
- * JMS administered objects are objects containing configuration information that are created by an administrator and
- * later used by JMS clients. They make it practical to administer the JMS API in the enterprise.
+ * Jakarta Messaging administered objects are objects containing configuration information that are created by an administrator and
+ * later used by Jakarta Messaging clients. They make it practical to administer the Jakarta Messaging API in the enterprise.
  *
  * <p>
  * Although the interfaces for administered objects do not explicitly depend on the Java Naming and Directory Interface
- * (JNDI) API, the JMS API establishes the convention that JMS clients find administered objects by looking them up in a
+ * (JNDI) API, the Jakarta Messaging API establishes the convention that Jakarta Messaging clients find administered objects by looking them up in a
  * JNDI namespace.
  *
  * <p>
- * An administrator can place an administered object anywhere in a namespace. The JMS API does not define a naming
+ * An administrator can place an administered object anywhere in a namespace. The Jakarta Messaging API does not define a naming
  * policy.
  *
  * <p>
- * It is expected that JMS providers will provide the tools an administrator needs to create and configure administered
- * objects in a JNDI namespace. JMS provider implementations of administered objects should be both
+ * It is expected that Jakarta Messaging providers will provide the tools an administrator needs to create and configure administered
+ * objects in a JNDI namespace. Jakarta Messaging provider implementations of administered objects should be both
  * {@code javax.jndi.Referenceable} and {@code java.io.Serializable} so that they can be stored in all JNDI naming
  * contexts. In addition, it is recommended that these implementations follow the
  * JavaBeans<SUP>TM</SUP> design patterns.
@@ -47,10 +47,10 @@ package javax.jms;
  * This strategy provides several benefits:
  *
  * <ul>
- * <li>It hides provider-specific details from JMS clients.
+ * <li>It hides provider-specific details from Jakarta Messaging clients.
  * <li>It abstracts administrative information into objects in the Java programming language ("Java objects") that are
  * easily organized and administered from a common management console.
- * <li>Since there will be JNDI providers for all popular naming services, this means that JMS providers can deliver one
+ * <li>Since there will be JNDI providers for all popular naming services, this means that Jakarta Messaging providers can deliver one
  * implementation of administered objects that will run everywhere.
  * </ul>
  *
@@ -77,7 +77,7 @@ public interface ConnectionFactory {
      *
      * @return a newly created connection
      *
-     * @exception JMSException if the JMS provider fails to create the connection due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create the connection due to some internal error.
      * @exception JMSSecurityException if client authentication fails due to an invalid user name or password.
      * @since JMS 1.1
      */
@@ -92,7 +92,7 @@ public interface ConnectionFactory {
      *
      * @return a newly created connection
      *
-     * @exception JMSException if the JMS provider fails to create the connection due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create the connection due to some internal error.
      * @exception JMSSecurityException if client authentication fails due to an invalid user name or password.
      * @since JMS 1.1
      */
@@ -136,7 +136,7 @@ public interface ConnectionFactory {
      *
      * @return a newly created JMSContext
      *
-     * @exception JMSRuntimeException if the JMS provider fails to create the JMSContext due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to create the JMSContext due to some internal error.
      * @exception JMSSecurityRuntimeException if client authentication fails due to an invalid user name or password.
      * @since JMS 2.0
      *
@@ -190,7 +190,7 @@ public interface ConnectionFactory {
      *
      * @return a newly created JMSContext
      *
-     * @exception JMSRuntimeException if the JMS provider fails to create the JMSContext due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to create the JMSContext due to some internal error.
      * @exception JMSSecurityRuntimeException if client authentication fails due to an invalid user name or password.
      * @since JMS 2.0
      *
@@ -263,7 +263,7 @@ public interface ConnectionFactory {
      *
      * @return a newly created JMSContext
      *
-     * @exception JMSRuntimeException if the JMS provider fails to create the JMSContext due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to create the JMSContext due to some internal error.
      * @exception JMSSecurityRuntimeException if client authentication fails due to an invalid user name or password.
      * @since JMS 2.0
      *
@@ -337,7 +337,7 @@ public interface ConnectionFactory {
      *
      * @return a newly created JMSContext
      *
-     * @exception JMSRuntimeException if the JMS provider fails to create the JMSContext due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to create the JMSContext due to some internal error.
      * @exception JMSSecurityRuntimeException if client authentication fails due to an invalid user name or password.
      * @since JMS 2.0
      *

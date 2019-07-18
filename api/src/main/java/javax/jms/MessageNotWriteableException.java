@@ -17,7 +17,7 @@
 package javax.jms;
 
 /**
- * This exception must be thrown when a JMS client attempts to write to a read-only message.
+ * This exception must be thrown when a Jakarta Messaging client attempts to write to a read-only message.
  *
  * @version JMS 2.0
  * @since JMS 1.0
@@ -25,7 +25,7 @@ package javax.jms;
 public class MessageNotWriteableException extends JMSException {
 
     /**
-     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Jakarta Messaging 1.1 version
      */
     private static final long serialVersionUID = -4241931174711518830L;
 

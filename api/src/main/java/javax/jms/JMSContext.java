@@ -19,8 +19,8 @@ package javax.jms;
 import java.io.Serializable;
 
 /**
- * A {@code JMSContext} is the main interface in the simplified JMS API introduced for JMS 2.0. This combines in a
- * single object the functionality of two separate objects from the JMS 1.1 API: a {@code Connection} and a
+ * A {@code JMSContext} is the main interface in the simplified Jakarta Messaging API introduced for Jakarta Messaging 2.0. This combines in a
+ * single object the functionality of two separate objects from the Jakarta Messaging 1.1 API: a {@code Connection} and a
  * {@code Session}.
  *
  * <p>
@@ -33,9 +33,9 @@ import java.io.Serializable;
  * receive messages either synchronously or asynchronously.
  *
  * <p>
- * In terms of the JMS 1.1 API a {@code JMSContext} should be thought of as representing both a {@code Connection} and a
+ * In terms of the Jakarta Messaging 1.1 API a {@code JMSContext} should be thought of as representing both a {@code Connection} and a
  * {@code Session}. Although the simplified API removes the need for applications to use those objects, the concepts of
- * connection and session remain important. A connection represents a physical link to the JMS server and a session
+ * connection and session remain important. A connection represents a physical link to the Jakarta Messaging server and a session
  * represents a single-threaded context for sending and receiving messages.
  *
  * <p>
@@ -99,7 +99,7 @@ public interface JMSContext extends AutoCloseable {
      *
      * @return a newly created JMSContext
      *
-     * @exception JMSRuntimeException if the JMS provider fails to create the JMSContext due to
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to create the JMSContext due to
      * <ul>
      * <li>some internal error or
      * <li>because this method is being called in a Java EE web or EJB application.
@@ -132,13 +132,13 @@ public interface JMSContext extends AutoCloseable {
      * Gets the client identifier for the JMSContext's connection.
      *
      * <p>
-     * This value is specific to the JMS provider. It is either preconfigured by an administrator in a
+     * This value is specific to the Jakarta Messaging provider. It is either preconfigured by an administrator in a
      * {@code ConnectionFactory} object or assigned dynamically by the application by calling the {@code setClientID}
      * method.
      *
      * @return the unique client identifier
      *
-     * @exception JMSRuntimeException if the JMS provider fails to return the client ID for the JMSContext's connection due
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to return the client ID for the JMSContext's connection due
      * to some internal error.
      *
      **/
@@ -148,7 +148,7 @@ public interface JMSContext extends AutoCloseable {
      * Sets the client identifier for the JMSContext's connection.
      *
      * <p>
-     * The preferred way to assign a JMS client's client identifier is for it to be configured in a client-specific
+     * The preferred way to assign a Jakarta Messaging client's client identifier is for it to be configured in a client-specific
      * {@code ConnectionFactory} object and transparently assigned to the {@code Connection} object it creates.
      *
      * <p>
@@ -162,11 +162,11 @@ public interface JMSContext extends AutoCloseable {
      *
      * <p>
      * The purpose of the client identifier is to associate the JMSContext's connection and its objects with a state
-     * maintained on behalf of the client by a provider. The only such state identified by the JMS API is that required to
+     * maintained on behalf of the client by a provider. The only such state identified by the Jakarta Messaging API is that required to
      * support durable subscriptions.
      *
      * <p>
-     * If another connection with the same {@code clientID} is already running when this method is called, the JMS provider
+     * If another connection with the same {@code clientID} is already running when this method is called, the Jakarta Messaging provider
      * should detect the duplicate ID and throw an {@code InvalidClientIDException}.
      *
      * <p>
@@ -179,14 +179,14 @@ public interface JMSContext extends AutoCloseable {
      *
      * @param clientID the unique client identifier
      *
-     * @throws InvalidClientIDRuntimeException if the JMS client specifies an invalid or duplicate client ID.
+     * @throws InvalidClientIDRuntimeException if the Jakarta Messaging client specifies an invalid or duplicate client ID.
      * @throws IllegalStateRuntimeException
      * <ul>
-     * <li>if the JMS client attempts to set the client ID for the JMSContext's connection at the wrong time or
+     * <li>if the Jakarta Messaging client attempts to set the client ID for the JMSContext's connection at the wrong time or
      * <li>if the client ID has been administratively configured or
      * <li>if the {@code JMSContext} is container-managed (injected).
      * </ul>
-     * @exception JMSRuntimeException if the JMS provider fails to set the client ID for the the JMSContext's connection for
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to set the client ID for the the JMSContext's connection for
      * one of the following reasons:
      * <ul>
      * <li>an internal error has occurred or
@@ -201,7 +201,7 @@ public interface JMSContext extends AutoCloseable {
      *
      * @return the connection metadata
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the connection metadata
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the connection metadata
      *
      * @see javax.jms.ConnectionMetaData
      */
@@ -214,7 +214,7 @@ public interface JMSContext extends AutoCloseable {
      * @return the {@code ExceptionListener} for the JMSContext's connection, or null if no {@code ExceptionListener} is
      * associated with that connection.
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the {@code ExceptionListener} for the JMSContext's
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the {@code ExceptionListener} for the JMSContext's
      * connection.
      * @see javax.jms.Connection#setExceptionListener
      */
@@ -224,7 +224,7 @@ public interface JMSContext extends AutoCloseable {
      * Sets an exception listener for the JMSContext's connection.
      *
      * <p>
-     * If a JMS provider detects a serious problem with a connection, it informs the connection's {@code ExceptionListener},
+     * If a Jakarta Messaging provider detects a serious problem with a connection, it informs the connection's {@code ExceptionListener},
      * if one has been registered. It does this by calling the listener's {@code onException} method, passing it a
      * {@code JMSRuntimeException} object describing the problem.
      *
@@ -236,7 +236,7 @@ public interface JMSContext extends AutoCloseable {
      * A connection serializes execution of its {@code ExceptionListener}.
      *
      * <p>
-     * A JMS provider should attempt to resolve connection problems itself before it notifies the client of them.
+     * A Jakarta Messaging provider should attempt to resolve connection problems itself before it notifies the client of them.
      *
      * <p>
      * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSRuntimeException} to
@@ -250,7 +250,7 @@ public interface JMSContext extends AutoCloseable {
      *
      * @exception IllegalStateRuntimeException if the {@code JMSContext} is container-managed (injected).
      *
-     * @exception JMSRuntimeException if the JMS provider fails to set the exception listener for one of the following
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to set the exception listener for one of the following
      * reasons:
      * <ul>
      * <li>an internal error has occurred or
@@ -270,7 +270,7 @@ public interface JMSContext extends AutoCloseable {
      *
      * @exception IllegalStateRuntimeException if the {@code JMSContext} is container-managed (injected).
      *
-     * @exception JMSRuntimeException if the JMS provider fails to start message delivery due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to start message delivery due to some internal error.
      *
      * @see javax.jms.JMSContext#stop
      */
@@ -325,7 +325,7 @@ public interface JMSContext extends AutoCloseable {
      * <li>if this method has been called by a <tt>MessageListener</tt> on its own <tt>JMSContext</tt>
      * <li>if the {@code JMSContext} is container-managed (injected).
      * </ul>
-     * @exception JMSRuntimeException if the JMS provider fails to stop message delivery for one of the following reasons:
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to stop message delivery for one of the following reasons:
      * <ul>
      * <li>an internal error has occurred or
      * <li>this method has been called in a Java EE web or EJB application (though it is not guaranteed that an exception is
@@ -388,7 +388,7 @@ public interface JMSContext extends AutoCloseable {
      * return with a message or with null, depending on whether there was a message available at the time of the close. If
      * one or more of the connection's sessions' message listeners is processing a message at the time when connection
      * {@code close} is invoked, all the facilities of the connection and its sessions must remain available to those
-     * listeners until they return control to the JMS provider.
+     * listeners until they return control to the Jakarta Messaging provider.
      *
      * <p>
      * However if the close method is called from a message listener on its own {@code JMSContext}, then it will either fail
@@ -438,7 +438,7 @@ public interface JMSContext extends AutoCloseable {
      * <tt>JMSContext</tt></li>
      * <li>if the {@code JMSContext} is container-managed (injected)</li>
      * </ul>
-     * @exception JMSRuntimeException if the JMS provider fails to close the {@code JMSContext} due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to close the {@code JMSContext} due to some internal error.
      * For example, a failure to release resources or to close a socket connection can cause this exception to be thrown.
      */
     @Override
@@ -457,7 +457,7 @@ public interface JMSContext extends AutoCloseable {
      *
      * <p>
      * When this session mode is used, a client may build up a large number of unacknowledged messages while attempting to
-     * process them. A JMS provider should provide administrators with a way to limit client overrun so that clients are not
+     * process them. A Jakarta Messaging provider should provide administrators with a way to limit client overrun so that clients are not
      * driven to resource exhaustion and ensuing failure when some resource they are using is temporarily blocked.
      *
      * @see javax.jms.Message#acknowledge()
@@ -466,7 +466,7 @@ public interface JMSContext extends AutoCloseable {
 
     /**
      * This session mode instructs the JMSContext's session to lazily acknowledge the delivery of messages. This is likely
-     * to result in the delivery of some duplicate messages if the JMS provider fails, so it should only be used by
+     * to result in the delivery of some duplicate messages if the Jakarta Messaging provider fails, so it should only be used by
      * consumers that can tolerate duplicate messages. Use of this mode can reduce session overhead by minimizing the work
      * the session does to prevent duplicates.
      */
@@ -484,7 +484,7 @@ public interface JMSContext extends AutoCloseable {
      *
      * @return The created {@code BytesMessage} object
      *
-     * @exception JMSRuntimeException if the JMS provider fails to create this message due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to create this message due to some internal error.
      */
     BytesMessage createBytesMessage();
 
@@ -497,17 +497,17 @@ public interface JMSContext extends AutoCloseable {
      * being sent using the {@code JMSContext} used to create it.
      *
      * <p>
-     * The message object returned may be optimised for use with the JMS provider used to create it. However it can be sent
-     * using any JMS provider, not just the JMS provider used to create it.
+     * The message object returned may be optimised for use with the Jakarta Messaging provider used to create it. However it can be sent
+     * using any Jakarta Messaging provider, not just the Jakarta Messaging provider used to create it.
      *
      * @return The created {@code MapMessage} object.
      *
-     * @exception JMSRuntimeException if the JMS provider fails to create this message due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to create this message due to some internal error.
      */
     MapMessage createMapMessage();
 
     /**
-     * Creates a {@code Message} object. The {@code Message} interface is the root interface of all JMS messages. A
+     * Creates a {@code Message} object. The {@code Message} interface is the root interface of all Jakarta Messaging messages. A
      * {@code Message} object holds all the standard message header information. It can be sent when a message containing
      * only header information is sufficient.
      *
@@ -516,12 +516,12 @@ public interface JMSContext extends AutoCloseable {
      * being sent using the {@code JMSContext} used to create it.
      *
      * <p>
-     * The message object returned may be optimised for use with the JMS provider used to create it. However it can be sent
-     * using any JMS provider, not just the JMS provider used to create it.
+     * The message object returned may be optimised for use with the Jakarta Messaging provider used to create it. However it can be sent
+     * using any Jakarta Messaging provider, not just the Jakarta Messaging provider used to create it.
      *
      * @return The created {@code Message} object.
      *
-     * @exception JMSRuntimeException if the JMS provider fails to create this message due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to create this message due to some internal error.
      */
     Message createMessage();
 
@@ -534,12 +534,12 @@ public interface JMSContext extends AutoCloseable {
      * being sent using the {@code JMSContext} used to create it.
      *
      * <p>
-     * The message object returned may be optimised for use with the JMS provider used to create it. However it can be sent
-     * using any JMS provider, not just the JMS provider used to create it.
+     * The message object returned may be optimised for use with the Jakarta Messaging provider used to create it. However it can be sent
+     * using any Jakarta Messaging provider, not just the Jakarta Messaging provider used to create it.
      *
      * @return The created {@code ObjectMessage} object.
      *
-     * @exception JMSRuntimeException if the JMS provider fails to create this message due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to create this message due to some internal error.
      */
     ObjectMessage createObjectMessage();
 
@@ -552,14 +552,14 @@ public interface JMSContext extends AutoCloseable {
      * being sent using the {@code JMSContext} used to create it.
      *
      * <p>
-     * The message object returned may be optimised for use with the JMS provider used to create it. However it can be sent
-     * using any JMS provider, not just the JMS provider used to create it.
+     * The message object returned may be optimised for use with the Jakarta Messaging provider used to create it. However it can be sent
+     * using any Jakarta Messaging provider, not just the Jakarta Messaging provider used to create it.
      *
      * @param object the object to use to initialize this message
      *
      * @return The created {@code ObjectMessage} object.
      *
-     * @exception JMSRuntimeException if the JMS provider fails to create this message due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to create this message due to some internal error.
      */
     ObjectMessage createObjectMessage(Serializable object);
 
@@ -572,12 +572,12 @@ public interface JMSContext extends AutoCloseable {
      * being sent using the {@code JMSContext} used to create it.
      *
      * <p>
-     * The message object returned may be optimised for use with the JMS provider used to create it. However it can be sent
-     * using any JMS provider, not just the JMS provider used to create it.
+     * The message object returned may be optimised for use with the Jakarta Messaging provider used to create it. However it can be sent
+     * using any Jakarta Messaging provider, not just the Jakarta Messaging provider used to create it.
      *
      * @return The created {@code StreamMessage} object.
      *
-     * @exception JMSRuntimeException if the JMS provider fails to create this message due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to create this message due to some internal error.
      */
     StreamMessage createStreamMessage();
 
@@ -590,12 +590,12 @@ public interface JMSContext extends AutoCloseable {
      * being sent using the {@code JMSContext} used to create it.
      *
      * <p>
-     * The message object returned may be optimised for use with the JMS provider used to create it. However it can be sent
-     * using any JMS provider, not just the JMS provider used to create it.
+     * The message object returned may be optimised for use with the Jakarta Messaging provider used to create it. However it can be sent
+     * using any Jakarta Messaging provider, not just the Jakarta Messaging provider used to create it.
      *
      * @return The created {@code TextMessage} object.
      *
-     * @exception JMSRuntimeException if the JMS provider fails to create this message due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to create this message due to some internal error.
      */
     TextMessage createTextMessage();
 
@@ -608,14 +608,14 @@ public interface JMSContext extends AutoCloseable {
      * being sent using the {@code JMSContext} used to create it.
      *
      * <p>
-     * The message object returned may be optimised for use with the JMS provider used to create it. However it can be sent
-     * using any JMS provider, not just the JMS provider used to create it.
+     * The message object returned may be optimised for use with the Jakarta Messaging provider used to create it. However it can be sent
+     * using any Jakarta Messaging provider, not just the Jakarta Messaging provider used to create it.
      *
      * @param text the string used to initialize this message
      *
      * @return The created {@code TextMessage} object.
      *
-     * @exception JMSRuntimeException if the JMS provider fails to create this message due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to create this message due to some internal error.
      */
     TextMessage createTextMessage(String text);
 
@@ -624,7 +624,7 @@ public interface JMSContext extends AutoCloseable {
      *
      * @return true if the session is in transacted mode
      *
-     * @exception JMSRuntimeException if the JMS provider fails to return the transaction mode due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to return the transaction mode due to some internal error.
      */
     boolean getTransacted();
 
@@ -639,7 +639,7 @@ public interface JMSContext extends AutoCloseable {
      *
      * @return the session mode of the JMSContext's session
      *
-     * @exception JMSRuntimeException if the JMS provider fails to return the acknowledgment mode due to some internal
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to return the acknowledgment mode due to some internal
      * error.
      *
      * @see Connection#createSession
@@ -673,7 +673,7 @@ public interface JMSContext extends AutoCloseable {
      * </ul>
      * @exception TransactionRolledBackRuntimeException if the transaction is rolled back due to some internal error during
      * commit.
-     * @exception JMSRuntimeException if the JMS provider fails to commit the transaction due to some internal error
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to commit the transaction due to some internal error
      *
      */
     void commit();
@@ -701,7 +701,7 @@ public interface JMSContext extends AutoCloseable {
      * <tt>JMSContext</tt></li>
      * <li>if the {@code JMSContext} is container-managed (injected)
      * </ul>
-     * @exception JMSRuntimeException if the JMS provider fails to roll back the transaction due to some internal error
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to roll back the transaction due to some internal error
      *
      */
     void rollback();
@@ -733,7 +733,7 @@ public interface JMSContext extends AutoCloseable {
      * <li>if the <tt>JMSContext</tt>'s session is using a transaction
      * <li>if the {@code JMSContext} is container-managed (injected)
      * </ul>
-     * @exception JMSRuntimeException if the JMS provider fails to stop and restart message delivery due to some internal
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to stop and restart message delivery due to some internal
      * error
      */
     void recover();
@@ -808,8 +808,8 @@ public interface JMSContext extends AutoCloseable {
      *
      * <p>
      * Note that this method simply creates an object that encapsulates the name of a queue. It does not create the physical
-     * queue in the JMS provider. JMS does not provide a method to create the physical queue, since this would be specific
-     * to a given JMS provider. Creating a physical queue is provider-specific and is typically an administrative task
+     * queue in the Jakarta Messaging provider. Jakarta Messaging does not provide a method to create the physical queue, since this would be specific
+     * to a given Jakarta Messaging provider. Creating a physical queue is provider-specific and is typically an administrative task
      * performed by an administrator, though some providers may create them automatically when needed. The one exception to
      * this is the creation of a temporary queue, which is done using the {@code createTemporaryQueue} method.
      *
@@ -830,8 +830,8 @@ public interface JMSContext extends AutoCloseable {
      *
      * <p>
      * Note that this method simply creates an object that encapsulates the name of a topic. It does not create the physical
-     * topic in the JMS provider. JMS does not provide a method to create the physical topic, since this would be specific
-     * to a given JMS provider. Creating a physical topic is provider-specific and is typically an administrative task
+     * topic in the Jakarta Messaging provider. Jakarta Messaging does not provide a method to create the physical topic, since this would be specific
+     * to a given Jakarta Messaging provider. Creating a physical topic is provider-specific and is typically an administrative task
      * performed by an administrator, though some providers may create them automatically when needed. The one exception to
      * this is the creation of a temporary topic, which is done using the {@code createTemporaryTopic} method.
      *
@@ -849,7 +849,7 @@ public interface JMSContext extends AutoCloseable {
      *
      * <p>
      * A durable subscription is used by an application which needs to receive all the messages published on a topic,
-     * including the ones published when there is no active consumer associated with it. The JMS provider retains a record
+     * including the ones published when there is no active consumer associated with it. The Jakarta Messaging provider retains a record
      * of this durable subscription and ensures that all messages from the topic's publishers are retained until they are
      * delivered to, and acknowledged by, a consumer on this durable subscription or until they have expired.
      *
@@ -918,7 +918,7 @@ public interface JMSContext extends AutoCloseable {
      *
      * <p>
      * A durable subscription is used by an application which needs to receive all the messages published on a topic,
-     * including the ones published when there is no active consumer associated with it. The JMS provider retains a record
+     * including the ones published when there is no active consumer associated with it. The Jakarta Messaging provider retains a record
      * of this durable subscription and ensures that all messages from the topic's publishers are retained until they are
      * delivered to, and acknowledged by, a consumer on this durable subscription or until they have expired.
      *
@@ -1002,7 +1002,7 @@ public interface JMSContext extends AutoCloseable {
      *
      * <p>
      * A durable subscription is used by an application which needs to receive all the messages published on a topic,
-     * including the ones published when there is no active consumer associated with it. The JMS provider retains a record
+     * including the ones published when there is no active consumer associated with it. The Jakarta Messaging provider retains a record
      * of this durable subscription and ensures that all messages from the topic's publishers are retained until they are
      * delivered to, and acknowledged by, a consumer on this durable subscription or until they have expired.
      *
@@ -1072,7 +1072,7 @@ public interface JMSContext extends AutoCloseable {
      *
      * <p>
      * A durable subscription is used by an application which needs to receive all the messages published on a topic,
-     * including the ones published when there is no active consumer associated with it. The JMS provider retains a record
+     * including the ones published when there is no active consumer associated with it. The Jakarta Messaging provider retains a record
      * of this durable subscription and ensures that all messages from the topic's publishers are retained until they are
      * delivered to, and acknowledged by, a consumer on this durable subscription or until they have expired.
      *
@@ -1336,7 +1336,7 @@ public interface JMSContext extends AutoCloseable {
      * <li>if the {@code JMSContext} is container-managed (injected)
      * </ul>
      *
-     * @exception JMSRuntimeException if the JMS provider fails to acknowledge the messages due to some internal error
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to acknowledge the messages due to some internal error
      *
      * @see javax.jms.Session#CLIENT_ACKNOWLEDGE
      * @see javax.jms.Message#acknowledge

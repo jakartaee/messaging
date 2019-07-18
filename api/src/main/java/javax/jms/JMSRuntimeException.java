@@ -17,7 +17,7 @@
 package javax.jms;
 
 /**
- * This is the root class of all unchecked exceptions in the JMS API.
+ * This is the root class of all unchecked exceptions in the Jakarta Messaging API.
  *
  * <p>
  * In additional to the detailMessage and cause fields inherited from {@code Throwable}, this class also allows a
@@ -30,7 +30,7 @@ package javax.jms;
 public class JMSRuntimeException extends RuntimeException {
 
     /**
-     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Jakarta Messaging 1.1 version
      */
     private static final long serialVersionUID = -5204332229969809982L;
 
