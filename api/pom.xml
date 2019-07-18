@@ -65,7 +65,7 @@
                         <group>
                             <title>Jakarta Messaging API Documentation</title>
                             <packages>
-                                javax.messaging
+                                javax.jms
                             </packages>
                         </group>
                     </groups>

@@ -1,4 +1,4 @@
-# Eclipse Project for Jakarta Messaging
+# Jakarta Messaging
 
 This repository contain the API definition source code for the Jakarta Messaging API. This is used  to generate the official Javadocs.
 
