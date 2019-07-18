@@ -1,6 +1,6 @@
-# Eclipse Project for JMS
+# Eclipse Project for Jakarta Messaging
 
-This repository contain the API definition source code for the JMS API. This is used  to generate the official Javadocs.
+This repository contain the API definition source code for the Jakarta Messaging API. This is used  to generate the official Javadocs.
 
 Web-site details are TBD
 

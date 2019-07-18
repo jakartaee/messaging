@@ -68,7 +68,7 @@ public interface JMSProducer {
      * @throws InvalidDestinationRuntimeException if a client uses this method with an invalid destination.
      * @throws MessageNotWriteableRuntimeException if this {@code JMSProducer} has been configured to set a message
      * property, but the message's properties are read-only
-     * @throws JMSRuntimeException if the JMS provider fails to send the message due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to send the message due to some internal error.
      */
     JMSProducer send(Destination destination, Message message);
 
@@ -82,7 +82,7 @@ public interface JMSProducer {
      * @return this {@code JMSProducer}
      * @throws MessageFormatRuntimeException if an invalid message is specified.
      * @throws InvalidDestinationRuntimeException if a client uses this method with an invalid destination.
-     * @throws JMSRuntimeException if the JMS provider fails to send the message due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to send the message due to some internal error.
      */
     JMSProducer send(Destination destination, String body);
 
@@ -96,7 +96,7 @@ public interface JMSProducer {
      * @return this {@code JMSProducer}
      * @throws MessageFormatRuntimeException if an invalid message is specified.
      * @throws InvalidDestinationRuntimeException if a client uses this method with an invalid destination.
-     * @throws JMSRuntimeException if the JMS provider fails to send the message due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to send the message due to some internal error.
      */
     JMSProducer send(Destination destination, Map<String, Object> body);
 
@@ -110,7 +110,7 @@ public interface JMSProducer {
      * @return this {@code JMSProducer}
      * @throws MessageFormatRuntimeException if an invalid message is specified.
      * @throws InvalidDestinationRuntimeException if a client uses this method with an invalid destination.
-     * @throws JMSRuntimeException if the JMS provider fails to send the message due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to send the message due to some internal error.
      */
     JMSProducer send(Destination destination, byte[] body);
 
@@ -124,7 +124,7 @@ public interface JMSProducer {
      * @return this {@code JMSProducer}
      * @throws MessageFormatRuntimeException if an invalid message is specified.
      * @throws InvalidDestinationRuntimeException if a client uses this method with an invalid destination.
-     * @throws JMSRuntimeException if JMS provider fails to send the message due to some internal error.
+     * @throws JMSRuntimeException if Jakarta Messaging provider fails to send the message due to some internal error.
      */
     JMSProducer send(Destination destination, Serializable body);
 
@@ -132,10 +132,10 @@ public interface JMSProducer {
      * Specifies whether message IDs may be disabled for messages that are sent using this {@code JMSProducer}
      *
      * <p>
-     * Since message IDs take some effort to create and increase a message's size, some JMS providers may be able to
+     * Since message IDs take some effort to create and increase a message's size, some Jakarta Messaging providers may be able to
      * optimise message overhead if they are given a hint that the message ID is not used by an application. By calling this
-     * method, a JMS application enables this potential optimisation for all messages sent using this {@code JMSProducer}.
-     * If the JMS provider accepts this hint, these messages must have the message ID set to null; if the provider ignores
+     * method, a Jakarta Messaging application enables this potential optimisation for all messages sent using this {@code JMSProducer}.
+     * If the Jakarta Messaging provider accepts this hint, these messages must have the message ID set to null; if the provider ignores
      * the hint, the message ID must be set to its normal unique value.
      *
      * <p>
@@ -143,7 +143,7 @@ public interface JMSProducer {
      *
      * @param value indicates whether message IDs may be disabled
      * @return this {@code JMSProducer}
-     * @throws JMSRuntimeException if the JMS provider fails to set message ID to disabled due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to set message ID to disabled due to some internal error.
      *
      * @see javax.jms.JMSProducer#getDisableMessageID
      */
@@ -154,7 +154,7 @@ public interface JMSProducer {
      *
      * @return an indication of whether message IDs are disabled
      *
-     * @throws JMSRuntimeException if the JMS provider fails to determine if message IDs are disabled due to some internal
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to determine if message IDs are disabled due to some internal
      * error.
      *
      * @see javax.jms.JMSProducer#setDisableMessageID
@@ -165,9 +165,9 @@ public interface JMSProducer {
      * Specifies whether message timestamps may be disabled for messages that are sent using this {@code JMSProducer}.
      *
      * <p>
-     * Since timestamps take some effort to create and increase a message's size, some JMS providers may be able to optimise
+     * Since timestamps take some effort to create and increase a message's size, some Jakarta Messaging providers may be able to optimise
      * message overhead if they are given a hint that the timestamp is not used by an application. By calling this method, a
-     * JMS application enables this potential optimisation for all messages sent using this {@code JMSProducer}. If the JMS
+     * Jakarta Messaging application enables this potential optimisation for all messages sent using this {@code JMSProducer}. If the JMS
      * provider accepts this hint, these messages must have the timestamp set to zero; if the provider ignores the hint, the
      * timestamp must be set to its normal value.
      *
@@ -176,7 +176,7 @@ public interface JMSProducer {
      *
      * @param value indicates whether message timestamps may be disabled
      * @return this {@code JMSProducer}
-     * @throws JMSRuntimeException if the JMS provider fails to set timestamps to disabled due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to set timestamps to disabled due to some internal error.
      *
      * @see javax.jms.JMSProducer#getDisableMessageTimestamp
      */
@@ -187,7 +187,7 @@ public interface JMSProducer {
      *
      * @return an indication of whether message timestamps are disabled
      *
-     * @throws JMSRuntimeException if the JMS provider fails to determine if timestamps are disabled due to some internal
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to determine if timestamps are disabled due to some internal
      * error.
      * @see javax.jms.JMSProducer#setDisableMessageTimestamp
      */
@@ -201,7 +201,7 @@ public interface JMSProducer {
      * @param deliveryMode the message delivery mode to be used; legal values are {@code DeliveryMode.NON_PERSISTENT} and
      * {@code DeliveryMode.PERSISTENT}
      * @return this {@code JMSProducer}
-     * @throws JMSRuntimeException if the JMS provider fails to set the delivery mode due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to set the delivery mode due to some internal error.
      *
      * @see javax.jms.JMSProducer#getDeliveryMode
      * @see javax.jms.DeliveryMode#NON_PERSISTENT
@@ -215,7 +215,7 @@ public interface JMSProducer {
      *
      * @return the message delivery mode
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the delivery mode due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the delivery mode due to some internal error.
      *
      * @see javax.jms.JMSProducer#setDeliveryMode
      */
@@ -225,13 +225,13 @@ public interface JMSProducer {
      * Specifies the priority of messages that are sent using this {@code JMSProducer}
      *
      * <p>
-     * The JMS API defines ten levels of priority value, with 0 as the lowest priority and 9 as the highest. Clients should
+     * The Jakarta Messaging API defines ten levels of priority value, with 0 as the lowest priority and 9 as the highest. Clients should
      * consider priorities 0-4 as gradations of normal priority and priorities 5-9 as gradations of expedited priority.
      * Priority is set to 4 by default.
      *
      * @param priority the message priority to be used; must be a value between 0 and 9
      * @return this {@code JMSProducer}
-     * @throws JMSRuntimeException if the JMS provider fails to set the priority due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to set the priority due to some internal error.
      *
      * @see javax.jms.JMSProducer#getPriority
      * @see javax.jms.Message#DEFAULT_PRIORITY
@@ -243,7 +243,7 @@ public interface JMSProducer {
      *
      * @return the message priority
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the priority due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the priority due to some internal error.
      *
      * @see javax.jms.JMSProducer#setPriority
      */
@@ -258,10 +258,10 @@ public interface JMSProducer {
      * sends, this is the time the client sends the message, not the time the transaction is committed.
      *
      * <p>
-     * Clients should not receive messages that have expired; however, JMS does not guarantee that this will not happen.
+     * Clients should not receive messages that have expired; however, Jakarta Messaging does not guarantee that this will not happen.
      *
      * <p>
-     * A JMS provider should do its best to accurately expire messages; however, JMS does not define the accuracy provided.
+     * A Jakarta Messaging provider should do its best to accurately expire messages; however, Jakarta Messaging does not define the accuracy provided.
      * It is not acceptable to simply ignore time-to-live.
      *
      * <p>
@@ -270,7 +270,7 @@ public interface JMSProducer {
      * @param timeToLive the message time to live to be used, in milliseconds; a value of zero means that a message never
      * expires.
      * @return this {@code JMSProducer}
-     * @throws JMSRuntimeException if the JMS provider fails to set the time to live due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to set the time to live due to some internal error.
      *
      * @see javax.jms.JMSProducer#getTimeToLive
      * @see javax.jms.Message#DEFAULT_TIME_TO_LIVE
@@ -281,14 +281,14 @@ public interface JMSProducer {
      * Returns the time to live of messages that are sent using this {@code JMSProducer}.
      *
      * @return the message time to live in milliseconds; a value of zero means that a message never expires.
-     * @throws JMSRuntimeException if the JMS provider fails to get the time to live due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the time to live due to some internal error.
      *
      * @see javax.jms.JMSProducer#setTimeToLive
      */
     long getTimeToLive();
 
     /**
-     * Sets the minimum length of time in milliseconds that must elapse after a message is sent before the JMS provider may
+     * Sets the minimum length of time in milliseconds that must elapse after a message is sent before the Jakarta Messaging provider may
      * deliver the message to a consumer.
      *
      * <p>
@@ -300,7 +300,7 @@ public interface JMSProducer {
      * @param deliveryDelay the delivery delay in milliseconds.
      * @return this {@code JMSProducer}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to set the delivery delay due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to set the delivery delay due to some internal error.
      *
      * @see javax.jms.JMSProducer#getDeliveryDelay
      * @see javax.jms.Message#DEFAULT_DELIVERY_DELAY
@@ -308,12 +308,12 @@ public interface JMSProducer {
     JMSProducer setDeliveryDelay(long deliveryDelay);
 
     /**
-     * Gets the minimum length of time in milliseconds that must elapse after a message is sent before the JMS provider may
+     * Gets the minimum length of time in milliseconds that must elapse after a message is sent before the Jakarta Messaging provider may
      * deliver the message to a consumer.
      *
      * @return the delivery delay in milliseconds.
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the delivery delay due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the delivery delay due to some internal error.
      *
      * @see javax.jms.JMSProducer#setDeliveryDelay
      */
@@ -330,7 +330,7 @@ public interface JMSProducer {
      * a separate thread and the specified <tt>CompletionListener</tt> will be notified when the operation has completed.
      *
      * <p>
-     * When the message has been successfully sent the JMS provider invokes the callback method <tt>onCompletion</tt> on the
+     * When the message has been successfully sent the Jakarta Messaging provider invokes the callback method <tt>onCompletion</tt> on the
      * <tt>CompletionListener</tt> object. Only when that callback has been invoked can the application be sure that the
      * message has been successfully sent with the same degree of confidence as if the send had been synchronous. An
      * application which requires this degree of confidence must therefore wait for the callback to be invoked before
@@ -341,23 +341,23 @@ public interface JMSProducer {
      * implemented.
      *
      * <p>
-     * In some JMS providers, a normal synchronous send involves sending the message to a remote JMS server and then waiting
+     * In some Jakarta Messaging providers, a normal synchronous send involves sending the message to a remote Jakarta Messaging server and then waiting
      * for an acknowledgement to be received before returning. It is expected that such a provider would implement an
-     * asynchronous send by sending the message to the remote JMS server and then returning without waiting for an
-     * acknowledgement. When the acknowledgement is received, the JMS provider would notify the application by invoking the
+     * asynchronous send by sending the message to the remote Jakarta Messaging server and then returning without waiting for an
+     * acknowledgement. When the acknowledgement is received, the Jakarta Messaging provider would notify the application by invoking the
      * <tt>onCompletion</tt> method on the application-specified <tt>CompletionListener</tt> object. If for some reason the
-     * acknowledgement is not received the JMS provider would notify the application by invoking the
+     * acknowledgement is not received the Jakarta Messaging provider would notify the application by invoking the
      * <tt>CompletionListener</tt>'s <tt>onException</tt> method.
      *
      * <p>
-     * In those cases where the JMS specification permits a lower level of reliability, a normal synchronous send might not
+     * In those cases where the Jakarta Messaging specification permits a lower level of reliability, a normal synchronous send might not
      * wait for an acknowledgement. In that case it is expected that an asynchronous send would be similar to a synchronous
-     * send: the JMS provider would send the message to the remote JMS server and then return without waiting for an
-     * acknowledgement. However the JMS provider would still notify the application that the send had completed by invoking
+     * send: the Jakarta Messaging provider would send the message to the remote Jakarta Messaging server and then return without waiting for an
+     * acknowledgement. However the Jakarta Messaging provider would still notify the application that the send had completed by invoking
      * the <tt>onCompletion</tt> method on the application-specified <tt>CompletionListener</tt> object.
      *
      * <p>
-     * It is up to the JMS provider to decide exactly what is performed in the calling thread and what, if anything, is
+     * It is up to the Jakarta Messaging provider to decide exactly what is performed in the calling thread and what, if anything, is
      * performed asynchronously, so long as it satisfies the requirements given below:
      *
      * <p>
@@ -368,14 +368,14 @@ public interface JMSProducer {
      *
      * <p>
      * <b>Exceptions</b>: If an exception is encountered during the call to the <tt>send</tt> method then an appropriate
-     * exception should be thrown in the thread that is calling the <tt>send</tt> method. In this case the JMS provider must
+     * exception should be thrown in the thread that is calling the <tt>send</tt> method. In this case the Jakarta Messaging provider must
      * not invoke the <tt>CompletionListener</tt>'s <tt>onCompletion</tt> or <tt>onException</tt> method. If an exception is
-     * encountered which cannot be thrown in the thread that is calling the <tt>send</tt> method then the JMS provider must
+     * encountered which cannot be thrown in the thread that is calling the <tt>send</tt> method then the Jakarta Messaging provider must
      * call the <tt>CompletionListener</tt>'s <tt>onException</tt> method. In both cases if an exception occurs it is
      * undefined whether or not the message was successfully sent.
      *
      * <p>
-     * <b>Message order</b>: If the same <tt>JMSContext</tt> is used to send multiple messages then JMS message ordering
+     * <b>Message order</b>: If the same <tt>JMSContext</tt> is used to send multiple messages then Jakarta Messaging message ordering
      * requirements must be satisfied. This applies even if a combination of synchronous and asynchronous sends has been
      * performed. The application is not required to wait for an asynchronous send to complete before sending the next
      * message.
@@ -399,8 +399,8 @@ public interface JMSProducer {
      * cause a {@code JMSRuntimeException} to be thrown though this is not guaranteed.
      *
      * <p>
-     * <b>Message headers</b> JMS defines a number of message header fields and message properties which must be set by the
-     * "JMS provider on send". If the send is asynchronous these fields and properties may be accessed on the sending client
+     * <b>Message headers</b> Jakarta Messaging defines a number of message header fields and message properties which must be set by the
+     * "Jakarta Messaging provider on send". If the send is asynchronous these fields and properties may be accessed on the sending client
      * only after the <tt>CompletionListener</tt> has been invoked. If the <tt>CompletionListener</tt>'s
      * <tt>onException</tt> method is called then the state of these message header fields and properties is undefined.
      *
@@ -415,10 +415,10 @@ public interface JMSProducer {
      * application thread might be using the session at the same time.
      *
      * <p>
-     * <b>Use of the <tt>CompletionListener</tt> by the JMS provider</b>: A session will only invoke one
+     * <b>Use of the <tt>CompletionListener</tt> by the Jakarta Messaging provider</b>: A session will only invoke one
      * <tt>CompletionListener</tt> callback method at a time. For a given <tt>JMSContext</tt>, callbacks (both
      * {@code onCompletion} and {@code onException}) will be performed in the same order as the corresponding calls to the
-     * <tt>send</tt> method. A JMS provider must not invoke the <tt>CompletionListener</tt> from the thread that is calling
+     * <tt>send</tt> method. A Jakarta Messaging provider must not invoke the <tt>CompletionListener</tt> from the thread that is calling
      * the <tt>send</tt> method.
      *
      * <p>
@@ -429,10 +429,10 @@ public interface JMSProducer {
      * <p>
      * After the <tt>send</tt> method has returned, the application must not attempt to read the headers, properties or body
      * of the <tt>Message</tt> object until the <tt>CompletionListener</tt>'s <tt>onCompletion</tt> or <tt>onException</tt>
-     * method has been called. This is because the JMS provider may be modifying the <tt>Message</tt> object in another
-     * thread during this time. The JMS provider may throw an <tt>JMSException</tt> if the application attempts to access or
+     * method has been called. This is because the Jakarta Messaging provider may be modifying the <tt>Message</tt> object in another
+     * thread during this time. The Jakarta Messaging provider may throw an <tt>JMSException</tt> if the application attempts to access or
      * modify the <tt>Message</tt> object after the <tt>send</tt> method has returned and before the
-     * <tt>CompletionListener</tt> has been invoked. If the JMS provider does not throw an exception then the behaviour is
+     * <tt>CompletionListener</tt> has been invoked. If the Jakarta Messaging provider does not throw an exception then the behaviour is
      * undefined.
      *
      * @param completionListener If asynchronous send behaviour is required, this should be set to a
@@ -454,7 +454,7 @@ public interface JMSProducer {
      *
      * @return the {@code CompletionListener} or {@code null}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the required information due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the required information due to some internal error.
      *
      * @see javax.jms.JMSProducer#setAsync
      */
@@ -472,7 +472,7 @@ public interface JMSProducer {
      *
      * @return this {@code JMSProducer}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to set the property due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to set the property due to some internal error.
      * @throws IllegalArgumentException if the name is null or if the name is an empty string.
      *
      * @see javax.jms.JMSProducer#getBooleanProperty
@@ -491,7 +491,7 @@ public interface JMSProducer {
      *
      * @return this {@code JMSProducer}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to set the property due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to set the property due to some internal error.
      * @throws IllegalArgumentException if the name is null or if the name is an empty string.
      *
      * @see javax.jms.JMSProducer#getByteProperty
@@ -509,7 +509,7 @@ public interface JMSProducer {
      * @param value the {@code short} property value to set
      *
      * @return this {@code JMSProducer}
-     * @throws JMSRuntimeException if the JMS provider fails to set the property due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to set the property due to some internal error.
      *
      * @throws IllegalArgumentException if the name is null or if the name is an empty string.
      *
@@ -529,7 +529,7 @@ public interface JMSProducer {
      *
      * @return this {@code JMSProducer}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to set the property due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to set the property due to some internal error.
      * @throws IllegalArgumentException if the name is null or if the name is an empty string.
      *
      * @see javax.jms.JMSProducer#getIntProperty
@@ -548,7 +548,7 @@ public interface JMSProducer {
      *
      * @return this {@code JMSProducer}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to set the property due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to set the property due to some internal error.
      * @throws IllegalArgumentException if the name is null or if the name is an empty string.
      *
      * @see javax.jms.JMSProducer#getLongProperty
@@ -567,7 +567,7 @@ public interface JMSProducer {
      *
      * @return this {@code JMSProducer}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to set the property due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to set the property due to some internal error.
      * @throws IllegalArgumentException if the name is null or if the name is an empty string.
      *
      * @see javax.jms.JMSProducer#getFloatProperty
@@ -586,7 +586,7 @@ public interface JMSProducer {
      *
      * @return this {@code JMSProducer}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to set the property due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to set the property due to some internal error.
      * @throws IllegalArgumentException if the name is null or if the name is an empty string.
      *
      * @see javax.jms.JMSProducer#getDoubleProperty
@@ -605,7 +605,7 @@ public interface JMSProducer {
      *
      * @return this {@code JMSProducer}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to set the property due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to set the property due to some internal error.
      * @throws IllegalArgumentException if the name is null or if the name is an empty string.
      *
      * @see javax.jms.JMSProducer#getStringProperty
@@ -628,7 +628,7 @@ public interface JMSProducer {
      *
      * @return this {@code JMSProducer}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to set the property due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to set the property due to some internal error.
      * @throws IllegalArgumentException if the name is null or if the name is an empty string.
      * @throws MessageFormatRuntimeException if the object is invalid
      *
@@ -640,7 +640,7 @@ public interface JMSProducer {
      * Clears any message properties set on this {@code JMSProducer}
      *
      * @return this {@code JMSProducer}
-     * @throws JMSRuntimeException if the JMS provider fails to clear the message properties due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to clear the message properties due to some internal error.
      */
     JMSProducer clearProperties();
 
@@ -651,7 +651,7 @@ public interface JMSProducer {
      *
      * @return true whether the property exists
      *
-     * @throws JMSRuntimeException if the JMS provider fails to determine whether the property exists due to some internal
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to determine whether the property exists due to some internal
      * error.
      */
     boolean propertyExists(String name);
@@ -664,7 +664,7 @@ public interface JMSProducer {
      *
      * @return the property value, converted to a {@code boolean}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the property value due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the property value due to some internal error.
      * @throws MessageFormatRuntimeException if this type conversion is invalid.
      *
      * @see javax.jms.JMSProducer#setProperty(java.lang.String,boolean)
@@ -679,7 +679,7 @@ public interface JMSProducer {
      *
      * @return the property value, converted to a {@code byte}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the property value due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the property value due to some internal error.
      * @throws MessageFormatRuntimeException if this type conversion is invalid.
      *
      * @see javax.jms.JMSProducer#setProperty(java.lang.String,byte)
@@ -694,7 +694,7 @@ public interface JMSProducer {
      *
      * @return the property value, converted to a {@code short}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the property value due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the property value due to some internal error.
      * @throws MessageFormatRuntimeException if this type conversion is invalid.
      *
      * @see javax.jms.JMSProducer#setProperty(java.lang.String,short)
@@ -709,7 +709,7 @@ public interface JMSProducer {
      *
      * @return the property value, converted to a {@code int}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the property value due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the property value due to some internal error.
      * @throws MessageFormatRuntimeException if this type conversion is invalid.
      *
      * @see javax.jms.JMSProducer#setProperty(java.lang.String,int)
@@ -724,7 +724,7 @@ public interface JMSProducer {
      *
      * @return the property value, converted to a {@code long}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the property value due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the property value due to some internal error.
      * @throws MessageFormatRuntimeException if this type conversion is invalid.
      *
      * @see javax.jms.JMSProducer#setProperty(java.lang.String,long)
@@ -739,7 +739,7 @@ public interface JMSProducer {
      *
      * @return the property value, converted to a {@code float}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the property value due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the property value due to some internal error.
      * @throws MessageFormatRuntimeException if this type conversion is invalid.
      *
      * @see javax.jms.JMSProducer#setProperty(java.lang.String,float)
@@ -754,7 +754,7 @@ public interface JMSProducer {
      *
      * @return the property value, converted to a {@code double}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the property value due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the property value due to some internal error.
      * @throws MessageFormatRuntimeException if this type conversion is invalid.
      *
      * @see javax.jms.JMSProducer#setProperty(java.lang.String,double)
@@ -770,7 +770,7 @@ public interface JMSProducer {
      * @return the property value, converted to a {@code boolean}; if there is no property by this name, a null value is
      * returned
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the property value due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the property value due to some internal error.
      * @throws MessageFormatRuntimeException if this type conversion is invalid.
      *
      * @see javax.jms.JMSProducer#setProperty(java.lang.String,String)
@@ -792,7 +792,7 @@ public interface JMSProducer {
      * was set as an {@code int}, an {@code Integer} is returned); if there is no property by this name, a null value is
      * returned
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the property value due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the property value due to some internal error.
      *
      * @see javax.jms.JMSProducer#setProperty(java.lang.String,java.lang.Object)
      */
@@ -803,7 +803,7 @@ public interface JMSProducer {
      * JMSProducer.
      *
      * <p>
-     * Note that JMS standard header fields are not considered properties and are not returned in this Set.
+     * Note that Jakarta Messaging standard header fields are not considered properties and are not returned in this Set.
      *
      * <p>
      * The set is backed by the {@code JMSProducer}, so changes to the map are reflected in the set. However the set may not
@@ -814,7 +814,7 @@ public interface JMSProducer {
      * @return a {@code Set} containing the names of all the message properties that have been set on this
      * {@code JMSProducer}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the property names due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the property names due to some internal error.
      *
      * @see java.util.Collections#unmodifiableSet
      */
@@ -832,8 +832,8 @@ public interface JMSProducer {
      * {@code JMSProducer}.
      *
      * <p>
-     * If a provider supports the native concept of correlation ID, a JMS client may need to assign specific
-     * {@code JMSCorrelationID} values to match those expected by native messaging clients. JMS providers without native
+     * If a provider supports the native concept of correlation ID, a Jakarta Messaging client may need to assign specific
+     * {@code JMSCorrelationID} values to match those expected by native messaging clients. Jakarta Messaging providers without native
      * correlation ID values are not required to support this method and its corresponding get method; their implementation
      * may throw a {@code java.lang.UnsupportedOperationException}.
      *
@@ -844,7 +844,7 @@ public interface JMSProducer {
      *
      * @return this {@code JMSProducer}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to set the correlation ID due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to set the correlation ID due to some internal error.
      *
      * @see javax.jms.JMSProducer#setJMSCorrelationID(String)
      * @see javax.jms.JMSProducer#getJMSCorrelationID()
@@ -861,7 +861,7 @@ public interface JMSProducer {
      *
      * @return the correlation ID as an array of bytes
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the correlation ID due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the correlation ID due to some internal error.
      *
      * @see javax.jms.JMSProducer#setJMSCorrelationID(String)
      * @see javax.jms.JMSProducer#getJMSCorrelationID()
@@ -889,7 +889,7 @@ public interface JMSProducer {
      * </ul>
      *
      * <p>
-     * Since each message sent by a JMS provider is assigned a message ID value, it is convenient to link messages via
+     * Since each message sent by a Jakarta Messaging provider is assigned a message ID value, it is convenient to link messages via
      * message ID. All message ID values must start with the {@code 'ID:'} prefix.
      *
      * <p>
@@ -899,16 +899,16 @@ public interface JMSProducer {
      * provider-generated message ID values.
      *
      * <p>
-     * If a provider supports the native concept of correlation ID, a JMS client may need to assign specific
-     * {@code JMSCorrelationID} values to match those expected by clients that do not use the JMS API. A {@code byte[]}
-     * value is used for this purpose. JMS providers without native correlation ID values are not required to support
+     * If a provider supports the native concept of correlation ID, a Jakarta Messaging client may need to assign specific
+     * {@code JMSCorrelationID} values to match those expected by clients that do not use the Jakarta Messaging API. A {@code byte[]}
+     * value is used for this purpose. Jakarta Messaging providers without native correlation ID values are not required to support
      * {@code byte[]} values. The use of a {@code byte[]} value for {@code JMSCorrelationID} is non-portable.
      *
      * @param correlationID the message ID of a message being referred to
      *
      * @return this {@code JMSProducer}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to set the correlation ID due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to set the correlation ID due to some internal error.
      *
      * @see javax.jms.JMSProducer#getJMSCorrelationID()
      * @see javax.jms.JMSProducer#getJMSCorrelationIDAsBytes()
@@ -925,7 +925,7 @@ public interface JMSProducer {
      *
      * @return the correlation ID of a message as a {@code String}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the correlation ID due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the correlation ID due to some internal error.
      *
      * @see javax.jms.JMSProducer#setJMSCorrelationID(String)
      * @see javax.jms.JMSProducer#getJMSCorrelationIDAsBytes()
@@ -941,29 +941,29 @@ public interface JMSProducer {
      * This will override any {@code JMSType} header value that is already set on the message being sent.
      *
      * <p>
-     * Some JMS providers use a message repository that contains the definitions of messages sent by applications. The
+     * Some Jakarta Messaging providers use a message repository that contains the definitions of messages sent by applications. The
      * {@code JMSType} header field may reference a message's definition in the provider's repository.
      *
      * <p>
-     * The JMS API does not define a standard message definition repository, nor does it define a naming policy for the
+     * The Jakarta Messaging API does not define a standard message definition repository, nor does it define a naming policy for the
      * definitions it contains.
      *
      * <p>
      * Some messaging systems require that a message type definition for each application message be created and that each
-     * message specify its type. In order to work with such JMS providers, JMS clients should assign a value to
+     * message specify its type. In order to work with such Jakarta Messaging providers, Jakarta Messaging clients should assign a value to
      * {@code JMSType}, whether the application makes use of it or not. This ensures that the field is properly set for
      * those providers that require it.
      *
      * <p>
-     * To ensure portability, JMS clients should use symbolic values for {@code JMSType} that can be configured at
+     * To ensure portability, Jakarta Messaging clients should use symbolic values for {@code JMSType} that can be configured at
      * installation time to the values defined in the current provider's message repository. If string literals are used,
-     * they may not be valid type names for some JMS providers.
+     * they may not be valid type names for some Jakarta Messaging providers.
      *
      * @param type the message type
      *
      * @return this {@code JMSProducer}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to set the message type due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to set the message type due to some internal error.
      *
      * @see javax.jms.JMSProducer#getJMSType()
      */
@@ -974,7 +974,7 @@ public interface JMSProducer {
      *
      * @return the message type
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the message type due to some internal error.
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the message type due to some internal error.
      *
      * @see javax.jms.JMSProducer#setJMSType(String)
      */
@@ -1007,7 +1007,7 @@ public interface JMSProducer {
      *
      * @return this {@code JMSProducer}
      *
-     * @throws JMSRuntimeException if the JMS provider fails to set the {@code JMSReplyTo} destination due to some internal
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to set the {@code JMSReplyTo} destination due to some internal
      * error.
      *
      * @see javax.jms.JMSProducer#getJMSReplyTo()
@@ -1019,7 +1019,7 @@ public interface JMSProducer {
      *
      * @return {@code Destination} the {@code JMSReplyTo} header value
      *
-     * @throws JMSRuntimeException if the JMS provider fails to get the {@code JMSReplyTo} destination due to some internal
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to get the {@code JMSReplyTo} destination due to some internal
      * error.
      *
      * @see javax.jms.JMSProducer#setJMSReplyTo(Destination)

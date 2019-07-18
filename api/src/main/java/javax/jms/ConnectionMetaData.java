@@ -27,65 +27,65 @@ import java.util.Enumeration;
 public interface ConnectionMetaData {
 
     /**
-     * Gets the JMS API version.
+     * Gets the Jakarta Messaging API version.
      *
-     * @return the JMS API version
+     * @return the Jakarta Messaging API version
      *
-     * @exception JMSException if the JMS provider fails to retrieve the metadata due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to retrieve the metadata due to some internal error.
      */
     String getJMSVersion() throws JMSException;
 
     /**
-     * Gets the JMS major version number.
+     * Gets the Jakarta Messaging major version number.
      *
-     * @return the JMS API major version number
+     * @return the Jakarta Messaging API major version number
      *
-     * @exception JMSException if the JMS provider fails to retrieve the metadata due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to retrieve the metadata due to some internal error.
      */
     int getJMSMajorVersion() throws JMSException;
 
     /**
-     * Gets the JMS minor version number.
+     * Gets the Jakarta Messaging minor version number.
      *
-     * @return the JMS API minor version number
+     * @return the Jakarta Messaging API minor version number
      *
-     * @exception JMSException if the JMS provider fails to retrieve the metadata due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to retrieve the metadata due to some internal error.
      */
     int getJMSMinorVersion() throws JMSException;
 
     /**
-     * Gets the JMS provider name.
+     * Gets the Jakarta Messaging provider name.
      *
-     * @return the JMS provider name
+     * @return the Jakarta Messaging provider name
      *
-     * @exception JMSException if the JMS provider fails to retrieve the metadata due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to retrieve the metadata due to some internal error.
      */
     String getJMSProviderName() throws JMSException;
 
     /**
-     * Gets the JMS provider version.
+     * Gets the Jakarta Messaging provider version.
      *
-     * @return the JMS provider version
+     * @return the Jakarta Messaging provider version
      *
-     * @exception JMSException if the JMS provider fails to retrieve the metadata due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to retrieve the metadata due to some internal error.
      */
     String getProviderVersion() throws JMSException;
 
     /**
-     * Gets the JMS provider major version number.
+     * Gets the Jakarta Messaging provider major version number.
      *
-     * @return the JMS provider major version number
+     * @return the Jakarta Messaging provider major version number
      *
-     * @exception JMSException if the JMS provider fails to retrieve the metadata due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to retrieve the metadata due to some internal error.
      */
     int getProviderMajorVersion() throws JMSException;
 
     /**
-     * Gets the JMS provider minor version number.
+     * Gets the Jakarta Messaging provider minor version number.
      *
-     * @return the JMS provider minor version number
+     * @return the Jakarta Messaging provider minor version number
      *
-     * @exception JMSException if the JMS provider fails to retrieve the metadata due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to retrieve the metadata due to some internal error.
      */
     int getProviderMinorVersion() throws JMSException;
 
@@ -94,7 +94,7 @@ public interface ConnectionMetaData {
      *
      * @return an Enumeration of JMSX property names
      *
-     * @exception JMSException if the JMS provider fails to retrieve the metadata due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to retrieve the metadata due to some internal error.
      */
     Enumeration getJMSXPropertyNames() throws JMSException;
 }

@@ -20,7 +20,7 @@ import java.io.Serializable;
 
 /**
  * A {@code Session} object is a single-threaded context for producing and consuming messages. Although it may allocate
- * provider resources outside the Java virtual machine (JVM), it is considered a lightweight JMS object.
+ * provider resources outside the Java virtual machine (JVM), it is considered a lightweight Jakarta Messaging object.
  *
  * <p>
  * A session serves several purposes:
@@ -83,17 +83,17 @@ import java.io.Serializable;
  *
  * <p>
  * The Java Transaction Service (JTS) or some other transaction monitor may be used to combine a session's transaction
- * with transactions on other resources (databases, other JMS sessions, etc.). Since Java distributed transactions are
+ * with transactions on other resources (databases, other Jakarta Messaging sessions, etc.). Since Java distributed transactions are
  * controlled via the Java Transaction API (JTA), use of the session's {@code commit} and {@code rollback} methods in
  * this context is prohibited.
  *
  * <p>
- * The JMS API does not require support for JTA; however, it does define how a provider supplies this support.
+ * The Jakarta Messaging API does not require support for JTA; however, it does define how a provider supplies this support.
  *
  * <p>
- * Although it is also possible for a JMS client to handle distributed transactions directly, it is unlikely that many
- * JMS clients will do this. Support for JTA in the JMS API is targeted at systems vendors who will be integrating the
- * JMS API into their application server products.
+ * Although it is also possible for a Jakarta Messaging client to handle distributed transactions directly, it is unlikely that many
+ * Jakarta Messaging clients will do this. Support for JTA in the Jakarta Messaging API is targeted at systems vendors who will be integrating the
+ * Jakarta Messaging API into their application server products.
  *
  * @see javax.jms.QueueSession
  * @see javax.jms.TopicSession
@@ -117,7 +117,7 @@ public interface Session extends Runnable, AutoCloseable {
      *
      * <p>
      * When client acknowledgment mode is used, a client may build up a large number of unacknowledged messages while
-     * attempting to process them. A JMS provider should provide administrators with a way to limit client overrun so that
+     * attempting to process them. A Jakarta Messaging provider should provide administrators with a way to limit client overrun so that
      * clients are not driven to resource exhaustion and ensuing failure when some resource they are using is temporarily
      * blocked.
      *
@@ -127,7 +127,7 @@ public interface Session extends Runnable, AutoCloseable {
 
     /**
      * This acknowledgment mode instructs the session to lazily acknowledge the delivery of messages. This is likely to
-     * result in the delivery of some duplicate messages if the JMS provider fails, so it should only be used by consumers
+     * result in the delivery of some duplicate messages if the Jakarta Messaging provider fails, so it should only be used by consumers
      * that can tolerate duplicate messages. Use of this mode can reduce session overhead by minimizing the work the session
      * does to prevent duplicates.
      */
@@ -156,12 +156,12 @@ public interface Session extends Runnable, AutoCloseable {
      * being sent using the {@code JMSContext} used to create it.
      *
      * <p>
-     * The message object returned may be optimised for use with the JMS provider used to create it. However it can be sent
-     * using any JMS provider, not just the JMS provider used to create it.
+     * The message object returned may be optimised for use with the Jakarta Messaging provider used to create it. However it can be sent
+     * using any Jakarta Messaging provider, not just the Jakarta Messaging provider used to create it.
      *
      * @return A {@code BytesMessage} object.
      *
-     * @exception JMSException if the JMS provider fails to create this message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create this message due to some internal error.
      */
     BytesMessage createBytesMessage() throws JMSException;
 
@@ -174,17 +174,17 @@ public interface Session extends Runnable, AutoCloseable {
      * being sent using the {@code JMSContext} used to create it.
      *
      * <p>
-     * The message object returned may be optimised for use with the JMS provider used to create it. However it can be sent
-     * using any JMS provider, not just the JMS provider used to create it.
+     * The message object returned may be optimised for use with the Jakarta Messaging provider used to create it. However it can be sent
+     * using any Jakarta Messaging provider, not just the Jakarta Messaging provider used to create it.
      *
      * @return A {@code MapMessage} object.
      *
-     * @exception JMSException if the JMS provider fails to create this message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create this message due to some internal error.
      */
     MapMessage createMapMessage() throws JMSException;
 
     /**
-     * Creates a {@code Message} object. The {@code Message} interface is the root interface of all JMS messages. A
+     * Creates a {@code Message} object. The {@code Message} interface is the root interface of all Jakarta Messaging messages. A
      * {@code Message} object holds all the standard message header information. It can be sent when a message containing
      * only header information is sufficient.
      *
@@ -193,12 +193,12 @@ public interface Session extends Runnable, AutoCloseable {
      * being sent using the {@code JMSContext} used to create it.
      *
      * <p>
-     * The message object returned may be optimised for use with the JMS provider used to create it. However it can be sent
-     * using any JMS provider, not just the JMS provider used to create it.
+     * The message object returned may be optimised for use with the Jakarta Messaging provider used to create it. However it can be sent
+     * using any Jakarta Messaging provider, not just the Jakarta Messaging provider used to create it.
      *
      * @return A {@code Message} object.
      *
-     * @exception JMSException if the JMS provider fails to create this message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create this message due to some internal error.
      */
     Message createMessage() throws JMSException;
 
@@ -211,12 +211,12 @@ public interface Session extends Runnable, AutoCloseable {
      * being sent using the {@code JMSContext} used to create it.
      *
      * <p>
-     * The message object returned may be optimised for use with the JMS provider used to create it. However it can be sent
-     * using any JMS provider, not just the JMS provider used to create it.
+     * The message object returned may be optimised for use with the Jakarta Messaging provider used to create it. However it can be sent
+     * using any Jakarta Messaging provider, not just the Jakarta Messaging provider used to create it.
      *
      * @return A {@code ObjectMessage} object.
      *
-     * @exception JMSException if the JMS provider fails to create this message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create this message due to some internal error.
      */
     ObjectMessage createObjectMessage() throws JMSException;
 
@@ -229,14 +229,14 @@ public interface Session extends Runnable, AutoCloseable {
      * being sent using the {@code JMSContext} used to create it.
      *
      * <p>
-     * The message object returned may be optimised for use with the JMS provider used to create it. However it can be sent
-     * using any JMS provider, not just the JMS provider used to create it.
+     * The message object returned may be optimised for use with the Jakarta Messaging provider used to create it. However it can be sent
+     * using any Jakarta Messaging provider, not just the Jakarta Messaging provider used to create it.
      *
      * @param object the object to use to initialize this message
      *
      * @return A {@code ObjectMessage} object.
      *
-     * @exception JMSException if the JMS provider fails to create this message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create this message due to some internal error.
      */
     ObjectMessage createObjectMessage(Serializable object) throws JMSException;
 
@@ -249,12 +249,12 @@ public interface Session extends Runnable, AutoCloseable {
      * being sent using the {@code JMSContext} used to create it.
      *
      * <p>
-     * The message object returned may be optimised for use with the JMS provider used to create it. However it can be sent
-     * using any JMS provider, not just the JMS provider used to create it.
+     * The message object returned may be optimised for use with the Jakarta Messaging provider used to create it. However it can be sent
+     * using any Jakarta Messaging provider, not just the Jakarta Messaging provider used to create it.
      *
      * @return A {@code StreamMessage} object.
      *
-     * @exception JMSException if the JMS provider fails to create this message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create this message due to some internal error.
      */
     StreamMessage createStreamMessage() throws JMSException;
 
@@ -267,12 +267,12 @@ public interface Session extends Runnable, AutoCloseable {
      * being sent using the {@code JMSContext} used to create it.
      *
      * <p>
-     * The message object returned may be optimised for use with the JMS provider used to create it. However it can be sent
-     * using any JMS provider, not just the JMS provider used to create it.
+     * The message object returned may be optimised for use with the Jakarta Messaging provider used to create it. However it can be sent
+     * using any Jakarta Messaging provider, not just the Jakarta Messaging provider used to create it.
      *
      * @return A {@code TextMessage} object.
      *
-     * @exception JMSException if the JMS provider fails to create this message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create this message due to some internal error.
      */
     TextMessage createTextMessage() throws JMSException;
 
@@ -285,14 +285,14 @@ public interface Session extends Runnable, AutoCloseable {
      * being sent using the {@code JMSContext} used to create it.
      *
      * <p>
-     * The message object returned may be optimised for use with the JMS provider used to create it. However it can be sent
-     * using any JMS provider, not just the JMS provider used to create it.
+     * The message object returned may be optimised for use with the Jakarta Messaging provider used to create it. However it can be sent
+     * using any Jakarta Messaging provider, not just the Jakarta Messaging provider used to create it.
      *
      * @param text the string used to initialize this message
      *
      * @return A {@code TextMessage} object.
      *
-     * @exception JMSException if the JMS provider fails to create this message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create this message due to some internal error.
      */
     TextMessage createTextMessage(String text) throws JMSException;
 
@@ -301,7 +301,7 @@ public interface Session extends Runnable, AutoCloseable {
      *
      * @return true if the session is in transacted mode
      *
-     * @exception JMSException if the JMS provider fails to return the transaction mode due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to return the transaction mode due to some internal error.
      */
     boolean getTransacted() throws JMSException;
 
@@ -312,7 +312,7 @@ public interface Session extends Runnable, AutoCloseable {
      * @return If the session is not transacted, returns the current acknowledgement mode for the session. If the session is
      * transacted, returns SESSION_TRANSACTED.
      *
-     * @exception JMSException if the JMS provider fails to return the acknowledgment mode due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to return the acknowledgment mode due to some internal error.
      *
      * @see Connection#createSession
      *
@@ -337,7 +337,7 @@ public interface Session extends Runnable, AutoCloseable {
      * <li>the session is not using a local transaction
      * <li>this method has been called by a <tt>CompletionListener</tt> callback method on its own <tt>Session</tt></li>
      * </ul>
-     * @exception JMSException if the JMS provider fails to commit the transaction due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to commit the transaction due to some internal error.
      * @exception TransactionRolledBackException if the transaction is rolled back due to some internal error during commit.
      */
     void commit() throws JMSException;
@@ -359,7 +359,7 @@ public interface Session extends Runnable, AutoCloseable {
      * <li>the session is not using a local transaction
      * <li>this method has been called by a <tt>CompletionListener</tt> callback method on its own <tt>Session</tt></li>
      * </ul>
-     * @exception JMSException if the JMS provider fails to roll back the transaction due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to roll back the transaction due to some internal error.
      */
     void rollback() throws JMSException;
 
@@ -419,7 +419,7 @@ public interface Session extends Runnable, AutoCloseable {
      *                </tt> on its own <tt>Session</tt></li>
      * <li>this method has been called by a <tt>CompletionListener</tt> callback method on its own <tt>Session</tt></li>
      * </ul>
-     * @exception JMSException if the JMS provider fails to close the session due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to close the session due to some internal error.
      */
     @Override
     void close() throws JMSException;
@@ -441,7 +441,7 @@ public interface Session extends Runnable, AutoCloseable {
      * Redelivered messages do not have to be delivered in exactly their original delivery order.
      * </ul>
      *
-     * @exception JMSException if the JMS provider fails to stop and restart message delivery due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to stop and restart message delivery due to some internal error.
      * @exception IllegalStateException if the method is called by a transacted session.
      */
     void recover() throws JMSException;
@@ -455,7 +455,7 @@ public interface Session extends Runnable, AutoCloseable {
      *
      * @return the distinguished message listener associated with this session
      *
-     * @exception JMSException if the JMS provider fails to get the session's distinguished message listener for one of the
+     * @exception JMSException if the Jakarta Messaging provider fails to get the session's distinguished message listener for one of the
      * following reasons:
      * <ul>
      * <li>an internal error has occurred
@@ -477,14 +477,14 @@ public interface Session extends Runnable, AutoCloseable {
      * all forms of sending messages are still supported.
      *
      * <p>
-     * This is an expert facility not used by ordinary JMS clients.
+     * This is an expert facility not used by ordinary Jakarta Messaging clients.
      * <p>
      * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSException} to be
      * thrown though this is not guaranteed.
      *
      * @param listener the message listener to associate with this session
      *
-     * @exception JMSException if the JMS provider fails to set the session's distinguished message listener for one of the
+     * @exception JMSException if the Jakarta Messaging provider fails to set the session's distinguished message listener for one of the
      * following reasons:
      * <ul>
      * <li>an internal error has occurred
@@ -499,7 +499,7 @@ public interface Session extends Runnable, AutoCloseable {
     void setMessageListener(MessageListener listener) throws JMSException;
 
     /**
-     * Optional operation, intended to be used only by Application Servers, not by ordinary JMS clients.
+     * Optional operation, intended to be used only by Application Servers, not by ordinary Jakarta Messaging clients.
      *
      * <p>
      * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSRuntimeException} to
@@ -709,8 +709,8 @@ public interface Session extends Runnable, AutoCloseable {
      *
      * <p>
      * Note that this method simply creates an object that encapsulates the name of a queue. It does not create the physical
-     * queue in the JMS provider. JMS does not provide a method to create the physical queue, since this would be specific
-     * to a given JMS provider. Creating a physical queue is provider-specific and is typically an administrative task
+     * queue in the Jakarta Messaging provider. Jakarta Messaging does not provide a method to create the physical queue, since this would be specific
+     * to a given Jakarta Messaging provider. Creating a physical queue is provider-specific and is typically an administrative task
      * performed by an administrator, though some providers may create them automatically when needed. The one exception to
      * this is the creation of a temporary queue, which is done using the {@code createTemporaryQueue} method.
      *
@@ -732,8 +732,8 @@ public interface Session extends Runnable, AutoCloseable {
      *
      * <p>
      * Note that this method simply creates an object that encapsulates the name of a topic. It does not create the physical
-     * topic in the JMS provider. JMS does not provide a method to create the physical topic, since this would be specific
-     * to a given JMS provider. Creating a physical topic is provider-specific and is typically an administrative task
+     * topic in the Jakarta Messaging provider. Jakarta Messaging does not provide a method to create the physical topic, since this would be specific
+     * to a given Jakarta Messaging provider. Creating a physical topic is provider-specific and is typically an administrative task
      * performed by an administrator, though some providers may create them automatically when needed. The one exception to
      * this is the creation of a temporary topic, which is done using the {@code createTemporaryTopic} method.
      *
@@ -752,7 +752,7 @@ public interface Session extends Runnable, AutoCloseable {
      *
      * <p>
      * A durable subscription is used by an application which needs to receive all the messages published on a topic,
-     * including the ones published when there is no active consumer associated with it. The JMS provider retains a record
+     * including the ones published when there is no active consumer associated with it. The Jakarta Messaging provider retains a record
      * of this durable subscription and ensures that all messages from the topic's publishers are retained until they are
      * delivered to, and acknowledged by, a consumer on this durable subscription or until they have expired.
      *
@@ -825,7 +825,7 @@ public interface Session extends Runnable, AutoCloseable {
      *
      * <p>
      * A durable subscription is used by an application which needs to receive all the messages published on a topic,
-     * including the ones published when there is no active consumer associated with it. The JMS provider retains a record
+     * including the ones published when there is no active consumer associated with it. The Jakarta Messaging provider retains a record
      * of this durable subscription and ensures that all messages from the topic's publishers are retained until they are
      * delivered to, and acknowledged by, a consumer on this durable subscription or until they have expired.
      *
@@ -909,7 +909,7 @@ public interface Session extends Runnable, AutoCloseable {
      *
      * <p>
      * A durable subscription is used by an application which needs to receive all the messages published on a topic,
-     * including the ones published when there is no active consumer associated with it. The JMS provider retains a record
+     * including the ones published when there is no active consumer associated with it. The Jakarta Messaging provider retains a record
      * of this durable subscription and ensures that all messages from the topic's publishers are retained until they are
      * delivered to, and acknowledged by, a consumer on this durable subscription or until they have expired.
      *
@@ -982,7 +982,7 @@ public interface Session extends Runnable, AutoCloseable {
      *
      * <p>
      * A durable subscription is used by an application which needs to receive all the messages published on a topic,
-     * including the ones published when there is no active consumer associated with it. The JMS provider retains a record
+     * including the ones published when there is no active consumer associated with it. The Jakarta Messaging provider retains a record
      * of this durable subscription and ensures that all messages from the topic's publishers are retained until they are
      * delivered to, and acknowledged by, a consumer on this durable subscription or until they have expired.
      *
@@ -1066,7 +1066,7 @@ public interface Session extends Runnable, AutoCloseable {
      *
      * <p>
      * A durable subscription is used by an application which needs to receive all the messages published on a topic,
-     * including the ones published when there is no active consumer associated with it. The JMS provider retains a record
+     * including the ones published when there is no active consumer associated with it. The Jakarta Messaging provider retains a record
      * of this durable subscription and ensures that all messages from the topic's publishers are retained until they are
      * delivered to, and acknowledged by, a consumer on this durable subscription or until they have expired.
      *
@@ -1132,7 +1132,7 @@ public interface Session extends Runnable, AutoCloseable {
      *
      * <p>
      * A durable subscription is used by an application which needs to receive all the messages published on a topic,
-     * including the ones published when there is no active consumer associated with it. The JMS provider retains a record
+     * including the ones published when there is no active consumer associated with it. The Jakarta Messaging provider retains a record
      * of this durable subscription and ensures that all messages from the topic's publishers are retained until they are
      * delivered to, and acknowledged by, a consumer on this durable subscription or until they have expired.
      *

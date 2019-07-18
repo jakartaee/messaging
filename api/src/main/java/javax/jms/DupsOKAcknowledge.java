@@ -24,7 +24,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * This annotation specifies that a callback method on a JMS message-driven bean must receive messages with an
+ * This annotation specifies that a callback method on a Jakarta Messaging message-driven bean must receive messages with an
  * acknowledgement type of dups-ok-acknowledge. It may be specified either on the callback method or on the
  * message-driven bean class.
  *

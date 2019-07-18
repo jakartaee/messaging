@@ -20,7 +20,7 @@ package javax.jms;
  * A {@code Queue} object encapsulates a provider-specific queue name.
  *
  * <p>
- * It is the way a client specifies the identity of a queue to JMS API methods. For those methods that use a
+ * It is the way a client specifies the identity of a queue to Jakarta Messaging API methods. For those methods that use a
  * {@code Destination} as a parameter, a {@code Queue} object used as an argument. For example, a queue can be used to
  * create a {@code MessageConsumer} and a {@code MessageProducer} by calling:
  *
@@ -31,7 +31,7 @@ package javax.jms;
  *
  * <p>
  * The actual length of time messages are held by a queue and the consequences of resource overflow are not defined by
- * the JMS API.
+ * the Jakarta Messaging API.
  *
  * @see Session#createConsumer(Destination)
  * @see Session#createProducer(Destination)
@@ -51,7 +51,7 @@ public interface Queue extends Destination {
      *
      * @return the queue name
      *
-     * @exception JMSException if the JMS provider implementation of {@code Queue} fails to return the queue name due to
+     * @exception JMSException if the Jakarta Messaging provider implementation of {@code Queue} fails to return the queue name due to
      * some internal error.
      */
     String getQueueName() throws JMSException;

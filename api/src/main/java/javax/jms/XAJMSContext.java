@@ -19,7 +19,7 @@ package javax.jms;
 import javax.transaction.xa.XAResource;
 
 /**
- * The {@code XAJMSContext} interface extends the capability of {@code JMSContext} by adding access to a JMS provider's
+ * The {@code XAJMSContext} interface extends the capability of {@code JMSContext} by adding access to a Jakarta Messaging provider's
  * support for the Java Transaction API (JTA) (optional). This support takes the form of a
  * {@code javax.transaction.xa.XAResource} object. The functionality of this object closely resembles that defined by
  * the standard X/Open XA Resource interface.
@@ -31,8 +31,8 @@ import javax.transaction.xa.XAResource;
  *
  * <p>
  * An {@code XAResource} provides some fairly sophisticated facilities for interleaving work on multiple transactions,
- * recovering a list of transactions in progress, and so on. A JTA aware JMS provider must fully implement this
- * functionality. This could be done by using the services of a database that supports XA, or a JMS provider may choose
+ * recovering a list of transactions in progress, and so on. A JTA aware Jakarta Messaging provider must fully implement this
+ * functionality. This could be done by using the services of a database that supports XA, or a Jakarta Messaging provider may choose
  * to implement this functionality from scratch.
  *
  * <p>
@@ -40,8 +40,8 @@ import javax.transaction.xa.XAResource;
  * application server controls the transaction management of the underlying {@code XAJMSContext}.
  *
  * <p>
- * The {@code XAJMSContext} interface is optional. JMS providers are not required to support this interface. This
- * interface is for use by JMS providers to support transactional environments. Client programs are strongly encouraged
+ * The {@code XAJMSContext} interface is optional. Jakarta Messaging providers are not required to support this interface. This
+ * interface is for use by Jakarta Messaging providers to support transactional environments. Client programs are strongly encouraged
  * to use the transactional support available in their environment, rather than use these XA interfaces directly.
  *
  * @version JMS 2.0

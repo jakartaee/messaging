@@ -23,7 +23,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * An application may use this annotation to specify a JMS {@code
+ * An application may use this annotation to specify a Jakarta Messaging {@code
  * ConnectionFactory} resource that it requires in its operational environment. This provides information that can be
  * used at the application's deployment to provision the required resource and allows an application to be deployed into
  * a Java EE environment with more minimal administrative configuration.
@@ -44,32 +44,32 @@ import java.lang.annotation.Target;
 public @interface JMSConnectionFactoryDefinition {
 
     /**
-     * Description of this JMS connection factory.
+     * Description of this Jakarta Messaging connection factory.
      *
-     * @return The description of this JMS connection factory.
+     * @return The description of this Jakarta Messaging connection factory.
      */
     String description() default "";
 
     /**
-     * JNDI name of the JMS connection factory being defined.
+     * JNDI name of the Jakarta Messaging connection factory being defined.
      *
-     * @return The JNDI name of the JMS connection factory being defined.
+     * @return The JNDI name of the Jakarta Messaging connection factory being defined.
      */
     String name();
 
     /**
-     * Fully qualified name of the JMS connection factory interface. Permitted values are
+     * Fully qualified name of the Jakarta Messaging connection factory interface. Permitted values are
      * {@code javax.jms.ConnectionFactory} or {@code javax.jms.QueueConnectionFactory} or
      * {@code javax.jms.TopicConnectionFactory}. If not specified then {@code javax.jms.ConnectionFactory} will be used.
      *
-     * @return The fully qualified name of the JMS connection factory interface.
+     * @return The fully qualified name of the Jakarta Messaging connection factory interface.
      */
     String interfaceName() default "javax.jms.ConnectionFactory";
 
     /**
-     * Fully-qualified name of the JMS connection factory implementation class. Ignored if a resource adapter is used.
+     * Fully-qualified name of the Jakarta Messaging connection factory implementation class. Ignored if a resource adapter is used.
      *
-     * @return The fully-qualified name of the JMS connection factory implementation class.
+     * @return The fully-qualified name of the Jakarta Messaging connection factory implementation class.
      */
     String className() default "";
 
@@ -103,13 +103,13 @@ public @interface JMSConnectionFactoryDefinition {
     String clientId() default "";
 
     /**
-     * JMS connection factory property. This may be a vendor-specific property or a less commonly used
+     * Jakarta Messaging connection factory property. This may be a vendor-specific property or a less commonly used
      * {@code ConnectionFactory} property.
      *
      * <p>
      * Properties are specified using the format: <i>propertyName=propertyValue</i> with one property per array element.
      *
-     * @return The JMS connection factory property.
+     * @return The Jakarta Messaging connection factory property.
      */
     String[] properties() default {};
 

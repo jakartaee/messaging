@@ -51,7 +51,7 @@ public class TopicRequestor {
      * @param session the {@code TopicSession} the topic belongs to
      * @param topic the topic to perform the request/reply call on
      *
-     * @exception JMSException if the JMS provider fails to create the {@code TopicRequestor} due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create the {@code TopicRequestor} due to some internal error.
      * @exception InvalidDestinationException if an invalid topic is specified.
      */
 
@@ -74,7 +74,7 @@ public class TopicRequestor {
      *
      * @return the reply message
      *
-     * @exception JMSException if the JMS provider fails to complete the request due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to complete the request due to some internal error.
      */
     public Message request(Message message) throws JMSException {
         message.setJMSReplyTo(tempTopic);
@@ -93,7 +93,7 @@ public class TopicRequestor {
      * <p>
      * Note that this method closes the {@code TopicSession} object passed to the {@code TopicRequestor} constructor.
      *
-     * @exception JMSException if the JMS provider fails to close the {@code TopicRequestor} due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to close the {@code TopicRequestor} due to some internal error.
      */
     public void close() throws JMSException {
         // publisher and consumer created by constructor are implicitly closed.

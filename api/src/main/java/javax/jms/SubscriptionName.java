@@ -23,7 +23,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * This annotation specifies that a callback method on a JMS message-driven bean that has been configured to consume
+ * This annotation specifies that a callback method on a Jakarta Messaging message-driven bean that has been configured to consume
  * messages from a topic using a durable subscription must use the specified durable subscription name.
  *
  * <p>

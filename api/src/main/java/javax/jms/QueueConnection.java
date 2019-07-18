@@ -17,7 +17,7 @@
 package javax.jms;
 
 /**
- * A {@code QueueConnection} object is an active connection to a point-to-point JMS provider. A client uses a
+ * A {@code QueueConnection} object is an active connection to a point-to-point Jakarta Messaging provider. A client uses a
  * {@code QueueConnection} object to create one or more {@code QueueSession} objects for producing and consuming
  * messages.
  *
@@ -84,11 +84,11 @@ public interface QueueConnection extends Connection {
      * or {@code Session.DUPS_OK_ACKNOWLEDGE} then the session will be non-transacted and messages will be acknowledged
      * according to the value of {@code acknowledgeMode}.
      * <li>If {@code transacted} is set to false and {@code acknowledgeMode} is set to {@code JMSContext.CLIENT_ACKNOWLEDGE}
-     * then the JMS provider is recommended to ignore the specified parameters and instead provide a non-transacted,
-     * auto-acknowledged session. However the JMS provider may alternatively provide a non-transacted session with client
+     * then the Jakarta Messaging provider is recommended to ignore the specified parameters and instead provide a non-transacted,
+     * auto-acknowledged session. However the Jakarta Messaging provider may alternatively provide a non-transacted session with client
      * acknowledgement.
-     * <li>If {@code transacted} is set to true, then the JMS provider is recommended to ignore the specified parameters and
-     * instead provide a non-transacted, auto-acknowledged session. However the JMS provider may alternatively provide a
+     * <li>If {@code transacted} is set to true, then the Jakarta Messaging provider is recommended to ignore the specified parameters and
+     * instead provide a non-transacted, auto-acknowledged session. However the Jakarta Messaging provider may alternatively provide a
      * local transacted session.
      * <li>Applications are recommended to set {@code transacted} to false and {@code acknowledgeMode} to
      * {@code JMSContext.AUTO_ACKNOWLEDGE} or {@code Session.DUPS_OK_ACKNOWLEDGE} since since applications which set
@@ -127,7 +127,7 @@ public interface QueueConnection extends Connection {
 
     /**
      * Creates a connection consumer for this connection (optional operation). This is an expert facility not used by
-     * regular JMS clients.
+     * regular Jakarta Messaging clients.
      *
      * @param queue the queue to access
      * @param messageSelector only messages with properties matching the message selector expression are delivered. A value

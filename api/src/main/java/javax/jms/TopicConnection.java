@@ -17,7 +17,7 @@
 package javax.jms;
 
 /**
- * A {@code TopicConnection} object is an active connection to a publish/subscribe JMS provider. A client uses a
+ * A {@code TopicConnection} object is an active connection to a publish/subscribe Jakarta Messaging provider. A client uses a
  * {@code TopicConnection} object to create one or more {@code TopicSession} objects for producing and consuming
  * messages.
  *
@@ -78,11 +78,11 @@ public interface TopicConnection extends Connection {
      * or {@code Session.DUPS_OK_ACKNOWLEDGE} then the session will be non-transacted and messages will be acknowledged
      * according to the value of {@code acknowledgeMode}.
      * <li>If {@code transacted} is set to false and {@code acknowledgeMode} is set to {@code JMSContext.CLIENT_ACKNOWLEDGE}
-     * then the JMS provider is recommended to ignore the specified parameters and instead provide a non-transacted,
-     * auto-acknowledged session. However the JMS provider may alternatively provide a non-transacted session with client
+     * then the Jakarta Messaging provider is recommended to ignore the specified parameters and instead provide a non-transacted,
+     * auto-acknowledged session. However the Jakarta Messaging provider may alternatively provide a non-transacted session with client
      * acknowledgement.
-     * <li>If {@code transacted} is set to true, then the JMS provider is recommended to ignore the specified parameters and
-     * instead provide a non-transacted, auto-acknowledged session. However the JMS provider may alternatively provide a
+     * <li>If {@code transacted} is set to true, then the Jakarta Messaging provider is recommended to ignore the specified parameters and
+     * instead provide a non-transacted, auto-acknowledged session. However the Jakarta Messaging provider may alternatively provide a
      * local transacted session.
      * <li>Applications are recommended to set {@code transacted} to false and {@code acknowledgeMode} to
      * {@code JMSContext.AUTO_ACKNOWLEDGE} or {@code Session.DUPS_OK_ACKNOWLEDGE} since since applications which set
@@ -120,7 +120,7 @@ public interface TopicConnection extends Connection {
 
     /**
      * Creates a connection consumer for this connection (optional operation). This is an expert facility not used by
-     * regular JMS clients.
+     * regular Jakarta Messaging clients.
      *
      * @param topic the topic to access
      * @param messageSelector only messages with properties matching the message selector expression are delivered. A value
@@ -141,7 +141,7 @@ public interface TopicConnection extends Connection {
 
     /**
      * Create a durable connection consumer for this connection (optional operation). This is an expert facility not used by
-     * regular JMS clients.
+     * regular Jakarta Messaging clients.
      *
      * @param topic the topic to access
      * @param subscriptionName durable subscription name

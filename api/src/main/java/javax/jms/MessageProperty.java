@@ -24,7 +24,7 @@ import java.lang.annotation.Target;
 
 /**
  * Specifies that a callback method parameter must be set to the specified message property value. This annotation may
- * be applied to parameters on a callback method on a JMS message-driven bean that has been annotated with the
+ * be applied to parameters on a callback method on a Jakarta Messaging message-driven bean that has been annotated with the
  * {@code JMSQueueListener} , {@code JMSNonDurableTopicListener} or {@code JMSDurableTopicListener} annotation.
  *
  * <p>

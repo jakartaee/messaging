@@ -60,7 +60,7 @@ public interface MessageConsumer extends AutoCloseable {
      * @return this message consumer's message selector, or null if no message selector exists for the message consumer
      * (that is, if the message selector was not set or was set to null or the empty string)
      *
-     * @exception JMSException if the JMS provider fails to get the message selector due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the message selector due to some internal error.
      */
     String getMessageSelector() throws JMSException;
 
@@ -73,7 +73,7 @@ public interface MessageConsumer extends AutoCloseable {
      *
      * @return the {@code MessageConsumer}'s {@code MessageListener}, or null if one was not set
      *
-     * @exception JMSException if the JMS provider fails to get the {@code MessageListener} for one of the following
+     * @exception JMSException if the Jakarta Messaging provider fails to get the {@code MessageListener} for one of the following
      * reasons:
      * <ul>
      * <li>an internal error has occurred or
@@ -102,7 +102,7 @@ public interface MessageConsumer extends AutoCloseable {
      *
      * @param listener the listener to which the messages are to be delivered
      *
-     * @exception JMSException if the JMS provider fails to set the {@code MessageConsumer}'s {@code MessageListener} for
+     * @exception JMSException if the Jakarta Messaging provider fails to set the {@code MessageConsumer}'s {@code MessageListener} for
      * one of the following reasons:
      * <ul>
      * <li>an internal error has occurred or
@@ -125,7 +125,7 @@ public interface MessageConsumer extends AutoCloseable {
      *
      * @return the next message produced for this message consumer, or null if this message consumer is concurrently closed
      *
-     * @exception JMSException if the JMS provider fails to receive the next message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to receive the next message due to some internal error.
      *
      */
     Message receive() throws JMSException;
@@ -142,7 +142,7 @@ public interface MessageConsumer extends AutoCloseable {
      * @return the next message produced for this message consumer, or null if the timeout expires or this message consumer
      * is concurrently closed
      *
-     * @exception JMSException if the JMS provider fails to receive the next message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to receive the next message due to some internal error.
      */
     Message receive(long timeout) throws JMSException;
 
@@ -151,7 +151,7 @@ public interface MessageConsumer extends AutoCloseable {
      *
      * @return the next message produced for this message consumer, or null if one is not available
      *
-     * @exception JMSException if the JMS provider fails to receive the next message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to receive the next message due to some internal error.
      */
     Message receiveNoWait() throws JMSException;
 
@@ -178,7 +178,7 @@ public interface MessageConsumer extends AutoCloseable {
      * <p>
      * This method is the only {@code MessageConsumer} method that can be called concurrently.
      *
-     * @exception JMSException if the JMS provider fails to close the consumer due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to close the consumer due to some internal error.
      */
     @Override
     void close() throws JMSException;

@@ -69,7 +69,7 @@ public interface TopicPublisher extends MessageProducer {
      *
      * @return this publisher's topic
      *
-     * @exception JMSException if the JMS provider fails to get the topic for this {@code TopicPublisher} due to some
+     * @exception JMSException if the Jakarta Messaging provider fails to get the topic for this {@code TopicPublisher} due to some
      * internal error.
      */
     Topic getTopic() throws JMSException;
@@ -80,7 +80,7 @@ public interface TopicPublisher extends MessageProducer {
      *
      * @param message the message to publish
      *
-     * @exception JMSException if the JMS provider fails to publish the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to publish the message due to some internal error.
      * @exception MessageFormatException if an invalid message is specified.
      * @exception InvalidDestinationException if a client uses this method with a {@code TopicPublisher} with an invalid
      * topic.
@@ -101,7 +101,7 @@ public interface TopicPublisher extends MessageProducer {
      * @param priority the priority for this message
      * @param timeToLive the message's lifetime (in milliseconds)
      *
-     * @exception JMSException if the JMS provider fails to publish the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to publish the message due to some internal error.
      * @exception MessageFormatException if an invalid message is specified.
      * @exception InvalidDestinationException if a client uses this method with a {@code TopicPublisher} with an invalid
      * topic.
@@ -115,13 +115,13 @@ public interface TopicPublisher extends MessageProducer {
      * delivery mode, priority, and time to live.
      *
      * <p>
-     * Typically, a message producer is assigned a topic at creation time; however, the JMS API also supports unidentified
+     * Typically, a message producer is assigned a topic at creation time; however, the Jakarta Messaging API also supports unidentified
      * message producers, which require that the topic be supplied every time a message is published.
      *
      * @param topic the topic to publish this message to
      * @param message the message to publish
      *
-     * @exception JMSException if the JMS provider fails to publish the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to publish the message due to some internal error.
      * @exception MessageFormatException if an invalid message is specified.
      * @exception InvalidDestinationException if a client uses this method with an invalid topic.
      *
@@ -136,7 +136,7 @@ public interface TopicPublisher extends MessageProducer {
      * live.
      *
      * <p>
-     * Typically, a message producer is assigned a topic at creation time; however, the JMS API also supports unidentified
+     * Typically, a message producer is assigned a topic at creation time; however, the Jakarta Messaging API also supports unidentified
      * message producers, which require that the topic be supplied every time a message is published.
      *
      * @param topic the topic to publish this message to
@@ -145,7 +145,7 @@ public interface TopicPublisher extends MessageProducer {
      * @param priority the priority for this message
      * @param timeToLive the message's lifetime (in milliseconds)
      *
-     * @exception JMSException if the JMS provider fails to publish the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to publish the message due to some internal error.
      * @exception MessageFormatException if an invalid message is specified.
      * @exception InvalidDestinationException if a client uses this method with an invalid topic.
      */

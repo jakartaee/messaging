@@ -63,7 +63,7 @@ public interface QueueSender extends MessageProducer {
      *
      * @return this sender's queue
      *
-     * @exception JMSException if the JMS provider fails to get the queue for this {@code QueueSender} due to some internal
+     * @exception JMSException if the Jakarta Messaging provider fails to get the queue for this {@code QueueSender} due to some internal
      * error.
      */
     Queue getQueue() throws JMSException;
@@ -73,7 +73,7 @@ public interface QueueSender extends MessageProducer {
      *
      * @param message the message to send
      *
-     * @exception JMSException if the JMS provider fails to send the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to send the message due to some internal error.
      * @exception MessageFormatException if an invalid message is specified.
      * @exception InvalidDestinationException if a client uses this method with a {@code QueueSender} with an invalid queue.
      * @exception java.lang.UnsupportedOperationException if a client uses this method with a {@code QueueSender} that did
@@ -94,7 +94,7 @@ public interface QueueSender extends MessageProducer {
      * @param priority the priority for this message
      * @param timeToLive the message's lifetime (in milliseconds)
      *
-     * @exception JMSException if the JMS provider fails to send the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to send the message due to some internal error.
      * @exception MessageFormatException if an invalid message is specified.
      * @exception InvalidDestinationException if a client uses this method with a {@code QueueSender} with an invalid queue.
      * @exception java.lang.UnsupportedOperationException if a client uses this method with a {@code QueueSender} that did
@@ -108,13 +108,13 @@ public interface QueueSender extends MessageProducer {
      * mode, priority, and time to live.
      *
      * <p>
-     * Typically, a message producer is assigned a queue at creation time; however, the JMS API also supports unidentified
+     * Typically, a message producer is assigned a queue at creation time; however, the Jakarta Messaging API also supports unidentified
      * message producers, which require that the queue be supplied every time a message is sent.
      *
      * @param queue the queue to send this message to
      * @param message the message to send
      *
-     * @exception JMSException if the JMS provider fails to send the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to send the message due to some internal error.
      * @exception MessageFormatException if an invalid message is specified.
      * @exception InvalidDestinationException if a client uses this method with an invalid queue.
      *
@@ -128,7 +128,7 @@ public interface QueueSender extends MessageProducer {
      * Sends a message to a queue for an unidentified message producer, specifying delivery mode, priority and time to live.
      *
      * <p>
-     * Typically, a message producer is assigned a queue at creation time; however, the JMS API also supports unidentified
+     * Typically, a message producer is assigned a queue at creation time; however, the Jakarta Messaging API also supports unidentified
      * message producers, which require that the queue be supplied every time a message is sent.
      *
      * @param queue the queue to send this message to
@@ -137,7 +137,7 @@ public interface QueueSender extends MessageProducer {
      * @param priority the priority for this message
      * @param timeToLive the message's lifetime (in milliseconds)
      *
-     * @exception JMSException if the JMS provider fails to send the message due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to send the message due to some internal error.
      * @exception MessageFormatException if an invalid message is specified.
      * @exception InvalidDestinationException if a client uses this method with an invalid queue.
      */

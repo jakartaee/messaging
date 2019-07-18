@@ -62,7 +62,7 @@ public interface QueueSession extends Session {
      *
      * <p>
      * Note that this method is not for creating the physical queue. The physical creation of queues is an administrative
-     * task and is not to be initiated by the JMS API. The one exception is the creation of temporary queues, which is
+     * task and is not to be initiated by the Jakarta Messaging API. The one exception is the creation of temporary queues, which is
      * accomplished with the {@code createTemporaryQueue} method.
      *
      * @param queueName the name of this {@code Queue}

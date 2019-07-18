@@ -18,7 +18,7 @@ package javax.jms;
 
 /**
  * A client uses a {@code QueueConnectionFactory} object to create {@code QueueConnection} objects with a point-to-point
- * JMS provider.
+ * Jakarta Messaging provider.
  *
  * <p>
  * {@code QueueConnectionFactory} can be used to create a {@code QueueConnection}, from which specialized queue-related
@@ -41,7 +41,7 @@ public interface QueueConnectionFactory extends ConnectionFactory {
      *
      * @return a newly created queue connection
      *
-     * @exception JMSException if the JMS provider fails to create the queue connection due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create the queue connection due to some internal error.
      * @exception JMSSecurityException if client authentication fails due to an invalid user name or password.
      */
     QueueConnection createQueueConnection() throws JMSException;
@@ -55,7 +55,7 @@ public interface QueueConnectionFactory extends ConnectionFactory {
      *
      * @return a newly created queue connection
      *
-     * @exception JMSException if the JMS provider fails to create the queue connection due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create the queue connection due to some internal error.
      * @exception JMSSecurityException if client authentication fails due to an invalid user name or password.
      */
     QueueConnection createQueueConnection(String userName, String password) throws JMSException;

@@ -20,8 +20,8 @@ package javax.jms;
  * An {@code XATopicConnectionFactory} provides the same create options as a {@code TopicConnectionFactory} (optional).
  *
  * <p>
- * The {@code XATopicConnectionFactory} interface is optional. JMS providers are not required to support this interface.
- * This interface is for use by JMS providers to support transactional environments. Client programs are strongly
+ * The {@code XATopicConnectionFactory} interface is optional. Jakarta Messaging providers are not required to support this interface.
+ * This interface is for use by Jakarta Messaging providers to support transactional environments. Client programs are strongly
  * encouraged to use the transactional support available in their environment, rather than use these XA interfaces
  * directly.
  *
@@ -39,7 +39,7 @@ public interface XATopicConnectionFactory extends XAConnectionFactory, TopicConn
      *
      * @return a newly created XA topic connection
      *
-     * @exception JMSException if the JMS provider fails to create an XA topic connection due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create an XA topic connection due to some internal error.
      * @exception JMSSecurityException if client authentication fails due to an invalid user name or password.
      */
     XATopicConnection createXATopicConnection() throws JMSException;
@@ -53,7 +53,7 @@ public interface XATopicConnectionFactory extends XAConnectionFactory, TopicConn
      *
      * @return a newly created XA topic connection
      *
-     * @exception JMSException if the JMS provider fails to create an XA topic connection due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create an XA topic connection due to some internal error.
      * @exception JMSSecurityException if client authentication fails due to an invalid user name or password.
      */
     XATopicConnection createXATopicConnection(String userName, String password) throws JMSException;

@@ -45,7 +45,7 @@ public interface ConnectionConsumer {
      *
      * @return the server session pool used by this connection consumer
      *
-     * @exception JMSException if the JMS provider fails to get the server session pool associated with this consumer due to
+     * @exception JMSException if the Jakarta Messaging provider fails to get the server session pool associated with this consumer due to
      * some internal error.
      */
     ServerSessionPool getServerSessionPool() throws JMSException;
@@ -58,7 +58,7 @@ public interface ConnectionConsumer {
      * clients should close these resources when they are not needed. Relying on garbage collection to eventually reclaim
      * these resources may not be timely enough.
      *
-     * @exception JMSException if the JMS provider fails to release resources on behalf of the connection consumer or fails
+     * @exception JMSException if the Jakarta Messaging provider fails to release resources on behalf of the connection consumer or fails
      * to close the connection consumer.
      */
 
