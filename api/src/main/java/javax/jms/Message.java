@@ -19,7 +19,7 @@ package javax.jms;
 import java.util.Enumeration;
 
 /**
- * The {@code Message} interface is the root interface of all JMS messages. It defines the message header and the
+ * The {@code Message} interface is the root interface of all Jakarta Messaging messages. It defines the message header and the
  * {@code acknowledge} method used for all messages.
  *
  * <p>
@@ -29,10 +29,10 @@ import java.util.Enumeration;
  *
  * <p>
  * Within this general form, the definition of a message varies significantly across products. It would be quite
- * difficult for the JMS API to support all of these message models.
+ * difficult for the Jakarta Messaging API to support all of these message models.
  *
  * <p>
- * With this in mind, the JMS message model has the following goals:
+ * With this in mind, the Jakarta Messaging message model has the following goals:
  * <ul>
  * <li>Provide a single, unified message API
  * <li>Provide an API suitable for creating messages that match the format used by provider-native messaging
@@ -44,20 +44,20 @@ import java.util.Enumeration;
  * </ul>
  *
  * <p>
- * JMS messages are composed of the following parts:
+ * Jakarta Messaging messages are composed of the following parts:
  * <ul>
  * <li>Header - All messages support the same set of header fields. Header fields contain values used by both clients
  * and providers to identify and route messages.
  * <li>Properties - Each message contains a built-in facility for supporting application-defined property values.
  * Properties provide an efficient mechanism for supporting application-defined message filtering.
- * <li>Body - The JMS API defines several types of message body, which cover the majority of messaging styles currently
+ * <li>Body - The Jakarta Messaging API defines several types of message body, which cover the majority of messaging styles currently
  * in use.
  * </ul>
  *
  * <h3>Message Bodies</h3>
  *
  * <p>
- * The JMS API defines five types of message body:
+ * The Jakarta Messaging API defines five types of message body:
  * <ul>
  * <li>Stream - A {@code StreamMessage} object's message body contains a stream of primitive values in the Java
  * programming language ("Java primitives"). It is filled and read sequentially.
@@ -69,7 +69,7 @@ import java.util.Enumeration;
  * <li>Object - An {@code ObjectMessage} object's message body contains a {@code Serializable} Java object.
  * <li>Bytes - A {@code BytesMessage} object's message body contains a stream of uninterpreted bytes. This message type
  * is for literally encoding a body to match an existing message format. In many cases, it is possible to use one of the
- * other body types, which are easier to use. Although the JMS API allows the use of message properties with byte
+ * other body types, which are easier to use. Although the Jakarta Messaging API allows the use of message properties with byte
  * messages, they are typically not used, since the inclusion of properties may affect the format.
  * </ul>
  *
@@ -90,7 +90,7 @@ import java.util.Enumeration;
  * this provides a mechanism for adding application-specific header fields to a message.
  *
  * <p>
- * Properties allow an application, via message selectors, to have a JMS provider select, or filter, messages on its
+ * Properties allow an application, via message selectors, to have a Jakarta Messaging provider select, or filter, messages on its
  * behalf using application-specific criteria.
  *
  * <p>
@@ -109,8 +109,8 @@ import java.util.Enumeration;
  * are distinct from properties. Header fields are never in read-only mode.
  *
  * <p>
- * A property value may duplicate a value in a message's body, or it may not. Although JMS does not define a policy for
- * what should or should not be made a property, application developers should note that JMS providers will likely
+ * A property value may duplicate a value in a message's body, or it may not. Although Jakarta Messaging does not define a policy for
+ * what should or should not be made a property, application developers should note that Jakarta Messaging providers will likely
  * handle data in a message's body more efficiently than data in a message's properties. For best performance,
  * applications should use message properties only when they need to customize a message's header. The primary reason
  * for doing this is to support customized message selection.
@@ -138,7 +138,7 @@ import java.util.Enumeration;
  * </pre>
  *
  * <p>
- * In addition to the type-specific set/get methods for properties, JMS provides the {@code setObjectProperty} and
+ * In addition to the type-specific set/get methods for properties, Jakarta Messaging provides the {@code setObjectProperty} and
  * {@code getObjectProperty} methods. These support the same set of property types using the objectified primitive
  * values. Their purpose is to allow the decision of property type to made at execution time rather than at compile
  * time. They support the same property value conversions.
@@ -167,9 +167,9 @@ import java.util.Enumeration;
  * must be treated as calling the primitive's corresponding {@code valueOf(String)} conversion method with a null value.
  *
  * <p>
- * The JMS API reserves the {@code JMSX} property name prefix for JMS defined properties. The full set of these
+ * The Jakarta Messaging API reserves the {@code JMSX} property name prefix for Jakarta Messaging defined properties. The full set of these
  * properties is defined in the Java Message Service specification. The specification also defines whether support for
- * each property is mandatory or optional. New JMS defined properties may be added in later versions of the JMS API. The
+ * each property is mandatory or optional. New Jakarta Messaging defined properties may be added in later versions of the Jakarta Messaging API. The
  * {@code String[] ConnectionMetaData.getJMSXPropertyNames} method returns the names of the JMSX properties supported by
  * a connection.
  *
@@ -189,22 +189,22 @@ import java.util.Enumeration;
  * are undefined.
  *
  * <p>
- * The JMS API reserves the <code>JMS_<I>vendor_name</I></code> property name prefix for provider-specific properties.
- * Each provider defines its own value for <code><I>vendor_name</I></code>. This is the mechanism a JMS provider uses to
- * make its special per-message services available to a JMS client.
+ * The Jakarta Messaging API reserves the <code>JMS_<I>vendor_name</I></code> property name prefix for provider-specific properties.
+ * Each provider defines its own value for <code><I>vendor_name</I></code>. This is the mechanism a Jakarta Messaging provider uses to
+ * make its special per-message services available to a Jakarta Messaging client.
  *
  * <p>
- * The purpose of provider-specific properties is to provide special features needed to integrate JMS clients with
- * provider-native clients in a single JMS application. They should not be used for messaging between JMS clients.
+ * The purpose of provider-specific properties is to provide special features needed to integrate Jakarta Messaging clients with
+ * provider-native clients in a single Jakarta Messaging application. They should not be used for messaging between Jakarta Messaging clients.
  *
- * <h3>Provider Implementations of JMS Message Interfaces</h3>
+ * <h3>Provider Implementations of Jakarta Messaging Message Interfaces</h3>
  *
  * <p>
- * The JMS API provides a set of message interfaces that define the JMS message model. It does not provide
+ * The Jakarta Messaging API provides a set of message interfaces that define the Jakarta Messaging message model. It does not provide
  * implementations of these interfaces.
  *
  * <p>
- * Each JMS provider supplies a set of message factories with its {@code Session} object for creating instances of
+ * Each Jakarta Messaging provider supplies a set of message factories with its {@code Session} object for creating instances of
  * messages. This allows a provider to use message implementations tailored to its specific needs.
  *
  * <p>
@@ -219,7 +219,7 @@ import java.util.Enumeration;
  * <h3>Message Selectors</h3>
  *
  * <p>
- * A JMS message selector allows a client to specify, by header field references and property references, the messages
+ * A Jakarta Messaging message selector allows a client to specify, by header field references and property references, the messages
  * it is interested in. Only messages whose header and property values match the selector are delivered. What it means
  * for a message not to be delivered depends on the {@code MessageConsumer} being used (see
  * {@link javax.jms.QueueReceiver QueueReceiver} and {@link javax.jms.TopicSubscriber TopicSubscriber}).
@@ -292,7 +292,7 @@ import java.util.Enumeration;
  *        <li>Message header field references are restricted to {@code JMSDeliveryMode}, {@code JMSPriority},
  *            {@code JMSMessageID}, {@code JMSTimestamp}, {@code JMSCorrelationID}, and {@code JMSType}. {@code JMSMessageID},
  *            {@code JMSCorrelationID}, and {@code JMSType} values may be null and if so are treated as a {@code NULL} value.
- *        <li>Any name beginning with {@code 'JMSX'} is a JMS defined property name.
+ *        <li>Any name beginning with {@code 'JMSX'} is a Jakarta Messaging defined property name.
  *        <li>Any name beginning with {@code 'JMS_'} is a provider-specific property name.
  *        <li>Any name that does not begin with {@code 'JMS'} is an application-specific property name.
  *      </ul>
@@ -382,8 +382,8 @@ import java.util.Enumeration;
  * </ul>
  *
  * <p>
- * JMS providers are required to verify the syntactic correctness of a message selector at the time it is presented. A
- * method that provides a syntactically incorrect selector must result in a {@code JMSException}. JMS providers may also
+ * Jakarta Messaging providers are required to verify the syntactic correctness of a message selector at the time it is presented. A
+ * method that provides a syntactically incorrect selector must result in a {@code JMSException}. Jakarta Messaging providers may also
  * optionally provide some semantic checking at the time the selector is presented. Not all semantic checking can be
  * performed at the time a message selector is presented, because property types are not known.
  *
@@ -460,7 +460,7 @@ import java.util.Enumeration;
  * millisecond values is to use {@code java.util.Calendar}.
  *
  * <p>
- * Although SQL supports fixed decimal comparison and arithmetic, JMS message selectors do not. This is the reason for
+ * Although SQL supports fixed decimal comparison and arithmetic, Jakarta Messaging message selectors do not. This is the reason for
  * restricting exact numeric literals to those without a decimal (and the addition of numerics with a decimal as an
  * alternate representation for approximate numeric values).
  *
@@ -526,15 +526,15 @@ public interface Message {
      * different providers is not required.
      *
      * <p>
-     * Since message IDs take some effort to create and increase a message's size, some JMS providers may be able to
+     * Since message IDs take some effort to create and increase a message's size, some Jakarta Messaging providers may be able to
      * optimize message overhead if they are given a hint that the message ID is not used by an application. By calling the
-     * {@code MessageProducer.setDisableMessageID} method, a JMS client enables this potential optimization for all messages
-     * sent by that message producer. If the JMS provider accepts this hint, these messages must have the message ID set to
+     * {@code MessageProducer.setDisableMessageID} method, a Jakarta Messaging client enables this potential optimization for all messages
+     * sent by that message producer. If the Jakarta Messaging provider accepts this hint, these messages must have the message ID set to
      * null; if the provider ignores the hint, the message ID must be set to its normal unique value.
      *
      * @return the message ID
      *
-     * @exception JMSException if the JMS provider fails to get the message ID due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the message ID due to some internal error.
      * @see javax.jms.Message#setJMSMessageID(String)
      * @see javax.jms.MessageProducer#setDisableMessageID(boolean)
      */
@@ -544,13 +544,13 @@ public interface Message {
      * Sets the message ID.
      *
      * <p>
-     * This method is for use by JMS providers only to set this field when a message is sent. This message cannot be used by
-     * clients to configure the message ID. This method is public to allow a JMS provider to set this field when sending a
+     * This method is for use by Jakarta Messaging providers only to set this field when a message is sent. This message cannot be used by
+     * clients to configure the message ID. This method is public to allow a Jakarta Messaging provider to set this field when sending a
      * message whose implementation is not its own.
      *
      * @param id the ID of the message
      *
-     * @exception JMSException if the JMS provider fails to set the message ID due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the message ID due to some internal error.
      *
      * @see javax.jms.Message#getJMSMessageID()
      */
@@ -570,15 +570,15 @@ public interface Message {
      * normal millis time value in the Java programming language.
      *
      * <p>
-     * Since timestamps take some effort to create and increase a message's size, some JMS providers may be able to optimize
+     * Since timestamps take some effort to create and increase a message's size, some Jakarta Messaging providers may be able to optimize
      * message overhead if they are given a hint that the timestamp is not used by an application. By calling the
-     * {@code MessageProducer.setDisableMessageTimestamp} method, a JMS client enables this potential optimization for all
-     * messages sent by that message producer. If the JMS provider accepts this hint, these messages must have the timestamp
+     * {@code MessageProducer.setDisableMessageTimestamp} method, a Jakarta Messaging client enables this potential optimization for all
+     * messages sent by that message producer. If the Jakarta Messaging provider accepts this hint, these messages must have the timestamp
      * set to zero; if the provider ignores the hint, the timestamp must be set to its normal value.
      *
      * @return the message timestamp
      *
-     * @exception JMSException if the JMS provider fails to get the timestamp due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the timestamp due to some internal error.
      *
      * @see javax.jms.Message#setJMSTimestamp(long)
      * @see javax.jms.MessageProducer#setDisableMessageTimestamp(boolean)
@@ -589,13 +589,13 @@ public interface Message {
      * Sets the message timestamp.
      *
      * <p>
-     * This method is for use by JMS providers only to set this field when a message is sent. This message cannot be used by
-     * clients to configure the message timestamp. This method is public to allow a JMS provider to set this field when
+     * This method is for use by Jakarta Messaging providers only to set this field when a message is sent. This message cannot be used by
+     * clients to configure the message timestamp. This method is public to allow a Jakarta Messaging provider to set this field when
      * sending a message whose implementation is not its own.
      *
      * @param timestamp the timestamp for this message
      *
-     * @exception JMSException if the JMS provider fails to set the timestamp due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the timestamp due to some internal error.
      *
      * @see javax.jms.Message#getJMSTimestamp()
      */
@@ -609,7 +609,7 @@ public interface Message {
      *
      * @return the correlation ID of a message as an array of bytes
      *
-     * @exception JMSException if the JMS provider fails to get the correlation ID due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the correlation ID due to some internal error.
      *
      * @see javax.jms.Message#setJMSCorrelationID(String)
      * @see javax.jms.Message#getJMSCorrelationID()
@@ -625,8 +625,8 @@ public interface Message {
      * header.
      *
      * <p>
-     * If a provider supports the native concept of correlation ID, a JMS client may need to assign specific
-     * {@code JMSCorrelationID} values to match those expected by native messaging clients. JMS providers without native
+     * If a provider supports the native concept of correlation ID, a Jakarta Messaging client may need to assign specific
+     * {@code JMSCorrelationID} values to match those expected by native messaging clients. Jakarta Messaging providers without native
      * correlation ID values are not required to support this method and its corresponding get method; their implementation
      * may throw a {@code java.lang.UnsupportedOperationException}.
      *
@@ -635,7 +635,7 @@ public interface Message {
      *
      * @param correlationID the correlation ID value as an array of bytes
      *
-     * @exception JMSException if the JMS provider fails to set the correlation ID due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the correlation ID due to some internal error.
      *
      * @see javax.jms.Message#setJMSCorrelationID(String)
      * @see javax.jms.Message#getJMSCorrelationID()
@@ -659,7 +659,7 @@ public interface Message {
      * </ul>
      *
      * <p>
-     * Since each message sent by a JMS provider is assigned a message ID value, it is convenient to link messages via
+     * Since each message sent by a Jakarta Messaging provider is assigned a message ID value, it is convenient to link messages via
      * message ID. All message ID values must start with the {@code 'ID:'} prefix.
      *
      * <p>
@@ -669,14 +669,14 @@ public interface Message {
      * provider-generated message ID values.
      *
      * <p>
-     * If a provider supports the native concept of correlation ID, a JMS client may need to assign specific
-     * {@code JMSCorrelationID} values to match those expected by clients that do not use the JMS API. A {@code byte[]}
-     * value is used for this purpose. JMS providers without native correlation ID values are not required to support
+     * If a provider supports the native concept of correlation ID, a Jakarta Messaging client may need to assign specific
+     * {@code JMSCorrelationID} values to match those expected by clients that do not use the Jakarta Messaging API. A {@code byte[]}
+     * value is used for this purpose. Jakarta Messaging providers without native correlation ID values are not required to support
      * {@code byte[]} values. The use of a {@code byte[]} value for {@code JMSCorrelationID} is non-portable.
      *
      * @param correlationID the message ID of a message being referred to
      *
-     * @exception JMSException if the JMS provider fails to set the correlation ID due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the correlation ID due to some internal error.
      *
      * @see javax.jms.Message#getJMSCorrelationID()
      * @see javax.jms.Message#getJMSCorrelationIDAsBytes()
@@ -693,7 +693,7 @@ public interface Message {
      *
      * @return the correlation ID of a message as a {@code String}
      *
-     * @exception JMSException if the JMS provider fails to get the correlation ID due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the correlation ID due to some internal error.
      *
      * @see javax.jms.Message#setJMSCorrelationID(String)
      * @see javax.jms.Message#getJMSCorrelationIDAsBytes()
@@ -706,7 +706,7 @@ public interface Message {
      *
      * @return {@code Destination} to which to send a response to this message
      *
-     * @exception JMSException if the JMS provider fails to get the {@code JMSReplyTo} destination due to some internal
+     * @exception JMSException if the Jakarta Messaging provider fails to get the {@code JMSReplyTo} destination due to some internal
      * error.
      *
      * @see javax.jms.Message#setJMSReplyTo(Destination)
@@ -734,7 +734,7 @@ public interface Message {
      *
      * @param replyTo {@code Destination} to which to send a response to this message
      *
-     * @exception JMSException if the JMS provider fails to set the {@code JMSReplyTo} destination due to some internal
+     * @exception JMSException if the Jakarta Messaging provider fails to set the {@code JMSReplyTo} destination due to some internal
      * error.
      *
      * @see javax.jms.Message#getJMSReplyTo()
@@ -757,7 +757,7 @@ public interface Message {
      *
      * @return the destination of this message
      *
-     * @exception JMSException if the JMS provider fails to get the destination due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the destination due to some internal error.
      *
      * @see javax.jms.Message#setJMSDestination(Destination)
      */
@@ -767,13 +767,13 @@ public interface Message {
      * Sets the {@code Destination} object for this message.
      *
      * <p>
-     * This method is for use by JMS providers only to set this field when a message is sent. This message cannot be used by
-     * clients to configure the destination of the message. This method is public to allow a JMS provider to set this field
+     * This method is for use by Jakarta Messaging providers only to set this field when a message is sent. This message cannot be used by
+     * clients to configure the destination of the message. This method is public to allow a Jakarta Messaging provider to set this field
      * when sending a message whose implementation is not its own.
      *
      * @param destination the destination for this message
      *
-     * @exception JMSException if the JMS provider fails to set the destination due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the destination due to some internal error.
      *
      * @see javax.jms.Message#getJMSDestination()
      */
@@ -784,7 +784,7 @@ public interface Message {
      *
      * @return the delivery mode for this message
      *
-     * @exception JMSException if the JMS provider fails to get the delivery mode due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the delivery mode due to some internal error.
      *
      * @see javax.jms.Message#setJMSDeliveryMode(int)
      * @see javax.jms.DeliveryMode
@@ -795,13 +795,13 @@ public interface Message {
      * Sets the {@code DeliveryMode} value for this message.
      *
      * <p>
-     * This method is for use by JMS providers only to set this field when a message is sent. This message cannot be used by
-     * clients to configure the delivery mode of the message. This method is public to allow a JMS provider to set this
+     * This method is for use by Jakarta Messaging providers only to set this field when a message is sent. This message cannot be used by
+     * clients to configure the delivery mode of the message. This method is public to allow a Jakarta Messaging provider to set this
      * field when sending a message whose implementation is not its own.
      *
      * @param deliveryMode the delivery mode for this message
      *
-     * @exception JMSException if the JMS provider fails to set the delivery mode due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the delivery mode due to some internal error.
      *
      * @see javax.jms.Message#getJMSDeliveryMode()
      * @see javax.jms.DeliveryMode
@@ -817,7 +817,7 @@ public interface Message {
      *
      * @return true if this message is being redelivered
      *
-     * @exception JMSException if the JMS provider fails to get the redelivered state due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the redelivered state due to some internal error.
      *
      * @see javax.jms.Message#setJMSRedelivered(boolean)
      */
@@ -827,13 +827,13 @@ public interface Message {
      * Specifies whether this message is being redelivered.
      *
      * <p>
-     * This method is for use by JMS providers only to set this field when a message is delivered. This message cannot be
-     * used by clients to configure the redelivered status of the message. This method is public to allow a JMS provider to
+     * This method is for use by Jakarta Messaging providers only to set this field when a message is delivered. This message cannot be
+     * used by clients to configure the redelivered status of the message. This method is public to allow a Jakarta Messaging provider to
      * set this field when sending a message whose implementation is not its own.
      *
      * @param redelivered an indication of whether this message is being redelivered
      *
-     * @exception JMSException if the JMS provider fails to set the redelivered state due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the redelivered state due to some internal error.
      *
      * @see javax.jms.Message#getJMSRedelivered()
      */
@@ -844,7 +844,7 @@ public interface Message {
      *
      * @return the message type
      *
-     * @exception JMSException if the JMS provider fails to get the message type due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the message type due to some internal error.
      *
      * @see javax.jms.Message#setJMSType(String)
      */
@@ -854,27 +854,27 @@ public interface Message {
      * Sets the message type.
      *
      * <p>
-     * Some JMS providers use a message repository that contains the definitions of messages sent by applications. The
+     * Some Jakarta Messaging providers use a message repository that contains the definitions of messages sent by applications. The
      * {@code JMSType} header field may reference a message's definition in the provider's repository.
      *
      * <p>
-     * The JMS API does not define a standard message definition repository, nor does it define a naming policy for the
+     * The Jakarta Messaging API does not define a standard message definition repository, nor does it define a naming policy for the
      * definitions it contains.
      *
      * <p>
      * Some messaging systems require that a message type definition for each application message be created and that each
-     * message specify its type. In order to work with such JMS providers, JMS clients should assign a value to
+     * message specify its type. In order to work with such Jakarta Messaging providers, Jakarta Messaging clients should assign a value to
      * {@code JMSType}, whether the application makes use of it or not. This ensures that the field is properly set for
      * those providers that require it.
      *
      * <p>
-     * To ensure portability, JMS clients should use symbolic values for {@code JMSType} that can be configured at
+     * To ensure portability, Jakarta Messaging clients should use symbolic values for {@code JMSType} that can be configured at
      * installation time to the values defined in the current provider's message repository. If string literals are used,
-     * they may not be valid type names for some JMS providers.
+     * they may not be valid type names for some Jakarta Messaging providers.
      *
      * @param type the message type
      *
-     * @exception JMSException if the JMS provider fails to set the message type due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the message type due to some internal error.
      *
      * @see javax.jms.Message#getJMSType()
      */
@@ -893,16 +893,16 @@ public interface Message {
      * expire.
      *
      * <p>
-     * When a message's expiration time is reached, a provider should discard it. The JMS API does not define any form of
+     * When a message's expiration time is reached, a provider should discard it. The Jakarta Messaging API does not define any form of
      * notification of message expiration.
      *
      * <p>
-     * Clients should not receive messages that have expired; however, the JMS API does not guarantee that this will not
+     * Clients should not receive messages that have expired; however, the Jakarta Messaging API does not guarantee that this will not
      * happen.
      *
      * @return the message's expiration time value
      *
-     * @exception JMSException if the JMS provider fails to get the message expiration due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the message expiration due to some internal error.
      *
      * @see javax.jms.Message#setJMSExpiration(long)
      */
@@ -912,13 +912,13 @@ public interface Message {
      * Sets the message's expiration value.
      *
      * <p>
-     * This method is for use by JMS providers only to set this field when a message is sent. This message cannot be used by
-     * clients to configure the expiration time of the message. This method is public to allow a JMS provider to set this
+     * This method is for use by Jakarta Messaging providers only to set this field when a message is sent. This message cannot be used by
+     * clients to configure the expiration time of the message. This method is public to allow a Jakarta Messaging provider to set this
      * field when sending a message whose implementation is not its own.
      *
      * @param expiration the message's expiration time
      *
-     * @exception JMSException if the JMS provider fails to set the message expiration due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the message expiration due to some internal error.
      *
      * @see javax.jms.Message#getJMSExpiration()
      */
@@ -933,12 +933,12 @@ public interface Message {
      * measured in milliseconds, between the delivery time and midnight, January 1, 1970 UTC.
      *
      * <p>
-     * A message's delivery time is the earliest time when a JMS provider may deliver the message to a consumer. The
+     * A message's delivery time is the earliest time when a Jakarta Messaging provider may deliver the message to a consumer. The
      * provider must not deliver messages before the delivery time has been reached.
      *
      * @return the message's delivery time value
      *
-     * @exception JMSException if the JMS provider fails to get the delivery time due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the delivery time due to some internal error.
      *
      * @see javax.jms.Message#setJMSDeliveryTime(long)
      *
@@ -950,13 +950,13 @@ public interface Message {
      * Sets the message's delivery time value.
      *
      * <p>
-     * This method is for use by JMS providers only to set this field when a message is sent. This message cannot be used by
-     * clients to configure the delivery time of the message. This method is public to allow a JMS provider to set this
+     * This method is for use by Jakarta Messaging providers only to set this field when a message is sent. This message cannot be used by
+     * clients to configure the delivery time of the message. This method is public to allow a Jakarta Messaging provider to set this
      * field when sending a message whose implementation is not its own.
      *
      * @param deliveryTime the message's delivery time value
      *
-     * @exception JMSException if the JMS provider fails to set the delivery time due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the delivery time due to some internal error.
      *
      * @see javax.jms.Message#getJMSDeliveryTime()
      *
@@ -968,17 +968,17 @@ public interface Message {
      * Gets the message priority level.
      *
      * <p>
-     * The JMS API defines ten levels of priority value, with 0 as the lowest priority and 9 as the highest. In addition,
+     * The Jakarta Messaging API defines ten levels of priority value, with 0 as the lowest priority and 9 as the highest. In addition,
      * clients should consider priorities 0-4 as gradations of normal priority and priorities 5-9 as gradations of expedited
      * priority.
      *
      * <p>
-     * The JMS API does not require that a provider strictly implement priority ordering of messages; however, it should do
+     * The Jakarta Messaging API does not require that a provider strictly implement priority ordering of messages; however, it should do
      * its best to deliver expedited messages ahead of normal messages.
      *
      * @return the default message priority
      *
-     * @exception JMSException if the JMS provider fails to get the message priority due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the message priority due to some internal error.
      *
      * @see javax.jms.Message#setJMSPriority(int)
      */
@@ -988,13 +988,13 @@ public interface Message {
      * Sets the priority level for this message.
      *
      * <p>
-     * This method is for use by JMS providers only to set this field when a message is sent. This message cannot be used by
-     * clients to configure the priority level of the message. This method is public to allow a JMS provider to set this
+     * This method is for use by Jakarta Messaging providers only to set this field when a message is sent. This message cannot be used by
+     * clients to configure the priority level of the message. This method is public to allow a Jakarta Messaging provider to set this
      * field when sending a message whose implementation is not its own.
      *
      * @param priority the priority of this message
      *
-     * @exception JMSException if the JMS provider fails to set the message priority due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the message priority due to some internal error.
      *
      * @see javax.jms.Message#getJMSPriority()
      */
@@ -1006,7 +1006,7 @@ public interface Message {
      * <p>
      * The message's header fields and body are not cleared.
      *
-     * @exception JMSException if the JMS provider fails to clear the message properties due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to clear the message properties due to some internal error.
      */
     void clearProperties() throws JMSException;
 
@@ -1017,7 +1017,7 @@ public interface Message {
      *
      * @return true if the property exists
      *
-     * @exception JMSException if the JMS provider fails to determine if the property exists due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to determine if the property exists due to some internal error.
      */
     boolean propertyExists(String name) throws JMSException;
 
@@ -1028,7 +1028,7 @@ public interface Message {
      *
      * @return the {@code boolean} property value for the specified name
      *
-     * @exception JMSException if the JMS provider fails to get the property value due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the property value due to some internal error.
      * @exception MessageFormatException if this type conversion is invalid.
      */
     boolean getBooleanProperty(String name) throws JMSException;
@@ -1040,7 +1040,7 @@ public interface Message {
      *
      * @return the {@code byte} property value for the specified name
      *
-     * @exception JMSException if the JMS provider fails to get the property value due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the property value due to some internal error.
      * @exception MessageFormatException if this type conversion is invalid.
      */
     byte getByteProperty(String name) throws JMSException;
@@ -1052,7 +1052,7 @@ public interface Message {
      *
      * @return the {@code short} property value for the specified name
      *
-     * @exception JMSException if the JMS provider fails to get the property value due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the property value due to some internal error.
      * @exception MessageFormatException if this type conversion is invalid.
      */
     short getShortProperty(String name) throws JMSException;
@@ -1064,7 +1064,7 @@ public interface Message {
      *
      * @return the {@code int} property value for the specified name
      *
-     * @exception JMSException if the JMS provider fails to get the property value due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the property value due to some internal error.
      * @exception MessageFormatException if this type conversion is invalid.
      */
     int getIntProperty(String name) throws JMSException;
@@ -1076,7 +1076,7 @@ public interface Message {
      *
      * @return the {@code long} property value for the specified name
      *
-     * @exception JMSException if the JMS provider fails to get the property value due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the property value due to some internal error.
      * @exception MessageFormatException if this type conversion is invalid.
      */
     long getLongProperty(String name) throws JMSException;
@@ -1088,7 +1088,7 @@ public interface Message {
      *
      * @return the {@code float} property value for the specified name
      *
-     * @exception JMSException if the JMS provider fails to get the property value due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the property value due to some internal error.
      * @exception MessageFormatException if this type conversion is invalid.
      */
     float getFloatProperty(String name) throws JMSException;
@@ -1100,7 +1100,7 @@ public interface Message {
      *
      * @return the {@code double} property value for the specified name
      *
-     * @exception JMSException if the JMS provider fails to get the property value due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the property value due to some internal error.
      * @exception MessageFormatException if this type conversion is invalid.
      */
     double getDoubleProperty(String name) throws JMSException;
@@ -1113,7 +1113,7 @@ public interface Message {
      * @return the {@code String} property value for the specified name; if there is no property by this name, a null value
      * is returned
      *
-     * @exception JMSException if the JMS provider fails to get the property value due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the property value due to some internal error.
      * @exception MessageFormatException if this type conversion is invalid.
      */
     String getStringProperty(String name) throws JMSException;
@@ -1132,7 +1132,7 @@ public interface Message {
      * was set as an {@code int}, an {@code Integer} is returned); if there is no property by this name, a null value is
      * returned
      *
-     * @exception JMSException if the JMS provider fails to get the property value due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the property value due to some internal error.
      */
     Object getObjectProperty(String name) throws JMSException;
 
@@ -1140,11 +1140,11 @@ public interface Message {
      * Returns an {@code Enumeration} of all the property names.
      *
      * <p>
-     * Note that JMS standard header fields are not considered properties and are not returned in this enumeration.
+     * Note that Jakarta Messaging standard header fields are not considered properties and are not returned in this enumeration.
      *
      * @return an enumeration of all the names of property values
      *
-     * @exception JMSException if the JMS provider fails to get the property names due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the property names due to some internal error.
      */
     Enumeration getPropertyNames() throws JMSException;
 
@@ -1154,7 +1154,7 @@ public interface Message {
      * @param name the name of the {@code boolean} property
      * @param value the {@code boolean} property value to set
      *
-     * @exception JMSException if the JMS provider fails to set the property due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the property due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageNotWriteableException if properties are read-only
      */
@@ -1166,7 +1166,7 @@ public interface Message {
      * @param name the name of the {@code byte} property
      * @param value the {@code byte} property value to set
      *
-     * @exception JMSException if the JMS provider fails to set the property due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the property due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageNotWriteableException if properties are read-only
      */
@@ -1178,7 +1178,7 @@ public interface Message {
      * @param name the name of the {@code short} property
      * @param value the {@code short} property value to set
      *
-     * @exception JMSException if the JMS provider fails to set the property due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the property due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageNotWriteableException if properties are read-only
      */
@@ -1190,7 +1190,7 @@ public interface Message {
      * @param name the name of the {@code int} property
      * @param value the {@code int} property value to set
      *
-     * @exception JMSException if the JMS provider fails to set the property due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the property due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageNotWriteableException if properties are read-only
      */
@@ -1202,7 +1202,7 @@ public interface Message {
      * @param name the name of the {@code long} property
      * @param value the {@code long} property value to set
      *
-     * @exception JMSException if the JMS provider fails to set the property due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the property due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageNotWriteableException if properties are read-only
      */
@@ -1214,7 +1214,7 @@ public interface Message {
      * @param name the name of the {@code float} property
      * @param value the {@code float} property value to set
      *
-     * @exception JMSException if the JMS provider fails to set the property due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the property due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageNotWriteableException if properties are read-only
      */
@@ -1226,7 +1226,7 @@ public interface Message {
      * @param name the name of the {@code double} property
      * @param value the {@code double} property value to set
      *
-     * @exception JMSException if the JMS provider fails to set the property due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the property due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageNotWriteableException if properties are read-only
      */
@@ -1238,7 +1238,7 @@ public interface Message {
      * @param name the name of the {@code String} property
      * @param value the {@code String} property value to set
      *
-     * @exception JMSException if the JMS provider fails to set the property due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the property due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageNotWriteableException if properties are read-only
      */
@@ -1254,7 +1254,7 @@ public interface Message {
      * @param name the name of the Java object property
      * @param value the Java object property value to set
      *
-     * @exception JMSException if the JMS provider fails to set the property due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the property due to some internal error.
      * @exception IllegalArgumentException if the name is null or if the name is an empty string.
      * @exception MessageFormatException if the object is invalid
      * @exception MessageNotWriteableException if properties are read-only
@@ -1265,7 +1265,7 @@ public interface Message {
      * Acknowledges all consumed messages of the session of this consumed message.
      *
      * <p>
-     * All consumed JMS messages support the {@code acknowledge} method for use when a client has specified that its JMS
+     * All consumed Jakarta Messaging messages support the {@code acknowledge} method for use when a client has specified that its JMS
      * session's consumed messages are to be explicitly acknowledged. By invoking {@code acknowledge} on a consumed message,
      * a client acknowledges all messages consumed by the session that the message was delivered to.
      *
@@ -1281,7 +1281,7 @@ public interface Message {
      * <p>
      * Messages that have been received but not acknowledged may be redelivered.
      *
-     * @exception JMSException if the JMS provider fails to acknowledge the messages due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to acknowledge the messages due to some internal error.
      * @exception IllegalStateException if this method is called on a closed session.
      *
      * @see javax.jms.Session#CLIENT_ACKNOWLEDGE
@@ -1295,7 +1295,7 @@ public interface Message {
      * If this message body was read-only, calling this method leaves the message body in the same state as an empty body in
      * a newly created message.
      *
-     * @exception JMSException if the JMS provider fails to clear the message body due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to clear the message body due to some internal error.
      */
     void clearBody() throws JMSException;
 
@@ -1331,7 +1331,7 @@ public interface Message {
      * <li>if the message is an {@code ObjectMessage} and object deserialization fails.
      * </ul>
      *
-     * @exception JMSException if the JMS provider fails to get the message body due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the message body due to some internal error.
      *
      * @since JMS 2.0
      */
@@ -1363,7 +1363,7 @@ public interface Message {
      *
      * @return whether the message body is capable of being assigned to the specified type
      *
-     * @exception JMSException if the JMS provider fails to return a value due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to return a value due to some internal error.
      */
     boolean isBodyAssignableTo(Class c) throws JMSException;
 }

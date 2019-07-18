@@ -51,7 +51,7 @@ public class QueueRequestor {
      * @param session the {@code QueueSession} the queue belongs to
      * @param queue the queue to perform the request/reply call on
      *
-     * @exception JMSException if the JMS provider fails to create the {@code QueueRequestor} due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create the {@code QueueRequestor} due to some internal error.
      * @exception InvalidDestinationException if an invalid queue is specified.
      */
     public QueueRequestor(QueueSession session, Queue queue) throws JMSException {
@@ -73,7 +73,7 @@ public class QueueRequestor {
      *
      * @return the reply message
      *
-     * @exception JMSException if the JMS provider fails to complete the request due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to complete the request due to some internal error.
      */
     public Message request(Message message) throws JMSException {
         message.setJMSReplyTo(tempQueue);
@@ -92,7 +92,7 @@ public class QueueRequestor {
      * <p>
      * Note that this method closes the {@code QueueSession} object passed to the {@code QueueRequestor} constructor.
      *
-     * @exception JMSException if the JMS provider fails to close the {@code QueueRequestor} due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to close the {@code QueueRequestor} due to some internal error.
      */
     public void close() throws JMSException {
 

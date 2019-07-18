@@ -23,7 +23,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * This annotation specifies that a callback method on a JMS message-driven bean must use a durable subscription.
+ * This annotation specifies that a callback method on a Jakarta Messaging message-driven bean must use a durable subscription.
  *
  * <p>
  * The method must also be annotated with {@code TopicListener}. If it is not then deployment will fail.

@@ -17,7 +17,7 @@
 package javax.jms;
 
 /**
- * A {@code Connection} object is a client's active connection to its JMS provider. It typically allocates provider
+ * A {@code Connection} object is a client's active connection to its Jakarta Messaging provider. It typically allocates provider
  * resources outside the Java virtual machine (JVM).
  *
  * <p>
@@ -27,7 +27,7 @@ package javax.jms;
  * A connection serves several purposes:
  *
  * <ul>
- * <li>It encapsulates an open connection with a JMS provider. It typically represents an open TCP/IP socket between a
+ * <li>It encapsulates an open connection with a Jakarta Messaging provider. It typically represents an open TCP/IP socket between a
  * client and the service provider software.
  * <li>Its creation is where client authentication takes place.
  * <li>It can specify a unique client identifier.
@@ -38,11 +38,11 @@ package javax.jms;
  * <p>
  * Because the creation of a connection involves setting up authentication and communication, a connection is a
  * relatively heavyweight object. Most clients will do all their messaging with a single connection. Other more advanced
- * applications may use several connections. The JMS API does not architect a reason for using multiple connections;
+ * applications may use several connections. The Jakarta Messaging API does not architect a reason for using multiple connections;
  * however, there may be operational reasons for doing so.
  *
  * <p>
- * A JMS client typically creates a connection, one or more sessions, and a number of message producers and consumers.
+ * A Jakarta Messaging client typically creates a connection, one or more sessions, and a number of message producers and consumers.
  * When a connection is created, it is in stopped mode. That means that no messages are being delivered.
  *
  * <p>
@@ -112,11 +112,11 @@ public interface Connection extends AutoCloseable {
      * or {@code Session.DUPS_OK_ACKNOWLEDGE} then the session will be non-transacted and messages will be acknowledged
      * according to the value of {@code acknowledgeMode}.
      * <li>If {@code transacted} is set to false and {@code acknowledgeMode} is set to {@code JMSContext.CLIENT_ACKNOWLEDGE}
-     * then the JMS provider is recommended to ignore the specified parameters and instead provide a non-transacted,
-     * auto-acknowledged session. However the JMS provider may alternatively provide a non-transacted session with client
+     * then the Jakarta Messaging provider is recommended to ignore the specified parameters and instead provide a non-transacted,
+     * auto-acknowledged session. However the Jakarta Messaging provider may alternatively provide a non-transacted session with client
      * acknowledgement.
-     * <li>If {@code transacted} is set to true, then the JMS provider is recommended to ignore the specified parameters and
-     * instead provide a non-transacted, auto-acknowledged session. However the JMS provider may alternatively provide a
+     * <li>If {@code transacted} is set to true, then the Jakarta Messaging provider is recommended to ignore the specified parameters and
+     * instead provide a non-transacted, auto-acknowledged session. However the Jakarta Messaging provider may alternatively provide a
      * local transacted session.
      * <li>Applications are recommended to set {@code transacted} to false and {@code acknowledgeMode} to
      * {@code JMSContext.AUTO_ACKNOWLEDGE} or {@code Session.DUPS_OK_ACKNOWLEDGE} since since applications which set
@@ -190,10 +190,10 @@ public interface Connection extends AutoCloseable {
      * <ul>
      * <li>If {@code sessionMode} is set to {@code Session.AUTO_ACKNOWLEDGE} or {@code Session.DUPS_OK_ACKNOWLEDGE} then the
      * session will be non-transacted and messages will be acknowledged according to the value of {@code sessionMode}.
-     * <li>If {@code sessionMode} is set to {@code Session.CLIENT_ACKNOWLEDGE} then the JMS provider is recommended to
+     * <li>If {@code sessionMode} is set to {@code Session.CLIENT_ACKNOWLEDGE} then the Jakarta Messaging provider is recommended to
      * ignore the specified parameter and instead provide a non-transacted, auto-acknowledged session. However the JMS
      * provider may alternatively provide a non-transacted session with client acknowledgement.
-     * <li>If {@code sessionMode} is set to {@code Session.SESSION_TRANSACTED}, then the JMS provider is recommended to
+     * <li>If {@code sessionMode} is set to {@code Session.SESSION_TRANSACTED}, then the Jakarta Messaging provider is recommended to
      * ignore the specified parameter and instead provide a non-transacted, auto-acknowledged session. However the JMS
      * provider may alternatively provide a local transacted session.
      * <li>Applications are recommended to use only the values {@code Session.AUTO_ACKNOWLEDGE} and
@@ -289,14 +289,14 @@ public interface Connection extends AutoCloseable {
      * Gets the client identifier for this connection.
      *
      * <p>
-     * This value is specific to the JMS provider. It is either preconfigured by an administrator in a
+     * This value is specific to the Jakarta Messaging provider. It is either preconfigured by an administrator in a
      * {@code ConnectionFactory} object or assigned dynamically by the application by calling the {@code setClientID}
      * method.
      *
      *
      * @return the unique client identifier
      *
-     * @exception JMSException if the JMS provider fails to return the client ID for this connection due to some internal
+     * @exception JMSException if the Jakarta Messaging provider fails to return the client ID for this connection due to some internal
      * error.
      *
      **/
@@ -306,7 +306,7 @@ public interface Connection extends AutoCloseable {
      * Sets the client identifier for this connection.
      *
      * <p>
-     * The preferred way to assign a JMS client's client identifier is for it to be configured in a client-specific
+     * The preferred way to assign a Jakarta Messaging client's client identifier is for it to be configured in a client-specific
      * {@code ConnectionFactory} object and transparently assigned to the {@code Connection} object it creates.
      *
      * <p>
@@ -320,11 +320,11 @@ public interface Connection extends AutoCloseable {
      *
      * <p>
      * The purpose of the client identifier is to associate a connection and its objects with a state maintained on behalf
-     * of the client by a provider. The only such state identified by the JMS API is that required to support durable
+     * of the client by a provider. The only such state identified by the Jakarta Messaging API is that required to support durable
      * subscriptions.
      *
      * <p>
-     * If another connection with the same {@code clientID} is already running when this method is called, the JMS provider
+     * If another connection with the same {@code clientID} is already running when this method is called, the Jakarta Messaging provider
      * should detect the duplicate ID and throw an {@code InvalidClientIDException}.
      * <p>
      * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSException} to be
@@ -332,15 +332,15 @@ public interface Connection extends AutoCloseable {
      *
      * @param clientID the unique client identifier
      *
-     * @exception JMSException if the JMS provider fails to set the client ID for the the connection for one of the
+     * @exception JMSException if the Jakarta Messaging provider fails to set the client ID for the the connection for one of the
      * following reasons:
      * <ul>
      * <li>an internal error has occurred or
      * <li>this method has been called in a Java EE web or EJB application (though it is not guaranteed that an exception is
      * thrown in this case)
      * </ul>
-     * @exception InvalidClientIDException if the JMS client specifies an invalid or duplicate client ID.
-     * @exception IllegalStateException if the JMS client attempts to set a connection's client ID at the wrong time or when
+     * @exception InvalidClientIDException if the Jakarta Messaging client specifies an invalid or duplicate client ID.
+     * @exception IllegalStateException if the Jakarta Messaging client attempts to set a connection's client ID at the wrong time or when
      * it has been administratively configured.
      */
     void setClientID(String clientID) throws JMSException;
@@ -350,7 +350,7 @@ public interface Connection extends AutoCloseable {
      *
      * @return the connection metadata
      *
-     * @exception JMSException if the JMS provider fails to get the connection metadata for this connection.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the connection metadata for this connection.
      *
      * @see javax.jms.ConnectionMetaData
      */
@@ -363,7 +363,7 @@ public interface Connection extends AutoCloseable {
      * @return the {@code ExceptionListener} for this connection, or null. if no {@code ExceptionListener} is associated
      * with this connection.
      *
-     * @exception JMSException if the JMS provider fails to get the {@code ExceptionListener} for this connection.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the {@code ExceptionListener} for this connection.
      * @see javax.jms.Connection#setExceptionListener
      */
     ExceptionListener getExceptionListener() throws JMSException;
@@ -372,7 +372,7 @@ public interface Connection extends AutoCloseable {
      * Sets an exception listener for this connection.
      *
      * <p>
-     * If a JMS provider detects a serious problem with a connection, it informs the connection's {@code ExceptionListener},
+     * If a Jakarta Messaging provider detects a serious problem with a connection, it informs the connection's {@code ExceptionListener},
      * if one has been registered. It does this by calling the listener's {@code onException} method, passing it a
      * {@code JMSException} object describing the problem.
      *
@@ -384,14 +384,14 @@ public interface Connection extends AutoCloseable {
      * A connection serializes execution of its {@code ExceptionListener}.
      *
      * <p>
-     * A JMS provider should attempt to resolve connection problems itself before it notifies the client of them.
+     * A Jakarta Messaging provider should attempt to resolve connection problems itself before it notifies the client of them.
      * <p>
      * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSException} to be
      * thrown though this is not guaranteed.
      *
      * @param listener the exception listener
      *
-     * @exception JMSException if the JMS provider fails to set the exception listener for one of the following reasons:
+     * @exception JMSException if the Jakarta Messaging provider fails to set the exception listener for one of the following reasons:
      * <ul>
      * <li>an internal error has occurred or
      * <li>this method has been called in a Java EE web or EJB application (though it is not guaranteed that an exception is
@@ -406,7 +406,7 @@ public interface Connection extends AutoCloseable {
      * Starts (or restarts) a connection's delivery of incoming messages. A call to {@code start} on a connection that has
      * already been started is ignored.
      *
-     * @exception JMSException if the JMS provider fails to start message delivery due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to start message delivery due to some internal error.
      *
      * @see javax.jms.Connection#stop
      */
@@ -448,7 +448,7 @@ public interface Connection extends AutoCloseable {
      *
      * @exception IllegalStateException this method has been called by a <tt>MessageListener</tt> on its own
      * <tt>Connection</tt>
-     * @exception JMSException if the JMS provider fails to stop message delivery for one of the following reasons:
+     * @exception JMSException if the Jakarta Messaging provider fails to stop message delivery for one of the following reasons:
      * <ul>
      * <li>an internal error has occurred or
      * <li>this method has been called in a Java EE web or EJB application (though it is not guaranteed that an exception is
@@ -492,7 +492,7 @@ public interface Connection extends AutoCloseable {
      * a message or with null, depending on whether there was a message available at the time of the close. If one or more
      * of the connection's sessions' message listeners is processing a message at the time when connection {@code close} is
      * invoked, all the facilities of the connection and its sessions must remain available to those listeners until they
-     * return control to the JMS provider.
+     * return control to the Jakarta Messaging provider.
      *
      * <p>
      * This method must not return until any incomplete asynchronous send operations for this <tt>Connection</tt> have been
@@ -523,7 +523,7 @@ public interface Connection extends AutoCloseable {
      *                </tt> on its own <tt>Connection</tt></li>
      * <li>this method has been called by a <tt>CompletionListener</tt> callback method on its own <tt>Connection</tt></li>
      * </ul>
-     * @exception JMSException if the JMS provider fails to close the connection due to some internal error. For example, a
+     * @exception JMSException if the Jakarta Messaging provider fails to close the connection due to some internal error. For example, a
      * failure to release resources or to close a socket connection can cause this exception to be thrown.
      *
      */
@@ -534,7 +534,7 @@ public interface Connection extends AutoCloseable {
      * Creates a connection consumer for this connection (optional operation) on the specific destination.
      *
      * <p>
-     * This is an expert facility not used by ordinary JMS clients.
+     * This is an expert facility not used by ordinary Jakarta Messaging clients.
      *
      * <p>
      * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSException} to be
@@ -571,7 +571,7 @@ public interface Connection extends AutoCloseable {
      * non-durable subscription with the specified name.
      *
      * <p>
-     * This is an expert facility not used by ordinary JMS clients.
+     * This is an expert facility not used by ordinary Jakarta Messaging clients.
      *
      * <p>
      * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSException} to be
@@ -610,7 +610,7 @@ public interface Connection extends AutoCloseable {
      * durable subscription with the specified name.
      *
      * <p>
-     * This is an expert facility not used by ordinary JMS clients.
+     * This is an expert facility not used by ordinary Jakarta Messaging clients.
      *
      * <p>
      * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSException} to be
@@ -648,7 +648,7 @@ public interface Connection extends AutoCloseable {
      * subscription with the specified name.
      *
      * <p>
-     * This is an expert facility not used by ordinary JMS clients.
+     * This is an expert facility not used by ordinary Jakarta Messaging clients.
      *
      * <p>
      * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSException} to be

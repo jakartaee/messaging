@@ -18,10 +18,10 @@ package javax.jms;
 
 /**
  * This is a marker interface that may be implemented by a message-driven bean class to specify that it is used to
- * consume JMS messages. It is an alternative to implementing the MessageListener interface.
+ * consume Jakarta Messaging messages. It is an alternative to implementing the MessageListener interface.
  *
  * <p>
- * A JMS message-driven bean that implements the {@code JMSMessageDrivenBean} marker interface must not also implement
+ * A Jakarta Messaging message-driven bean that implements the {@code JMSMessageDrivenBean} marker interface must not also implement
  * the {@code MessageListener} interface.
  *
  * <p>

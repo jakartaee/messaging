@@ -21,15 +21,28 @@
     <parent>
         <groupId>org.eclipse.ee4j</groupId>
         <artifactId>project</artifactId>
-        <version>1.0.4</version>
+        <version>1.0.5/version>
     </parent>
 
-    <groupId>jakarta.jms</groupId>
-    <artifactId>jakarta.jms-api</artifactId>
-    <version>2.1-SNAPSHOT</version>
+    <groupId>jakarta.messaging</groupId>
+    <artifactId>jakarta.messaging-api</artifactId>
+    <version>2.2-SNAPSHOT</version>
     
-    <name>jms</name>
+    <name>Jakarta Messaging</name>
     <url>https://projects.eclipse.org/projects/ee4j.jms</url>
+        
+    <licenses>
+        <license>
+            <name>Eclipse Public License 2.0</name>
+            <url>https://projects.eclipse.org/license/epl-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+        <license>
+            <name>GNU General Public License, version 2 with the GNU Classpath Exception</name>
+            <url>https://projects.eclipse.org/license/secondary-gpl-2.0-cp</url>
+            <distribution>repo</distribution>
+        </license>
+   </licenses>
 
     <build>
         <plugins>
@@ -50,26 +63,22 @@
                 <configuration>
                     <groups>
                         <group>
-                            <title>JMS API Documentation</title>
+                            <title>Jakarta Messaging API Documentation</title>
                             <packages>
-                                javax.jms
+                                javax.messaging
                             </packages>
                         </group>
                     </groups>
                 
-                    <!-- Specifies the text to be placed at the bottom of each output file. -->
-                    <bottom>Copyright 1997-2018 Oracle America Inc. All rights reserved. Use is subject to &lt;a
-                        href="http://java.net/downloads/jms-spec/Licences/JSR 368 Java Message Service EDR 10.8.15.pdf"&gt;licence
-                        terms&lt;/a&gt; &lt;br/&gt;</bottom>
                     
                     <!-- Specifies the header text to be placed at the top of each output file, to the right of the upper navigation bar. -->
-                    <header>JMS 2.1</header>
+                    <header>Jakarta Messaging 2.1</header>
                     
                     <!-- Specifies the footer text to be placed at the top of each output file, to the right of the lower navigation bar. -->
-                    <footer>JMS 2.1</footer>
+                    <footer>Jakarta Messaging 2.1</footer>
 
                     <links>
-                        <link>https://javaee.github.io/javaee-spec/javadocs/</link>
+                        <link>https://projects.eclipse.org/projects/ee4j.jms-api</link>
                     </links>
                 </configuration>
                 <executions>

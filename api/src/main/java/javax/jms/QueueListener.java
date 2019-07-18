@@ -23,16 +23,16 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * This annotation designates a callback method on a JMS message-driven bean that will receive messages from a queue,
+ * This annotation designates a callback method on a Jakarta Messaging message-driven bean that will receive messages from a queue,
  * and specifies the queue from which messages will be received.
  *
  * <p>
- * This annotation may only be used if the JMS message-driven bean implements the {@code JMSMessageDrivenBean} marker
+ * This annotation may only be used if the Jakarta Messaging message-driven bean implements the {@code JMSMessageDrivenBean} marker
  * interface and does not implement the {@code MessageListener} interface. If this annotation is used on a JMS
  * message-driven bean that implements the {@code MessageListener} interface then deployment will fail.
  *
  * <p>
- * Only one method may be designated as a callback method. If more than one method on a JMS message-driven bean is
+ * Only one method may be designated as a callback method. If more than one method on a Jakarta Messaging message-driven bean is
  * annotated with {@code QueueListener} or {@code TopicListener} then deployment will fail.
  *
  * @see JMSMessageDrivenBean

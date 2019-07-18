@@ -23,15 +23,15 @@
     <parent>
         <groupId>org.eclipse.ee4j</groupId>
         <artifactId>project</artifactId>
-        <version>1.0.4</version>
+        <version>1.0.5</version>
     </parent>
 
-    <groupId>org.eclipse.ee4j.jms</groupId>
-    <artifactId>jms-parent</artifactId>
+    <groupId>jakarta.messaging</groupId>
+    <artifactId>jakarta.messsaging-parent</artifactId>
     <packaging>pom</packaging>
-    <version>2.1-SNAPSHOT</version>
-    <name>jms</name>
-    <description>jms</description>
+    <version>2.2-SNAPSHOT</version>
+    <name>Jakarta Messaging</name>
+    <description>Jakarta Messaging Parent</description>
     <url>https://projects.eclipse.org/projects/ee4j.jms</url>
 
     <scm>

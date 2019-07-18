@@ -17,7 +17,7 @@
 package javax.jms;
 
 /**
- * A client using the simplified JMS API introduced for JMS 2.0 uses a {@code JMSConsumer} object to receive messages
+ * A client using the simplified Jakarta Messaging API introduced for Jakarta Messaging 2.0 uses a {@code JMSConsumer} object to receive messages
  * from a queue or topic. A {@code JMSConsumer} object may be created either created by passing a {@code Queue} or
  * {@code Topic} object to one of the {@code createConsumer} methods on a {@code JMSContext}. or by passing a
  * {@code Topic} object to one of the {@code createSharedConsumer} or {@code createDurableConsumer} methods on a
@@ -58,7 +58,7 @@ public interface JMSConsumer extends AutoCloseable {
      * @return this {@code JMSConsumer}'s message selector, or null if no message selector exists for the
      * {@code JMSConsumer} (that is, if the message selector was not set or was set to null or the empty string)
      *
-     * @exception JMSRuntimeException if the JMS provider fails to get the message selector due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to get the message selector due to some internal error.
      */
     String getMessageSelector();
 
@@ -70,7 +70,7 @@ public interface JMSConsumer extends AutoCloseable {
      *
      * @return the {@code JMSConsumer}'s {@code MessageListener}, or null if one was not set
      *
-     * @exception JMSRuntimeException if the JMS provider fails to get the {@code MessageListener} for one of the following
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to get the {@code MessageListener} for one of the following
      * reasons:
      * <ul>
      * <li>an internal error has occurred or
@@ -96,7 +96,7 @@ public interface JMSConsumer extends AutoCloseable {
      *
      * @param listener the listener to which the messages are to be delivered
      *
-     * @exception JMSRuntimeException if the JMS provider fails to set the {@code JMSConsumer}'s {@code MessageListener} for
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to set the {@code JMSConsumer}'s {@code MessageListener} for
      * one of the following reasons:
      * <ul>
      * <li>an internal error has occurred or
@@ -121,7 +121,7 @@ public interface JMSConsumer extends AutoCloseable {
      * @return the next message produced for this {@code JMSConsumer}, or null if this {@code JMSConsumer} is concurrently
      * closed
      *
-     * @exception JMSRuntimeException if the JMS provider fails to receive the next message due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to receive the next message due to some internal error.
      *
      */
     Message receive();
@@ -138,7 +138,7 @@ public interface JMSConsumer extends AutoCloseable {
      * @return the next message produced for this {@code JMSConsumer}, or null if the timeout expires or this
      * {@code JMSConsumer} is concurrently closed
      *
-     * @exception JMSRuntimeException if the JMS provider fails to receive the next message due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to receive the next message due to some internal error.
      */
     Message receive(long timeout);
 
@@ -147,7 +147,7 @@ public interface JMSConsumer extends AutoCloseable {
      *
      * @return the next message produced for this {@code JMSConsumer}, or null if one is not available
      *
-     * @exception JMSRuntimeException if the JMS provider fails to receive the next message due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to receive the next message due to some internal error.
      */
     Message receiveNoWait();
 
@@ -169,7 +169,7 @@ public interface JMSConsumer extends AutoCloseable {
      * <p>
      * This method is the only {@code JMSConsumer} method that can be called concurrently.
      *
-     * @exception JMSRuntimeException if the JMS provider fails to close the consumer due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to close the consumer due to some internal error.
      */
     @Override
     void close();
@@ -198,12 +198,12 @@ public interface JMSConsumer extends AutoCloseable {
      * The result of this method throwing a {@code MessageFormatRuntimeException} depends on the session mode:
      *
      * <ul>
-     * <li>{@code AUTO_ACKNOWLEDGE} or {@code DUPS_OK_ACKNOWLEDGE}: The JMS provider will behave as if the unsuccessful call
+     * <li>{@code AUTO_ACKNOWLEDGE} or {@code DUPS_OK_ACKNOWLEDGE}: The Jakarta Messaging provider will behave as if the unsuccessful call
      * to {@code receiveBody} had not occurred. The message will be delivered again before any subsequent messages.
      *
      * This is not considered to be redelivery and does not cause the {@code JMSRedelivered} message header field to be set
      * or the {@code JMSXDeliveryCount} message property to be incremented.</li>
-     * <li>{@code CLIENT_ACKNOWLEDGE}: The JMS provider will behave as if the call to {@code receiveBody} had been
+     * <li>{@code CLIENT_ACKNOWLEDGE}: The Jakarta Messaging provider will behave as if the call to {@code receiveBody} had been
      * successful and will not deliver the message again.
      *
      * As with any message that is delivered with a session mode of {@code CLIENT_ACKNOWLEDGE}, the message will not be
@@ -212,7 +212,7 @@ public interface JMSConsumer extends AutoCloseable {
      * {@code JMSRedelivered} message header field will be set and its {@code JMSXDeliveryCount} message property will be
      * incremented.</li>
      *
-     * <li>Transacted session: The JMS provider will behave as if the call to {@code receiveBody} had been successful and
+     * <li>Transacted session: The Jakarta Messaging provider will behave as if the call to {@code receiveBody} had been successful and
      * will not deliver the message again.
      *
      * As with any message that is delivered in a transacted session, the transaction will remain uncommitted until the
@@ -242,7 +242,7 @@ public interface JMSConsumer extends AutoCloseable {
      * <li>if the message has no body
      * <li>if the message is an {@code ObjectMessage} and object deserialization fails.
      * </ul>
-     * @throws JMSRuntimeException if the JMS provider fails to receive the next message due to some internal error
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to receive the next message due to some internal error
      */
     <T> T receiveBody(Class<T> c);
 
@@ -270,12 +270,12 @@ public interface JMSConsumer extends AutoCloseable {
      * <p>
      * The result of this method throwing a {@code MessageFormatRuntimeException} depends on the session mode:
      * <ul>
-     * <li>{@code AUTO_ACKNOWLEDGE} or {@code DUPS_OK_ACKNOWLEDGE}: The JMS provider will behave as if the unsuccessful call
+     * <li>{@code AUTO_ACKNOWLEDGE} or {@code DUPS_OK_ACKNOWLEDGE}: The Jakarta Messaging provider will behave as if the unsuccessful call
      * to {@code receiveBody} had not occurred. The message will be delivered again before any subsequent messages.
      *
      * This is not considered to be redelivery and does not cause the {@code JMSRedelivered} message header field to be set
      * or the {@code JMSXDeliveryCount} message property to be incremented.</li>
-     * <li>{@code CLIENT_ACKNOWLEDGE}: The JMS provider will behave as if the call to {@code receiveBody} had been
+     * <li>{@code CLIENT_ACKNOWLEDGE}: The Jakarta Messaging provider will behave as if the call to {@code receiveBody} had been
      * successful and will not deliver the message again.
      *
      * As with any message that is delivered with a session mode of {@code CLIENT_ACKNOWLEDGE}, the message will not be
@@ -284,7 +284,7 @@ public interface JMSConsumer extends AutoCloseable {
      * {@code JMSRedelivered} message header field will be set and its {@code JMSXDeliveryCount} message property will be
      * incremented.</li>
      *
-     * <li>Transacted session: The JMS provider will behave as if the call to {@code receiveBody} had been successful and
+     * <li>Transacted session: The Jakarta Messaging provider will behave as if the call to {@code receiveBody} had been successful and
      * will not deliver the message again.
      *
      * As with any message that is delivered in a transacted session, the transaction will remain uncommitted until the
@@ -315,7 +315,7 @@ public interface JMSConsumer extends AutoCloseable {
      * <li>if the message has no body
      * <li>if the message is an {@code ObjectMessage} and object deserialization fails.
      * </ul>
-     * @throws JMSRuntimeException if the JMS provider fails to receive the next message due to some internal error
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to receive the next message due to some internal error
      */
     <T> T receiveBody(Class<T> c, long timeout);
 
@@ -341,12 +341,12 @@ public interface JMSConsumer extends AutoCloseable {
      * <p>
      * The result of this method throwing a {@code MessageFormatRuntimeException} depends on the session mode:
      * <ul>
-     * <li>{@code AUTO_ACKNOWLEDGE} or {@code DUPS_OK_ACKNOWLEDGE}: The JMS provider will behave as if the unsuccessful call
+     * <li>{@code AUTO_ACKNOWLEDGE} or {@code DUPS_OK_ACKNOWLEDGE}: The Jakarta Messaging provider will behave as if the unsuccessful call
      * to {@code receiveBodyNoWait} had not occurred. The message will be delivered again before any subsequent messages.
      *
      * This is not considered to be redelivery and does not cause the {@code JMSRedelivered} message header field to be set
      * or the {@code JMSXDeliveryCount} message property to be incremented.</li>
-     * <li>{@code CLIENT_ACKNOWLEDGE}: The JMS provider will behave as if the call to {@code receiveBodyNoWait} had been
+     * <li>{@code CLIENT_ACKNOWLEDGE}: The Jakarta Messaging provider will behave as if the call to {@code receiveBodyNoWait} had been
      * successful and will not deliver the message again.
      *
      * As with any message that is delivered with a session mode of {@code CLIENT_ACKNOWLEDGE}, the message will not be
@@ -355,7 +355,7 @@ public interface JMSConsumer extends AutoCloseable {
      * {@code JMSRedelivered} message header field will be set and its {@code JMSXDeliveryCount} message property will be
      * incremented.</li>
      *
-     * <li>Transacted session: The JMS provider will behave as if the call to {@code receiveBodyNoWait} had been successful
+     * <li>Transacted session: The Jakarta Messaging provider will behave as if the call to {@code receiveBodyNoWait} had been successful
      * and will not deliver the message again.
      *
      * As with any message that is delivered in a transacted session, the transaction will remain uncommitted until the
@@ -386,7 +386,7 @@ public interface JMSConsumer extends AutoCloseable {
      * <li>if the message is an {@code ObjectMessage} and object deserialization fails.
      * </ul>
      *
-     * @throws JMSRuntimeException if the JMS provider fails to receive the next message due to some internal error
+     * @throws JMSRuntimeException if the Jakarta Messaging provider fails to receive the next message due to some internal error
      *
      */
     <T> T receiveBodyNoWait(Class<T> c);

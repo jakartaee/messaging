@@ -22,17 +22,17 @@ package javax.jms;
  *
  * <p>
  * Some application servers provide support for grouping JTA capable resource use into a distributed transaction
- * (optional). To include JMS API transactions in a JTA transaction, an application server requires a JTA aware JMS
- * provider. A JMS provider exposes its JTA support using an {@code XAConnectionFactory} object, which an application
+ * (optional). To include Jakarta Messaging API transactions in a JTA transaction, an application server requires a JTA aware JMS
+ * provider. A Jakarta Messaging provider exposes its JTA support using an {@code XAConnectionFactory} object, which an application
  * server uses to create {@code XAConnection} objects.
  *
  * <p>
- * {@code XAConnectionFactory} objects are JMS administered objects, just like {@code ConnectionFactory} objects. It is
+ * {@code XAConnectionFactory} objects are Jakarta Messaging administered objects, just like {@code ConnectionFactory} objects. It is
  * expected that application servers will find them using the Java Naming and Directory Interface (JNDI) API.
  *
  * <p>
- * The {@code XAConnectionFactory} interface is optional. JMS providers are not required to support this interface. This
- * interface is for use by JMS providers to support transactional environments. Client programs are strongly encouraged
+ * The {@code XAConnectionFactory} interface is optional. Jakarta Messaging providers are not required to support this interface. This
+ * interface is for use by Jakarta Messaging providers to support transactional environments. Client programs are strongly encouraged
  * to use the transactional support available in their environment, rather than use these XA interfaces directly.
  *
  * @version JMS 2.0
@@ -46,7 +46,7 @@ public interface XAConnectionFactory {
      *
      * @return a newly created {@code XAConnection}
      *
-     * @exception JMSException if the JMS provider fails to create an XA connection due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create an XA connection due to some internal error.
      * @exception JMSSecurityException if client authentication fails due to an invalid user name or password.
      *
      * @since JMS 1.1
@@ -62,7 +62,7 @@ public interface XAConnectionFactory {
      *
      * @return a newly created {@code XAConnection}
      *
-     * @exception JMSException if the JMS provider fails to create an XA connection due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create an XA connection due to some internal error.
      * @exception JMSSecurityException if client authentication fails due to an invalid user name or password.
      *
      * @since JMS 1.1
@@ -78,7 +78,7 @@ public interface XAConnectionFactory {
      *
      * @return a newly created {@code XAJMSContext}
      *
-     * @exception JMSRuntimeException if the JMS provider fails to create the {@code XAJMSContext} due to some internal
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to create the {@code XAJMSContext} due to some internal
      * error.
      * @exception JMSSecurityRuntimeException if client authentication fails due to an invalid user name or password.
      *
@@ -98,7 +98,7 @@ public interface XAConnectionFactory {
      *
      * @return a newly created JMSContext
      *
-     * @exception JMSRuntimeException if the JMS provider fails to create the JMSContext due to some internal error.
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to create the JMSContext due to some internal error.
      * @exception JMSSecurityRuntimeException if client authentication fails due to an invalid user name or password.
      *
      * @since JMS 2.0

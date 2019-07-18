@@ -17,7 +17,7 @@
 package javax.jms;
 
 /**
- * This exception must be thrown when a JMS client attempts to use a data type not supported by a message or attempts to
+ * This exception must be thrown when a Jakarta Messaging client attempts to use a data type not supported by a message or attempts to
  * read data in a message as the wrong type.
  *
  * <p>
@@ -34,7 +34,7 @@ package javax.jms;
 public class MessageFormatException extends JMSException {
 
     /**
-     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Jakarta Messaging 1.1 version
      */
     private static final long serialVersionUID = -3642297253594750138L;
 

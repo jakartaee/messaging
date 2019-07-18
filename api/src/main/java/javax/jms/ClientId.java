@@ -23,7 +23,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * This annotation specifies that a callback method on a JMS message-driven bean must use the specified client
+ * This annotation specifies that a callback method on a Jakarta Messaging message-driven bean must use the specified client
  * identifier.
  * <p>
  * The method must also be annotated with either {@code TopicListener} or {@code QueueListener}. If it is not then

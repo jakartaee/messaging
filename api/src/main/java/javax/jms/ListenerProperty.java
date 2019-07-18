@@ -24,7 +24,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * This annotation specifies an arbitrary activation property to be used by a callback method on a JMS message-driven
+ * This annotation specifies an arbitrary activation property to be used by a callback method on a Jakarta Messaging message-driven
  * bean must use the specified message selector. It may be specified either on the callback method or on the
  * message-driven bean class.
  *

@@ -18,7 +18,7 @@ package javax.jms;
 
 /**
  * <p>
- * This exception must be thrown when a JMS client attempts to give a provider a message selector with invalid syntax.
+ * This exception must be thrown when a Jakarta Messaging client attempts to give a provider a message selector with invalid syntax.
  *
  * @version JMS 2.0
  * @since JMS 1.0
@@ -27,7 +27,7 @@ package javax.jms;
 public class InvalidSelectorException extends JMSException {
 
     /**
-     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Jakarta Messaging 1.1 version
      */
     private static final long serialVersionUID = 6223038613086963841L;
 

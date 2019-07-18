@@ -18,7 +18,7 @@ package javax.jms;
 
 /**
  * <p>
- * This is the root class of all checked exceptions in the JMS API.
+ * This is the root class of all checked exceptions in the Jakarta Messaging API.
  *
  * <p>
  * It provides the following information:
@@ -26,8 +26,8 @@ package javax.jms;
  * <li>A provider-specific string describing the error. This string is the standard exception message and is available
  * via the {@code getMessage} method.
  * <li>A provider-specific string error code
- * <li>A reference to another exception. Often a JMS API exception will be the result of a lower-level problem. If
- * appropriate, this lower-level exception can be linked to the JMS API exception.
+ * <li>A reference to another exception. Often a Jakarta Messaging API exception will be the result of a lower-level problem. If
+ * appropriate, this lower-level exception can be linked to the Jakarta Messaging API exception.
  * </ul>
  *
  * @version JMS 2.0
@@ -37,7 +37,7 @@ package javax.jms;
 public class JMSException extends Exception {
 
     /**
-     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Jakarta Messaging 1.1 version
      */
     private static final long serialVersionUID = 8951994251593378324L;
 
