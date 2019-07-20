@@ -21,16 +21,16 @@
     <parent>
         <groupId>org.eclipse.ee4j</groupId>
         <artifactId>project</artifactId>
-        <version>1.0.5/version>
+        <version>1.0.5</version>
     </parent>
 
-    <groupId>jakarta.messaging</groupId>
-    <artifactId>jakarta.messaging-api</artifactId>
-    <version>2.0-SNAPSHOT</version>
-    
-    <name>Jakarta Messaging</name>
+    <groupId>jakarta.jms</groupId>
+    <artifactId>jakarta.jms-api</artifactId>
+    <version>2.0.2-SNAPSHOT</version>
+
+    <name>Jakarta Messaging API</name>
     <url>https://projects.eclipse.org/projects/ee4j.jms</url>
-        
+
     <licenses>
         <license>
             <name>Eclipse Public License 2.0</name>
@@ -44,22 +44,163 @@
         </license>
    </licenses>
 
+    <properties>
+        <!--
+            After every promotion build:
+              - increment spec.build
+            To re-spin a promotion build:
+              - change the project <version> back to the previous value
+              - commit the change
+
+            When the spec turns final:
+              - change spec.non.final to false
+              - change spec.version to the value of spec.newVersion
+              - comment out spec.newVersion
+              - comment out spec.build
+              - update the project <version> to not have -bXX
+        -->
+        <spec.title>Java(TM) Message Service Specification</spec.title>
+        <spec.version>2.0</spec.version>
+        <spec.newVersion>2.1</spec.newVersion>
+        <spec.build>01</spec.build>
+        <spec.impl.version>2.0.2</spec.impl.version>
+        <spec.extension.name>javax.jms</spec.extension.name>
+        <spec.non.final>false</spec.non.final>
+        <spec.api.package>jakarta.jms</spec.api.package>
+    </properties>
+
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>3.0.0-M2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.glassfish.build</groupId>
+                    <artifactId>spec-version-maven-plugin</artifactId>
+                    <version>1.5</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>3.5.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.0.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.0.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <resources>
+            <resource>
+                <directory>${project.basedir}</directory>
+                <includes>
+                    <include>LICENSE.md</include>
+                    <include>NOTICE.md</include>
+                </includes>
+                <targetPath>META-INF</targetPath>
+            </resource>
+        </resources>
+
         <plugins>
            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            
+
+            <plugin>
+                <groupId>org.glassfish.build</groupId>
+                <artifactId>spec-version-maven-plugin</artifactId>
+                <configuration>
+                    <specMode>jakarta</specMode>
+                    <spec>
+                        <nonFinal>${spec.non.final}</nonFinal>
+                        <jarType>api</jarType>
+                        <specVersion>${spec.version}</specVersion>
+                        <specBuild>${spec.build}</specBuild>
+                        <specImplVersion>${spec.impl.version}</specImplVersion>
+                        <apiPackage>${spec.api.package}</apiPackage>
+                        <newSpecVersion>${spec.new.spec.version}</newSpecVersion>
+                    </spec>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>set-spec-properties</goal>
+                            <!-- TODO:
+                            glassfish-spec-version-maven-plugin needs to be updated
+                            in order to check 'jakarta.' prefixed values in manifest entries
+                            -->
+                            <!--<goal>check-module</goal>-->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Bundle-Version>${spec.bundle.version}</Bundle-Version>
+                        <Bundle-SymbolicName>${spec.bundle.symbolic-name}</Bundle-SymbolicName>
+                        <Extension-Name>${spec.extension.name}</Extension-Name>
+                        <Implementation-Version>${spec.implementation.version}</Implementation-Version>
+                        <Specification-Version>${spec.specification.version}</Specification-Version>
+                        <Bundle-Description>
+                            Jakarta Messaging ${spec.version} Specification
+                        </Bundle-Description>
+                        <Implementation-Vendor-Id>org.eclipse.ee4j.jms</Implementation-Vendor-Id>
+                        <Specification-Vendor>Eclipse Foundation</Specification-Vendor>
+                    </instructions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>bundle-manifest</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>manifest</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                    </archive>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.8</version>
                 <configuration>
                     <groups>
                         <group>
@@ -69,16 +210,18 @@
                             </packages>
                         </group>
                     </groups>
-                
-                    
+
+                    <!-- Specifies the text to be placed at the bottom of each output file. -->
+                    <bottom>Copyright 1997-2018 Oracle America Inc. Copyright 2019 Contributors to the Eclipse Foundation.  All rights reserved.</bottom>
+
                     <!-- Specifies the header text to be placed at the top of each output file, to the right of the upper navigation bar. -->
-                    <header>Jakarta Messaging 2.0</header>
-                    
+                    <header>Jakarta Messaging ${spec.version}</header>
+
                     <!-- Specifies the footer text to be placed at the top of each output file, to the right of the lower navigation bar. -->
-                    <footer>Jakarta Messaging 2.0</footer>
+                    <footer>Jakarta Messaging ${spec.version}</footer>
 
                     <links>
-                        <link>https://projects.eclipse.org/projects/ee4j.jms-api</link>
+                        <link>https://projects.eclipse.org/projects/ee4j.jms</link>
                     </links>
                 </configuration>
                 <executions>
