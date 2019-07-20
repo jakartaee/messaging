@@ -27,7 +27,7 @@ import java.lang.annotation.Target;
  *
  * @see JMSDestinationDefinition
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  *
  */

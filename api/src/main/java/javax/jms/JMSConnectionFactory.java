@@ -30,7 +30,7 @@ import java.lang.annotation.Target;
  * used when injecting a {@code javax.jms.JMSContext} object.
  *
  * <p>
- * It may also be used to specify that a callback method on a JMS message-driven bean must use the specified message
+ * It may also be used to specify that a callback method on a Jakarta Messaging message-driven bean must use the specified message
  * selector. In this case it may be specified either on the callback method or on the message-driven bean class.
  *
  * <p>
@@ -46,7 +46,7 @@ import java.lang.annotation.Target;
  * If this annotation is specified on both a method of a message-driven bean class and on the message-driven bean class
  * itself then deployment will fail.
  *
- * @version JMS 2.1
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  */
 @Retention(RUNTIME)

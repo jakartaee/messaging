@@ -25,7 +25,7 @@ import java.lang.annotation.Target;
 /**
  * Specifies one or more {@code JMSConnectionFactoryDefinition} annotations.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  *
  * @see JMSConnectionFactoryDefinition

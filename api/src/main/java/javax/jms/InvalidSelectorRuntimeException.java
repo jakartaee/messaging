@@ -17,17 +17,17 @@
 package javax.jms;
 
 /**
- * This unchecked exception must be thrown when a JMS client attempts to give a provider a message selector with invalid
+ * This unchecked exception must be thrown when a Jakarta Messaging client attempts to give a provider a message selector with invalid
  * syntax, and the method signature does not permit a {@code InvalidSelectorException} to be thrown.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  *
  **/
 public class InvalidSelectorRuntimeException extends JMSRuntimeException {
 
     /**
-     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 2.0 version
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Jakarta Messaging 2.0 version
      */
     private static final long serialVersionUID = 1974783946275023548L;
 

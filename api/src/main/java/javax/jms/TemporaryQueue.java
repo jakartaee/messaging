@@ -29,7 +29,7 @@ package javax.jms;
  * @see Session#createTemporaryQueue()
  * @see QueueSession#createTemporaryQueue()
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface TemporaryQueue extends Queue {
@@ -37,7 +37,7 @@ public interface TemporaryQueue extends Queue {
     /**
      * Deletes this temporary queue. If there are existing receivers still using it, a {@code JMSException} will be thrown.
      *
-     * @exception JMSException if the JMS provider fails to delete the temporary queue due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to delete the temporary queue due to some internal error.
      */
     void delete() throws JMSException;
 }

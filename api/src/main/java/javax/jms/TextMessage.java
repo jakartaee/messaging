@@ -37,7 +37,7 @@ package javax.jms;
  * @see javax.jms.StreamMessage
  * @see java.lang.String
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface TextMessage extends Message {
@@ -47,7 +47,7 @@ public interface TextMessage extends Message {
      *
      * @param string the {@code String} containing the message's data
      *
-     * @exception JMSException if the JMS provider fails to set the text due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the text due to some internal error.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
     void setText(String string) throws JMSException;
@@ -57,7 +57,7 @@ public interface TextMessage extends Message {
      *
      * @return the {@code String} containing the message's data
      *
-     * @exception JMSException if the JMS provider fails to get the text due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the text due to some internal error.
      */
     String getText() throws JMSException;
 }

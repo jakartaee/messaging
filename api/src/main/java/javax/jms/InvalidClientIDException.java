@@ -21,14 +21,14 @@ package javax.jms;
  * This exception must be thrown when a client attempts to set a connection's client ID to a value that is rejected by a
  * provider.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  *
  **/
 public class InvalidClientIDException extends JMSException {
 
     /**
-     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Jakarta Messaging 1.1 version
      */
     private static final long serialVersionUID = 2410181719763491702L;
 

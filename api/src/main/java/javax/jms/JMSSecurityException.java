@@ -20,14 +20,14 @@ package javax.jms;
  * This exception must be thrown when a provider rejects a user name/password submitted by a client. It may also be
  * thrown for any case where a security restriction prevents a method from completing.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  *
  **/
 public class JMSSecurityException extends JMSException {
 
     /**
-     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Jakarta Messaging 1.1 version
      */
     private static final long serialVersionUID = -7512859695190450217L;
 

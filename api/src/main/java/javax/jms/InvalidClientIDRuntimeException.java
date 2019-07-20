@@ -20,14 +20,14 @@ package javax.jms;
  * This unchecked exception must be thrown when a client attempts to set a connection's client ID to a value that is
  * rejected by a provider, and the method signature does not permit a {@code InvalidClientIDException} to be thrown.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  *
  **/
 public class InvalidClientIDRuntimeException extends JMSRuntimeException {
 
     /**
-     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 2.0 version
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Jakarta Messaging 2.0 version
      */
     private static final long serialVersionUID = -1997236208457896631L;
 

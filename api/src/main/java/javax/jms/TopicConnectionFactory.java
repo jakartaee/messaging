@@ -18,7 +18,7 @@ package javax.jms;
 
 /**
  * A client uses a {@code TopicConnectionFactory} object to create {@code TopicConnection} objects with a
- * publish/subscribe JMS provider.
+ * publish/subscribe Jakarta Messaging provider.
  *
  * <p>
  * A{@code  TopicConnectionFactory} can be used to create a {@code TopicConnection}, from which specialized
@@ -30,7 +30,7 @@ package javax.jms;
  *
  * @see javax.jms.ConnectionFactory
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface TopicConnectionFactory extends ConnectionFactory {
@@ -41,7 +41,7 @@ public interface TopicConnectionFactory extends ConnectionFactory {
      *
      * @return a newly created topic connection
      *
-     * @exception JMSException if the JMS provider fails to create a topic connection due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create a topic connection due to some internal error.
      * @exception JMSSecurityException if client authentication fails due to an invalid user name or password.
      */
     TopicConnection createTopicConnection() throws JMSException;
@@ -55,7 +55,7 @@ public interface TopicConnectionFactory extends ConnectionFactory {
      *
      * @return a newly created topic connection
      *
-     * @exception JMSException if the JMS provider fails to create a topic connection due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to create a topic connection due to some internal error.
      * @exception JMSSecurityException if client authentication fails due to an invalid user name or password.
      */
     TopicConnection createTopicConnection(String userName, String password) throws JMSException;

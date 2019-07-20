@@ -21,14 +21,14 @@ package javax.jms;
  * any case where a security restriction prevents a method from completing, and the method signature does not permit a
  * {@code JMSSecurityException} to be thrown.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  *
  **/
 public class JMSSecurityRuntimeException extends JMSRuntimeException {
 
     /**
-     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 2.0 version
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Jakarta Messaging 2.0 version
      */
     private static final long serialVersionUID = 1020149469192845616L;
 

@@ -22,14 +22,14 @@ package javax.jms;
  * {@code IllegalStateRuntimeException} to be thrown. For example, this exception must be thrown if
  * {@code JMSContext.commit} is called on a non-transacted session.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  *
  **/
 public class IllegalStateRuntimeException extends JMSRuntimeException {
 
     /**
-     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 2.0 version
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Jakarta Messaging 2.0 version
      */
     private static final long serialVersionUID = 6838714637432837899L;
 

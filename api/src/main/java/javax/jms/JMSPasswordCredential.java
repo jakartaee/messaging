@@ -31,7 +31,7 @@ import java.lang.annotation.Target;
  *
  * @see javax.jms.ConnectionFactory#createContext(java.lang.String, java.lang.String)
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  */
 @Retention(RUNTIME)

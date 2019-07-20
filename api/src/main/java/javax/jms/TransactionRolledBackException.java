@@ -19,13 +19,13 @@ package javax.jms;
 /**
  * This exception must be thrown when a call to {@code Session.commit} results in a rollback of the current transaction.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public class TransactionRolledBackException extends JMSException {
 
     /**
-     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Jakarta Messaging 1.1 version
      */
     private static final long serialVersionUID = 9157976009672865857L;
 

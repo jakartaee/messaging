@@ -23,14 +23,14 @@ package javax.jms;
  * is called on a non-transacted session. This exception is also called when a domain inappropriate method is called,
  * such as calling {@code TopicSession.CreateQueueBrowser}.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  *
  **/
 public class IllegalStateException extends JMSException {
 
     /**
-     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 1.1 version
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Jakarta Messaging 1.1 version
      */
     private static final long serialVersionUID = -6850763061112244487L;
 

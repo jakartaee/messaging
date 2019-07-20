@@ -20,14 +20,14 @@ package javax.jms;
  * This unchecked exception must be thrown when a destination either is not understood by a provider or is no longer
  * valid, and the method signature does not permit a {@code InvalidDestinationException} to be thrown.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  *
  **/
 public class InvalidDestinationRuntimeException extends JMSRuntimeException {
 
     /**
-     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 2.0 version
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Jakarta Messaging 2.0 version
      */
     private static final long serialVersionUID = 2765276997130843763L;
 

@@ -21,14 +21,14 @@ package javax.jms;
  * {@code TopicSubscriber} and {@code TopicPublisher} objects (optional).
  *
  * <p>
- * The {@code XATopicSession} interface is optional. JMS providers are not required to support this interface. This
- * interface is for use by JMS providers to support transactional environments. Client programs are strongly encouraged
+ * The {@code XATopicSession} interface is optional. Jakarta Messaging providers are not required to support this interface. This
+ * interface is for use by Jakarta Messaging providers to support transactional environments. Client programs are strongly encouraged
  * to use the transactional support available in their environment, rather than using these XA interfaces directly.
  *
  * @see javax.jms.XASession
  * @see javax.jms.TopicSession
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface XATopicSession extends XASession {

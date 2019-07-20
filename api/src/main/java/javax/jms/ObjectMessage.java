@@ -40,7 +40,7 @@ import java.io.Serializable;
  * @see javax.jms.StreamMessage
  * @see javax.jms.TextMessage
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 1.0
  */
 public interface ObjectMessage extends Message {
@@ -52,7 +52,7 @@ public interface ObjectMessage extends Message {
      *
      * @param object the message's data
      *
-     * @exception JMSException if the JMS provider fails to set the object due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to set the object due to some internal error.
      * @exception MessageFormatException if object serialization fails.
      * @exception MessageNotWriteableException if the message is in read-only mode.
      */
@@ -63,7 +63,7 @@ public interface ObjectMessage extends Message {
      *
      * @return the serializable object containing this message's data
      *
-     * @exception JMSException if the JMS provider fails to get the object due to some internal error.
+     * @exception JMSException if the Jakarta Messaging provider fails to get the object due to some internal error.
      * @exception MessageFormatException if object deserialization fails.
      */
     Serializable getObject() throws JMSException;

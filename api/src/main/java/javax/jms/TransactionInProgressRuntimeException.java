@@ -21,13 +21,13 @@ package javax.jms;
  * an attempt to call {@code JMSContext.commit} when the context is part of a distributed transaction should throw a
  * {@code TransactionInProgressRuntimeException}.
  *
- * @version JMS 2.0
+ * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  */
 public class TransactionInProgressRuntimeException extends JMSRuntimeException {
 
     /**
-     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the JMS 2.0 version
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Jakarta Messaging 2.0 version
      */
     private static final long serialVersionUID = -916492460069513065L;
 
