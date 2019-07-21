@@ -168,7 +168,7 @@ import java.util.Enumeration;
  *
  * <p>
  * The Jakarta Messaging API reserves the {@code JMSX} property name prefix for Jakarta Messaging defined properties. The full set of these
- * properties is defined in the Java Message Service specification. The specification also defines whether support for
+ * properties is defined in the Jakarta Messaging specification. The specification also defines whether support for
  * each property is mandatory or optional. New Jakarta Messaging defined properties may be added in later versions of the Jakarta Messaging API. The
  * {@code String[] ConnectionMetaData.getJMSXPropertyNames} method returns the names of the JMSX properties supported by
  * a connection.
