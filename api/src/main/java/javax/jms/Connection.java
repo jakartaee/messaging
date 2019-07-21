@@ -74,17 +74,17 @@ public interface Connection extends AutoCloseable {
      *
      * <p>
      * This method has been superseded by the method {@code createSession(int sessionMode)} which specifies the same
-     * information using a single argument, and by the method {@code createSession()} which is for use in a Java EE JTA
+     * information using a single argument, and by the method {@code createSession()} which is for use in a Jakarta EE JTA
      * transaction. Applications should consider using those methods instead of this one.
      *
      * <p>
      * The effect of setting the {@code transacted} and {@code acknowledgeMode} arguments depends on whether this method is
-     * called in a Java SE environment, in the Java EE application client container, or in the Java EE web or EJB container.
-     * If this method is called in the Java EE web or EJB container then the effect of setting the transacted} and
+     * called in a Java SE environment, in the Jakarta EE application client container, or in the Jakarta EE web or EJB container.
+     * If this method is called in the Jakarta EE web or EJB container then the effect of setting the transacted} and
      * {@code acknowledgeMode} arguments also depends on whether or not there is an active JTA transaction in progress.
      *
      * <p>
-     * In a <b>Java SE environment</b> or in <b>the Java EE application client container</b>:
+     * In a <b>Java SE environment</b> or in <b>the Jakarta EE application client container</b>:
      * <ul>
      * <li>If {@code transacted} is set to {@code true} then the session will use a local transaction which may subsequently
      * be committed or rolled back by calling the session's {@code commit} or {@code rollback} methods. The argument
@@ -97,7 +97,7 @@ public interface Connection extends AutoCloseable {
      * </ul>
      *
      * <p>
-     * In a <b>Java EE web or EJB container, when there is an active JTA transaction in progress</b>:
+     * In a <b>Jakarta EE web or EJB container, when there is an active JTA transaction in progress</b>:
      * <ul>
      * <li>Both arguments {@code transacted} and {@code acknowledgeMode} are ignored. The session will participate in the
      * JTA transaction and will be committed or rolled back when that transaction is committed or rolled back, not by
@@ -106,7 +106,7 @@ public interface Connection extends AutoCloseable {
      * </ul>
      *
      * <p>
-     * In the <b>Java EE web or EJB container, when there is no active JTA transaction in progress</b>:
+     * In the <b>Jakarta EE web or EJB container, when there is no active JTA transaction in progress</b>:
      * <ul>
      * <li>If {@code transacted} is set to false and {@code acknowledgeMode} is set to {@code JMSContext.AUTO_ACKNOWLEDGE}
      * or {@code Session.DUPS_OK_ACKNOWLEDGE} then the session will be non-transacted and messages will be acknowledged
@@ -125,8 +125,8 @@ public interface Connection extends AutoCloseable {
      * </ul>
      *
      * <p>
-     * Applications running in the Java EE web and EJB containers must not attempt to create more than one active (not
-     * closed) {@code Session} object per connection. If this method is called in a Java EE web or EJB container when an
+     * Applications running in the Jakarta EE web and EJB containers must not attempt to create more than one active (not
+     * closed) {@code Session} object per connection. If this method is called in a Jakarta EE web or EJB container when an
      * active {@code Session} object already exists for this connection then a {@code JMSException} may be thrown.
      *
      * @param transacted indicates whether the session will use a local transaction, except in the cases described above
@@ -141,7 +141,7 @@ public interface Connection extends AutoCloseable {
      * <ul>
      * <li>some internal error,
      * <li>lack of support for the specific transaction and acknowledgement mode, or
-     * <li>because this method is being called in a Java EE web or EJB application and an active session already exists for
+     * <li>because this method is being called in a Jakarta EE web or EJB application and an active session already exists for
      * this connection.
      * </ul>
      * @since JMS 1.1
@@ -160,12 +160,12 @@ public interface Connection extends AutoCloseable {
      *
      * <p>
      * The effect of setting the {@code sessionMode} argument depends on whether this method is called in a Java SE
-     * environment, in the Java EE application client container, or in the Java EE web or EJB container. If this method is
-     * called in the Java EE web or EJB container then the effect of setting the {@code sessionMode} argument also depends
+     * environment, in the Jakarta EE application client container, or in the Jakarta EE web or EJB container. If this method is
+     * called in the Jakarta EE web or EJB container then the effect of setting the {@code sessionMode} argument also depends
      * on whether or not there is an active JTA transaction in progress.
      *
      * <p>
-     * In a <b>Java SE environment</b> or in <b>the Java EE application client container</b>:
+     * In a <b>Java SE environment</b> or in <b>the Jakarta EE application client container</b>:
      * <ul>
      * <li>If {@code sessionMode} is set to {@code Session.SESSION_TRANSACTED} then the session will use a local transaction
      * which may subsequently be committed or rolled back by calling the session's {@code commit} or {@code rollback}
@@ -177,7 +177,7 @@ public interface Connection extends AutoCloseable {
      * </ul>
      *
      * <p>
-     * In a <b>Java EE web or EJB container, when there is an active JTA transaction in progress</b>:
+     * In a <b>Jakarta EE web or EJB container, when there is an active JTA transaction in progress</b>:
      * <ul>
      * <li>The argument {@code sessionMode} is ignored. The session will participate in the JTA transaction and will be
      * committed or rolled back when that transaction is committed or rolled back, not by calling the session's
@@ -186,7 +186,7 @@ public interface Connection extends AutoCloseable {
      * </ul>
      *
      * <p>
-     * In the <b>Java EE web or EJB container, when there is no active JTA transaction in progress</b>:
+     * In the <b>Jakarta EE web or EJB container, when there is no active JTA transaction in progress</b>:
      * <ul>
      * <li>If {@code sessionMode} is set to {@code Session.AUTO_ACKNOWLEDGE} or {@code Session.DUPS_OK_ACKNOWLEDGE} then the
      * session will be non-transacted and messages will be acknowledged according to the value of {@code sessionMode}.
@@ -202,8 +202,8 @@ public interface Connection extends AutoCloseable {
      * </ul>
      *
      * <p>
-     * Applications running in the Java EE web and EJB containers must not attempt to create more than one active (not
-     * closed) {@code Session} object per connection. If this method is called in a Java EE web or EJB container when an
+     * Applications running in the Jakarta EE web and EJB containers must not attempt to create more than one active (not
+     * closed) {@code Session} object per connection. If this method is called in a Jakarta EE web or EJB container when an
      * active {@code Session} object already exists for this connection then a {@code JMSException} may be thrown.
      *
      * @param sessionMode specifies the session mode that will be used, except in the cases described above when this value
@@ -216,7 +216,7 @@ public interface Connection extends AutoCloseable {
      * <ul>
      * <li>some internal error,
      * <li>lack of support for the specific transaction and acknowledgement mode, or
-     * <li>because this method is being called in a Java EE web or EJB application and an active session already exists for
+     * <li>because this method is being called in a Jakarta EE web or EJB application and an active session already exists for
      * this connection.
      * </ul>
      * @since JMS 2.0
@@ -236,12 +236,12 @@ public interface Connection extends AutoCloseable {
      *
      * <p>
      * The behaviour of the session that is created depends on whether this method is called in a Java SE environment, in
-     * the Java EE application client container, or in the Java EE web or EJB container. If this method is called in the
-     * Java EE web or EJB container then the behaviour of the session also depends on whether or not there is an active JTA
+     * the Jakarta EE application client container, or in the Jakarta EE web or EJB container. If this method is called in the
+     * Jakarta EE web or EJB container then the behaviour of the session also depends on whether or not there is an active JTA
      * transaction in progress.
      *
      * <p>
-     * In a <b>Java SE environment</b> or in <b>the Java EE application client container</b>:
+     * In a <b>Java SE environment</b> or in <b>the Jakarta EE application client container</b>:
      * <ul>
      * <li>The session will be non-transacted and received messages will be acknowledged automatically using an
      * acknowledgement mode of {@code Session.AUTO_ACKNOWLEDGE} For a definition of the meaning of this acknowledgement mode
@@ -249,13 +249,13 @@ public interface Connection extends AutoCloseable {
      * </ul>
      *
      * <p>
-     * In a <b>Java EE web or EJB container, when there is an active JTA transaction in progress</b>:
+     * In a <b>Jakarta EE web or EJB container, when there is an active JTA transaction in progress</b>:
      * <ul>
      * <li>The session will participate in the JTA transaction and will be committed or rolled back when that transaction is
      * committed or rolled back, not by calling the session's {@code commit} or {@code rollback} methods.
      * </ul>
      * <p>
-     * In the <b>Java EE web or EJB container, when there is no active JTA transaction in progress</b>:
+     * In the <b>Jakarta EE web or EJB container, when there is no active JTA transaction in progress</b>:
      * <ul>
      * <li>The session will be non-transacted and received messages will be acknowledged automatically using an
      * acknowledgement mode of {@code Session.AUTO_ACKNOWLEDGE} For a definition of the meaning of this acknowledgement mode
@@ -263,8 +263,8 @@ public interface Connection extends AutoCloseable {
      * </ul>
      *
      * <p>
-     * Applications running in the Java EE web and EJB containers must not attempt to create more than one active (not
-     * closed) {@code Session} object per connection. If this method is called in a Java EE web or EJB container when an
+     * Applications running in the Jakarta EE web and EJB containers must not attempt to create more than one active (not
+     * closed) {@code Session} object per connection. If this method is called in a Jakarta EE web or EJB container when an
      * active {@code Session} object already exists for this connection then a {@code JMSException} may be thrown.
      *
      * @return a newly created session
@@ -272,7 +272,7 @@ public interface Connection extends AutoCloseable {
      * @exception JMSException if the {@code Connection} object fails to create a session due to
      * <ul>
      * <li>some internal error or
-     * <li>because this method is being called in a Java EE web or EJB application and an active session already exists for
+     * <li>because this method is being called in a Jakarta EE web or EJB application and an active session already exists for
      * this connection.
      * </ul>
      *
@@ -327,7 +327,7 @@ public interface Connection extends AutoCloseable {
      * If another connection with the same {@code clientID} is already running when this method is called, the Jakarta Messaging provider
      * should detect the duplicate ID and throw an {@code InvalidClientIDException}.
      * <p>
-     * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSException} to be
+     * This method must not be used in a Jakarta EE web or EJB application. Doing so may cause a {@code JMSException} to be
      * thrown though this is not guaranteed.
      *
      * @param clientID the unique client identifier
@@ -336,7 +336,7 @@ public interface Connection extends AutoCloseable {
      * following reasons:
      * <ul>
      * <li>an internal error has occurred or
-     * <li>this method has been called in a Java EE web or EJB application (though it is not guaranteed that an exception is
+     * <li>this method has been called in a Jakarta EE web or EJB application (though it is not guaranteed that an exception is
      * thrown in this case)
      * </ul>
      * @exception InvalidClientIDException if the Jakarta Messaging client specifies an invalid or duplicate client ID.
@@ -386,7 +386,7 @@ public interface Connection extends AutoCloseable {
      * <p>
      * A Jakarta Messaging provider should attempt to resolve connection problems itself before it notifies the client of them.
      * <p>
-     * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSException} to be
+     * This method must not be used in a Jakarta EE web or EJB application. Doing so may cause a {@code JMSException} to be
      * thrown though this is not guaranteed.
      *
      * @param listener the exception listener
@@ -394,7 +394,7 @@ public interface Connection extends AutoCloseable {
      * @exception JMSException if the Jakarta Messaging provider fails to set the exception listener for one of the following reasons:
      * <ul>
      * <li>an internal error has occurred or
-     * <li>this method has been called in a Java EE web or EJB application (though it is not guaranteed that an exception is
+     * <li>this method has been called in a Jakarta EE web or EJB application (though it is not guaranteed that an exception is
      * thrown in this case)
      * </ul>
      *
@@ -443,7 +443,7 @@ public interface Connection extends AutoCloseable {
      * there is no requirement for the {@code stop} call to wait until the exception listener has returned before it may
      * return.
      * <p>
-     * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSException} to be
+     * This method must not be used in a Jakarta EE web or EJB application. Doing so may cause a {@code JMSException} to be
      * thrown though this is not guaranteed.
      *
      * @exception IllegalStateException this method has been called by a <tt>MessageListener</tt> on its own
@@ -451,7 +451,7 @@ public interface Connection extends AutoCloseable {
      * @exception JMSException if the Jakarta Messaging provider fails to stop message delivery for one of the following reasons:
      * <ul>
      * <li>an internal error has occurred or
-     * <li>this method has been called in a Java EE web or EJB application (though it is not guaranteed that an exception is
+     * <li>this method has been called in a Jakarta EE web or EJB application (though it is not guaranteed that an exception is
      * thrown in this case)
      * </ul>
      *
@@ -537,7 +537,7 @@ public interface Connection extends AutoCloseable {
      * This is an expert facility not used by ordinary Jakarta Messaging clients.
      *
      * <p>
-     * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSException} to be
+     * This method must not be used in a Jakarta EE web or Enterprise Bean application. Doing so may cause a {@code JMSException} to be
      * thrown though this is not guaranteed.
      *
      * @param destination the destination to access
@@ -555,7 +555,7 @@ public interface Connection extends AutoCloseable {
      * <ul>
      * <li>an internal error has occurred
      * <li>invalid arguments for {@code sessionPool} and {@code messageSelector} or
-     * <li>this method has been called in a Java EE web or EJB application (though it is not guaranteed that an exception is
+     * <li>this method has been called in a Jakarta EE web or EJB application (though it is not guaranteed that an exception is
      * thrown in this case)
      * </ul>
      *
@@ -574,7 +574,7 @@ public interface Connection extends AutoCloseable {
      * This is an expert facility not used by ordinary Jakarta Messaging clients.
      *
      * <p>
-     * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSException} to be
+     * This method must not be used in a Jakarta EE web or EJB application. Doing so may cause a {@code JMSException} to be
      * thrown though this is not guaranteed.
      *
      * @param topic the topic to access
@@ -594,7 +594,7 @@ public interface Connection extends AutoCloseable {
      * <ul>
      * <li>an internal error has occurred
      * <li>invalid arguments for {@code sessionPool} and {@code messageSelector} or
-     * <li>this method has been called in a Java EE web or EJB application (though it is not guaranteed that an exception is
+     * <li>this method has been called in a Jakarta EE web or EJB application (though it is not guaranteed that an exception is
      * thrown in this case)
      * </ul>
      *
@@ -613,7 +613,7 @@ public interface Connection extends AutoCloseable {
      * This is an expert facility not used by ordinary Jakarta Messaging clients.
      *
      * <p>
-     * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSException} to be
+     * This method must not be used in a Jakarta EE web or EJB application. Doing so may cause a {@code JMSException} to be
      * thrown though this is not guaranteed.
      *
      * @param topic topic to access
@@ -633,7 +633,7 @@ public interface Connection extends AutoCloseable {
      * <ul>
      * <li>an internal error has occurred
      * <li>invalid arguments for {@code sessionPool} and {@code messageSelector} or
-     * <li>this method has been called in a Java EE web or EJB application (though it is not guaranteed that an exception is
+     * <li>this method has been called in a Jakarta EE web or EJB application (though it is not guaranteed that an exception is
      * thrown in this case)
      * </ul>
      * @since JMS 1.1
@@ -651,7 +651,7 @@ public interface Connection extends AutoCloseable {
      * This is an expert facility not used by ordinary Jakarta Messaging clients.
      *
      * <p>
-     * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSException} to be
+     * This method must not be used in a Jakarta EE web or EJB application. Doing so may cause a {@code JMSException} to be
      * thrown though this is not guaranteed.
      *
      * @param topic topic to access
@@ -671,7 +671,7 @@ public interface Connection extends AutoCloseable {
      * <ul>
      * <li>an internal error has occurred
      * <li>invalid arguments for {@code sessionPool} and {@code messageSelector} or
-     * <li>this method has been called in a Java EE web or EJB application (though it is not guaranteed that an exception is
+     * <li>this method has been called in a Jakarta EE web or EJB application (though it is not guaranteed that an exception is
      * thrown in this case)
      * </ul>
      * @since JMS 2.0

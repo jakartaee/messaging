@@ -26,7 +26,7 @@ import java.lang.annotation.Target;
  * An application may use this annotation to specify a Jakarta Messaging {@code
  * ConnectionFactory} resource that it requires in its operational environment. This provides information that can be
  * used at the application's deployment to provision the required resource and allows an application to be deployed into
- * a Java EE environment with more minimal administrative configuration.
+ * a Jakarta EE environment with more minimal administrative configuration.
  * <p>
  * The {@code ConnectionFactory} resource may be configured by setting the annotation elements for commonly used
  * properties. Additional properties may be specified using the {@code properties} element. Once defined, a

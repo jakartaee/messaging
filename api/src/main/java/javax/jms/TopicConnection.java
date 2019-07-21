@@ -42,12 +42,12 @@ public interface TopicConnection extends Connection {
      *
      * <p>
      * The effect of setting the {@code transacted} and {@code acknowledgeMode} arguments depends on whether this method is
-     * called in a Java SE environment, in the Java EE application client container, or in the Java EE web or EJB container.
-     * If this method is called in the Java EE web or EJB container then the effect of setting the transacted} and
+     * called in a Java SE environment, in the Jakarta EE application client container, or in the Jakarta EE web or EJB container.
+     * If this method is called in the Jakarta EE web or EJB container then the effect of setting the transacted} and
      * {@code acknowledgeMode} arguments also depends on whether or not there is an active JTA transaction in progress.
      *
      * <p>
-     * In a <b>Java SE environment</b> or in <b>the Java EE application client container</b>:
+     * In a <b>Java SE environment</b> or in <b>the Jakarta EE application client container</b>:
      *
      * <ul>
      * <li>If {@code transacted} is set to {@code true} then the session will use a local transaction which may subsequently
@@ -61,7 +61,7 @@ public interface TopicConnection extends Connection {
      * </ul>
      *
      * <p>
-     * In a <b>Java EE web or EJB container, when there is an active JTA transaction in progress</b>:
+     * In a <b>Jakarta EE web or EJB container, when there is an active JTA transaction in progress</b>:
      *
      * <ul>
      * <li>Both arguments {@code transacted} and {@code acknowledgeMode} are ignored. The session will participate in the
@@ -71,7 +71,7 @@ public interface TopicConnection extends Connection {
      * </ul>
      *
      * <p>
-     * In the <b>Java EE web or EJB container, when there is no active JTA transaction in progress</b>:
+     * In the <b>Jakarta EE web or EJB container, when there is no active JTA transaction in progress</b>:
      *
      * <ul>
      * <li>If {@code transacted} is set to false and {@code acknowledgeMode} is set to {@code JMSContext.AUTO_ACKNOWLEDGE}
@@ -91,8 +91,8 @@ public interface TopicConnection extends Connection {
      * </ul>
      *
      * <p>
-     * Applications running in the Java EE web and EJB containers must not attempt to create more than one active (not
-     * closed) {@code Session} object per connection. If this method is called in a Java EE web or EJB container when an
+     * Applications running in the Jakarta EE web and EJB containers must not attempt to create more than one active (not
+     * closed) {@code Session} object per connection. If this method is called in a Jakarta EE web or EJB container when an
      * active {@code Session} object already exists for this connection then a {@code JMSException} may be thrown.
      *
      * @param transacted indicates whether the session will use a local transaction, except in the cases described above
@@ -106,7 +106,7 @@ public interface TopicConnection extends Connection {
      * <ul>
      * <li>some internal error,
      * <li>lack of support for the specific transaction and acknowledgement mode, or
-     * <li>because this method is being called in a Java EE web or EJB application and an active session already exists for
+     * <li>because this method is being called in a Jakarta EE web or EJB application and an active session already exists for
      * this connection.
      * </ul>
      *

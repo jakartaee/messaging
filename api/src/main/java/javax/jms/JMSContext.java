@@ -45,16 +45,16 @@ import java.io.Serializable;
  * its {@code close} method.
  *
  * <p>
- * Applications running in the Java EE web and EJB containers may alternatively inject a {@code JMSContext} into their
+ * Applications running in the Jakarta EE web and EJB containers may alternatively inject a {@code JMSContext} into their
  * application using the {@code @Inject} annotation. A {@code JMSContext} that is created in this way is described as
  * being <i>container-managed</i>. A container-managed {@code JMSContext} will be closed automatically by the container.
  *
  * <p>
- * Applications running in the Java EE web and EJB containers are not permitted to create more than one active session
+ * Applications running in the Jakarta EE web and EJB containers are not permitted to create more than one active session
  * on a connection so combining them in a single object takes advantage of this restriction to offer a simpler API.
  *
  * <p>
- * However applications running in a Java SE environment or in the Java EE application client container are permitted to
+ * However applications running in a Java SE environment or in the Jakarta EE application client container are permitted to
  * create multiple active sessions on the same connection. This allows the same physical connection to be used in
  * multiple threads simultaneously. Such applications which require multiple sessions to be created on the same
  * connection should use one of the {@code createContext} methods on the {@code ConnectionFactory} to create the first
@@ -88,9 +88,9 @@ public interface JMSContext extends AutoCloseable {
      * </ul>
      *
      * <p>
-     * This method must not be used by applications running in the Java EE web or EJB containers because doing so would
+     * This method must not be used by applications running in the Jakarta EE web or EJB containers because doing so would
      * violate the restriction that such an application must not attempt to create more than one active (not closed)
-     * {@code Session} object per connection. If this method is called in a Java EE web or EJB container then a
+     * {@code Session} object per connection. If this method is called in a Jakarta EE web or EJB container then a
      * {@code JMSRuntimeException} will be thrown.
      *
      * @param sessionMode indicates which of four possible session modes will be used. The permitted values are
@@ -102,7 +102,7 @@ public interface JMSContext extends AutoCloseable {
      * @exception JMSRuntimeException if the Jakarta Messaging provider fails to create the JMSContext due to
      * <ul>
      * <li>some internal error or
-     * <li>because this method is being called in a Java EE web or EJB application.
+     * <li>because this method is being called in a Jakarta EE web or EJB application.
      * </ul>
      * @since JMS 2.0
      *
@@ -170,7 +170,7 @@ public interface JMSContext extends AutoCloseable {
      * should detect the duplicate ID and throw an {@code InvalidClientIDException}.
      *
      * <p>
-     * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSRuntimeException} to
+     * This method must not be used in a Jakarta EE web or EJB application. Doing so may cause a {@code JMSRuntimeException} to
      * be thrown though this is not guaranteed.
      *
      * <p>
@@ -190,7 +190,7 @@ public interface JMSContext extends AutoCloseable {
      * one of the following reasons:
      * <ul>
      * <li>an internal error has occurred or
-     * <li>this method has been called in a Java EE web or EJB application (though it is not guaranteed that an exception is
+     * <li>this method has been called in a Jakarta EE web or EJB application (though it is not guaranteed that an exception is
      * thrown in this case)
      * </ul>
      */
@@ -239,7 +239,7 @@ public interface JMSContext extends AutoCloseable {
      * A Jakarta Messaging provider should attempt to resolve connection problems itself before it notifies the client of them.
      *
      * <p>
-     * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSRuntimeException} to
+     * This method must not be used in a Jakarta EE web or EJB application. Doing so may cause a {@code JMSRuntimeException} to
      * be thrown though this is not guaranteed.
      *
      * <p>
@@ -254,7 +254,7 @@ public interface JMSContext extends AutoCloseable {
      * reasons:
      * <ul>
      * <li>an internal error has occurred or
-     * <li>this method has been called in a Java EE web or EJB application (though it is not guaranteed that an exception is
+     * <li>this method has been called in a Jakarta EE web or EJB application (though it is not guaranteed that an exception is
      * thrown in this case)
      * </ul>
      */
@@ -313,7 +313,7 @@ public interface JMSContext extends AutoCloseable {
      * it may return.
      *
      * <p>
-     * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSRuntimeException} to
+     * This method must not be used in a Jakarta EE web or EJB application. Doing so may cause a {@code JMSRuntimeException} to
      * be thrown though this is not guaranteed.
      *
      * <p>
@@ -328,7 +328,7 @@ public interface JMSContext extends AutoCloseable {
      * @exception JMSRuntimeException if the Jakarta Messaging provider fails to stop message delivery for one of the following reasons:
      * <ul>
      * <li>an internal error has occurred or
-     * <li>this method has been called in a Java EE web or EJB application (though it is not guaranteed that an exception is
+     * <li>this method has been called in a Jakarta EE web or EJB application (though it is not guaranteed that an exception is
      * thrown in this case)
      * </ul>
      *
