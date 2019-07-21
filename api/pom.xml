@@ -59,7 +59,7 @@
               - comment out spec.build
               - update the project <version> to not have -bXX
         -->
-        <spec.title>Java(TM) Message Service Specification</spec.title>
+        <spec.title>Jakarta Messaging Specification</spec.title>
         <spec.version>2.0</spec.version>
         <spec.newVersion>2.1</spec.newVersion>
         <spec.build>01</spec.build>
