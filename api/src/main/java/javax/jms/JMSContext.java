@@ -20,7 +20,7 @@ import java.io.Serializable;
 
 /**
  * A {@code JMSContext} is the main interface in the simplified Jakarta Messaging API introduced for Jakarta Messaging 2.0. This combines in a
- * single object the functionality of two separate objects from the Jakarta Messaging 1.1 API: a {@code Connection} and a
+ * single object the functionality of two separate objects from the Java Message Service 1.1 API: a {@code Connection} and a
  * {@code Session}.
  *
  * <p>
@@ -33,7 +33,7 @@ import java.io.Serializable;
  * receive messages either synchronously or asynchronously.
  *
  * <p>
- * In terms of the Jakarta Messaging 1.1 API a {@code JMSContext} should be thought of as representing both a {@code Connection} and a
+ * In terms of the Java Message Service 1.1 API a {@code JMSContext} should be thought of as representing both a {@code Connection} and a
  * {@code Session}. Although the simplified API removes the need for applications to use those objects, the concepts of
  * connection and session remain important. A connection represents a physical link to the Jakarta Messaging server and a session
  * represents a single-threaded context for sending and receiving messages.
