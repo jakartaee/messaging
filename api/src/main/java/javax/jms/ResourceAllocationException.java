@@ -29,7 +29,7 @@ package javax.jms;
 public class ResourceAllocationException extends JMSException {
 
     /**
-     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Jakarta Messaging 1.1 version
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Java Message Service 1.1 version
      */
     private static final long serialVersionUID = -1172695755360706776L;
 

@@ -26,7 +26,7 @@ package javax.jms;
 public class MessageNotReadableException extends JMSException {
 
     /**
-     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Jakarta Messaging 1.1 version
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Java Message Service 1.1 version
      */
     private static final long serialVersionUID = 8044835867550650748L;
 

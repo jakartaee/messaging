@@ -395,7 +395,7 @@ public interface JMSProducer {
      * <tt>IllegalStateRuntimeException</tt>.
      *
      * <p>
-     * <b>Restrictions on usage in Java EE</b> This method must not be used in a Java EE EJB or web container. Doing so may
+     * <b>Restrictions on usage in Jakarta EE</b> This method must not be used in a Jakarta EE EJB or web container. Doing so may
      * cause a {@code JMSRuntimeException} to be thrown though this is not guaranteed.
      *
      * <p>

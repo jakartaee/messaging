@@ -450,7 +450,7 @@ public interface Session extends Runnable, AutoCloseable {
      * Returns the session's distinguished message listener (optional).
      *
      * <p>
-     * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSException} to be
+     * This method must not be used in a Jakarta EE web or EJB application. Doing so may cause a {@code JMSException} to be
      * thrown though this is not guaranteed.
      *
      * @return the distinguished message listener associated with this session
@@ -459,7 +459,7 @@ public interface Session extends Runnable, AutoCloseable {
      * following reasons:
      * <ul>
      * <li>an internal error has occurred
-     * <li>this method has been called in a Java EE web or EJB application (though it is not guaranteed that an exception is
+     * <li>this method has been called in a Jakarta EE web or EJB application (though it is not guaranteed that an exception is
      * thrown in this case)
      * </ul>
      *
@@ -479,7 +479,7 @@ public interface Session extends Runnable, AutoCloseable {
      * <p>
      * This is an expert facility not used by ordinary Jakarta Messaging clients.
      * <p>
-     * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSException} to be
+     * This method must not be used in a Jakarta EE web or EJB application. Doing so may cause a {@code JMSException} to be
      * thrown though this is not guaranteed.
      *
      * @param listener the message listener to associate with this session
@@ -488,7 +488,7 @@ public interface Session extends Runnable, AutoCloseable {
      * following reasons:
      * <ul>
      * <li>an internal error has occurred
-     * <li>this method has been called in a Java EE web or EJB application (though it is not guaranteed that an exception is
+     * <li>this method has been called in a Jakarta EE web or EJB application (though it is not guaranteed that an exception is
      * thrown in this case)
      * </ul>
      *
@@ -502,10 +502,10 @@ public interface Session extends Runnable, AutoCloseable {
      * Optional operation, intended to be used only by Application Servers, not by ordinary Jakarta Messaging clients.
      *
      * <p>
-     * This method must not be used in a Java EE web or EJB application. Doing so may cause a {@code JMSRuntimeException} to
+     * This method must not be used in a Jakarta EE web or EJB application. Doing so may cause a {@code JMSRuntimeException} to
      * be thrown though this is not guaranteed.
      *
-     * @exception JMSRuntimeException if this method has been called in a Java EE web or EJB application (though it is not
+     * @exception JMSRuntimeException if this method has been called in a Jakarta EE web or EJB application (though it is not
      * guaranteed that an exception is thrown in this case)
      *
      * @see javax.jms.ServerSession

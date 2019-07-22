@@ -25,7 +25,7 @@ package javax.jms;
 public class MessageNotWriteableException extends JMSException {
 
     /**
-     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Jakarta Messaging 1.1 version
+     * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Java Message Service 1.1 version
      */
     private static final long serialVersionUID = -4241931174711518830L;
 
