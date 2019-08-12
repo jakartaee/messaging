@@ -22,6 +22,7 @@
         <groupId>org.eclipse.ee4j</groupId>
         <artifactId>project</artifactId>
         <version>1.0.5</version>
+        <relativePath/>
     </parent>
 
     <groupId>jakarta.jms</groupId>
@@ -111,6 +112,14 @@
         </pluginManagement>
 
         <resources>
+             <resource>
+                <directory>${project.basedir}/..</directory>
+                <includes>
+                    <include>LICENSE.md</include>
+                    <include>NOTICE.md</include>
+                </includes>
+                <targetPath>META-INF</targetPath>
+            </resource>
             <resource>
                 <directory>${project.basedir}</directory>
                 <includes>
@@ -198,39 +207,42 @@
                 </configuration>
             </plugin>
 
+            <!-- 
+               Create Javadoc for API jar
+             -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <configuration>
-                    <groups>
-                        <group>
-                            <title>Jakarta Messaging API Documentation</title>
-                            <packages>
-                                javax.jms
-                            </packages>
-                        </group>
-                    </groups>
-
-                    <!-- Specifies the text to be placed at the bottom of each output file. -->
-                    <bottom>Copyright 1997-2018 Oracle America Inc. Copyright 2019 Contributors to the Eclipse Foundation.  All rights reserved.</bottom>
-
-                    <!-- Specifies the header text to be placed at the top of each output file, to the right of the upper navigation bar. -->
-                    <header>Jakarta Messaging ${spec.version}</header>
-
-                    <!-- Specifies the footer text to be placed at the top of each output file, to the right of the lower navigation bar. -->
-                    <footer>Jakarta Messaging ${spec.version}</footer>
-
-                    <links>
-                        <link>https://projects.eclipse.org/projects/ee4j.jms</link>
-                    </links>
-                </configuration>
+                <version>3.1.1</version>
                 <executions>
                     <execution>
-                        <id>attach-javadocs</id>
+                        <id>attach-api-javadocs</id>
                         <goals>
                             <goal>jar</goal>
                         </goals>
-                     </execution>
+                        <configuration>
+                            <source>1.8</source>
+                            <additionalJOption>-Xdoclint:none</additionalJOption>
+                            <description>Jakarta Messaging API documentation</description>
+                            <doctitle>Jakarta Messaging API documentation</doctitle>
+                            <windowtitle>Jakarta Messaging API documentation</windowtitle>
+                            <header><![CDATA[<br>Jakarta Messaging API v${project.version}]]></header>
+                            <bottom><![CDATA[
+Comments to: <a href="mailto:jms-dev@eclipse.org">jms-dev@eclipse.org</a>.<br>
+Copyright &#169; 2019 Eclipse Foundation. All rights reserved.<br>
+Use is subject to <a href="{@docRoot}/doc-files/speclicense.html" target="_top">license terms</a>.]]>
+                            </bottom>
+                            <docfilessubdirs>true</docfilessubdirs>
+                            <groups>
+                                <group>
+                                    <title>Jakarta Messaging API Documentation</title>
+                                    <packages>
+                                        javax.jms
+                                    </packages>
+                                </group>
+                            </groups>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
