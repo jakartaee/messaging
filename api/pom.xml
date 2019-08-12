@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 
     Copyright (c) 2017, 2018 Oracle and/or its affiliates. All rights reserved.
@@ -30,6 +31,10 @@
     <version>2.0.3-SNAPSHOT</version>
 
     <name>Jakarta Messaging API</name>
+    <description>
+        Jakarta Messaging describes a means for Java applications to create, send, 
+        and receive messages via loosely coupled, reliable asynchronous communication services.
+    </description>
     <url>https://projects.eclipse.org/projects/ee4j.jms</url>
 
     <licenses>
