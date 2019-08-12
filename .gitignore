@@ -3,3 +3,5 @@
 /.project
 /.settings/
 /bin/
+/api/target/
+/spec/target/
