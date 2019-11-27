@@ -67,10 +67,10 @@
         -->
         <spec.title>Jakarta Messaging Specification</spec.title>
         <spec.version>2.0</spec.version>
-        <spec.newVersion>2.1</spec.newVersion>
+        <spec.newVersion>3.0</spec.newVersion>
         <spec.build>01</spec.build>
         <spec.impl.version>2.0.3</spec.impl.version>
-        <spec.extension.name>javax.jms</spec.extension.name>
+        <spec.extension.name>jakarta.jms</spec.extension.name>
         <spec.non.final>false</spec.non.final>
         <spec.api.package>jakarta.jms</spec.api.package>
     </properties>
@@ -242,7 +242,7 @@ Use is subject to <a href="{@docRoot}/doc-files/speclicense.html" target="_top">
                                 <group>
                                     <title>Jakarta Messaging API Documentation</title>
                                     <packages>
-                                        javax.jms
+                                        jakarta.jms
                                     </packages>
                                 </group>
                             </groups>
