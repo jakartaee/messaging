@@ -28,49 +28,12 @@
 
     <groupId>org.eclipse.ee4j.jms</groupId>
     <artifactId>jms-parent</artifactId>
-    <packaging>pom</packaging>
     <version>3.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
     <name>Jakarta Messaging</name>
     <description>Jakarta Messaging Parent</description>
     <url>https://projects.eclipse.org/projects/ee4j.jms</url>
-
-    <scm>
-        <connection>scm:git:git://github.com/eclipse-ee4j/jms-api.git</connection>
-        <developerConnection>scm:git:git@github.com:eclipse-ee4j/jms-api.git</developerConnection>
-        <url>https://github.com/eclipse-ee4j/jms-api</url>
-        <tag>HEAD</tag>
-    </scm>
-
-    <properties>
-        <!--
-            After every promotion build:
-              - increment spec.build
-            To re-spin a promotion build:
-              - change the project <version> back to the previous value
-              - commit the change
-
-            When the spec turns final:
-              - change spec.non.final to false
-              - change spec.version to the value of spec.newVersion
-              - comment out spec.newVersion
-              - comment out spec.build
-              - update the project <version> to not have -bXX
-        -->
-        <spec.title>Jakarta Messaging</spec.title>
-        <spec.version>2.0</spec.version>
-        <spec.newVersion>2.1</spec.newVersion>
-        <spec.build>01</spec.build>
-        <spec.impl.version>2.0.3</spec.impl.version>
-        <spec.extension.name>jakarta.jms</spec.extension.name>
-        <spec.non.final>false</spec.non.final>
-        <spec.api.package>jakarta.jms</spec.api.package>
-    </properties>
-
-    <modules>
-        <module>api</module>
-        <module>spec</module>
-    </modules>
-
     <licenses>
         <license>
             <name>Eclipse Public License 2.0</name>
@@ -84,4 +47,14 @@
         </license>
     </licenses>
 
+    <modules>
+        <module>api</module>
+        <module>spec</module>
+    </modules>
+
+    <scm>
+        <connection>scm:git:git://github.com/eclipse-ee4j/jms-api.git</connection>
+        <developerConnection>scm:git:git@github.com:eclipse-ee4j/jms-api.git</developerConnection>
+        <url>https://github.com/eclipse-ee4j/jms-api</url>
+    </scm>
 </project>
