@@ -16,24 +16,38 @@
     SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>org.eclipse.ee4j.jms</groupId>
         <artifactId>jms-parent</artifactId>
         <version>3.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
+
     <artifactId>messaging-spec</artifactId>
     <packaging>pom</packaging>
+
     <name>Jakarta Messaging Specification</name>
+
+    <distributionManagement>
+      <repository>
+        <id>localhost</id>
+        <url>file://${basedir}/target/repo/</url>
+      </repository>
+      <snapshotRepository>
+        <id>localhost</id>
+        <url>file://${basedir}/target/snapshot-repo/</url>
+      </snapshotRepository>
+    </distributionManagement>
 
     <properties>
         <site.output.dir>${project.build.directory}/staging</site.output.dir>
         <maven.site.skip>true</maven.site.skip>
-        <asciidoctor.maven.plugin.version>1.5.7.1</asciidoctor.maven.plugin.version>
-        <asciidoctorj.version>1.6.2</asciidoctorj.version>
-        <asciidoctorj.pdf.version>1.5.0-alpha.16</asciidoctorj.pdf.version>
-        <jruby.version>9.2.6.0</jruby.version>
+        <asciidoctor.maven.plugin.version>2.0.0-RC.1</asciidoctor.maven.plugin.version>
+        <asciidoctorj.version>2.2.0</asciidoctorj.version>
+        <asciidoctorj.pdf.version>1.5.0-rc.2</asciidoctorj.pdf.version>
+        <jruby.version>9.2.9.0</jruby.version>
         <!-- status: DRAFT, BETA, etc., or blank for final -->
         <status>DRAFT</status>
         <maven.build.timestamp.format>MMMM dd, yyyy</maven.build.timestamp.format>
@@ -43,27 +57,6 @@
     <build>
         <defaultGoal>package</defaultGoal>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <version>1.4.1</version>
-                <executions>
-                    <execution>
-                        <id>enforce-versions</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <requireJavaVersion>
-                                    <version>[1.8.0,1.9.0)</version>
-                                    <message>You need JDK8 or lower</message>
-                                </requireJavaVersion>
-                            </rules>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
@@ -146,7 +139,6 @@
                         <revdate>${revisiondate}</revdate>
                     </attributes>
                 </configuration>
-
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -191,15 +183,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <distributionManagement>
-      <repository>
-        <id>localhost</id>
-        <url>file://${basedir}/target/repo/</url>
-      </repository>
-      <snapshotRepository>
-        <id>localhost</id>
-        <url>file://${basedir}/target/snapshot-repo/</url>
-      </snapshotRepository>
-    </distributionManagement>
 </project>
