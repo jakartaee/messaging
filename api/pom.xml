@@ -29,7 +29,7 @@
 
    <groupId>jakarta.jms</groupId>
    <artifactId>jakarta.jms-api</artifactId>
-   <version>3.0.0-SNAPSHOT</version>
+   <version>3.0.0-RC1</version>
 
    <name>Jakarta Messaging API</name>
    <description>
