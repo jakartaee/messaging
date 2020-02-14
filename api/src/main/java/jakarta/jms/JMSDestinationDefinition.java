@@ -33,7 +33,7 @@ import java.lang.annotation.Target;
  * resource may be referenced by a component in the same way as any other {@code Destination} resource, for example by
  * using the {@code lookup} element of the {@code Resource} annotation.
  *
- * @see javax.annotation.Resource
+ * @see jakarta.annotation.Resource
  *
  * @version Jakarta Messaging 2.0
  * @since JMS 2.0
