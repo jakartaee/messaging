@@ -37,7 +37,7 @@ import java.lang.annotation.Target;
  * @version Jakarta Messaging 2.0
  * @since JMS 2.0
  *
- * @see javax.annotation.Resource
+ * @see jakarta.annotation.Resource
  */
 @Target(TYPE)
 @Retention(RUNTIME)
