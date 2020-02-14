@@ -5,3 +5,13 @@
 /bin/
 /api/target/
 /spec/target/
+
+target/
+.classpath
+.project
+.settings/
+*.iml
+*nbactions.xml
+.vscode/
+.idea
+nb-configuration.xml
