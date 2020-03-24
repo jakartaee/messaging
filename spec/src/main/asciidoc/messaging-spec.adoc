@@ -128,28 +128,28 @@ than controlled via the JMS API by clients.
 message type definitions and it does not define a language for creating
 message type definitions.
 
-==== Java SE and Java EE support
+==== Java SE and Jakarta EE support
 
 The JMS API is designed to be suitable for use by both Java client
 applications using the Java™ Platform, Standard Edition (Java SE), and
 Java middle-tier services using the Java™ Platform, Enterprise Edition
-(Java EE).
+(Jakarta EE).
 
 A JMS provider must support its use by Java client applications using
 Java SE. It is optional whether a given JMS provider supports its use by
-middle-tier applications using Java EE.
+middle-tier applications using Jakarta EE.
 
-The Java EE Specification requires a full Java EE platform
+The Jakarta EE Specification requires a full Jakarta EE platform
 implementation to include a messaging provider which supports the JMS
-API in both Java SE and Java EE applications.
+API in both Java SE and Jakarta EE applications.
 
-Java EE makes a number of additional features available to messaging
+Jakarta EE makes a number of additional features available to messaging
 applications beyond those defined in the JMS specification itself, most
-notably message-driven beans (MDBs) and JTA transactions. Java EE also
+notably message-driven beans (MDBs) and JTA transactions. Jakarta EE also
 imposes a number of restrictions on the use of the JMS API.
 
-For more information on the use of JMS by Java EE applications, see
-chapter 12 “Use of JMS API in Java EE applications”.
+For more information on the use of JMS by Jakarta EE applications, see
+chapter 12 “Use of JMS API in Jakarta EE applications”.
 
 === What is new in JMS 2.0?
 
@@ -179,7 +179,7 @@ easier to use:
 implement the java.lang.AutoCloseable interface to allow them to be used
 in a Java SE 7 try-with-resources statement.
 * A new “simplified API” has been added which offers a simpler
-alternative to the previous API, especially in Java EE applications.
+alternative to the previous API, especially in Jakarta EE applications.
 * New methods have been added to create a session without the need to
 supply redundant arguments.
 * Although setting client ID remains mandatory when creating an unshared
@@ -191,8 +191,8 @@ appropriate subtype.
 +
 A new chapter has been added which describes some additional
 restrictions and behaviour which apply when using the JMS API in the
-Java EE web or EJB container. This information was previously only
-available in the EJB and Java EE platform specifications.
+Jakarta EE web or EJB container. This information was previously only
+available in the EJB and Jakarta EE platform specifications.
 +
 A new chapter has been added which adds a new recommendation for a JMS
 provider to include a resource adapter, and which defines a number of
@@ -365,7 +365,7 @@ that users of the old API feel it to be an evolution which they can
 learn quickly. In particular the simplified API will continue to use the
 concepts of connection and session even though it doesn’t require the
 use of Connection or Session objects.
-* To be capable of use in both Java EE and Java SE applications.
+* To be capable of use in both Jakarta EE and Java SE applications.
 * To allow resource injection to be exploited in those environments
 which support it.
 * To provide the option to send and receive the message body directly
@@ -405,16 +405,16 @@ Applications that consume messages will use one of several methods on
 JMSContext to create a javax.jms.JMSConsumer object. This provides a
 similar API to a MessageConsumer for consuming messages from a
 particular queue or topic. Messages may be consumed either synchronously
-or asynchronously, except in a Java EE web or EJB container where
+or asynchronously, except in a Jakarta EE web or EJB container where
 messages may be consumed only synchronously.
 
-Applications running in the Java EE web and EJB containers must not
+Applications running in the Jakarta EE web and EJB containers must not
 create more than one active session on a connection (see Section 12.2
-“Restrictions on the use of JMS API in the Java EE web or EJB
+“Restrictions on the use of JMS API in the Jakarta EE web or EJB
 container”. Since a JMSContext contains a single connection and a single
 session it is ideally suited for use by such applications.
 
-Applications running in a Java SE environment or in the Java EE
+Applications running in a Java SE environment or in the Jakarta EE
 application client container are permitted to create multiple active
 sessions on the same connection. This allows the same physical
 connection to be used in multiple threads simultaneously. Such
@@ -3274,11 +3274,11 @@ rollback on its own session. Doing so will cause the close, commit or
 rollback to throw an IllegalStateException or
 IllegalStateRuntimeException (depending on the method signature).
 
-==== Restrictions on usage in Java EE
+==== Restrictions on usage in Jakarta EE
 
-An asynchronous send is not permitted in a Java EE EJB or web container.
+An asynchronous send is not permitted in a Jakarta EE EJB or web container.
 
-The following methods must therefore not be used in a Java EE web or EJB
+The following methods must therefore not be used in a Jakarta EE web or EJB
 container:
 
 * javax.jms.MessageProducer method send(Message message,
@@ -3297,7 +3297,7 @@ completionListener)
 All the methods listed in this section may throw a
 javax.jms.JMSException (if allowed by the method) or a
 javax.jms.JMSRuntimeException (if not) when called by an application
-running in the Java EE web or EJB container. This is recommended but not
+running in the Jakarta EE web or EJB container. This is recommended but not
 required.
 
 ==== Message headers
@@ -4546,14 +4546,14 @@ Table 11‑1 Relationship of optional interfaces in domains
 |XAJMSContext |_Not domain-specific_ |_Not domain-specific_
 |===
 
-== Use of JMS API in Java EE applications
+== Use of JMS API in Jakarta EE applications
 
 === Overview
 
-The Java™ Platform, Enterprise Edition (Java EE) Specification, v7
-requires support for the JMS API as part of the full Java EE platform.
+The Java™ Platform, Enterprise Edition (Jakarta EE) Specification, v7
+requires support for the JMS API as part of the full Jakarta EE platform.
 
-The Java EE platform provides a number of additional features which are
+The Jakarta EE platform provides a number of additional features which are
 not available in the Java Platform Standard Edition (Java SE). These
 include the following:
 
@@ -4565,36 +4565,36 @@ transactions.
 * Support for JMS message-driven beans.
 
 These features are defined in detail in other specifications including
-the Java EE 7 specification and the Enterprise JavaBeans 3.2
-specification. However the use of the Java EE platform imposes
+the Jakarta EE 7 specification and the Enterprise JavaBeans 3.2
+specification. However the use of the Jakarta EE platform imposes
 restrictions on the way that the JMS API may be used by applications,
 and those restrictions are described here.
 
-The JMS specification does not define how a Java EE container integrates
-with its JMS provider. Different Java EE containers may integrate with
+The JMS specification does not define how a Jakarta EE container integrates
+with its JMS provider. Different Jakarta EE containers may integrate with
 their JMS provider in different ways.
 
-=== Restrictions on the use of JMS API in the Java EE web or EJB container
+=== Restrictions on the use of JMS API in the Jakarta EE web or EJB container
 
-JMS applications which run in the Java EE web or EJB container are
+JMS applications which run in the Jakarta EE web or EJB container are
 subject to a number of restrictions in the way the JMS API may be used.
 These restrictions are necessary for the following reasons:
 
-* In a Java EE web or EJB container, a JMS provider operates as a
+* In a Jakarta EE web or EJB container, a JMS provider operates as a
 transactional resource manager which must participate in JTA
-transactions as defined in the Java EE platform specification. This
+transactions as defined in the Jakarta EE platform specification. This
 overrides the behaviour of JMS sessions as defined elsewhere in the JMS
 specification. For more details see section 12.3 “Behaviour of JMS
-sessions in the Java EE web or EJB container”.
-* The Java EE web or EJB containers need to be able to manage the
+sessions in the Jakarta EE web or EJB container”.
+* The Jakarta EE web or EJB containers need to be able to manage the
 threads used to run applications.
-* The Java EE web and EJB containers perform connection management which
+* The Jakarta EE web and EJB containers perform connection management which
 may include the pooling of JMS connections.
 +
-The restrictions described in this section do not apply to the Java EE
+The restrictions described in this section do not apply to the Jakarta EE
 application client container.
 
-Applications running in the Java EE web and EJB containers must not
+Applications running in the Jakarta EE web and EJB containers must not
 attempt to create more than one active (not closed) Session object per
 connection.
 
@@ -4607,10 +4607,10 @@ the first JMSContext already contains a connection and session and this
 method would create a second session on the same connection.
 
 The following methods are intended for use by the application server and
-their use by applications running in the Java EE web or EJB container
+their use by applications running in the Jakarta EE web or EJB container
 may interfere with the container’s ability to properly manage the
 threads used in the runtime environment. They must therefore not be
-called by applications running in the Java EE web or EJB container:
+called by applications running in the Jakarta EE web or EJB container:
 
 * javax.jms.Session method setMessageListener
 * javax.jms.Session method getMessageListener
@@ -4622,18 +4622,18 @@ called by applications running in the Java EE web or EJB container:
 +
 The following methods may interfere with the container’s ability to
 properly manage the threads used in the runtime environment and must not
-be used by applications running in the Java EE web or EJB container:
+be used by applications running in the Jakarta EE web or EJB container:
 * javax.jms.MessageConsumer method setMessageListener
 * javax.jms.MessageConsumer method getMessageListener
 * javax.jms.JMSContext method setMessageListener
 * javax.jms.JMSContext method getMessageListener
 +
-This restriction means that applications running in the Java EE web or
+This restriction means that applications running in the Jakarta EE web or
 EJB container which need to receive messages asynchronously may only do
 so using message-driven beans.
 
 The following methods may interfere with the container’s management of
-connections and must not be used by applications running in the Java EE
+connections and must not be used by applications running in the Jakarta EE
 web or EJB container:
 
 * javax.jms.Connection method setClientID
@@ -4647,8 +4647,8 @@ Applications which need to use a specific client identifier must set it
 on the connection factory, as described in section 6.1.2 “Client
 identifier”.
 
-An asynchronous send is not permitted in a Java EE web or EJB container.
-The following methods must therefore not be used in a Java EE web or EJB
+An asynchronous send is not permitted in a Jakarta EE web or EJB container.
+The following methods must therefore not be used in a Jakarta EE web or EJB
 container:
 
 * javax.jms.MessageProducer method send(Message message,
@@ -4667,20 +4667,20 @@ completionListener)
 All the methods listed in this section may throw a
 javax.jms.JMSException (if allowed by the method) or a
 javax.jms.JMSRuntimeException (if not) when called by an application
-running in the Java EE web or EJB container. This is recommended but not
+running in the Jakarta EE web or EJB container. This is recommended but not
 required.
 
-=== Behaviour of JMS sessions in the Java EE web or EJB container
+=== Behaviour of JMS sessions in the Jakarta EE web or EJB container
 
 The behaviour of JMS Session and JMSContext objects in respect of +
 transactions and message acknowledgement is different for applications +
-which run in a Java EE web or EJB container than it is for
+which run in a Jakarta EE web or EJB container than it is for
 applications +
-which run in a normal Java SE environment or in the Java EE
+which run in a normal Java SE environment or in the Jakarta EE
 application +
 client container.
 
-When an application creates a Session or JMSContext in a Java EE web +
+When an application creates a Session or JMSContext in a Jakarta EE web +
 or EJB container, and there is an active JTA transaction in progress, +
 then the session that is created will participate in the JTA +
 transaction and will be committed or rolled back when the JTA +
@@ -4716,7 +4716,7 @@ transacted, +
 then the JMS provider is recommended to ignore the specified parameters
 and instead provide a non-transacted, auto-acknowledged session. However
 the JMS provider may alternatively provide a local transacted session.
-* Applications running in a Java EE web or EJB container are recommended
+* Applications running in a Jakarta EE web or EJB container are recommended
 to specify no session parameters or to specify that the session be
 non-transacted with an acknowledgement mode of AUTO_ACKNOWLEDGE or
 DUPS_OK_ACKNOWLEDGE.
@@ -4737,12 +4737,12 @@ will be acknowledged according to the specified acknowledgement mode.
 * If the specified session mode is CLIENT_ACKNOWLEDGE or
 SESSION_TRANSACTED then it will be ignored and a session mode of
 AUTO_ACKNOWLEDGE used.
-* Applications running in a Java EE web or EJB container are recommended
+* Applications running in a Jakarta EE web or EJB container are recommended
 to specify no session parameters or to specify that the session be
 non-transacted with an acknowledgement mode of AUTO_ACKNOWLEDGE or
 DUPS_OK_ACKNOWLEDGE.
 * The use of local transactions or client acknowledgement is not
-permitted in a Java EE web or EJB container even if there is no active +
+permitted in a Jakarta EE web or EJB container even if there is no active +
 JTA transaction because this would require applications to be written +
 differently depending on whether there was a JTA transaction or not.
 
@@ -4773,12 +4773,12 @@ transaction will not take place.
 
 ==== Support for injection
 
-Injection of JMSContext objects is supported in those Java EE
+Injection of JMSContext objects is supported in those Jakarta EE
 application classes which support dependency injection using CDI and for
 which CDI support has been enabled by means of a META_INF/beans.xml
 descriptor.
 
-Section EE.5.24 of the Java EE specification lists the application
+Section EE.5.24 of the Jakarta EE specification lists the application
 classes that support dependency injection using CDI.
 
 Section 12.1 of the CDI specification specifies how CDI support may be
@@ -4848,15 +4848,15 @@ private JMSContext context;
 The meaning and possible values of session mode are the same as for the
 ConnectionFactory method createContext(int sessionMode):
 
-* In the Java EE application client container, session mode may be set
+* In the Jakarta EE application client container, session mode may be set
 to any of JMSContext.SESSION_TRANSACTED, JMSContext.CLIENT_ACKNOWLEDGE,
 JMSContext.AUTO_ACKNOWLEDGE or JMSContext.DUPS_OK_ACKNOWLEDGE. If no
 session mode is specified or the JMSSessionMode annotation is omitted a
 session mode of JMSContext.AUTO_ACKNOWLEDGE will be used.
-* In a Java EE web or EJB container, when there is an active JTA
+* In a Jakarta EE web or EJB container, when there is an active JTA
 transaction in progress, session mode is ignored and the JMSSessionMode
 annotation is unnecessary.
-* In a Java EE web or EJB container, when there is no active JTA
+* In a Jakarta EE web or EJB container, when there is no active JTA
 transaction in progress, session mode may be set to either of
 JMSContext.AUTO_ACKNOWLEDGE or JMSContext.DUPS_OK_ACKNOWLEDGE. If no
 session mode is specified or the JMSSessionMode annotation is omitted a
@@ -4864,7 +4864,7 @@ session mode of JMSContext.AUTO_ACKNOWLEDGE will be used.
 
 For more information about the use of session mode when creating a
 messaging context, see section 12.3 “Behaviour of JMS sessions in the
-Java EE web or EJB container” and the API documentation for the
+Jakarta EE web or EJB container” and the API documentation for the
 ConnectionFactory method createContext(int sessionMode).
 
 ==== Scope of injected JMSContext objects
@@ -4937,18 +4937,18 @@ JMSContext is injected.
 These methods must throw a IllegalStateRuntimeException if the
 JMSContext is injected. These restrictions do not apply when the
 JMSContext is managed by the application; though note that several of
-these methods are in any case prohibited in a Java EE web or EJB
+these methods are in any case prohibited in a Jakarta EE web or EJB
 container.
 
 == Resource adapter
 
-The Java EE Connector Architecture (JCA) specification defines a
-standard architecture for connecting the Java EE platform to enterprise
+The Jakarta EE Connector Architecture (JCA) specification defines a
+standard architecture for connecting the Jakarta EE platform to enterprise
 information systems (EISs).
 
-A JMS provider (whether it forms part of a Java EE application server or
+A JMS provider (whether it forms part of a Jakarta EE application server or
 not) is recommended to include a resource adapter which connects to that
-JMS provider and which conforms to the Java EE Connector Architecture
+JMS provider and which conforms to the Jakarta EE Connector Architecture
 specification and as further specified in this chapter.
 
 === MDB activation properties
@@ -5797,10 +5797,10 @@ returned by getObject to the appropriate type.
 The examples in this section compare the use of the classic and
 simplified JMS APIs for some common JMS operations.
 
-=== Sending a message (Java EE)
+=== Sending a message (Jakarta EE)
 
 This example compares the use of the classic and simplified JMS APIs for
-sending a TextMessage in a Java EE web or EJB container.
+sending a TextMessage in a Jakarta EE web or EJB container.
 
 ==== Example using the classic API
 
@@ -6036,10 +6036,10 @@ returns a suitable JNDI InitialContext.
 
 Note that sendMessageNew does not need to throw JMSException.
 
-=== Receiving a message synchronously (Java EE)
+=== Receiving a message synchronously (Jakarta EE)
 
 This example compares the use of the classic and simplified JMS APIs for
-synchronously receiving a TextMessage in a Java EE web or EJB container.
+synchronously receiving a TextMessage in a Jakarta EE web or EJB container.
 
 ==== Example using the classic API
 
@@ -6201,11 +6201,11 @@ returns a suitable JNDI InitialContext.
 
 Note that receiveMessageNew does not need to throw JMSException.
 
-=== Receiving a message synchronously from a durable subscription (Java EE)
+=== Receiving a message synchronously from a durable subscription (Jakarta EE)
 
 This example compares the use of the classic and simplified JMS APIs for
 synchronously receiving a TextMessage from a durable topic subscription
-in a Java EE web or EJB container.
+in a Jakarta EE web or EJB container.
 
 ==== Example using the classic API
 
@@ -6701,10 +6701,10 @@ returns a suitable JNDI InitialContext.
 
 Note that receiveAndSendMessageNew does not need to throw JMSException.
 
-=== Request/reply pattern using a TemporaryQueue (Java EE)
+=== Request/reply pattern using a TemporaryQueue (Jakarta EE)
 
 This example compares the use of the classic and simplified JMS APIs for
-implementing a request/reply pattern in a Java EE EJB container.
+implementing a request/reply pattern in a Jakarta EE EJB container.
 
 In this example, a session bean (the requestor) sends a request message
 to some queue (the request queue). The setJMSReplyTo property of the
@@ -7215,14 +7215,14 @@ contain the same text as in the previous version.
 
 In addition the following completely new chapters have been added:
 
-* chapter 12 “Use of JMS API in Java EE applications”
+* chapter 12 “Use of JMS API in Jakarta EE applications”
 * chapter 13 “Resource adapter”
 
 ==== JMS providers must implement both PTP and Pub-Sub (JMS_SPEC-50)
 
 The specification has been amended to state that a JMS provider must
 implement both point-to-point messaging (queues) and publish-subscribe
-messaging (topics). This was already required by the Java EE 6
+messaging (topics). This was already required by the Jakarta EE 6
 specification, section EE.2.7, but was not previously required by the
 JMS specification itself.
 
@@ -7230,21 +7230,21 @@ The sentence that stated “Providers of JMS point-to-point functionality
 are not required to provide publish/subscribe functionality and vice
 versa” has been removed.
 
-==== Use of JMS API in Java EE applications (JMS_SPEC-45 and JMS_SPEC-27)
+==== Use of JMS API in Jakarta EE applications (JMS_SPEC-45 and JMS_SPEC-27)
 
-A new chapter 12 “Use of JMS API in Java EE applications” has been
+A new chapter 12 “Use of JMS API in Jakarta EE applications” has been
 added. This chapter incorporates and clarifies various additional
-requirements which were previously only described in the Java EE and EJB
+requirements which were previously only described in the Jakarta EE and EJB
 specifications. Section 12.2 “Restrictions on the use of JMS API in the
-Java EE web or EJB container” includes a list of methods which may not
-be used in a Java EE web or EJB container and section 12.3 “Behaviour of
-JMS sessions in the Java EE web or EJB container” clarifies how the
-arguments to createSession are mostly ignored when used in a Java EE web
+Jakarta EE web or EJB container” includes a list of methods which may not
+be used in a Jakarta EE web or EJB container and section 12.3 “Behaviour of
+JMS sessions in the Jakarta EE web or EJB container” clarifies how the
+arguments to createSession are mostly ignored when used in a Jakarta EE web
 or EJB container.
 
-The specification been updated to refer to Java EE 7 rather than J2EE
+The specification been updated to refer to Jakarta EE 7 rather than J2EE
 1.3. A reference has also been added to the new chapter 12 “Use of JMS
-API in Java EE applications”.
+API in Jakarta EE applications”.
 
 Section 1.4.8 “Integration of JMS with the EJB components” has been
 deleted. It is superseded by the new chapter 12 “Use of JMS API in Java
@@ -7255,7 +7255,7 @@ EE applications”.
 A new chapter 13 “Resource adapter” has been added which recommends, but
 does not require, that a JMS provider (whether it forms part of a Java
 EE application server or not) includes a resource adapter which connects
-to that JMS provider and which conforms to the Java EE Connector
+to that JMS provider and which conforms to the Jakarta EE Connector
 Architecture specification.
 
 ==== MDB activation properties (JMS_SPEC-30, JMS_SPEC-54, JMS_SPEC-55)
@@ -7267,7 +7267,7 @@ beans.
 * The acknowledgeMode, messageSelector, destinationType,
 subscriptionDurability, clientId and subscriptionName properties were
 previously defined in appendix B “Activation Configuration for Message
-Inflow to JMS Endpoints” in the Java EE Connector Architecture
+Inflow to JMS Endpoints” in the Jakarta EE Connector Architecture
 specification, version 1.6. Their definition has now have been moved to
 the JMS specification.
 * The connectionFactoryLookup property is new and may be used to specify
@@ -7299,7 +7299,7 @@ Examples 14.1.4 “Creating a Session” and 14.3.3.1 “Creating a durable
 subscription” have been updated to use this new method.
 
 In addition, a second new Connection method createSession() has been
-added. This has no arguments and is intended for use in a Java EE web or
+added. This has no arguments and is intended for use in a Jakarta EE web or
 EJB container in the case when there is an active JTA transaction, when
 the sessionMode supplied to createSession(int sessionMode) is ignored.
 
@@ -7463,7 +7463,7 @@ provides an alternative API for using JMS which is referred to in this
 specification as the “simplified API”.
 
 JMSContext objects may be created using new methods on
-ConnectionFactory. Java EE applications may alternatively create
+ConnectionFactory. Jakarta EE applications may alternatively create
 JMSContext objects using injection.
 
 The simplified API is described in section 2.8 “Simplified API
@@ -7478,7 +7478,7 @@ API is not deprecated and will remain part of JMS indefinitely.
 
 Section 15 “Examples of the simplified API” contains a number of
 examples which compare the use of the simplified and classic APIs in a
-number of simple Java EE and Java SE use cases.
+number of simple Jakarta EE and Java SE use cases.
 
 ==== New method to extract the body directly from a Message (JMS_SPEC-101)
 
