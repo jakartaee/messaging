@@ -298,7 +298,7 @@ provider and for sending and receiving messages. However they all share
 a common set of interfaces for representing messages and message
 destinations and to provide various utility features.
 
-All interfaces are in the javax.jms package.
+All interfaces are in the jakarta.jms package.
 
 === Interfaces common to multiple APIs
 
@@ -369,7 +369,7 @@ use of Connection or Session objects.
 * To allow resource injection to be exploited in those environments
 which support it.
 * To provide the option to send and receive the message body directly
-without the need to use javax.jms.Message objects.
+without the need to use jakarta.jms.Message objects.
 * To remove where possible the need to catch JMSException on method
 calls
 * To be functionally as complete as the classic API, so that users of
@@ -383,7 +383,7 @@ classic API.
 
 ==== Key features of the simplified API
 
-The main object in the simplified API is javax.jms.JMSContext. This
+The main object in the simplified API is jakarta.jms.JMSContext. This
 combines in a single object the functionality of several separate
 objects from the classic API. In particular it combines the
 functionality of a Connection and a Session in a single object.
@@ -395,14 +395,14 @@ server, a Session represents a single-threaded context for sending and
 receiving messages, and a JMSContext represents both.
 
 Applications that send messages will use the JMSContext method
-createProducer to create a javax.jms.JMSProducer object. This provides
+createProducer to create a jakarta.jms.JMSProducer object. This provides
 an API to send messages. Although it provides similar functionality to
 an anonymous MessageProducer (one with no destination specified) it
 provides a more convenient API for configuring delivery options, message
 properties and message headers.
 
 Applications that consume messages will use one of several methods on
-JMSContext to create a javax.jms.JMSConsumer object. This provides a
+JMSContext to create a jakarta.jms.JMSConsumer object. This provides a
 similar API to a MessageConsumer for consuming messages from a
 particular queue or topic. Messages may be consumed either synchronously
 or asynchronously, except in a Jakarta EE web or EJB container where
@@ -2407,8 +2407,8 @@ the connection available to them.
 If the stop method is called from a message listener on its own
 Connection or JMSContext, or on a JMSContext that uses the same
 connection, then it will either fail and throw a
-javax.jms.IllegalStateException (in the case of +
-Connection) or javax.jms.IllegalStateRuntimeException (in the case of
+jakarta.jms.IllegalStateException (in the case of +
+Connection) or jakarta.jms.IllegalStateRuntimeException (in the case of
 JMSContext), or it will succeed and stop the connection, blocking until
 all other message listeners that may have been running have returned.
 
@@ -2508,8 +2508,8 @@ calling +
 close on a Connection object or by calling close on a JMSContext object
 which has no other active JMSContext objects using the underlying
 connection) then it will either fail and throw a
-javax.jms.IllegalStateException (in the case of Connection) or
-javax.jms.IllegalStateRuntimeException (in the case of JMSContext), or
+jakarta.jms.IllegalStateException (in the case of Connection) or
+jakarta.jms.IllegalStateRuntimeException (in the case of JMSContext), or
 it will succeed and close the connection, blocking until all other
 message listeners that may have been running have returned, and all
 pending receive calls have completed. If close succeeds and the
@@ -3005,8 +3005,8 @@ pending receive, it has returned with either null or a message.
 If a message listener attempts to close its own session (either by
 calling +
 close on a Session object or by calling close on a JMSContext object) +
-then it will either fail and throw a javax.jms.IllegalStateException (in
-the case of Session) or javax.jms.IllegalStateRuntimeException (in the
+then it will either fail and throw a jakarta.jms.IllegalStateException (in
+the case of Session) or jakarta.jms.IllegalStateRuntimeException (in the
 case of JMSContext), or it will succeed and close the session, blocking
 until any pending receive call in progress has completed. If close
 succeeds and the acknowledge mode of the session is set to
@@ -3281,22 +3281,22 @@ An asynchronous send is not permitted in a Jakarta EE EJB or web container.
 The following methods must therefore not be used in a Jakarta EE web or EJB
 container:
 
-* javax.jms.MessageProducer method send(Message message,
+* jakarta.jms.MessageProducer method send(Message message,
 CompletionListener completionListener)
-* javax.jms.MessageProducer method send(Message message, int
+* jakarta.jms.MessageProducer method send(Message message, int
 deliveryMode, int priority, long timeToLive, CompletionListener
 completionListener)
-* javax.jms.MessageProducer method send(Destination destination, Message
+* jakarta.jms.MessageProducer method send(Destination destination, Message
 message, CompletionListener completionListener)
-* javax.jms.MessageProducer method send(Destination destination, Message
+* jakarta.jms.MessageProducer method send(Destination destination, Message
 message, int deliveryMode, int priority, long timeToLive,
 CompletionListener completionListener)
-* javax.jms.JMSProducer method setAsync(CompletionListener
+* jakarta.jms.JMSProducer method setAsync(CompletionListener
 completionListener)
 
 All the methods listed in this section may throw a
-javax.jms.JMSException (if allowed by the method) or a
-javax.jms.JMSRuntimeException (if not) when called by an application
+jakarta.jms.JMSException (if allowed by the method) or a
+jakarta.jms.JMSRuntimeException (if not) when called by an application
 running in the Jakarta EE web or EJB container. This is recommended but not
 required.
 
@@ -4612,21 +4612,21 @@ may interfere with the container’s ability to properly manage the
 threads used in the runtime environment. They must therefore not be
 called by applications running in the Jakarta EE web or EJB container:
 
-* javax.jms.Session method setMessageListener
-* javax.jms.Session method getMessageListener
-* javax.jms.Session method run
-* javax.jms.Connection method createConnectionConsumer
-* javax.jms.Connection method createSharedConnectionConsumer
-* javax.jms.Connection method createDurableConnectionConsumer
-* javax.jms.Connection method createSharedDurableConnectionConsumer
+* jakarta.jms.Session method setMessageListener
+* jakarta.jms.Session method getMessageListener
+* jakarta.jms.Session method run
+* jakarta.jms.Connection method createConnectionConsumer
+* jakarta.jms.Connection method createSharedConnectionConsumer
+* jakarta.jms.Connection method createDurableConnectionConsumer
+* jakarta.jms.Connection method createSharedDurableConnectionConsumer
 +
 The following methods may interfere with the container’s ability to
 properly manage the threads used in the runtime environment and must not
 be used by applications running in the Jakarta EE web or EJB container:
-* javax.jms.MessageConsumer method setMessageListener
-* javax.jms.MessageConsumer method getMessageListener
-* javax.jms.JMSContext method setMessageListener
-* javax.jms.JMSContext method getMessageListener
+* jakarta.jms.MessageConsumer method setMessageListener
+* jakarta.jms.MessageConsumer method getMessageListener
+* jakarta.jms.JMSContext method setMessageListener
+* jakarta.jms.JMSContext method getMessageListener
 +
 This restriction means that applications running in the Jakarta EE web or
 EJB container which need to receive messages asynchronously may only do
@@ -4636,12 +4636,12 @@ The following methods may interfere with the container’s management of
 connections and must not be used by applications running in the Jakarta EE
 web or EJB container:
 
-* javax.jms.Connection method setClientID
-* javax.jms.Connection method stop
-* javax.jms.Connection method setExceptionListener
-* javax.jms.JMSContext method setClientID
-* javax.jms.JMSContext method stop
-* javax.jms.JMSContext method setExceptionListener
+* jakarta.jms.Connection method setClientID
+* jakarta.jms.Connection method stop
+* jakarta.jms.Connection method setExceptionListener
+* jakarta.jms.JMSContext method setClientID
+* jakarta.jms.JMSContext method stop
+* jakarta.jms.JMSContext method setExceptionListener
 
 Applications which need to use a specific client identifier must set it
 on the connection factory, as described in section 6.1.2 “Client
@@ -4651,22 +4651,22 @@ An asynchronous send is not permitted in a Jakarta EE web or EJB container.
 The following methods must therefore not be used in a Jakarta EE web or EJB
 container:
 
-* javax.jms.MessageProducer method send(Message message,
+* jakarta.jms.MessageProducer method send(Message message,
 CompletionListener completionListener)
-* javax.jms.MessageProducer method send(Message message, int
+* jakarta.jms.MessageProducer method send(Message message, int
 deliveryMode, int priority, long timeToLive, CompletionListener
 completionListener)
-* javax.jms.MessageProducer method send(Destination destination, Message
+* jakarta.jms.MessageProducer method send(Destination destination, Message
 message, CompletionListener completionListener)
-* javax.jms.MessageProducer method send(Destination destination, Message
+* jakarta.jms.MessageProducer method send(Destination destination, Message
 message, int deliveryMode, int priority, long timeToLive,
 CompletionListener completionListener)
-* javax.jms.JMSProducer method setAsync(CompletionListener
+* jakarta.jms.JMSProducer method setAsync(CompletionListener
 completionListener)
 +
 All the methods listed in this section may throw a
-javax.jms.JMSException (if allowed by the method) or a
-javax.jms.JMSRuntimeException (if not) when called by an application
+jakarta.jms.JMSException (if allowed by the method) or a
+jakarta.jms.JMSRuntimeException (if not) when called by an application
 running in the Jakarta EE web or EJB container. This is recommended but not
 required.
 
@@ -4797,7 +4797,7 @@ close method when the object is not longer needed.
 
 ==== Injection syntax
 
-Applications may declare a field of type javax.jms.JMSContext and
+Applications may declare a field of type jakarta.jms.JMSContext and
 annotate it with the javax.inject.Inject annotation:
 
 @Inject
@@ -4807,7 +4807,7 @@ private JMSContext context;
 The container will inject a JMSContext. This object will have a scope as
 defined by section 12.4.4 “Scope of injected JMSContext objects”.
 
-The annotation javax.jms.JMSConnectionFactory may be used to specify the
+The annotation jakarta.jms.JMSConnectionFactory may be used to specify the
 JNDI lookup name of the ConnectionFactory used to create the JMSContext.
 For example:
 
@@ -4820,7 +4820,7 @@ private JMSContext context;
 If the JMSConnectionFactory annotation is omitted then the platform
 default JMS connection factory will be used.
 
-The annotation javax.jms.JMSPasswordCredential may be used to specify a
+The annotation jakarta.jms.JMSPasswordCredential may be used to specify a
 user name and password which will be used when the JMSContext is
 created. For example:
 
@@ -4834,7 +4834,7 @@ userName="admin",password="mypassword")
 
 private JMSContext context;
 
-The annotation javax.jms.JMSSessionMode may be used to specify the
+The annotation jakarta.jms.JMSSessionMode may be used to specify the
 session mode of the JMSContext. For example:
 
 @Inject
@@ -4963,13 +4963,13 @@ Table 13‑1 MDB activation properties defined by JMS
 |===
 |*Activation property* |*Description*
 |destinationLookup |This property may be used to specify the lookup name
-of an administratively-defined javax.jms.Queue or javax.jms.Topic object
+of an administratively-defined jakarta.jms.Queue or jakarta.jms.Topic object
 which defines the JMS queue or topic from which the endpoint
 (message-driven bean) is to receive messages.
 
 |connectionFactoryLookup |This property may be used to specify the
-lookup name of an administratively-defined javax.jms.ConnectionFactory,
-javax.jms.QueueConnectionFactory or javax.jms.TopicConnectionFactory
+lookup name of an administratively-defined jakarta.jms.ConnectionFactory,
+jakarta.jms.QueueConnectionFactory or jakarta.jms.TopicConnectionFactory
 object that will be used to connect to the JMS provider from which the
 endpoint (message-driven bean) is to receive messages.
 
@@ -4988,7 +4988,7 @@ not be used.
 
 |destinationType |This property may be used to specify whether the
 specified destination is a queue or topic. The valid values are
-javax.jms.Queue or javax.jms.Topic.
+jakarta.jms.Queue or jakarta.jms.Topic.
 
 |subscriptionDurability a|
 This property only applies to endpoints (message-driven beans) that
@@ -5059,7 +5059,7 @@ uses the JNDI API to look up the ConnectionFactory__.__
 
 import javax.naming.*;
 
-import javax.jms.*;
+import jakarta.jms.*;
 
 Context namingContext = new InitialContext();
 
@@ -5253,7 +5253,7 @@ that implements the MessageListener interface. An implementation of the
 MessageListener interface, called StockListener.java__,__ might look
 like this:
 
-import javax.jms.*;
+import jakarta.jms.*;
 
 public class StockListener implements MessageListener \{
 
@@ -5355,7 +5355,7 @@ messages”.
 
 import javax.naming.*;
 
-import javax.jms.*;
+import jakarta.jms.*;
 
 // Look up connection factory
 
@@ -7571,8 +7571,8 @@ If a MessageListener’s onMessage method calls stop or close on its own
 Connection, close on its own Session, stop or close on its own
 JMSContext, or stop on a JMSContext which uses the same connection, then
 the stop or close method will either fail and throw a
-javax.jms.IllegalStateException (for methods on Session and Connection)
-or javax.jms.IllegalStateRuntimeException (for methods on JMSContext),
+jakarta.jms.IllegalStateException (for methods on Session and Connection)
+or jakarta.jms.IllegalStateRuntimeException (for methods on JMSContext),
 or it will succeed and stop or close the Connection, Session or
 JMSContext as appropriate.
 
@@ -7672,7 +7672,7 @@ on an existing durable subscription” and rewritten to make it clearer.
 
 ==== Correction: MapMessage when name is null (JMS_SPEC-77)
 
-In the JMS 1.1 API documentation for javax.jms.MapMessage, the method
+In the JMS 1.1 API documentation for jakarta.jms.MapMessage, the method
 setBytes (String name, byte[] value) is defined as throwing a
 NullPointerException “if the name is null, or if the name is an empty
 string.”
