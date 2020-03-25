@@ -57,7 +57,7 @@ application defined messages and a set of clients that exchange them.
 Messaging products that implement Jakarta Messaging do so by supplying a _provider_
 that implements the Jakarta Messaging interfaces. Messaging products may support
 clients which use programming languages other than Java. Although such
-support is beyond the scope of JMS, the design of Jakarta Messaging has always
+support is beyond the scope of Jakarta Messaging, the design of Jakarta Messaging has always
 accommodated the need for messaging products to support languages other
 than Java.
 
@@ -113,7 +113,7 @@ single, unified service.
 * Error/advisory notification - Most messaging products define system
 messages that provide asynchronous notification of problems or system
 events to clients. Jakarta Messaging does not attempt to standardize these messages.
-By following the guidelines defined by JMS, clients can avoid using
+By following the guidelines defined by Jakarta Messaging, clients can avoid using
 these messages and thus prevent the portability problems their use
 introduces.
 * Administration - Jakarta Messaging does not define an API for administering
@@ -218,7 +218,7 @@ A Jakarta Messaging application is composed of the following parts:
 * Jakarta Messaging Clients - These are the Java language programs that send and
 receive messages.
 * Non-Jakarta Messaging Clients - These are clients that use a message system’s native
-client API instead of JMS. If the application predated the availability
+client API instead of Jakarta Messaging. If the application predated the availability
 of Jakarta Messaging it is likely that it will include both Jakarta Messaging and non-Jakarta Messaging clients.
 * Messages - Each application defines a set of messages that are used to
 communicate information between its clients.
@@ -663,7 +663,7 @@ Rather than architect a specific Jakarta Messaging request/reply abstraction, Ja
 provides the basic facilities on which many can be built.
 
 The legacy domain-specific APIs define request/reply helper classes
-(classes written using JMS) for both the point-to-point and pub/sub
+(classes written using Jakarta Messaging) for both the point-to-point and pub/sub
 domains that implement a basic form of request/reply. See sections “”
 and “”. Jakarta Messaging providers and clients may provide more specialized
 implementations.
@@ -860,7 +860,7 @@ acknowledgment” for more information.
 This header field has no meaning on send and is left unassigned by the
 sending method.
 
-The JMS-defined message property JMSXDeliveryCount will be set to the
+The Jakarta Messaging-defined message property JMSXDeliveryCount will be set to the
 number of times a particular message has been delivered. See section
 3.5.11 “JMSXDeliveryCount” for more information.
 
@@ -1214,7 +1214,7 @@ warehouse and Jakarta Messaging provides no API for this.
 
 |===
 
-New Jakarta Messaging defined properties may be added in later versions of JMS.
+New Jakarta Messaging defined properties may be added in later versions of Jakarta Messaging.
 
 The Enumeration ConnectionMetaData.getJMSXPropertyNames() method returns
 the names of the JMSX properties supported by a connection.
@@ -1256,7 +1256,7 @@ should not be used for Jakarta Messaging to Jakarta Messaging messaging._
 
 ==== JMSXDeliveryCount
 
-When a client receives a message the mandatory JMS-defined message
+When a client receives a message the mandatory Jakarta Messaging-defined message
 property JMSXDeliveryCount will be set to the number of times the
 message has been delivered. The first time a message is received it will
 be set to 1, so a value of 2 or more means the message has been
@@ -1795,7 +1795,7 @@ A Queue object encapsulates a provider-specific queue name. It is the
 way a client specifies the identity of a queue to Jakarta Messaging methods.
 
 The actual length of time messages are held by a queue and the
-consequences of resource overflow are not defined by JMS.
+consequences of resource overflow are not defined by Jakarta Messaging.
 
 See chapter 5 “Administered objects” for more information about Jakarta Messaging
 Destination objects.
@@ -1941,7 +1941,7 @@ _durable subscription_ is persisted and continues to accumulate messages
 until explicitly deleted, even if there are no consumer objects
 consuming messages from it.
 
-A durable subscription has a unique identity that is retained by JMS.
+A durable subscription has a unique identity that is retained by Jakarta Messaging.
 Subsequent consumer objects can resume the subscription in the state it
 was left by the prior consumer. If there are no active consumers on a
 durable subscription, Jakarta Messaging retains the subscription’s messages until they
@@ -2070,7 +2070,7 @@ the case. From the administrator’s viewpoint, other tasks may be needed
 to support the creation of publishers and subscribers.
 
 The amount of resources allocated for message storage and the
-consequences of resource overflow are not defined by JMS.
+consequences of resource overflow are not defined by Jakarta Messaging.
 
 All Jakarta Messaging providers must be able to run Jakarta Messaging applications that dynamically
 create and delete durable subscriptions. Some Jakarta Messaging providers may, in
@@ -4033,7 +4033,7 @@ however, they may be lost if a Jakarta Messaging provider fails. Both PERSISTENT
 NON_PERSISTENT messages can be published to the same destination.
 
 Normally, a consumer fully processes each message before acknowledging
-its receipt to JMS. This ensures that Jakarta Messaging does not discard a partially
+its receipt to Jakarta Messaging. This ensures that Jakarta Messaging does not discard a partially
 processed message due to machine failure, etc. A consumer accomplishes
 this by using either a transacted or CLIENT_ACKNOWLEDGE session.
 Unacknowledged messages redelivered due to system failure must have the
@@ -4134,11 +4134,11 @@ JMSConsumer interfaces that were defined for the simplified API throw
 unchecked exceptions.
 
 For those methods which throw checked exceptions, catching JMSException
-provides a generic way of handling all exceptions thrown by JMS.
+provides a generic way of handling all exceptions thrown by Jakarta Messaging.
 
 Similarly, for those methods which throw unchecked exceptions only,
 catching JMSRuntimeException provides a generic way of handling all
-exceptions thrown by JMS. The Java language does not require unchecked
+exceptions thrown by Jakarta Messaging. The Java language does not require unchecked
 exceptions to be explicitly caught by the application.
 
 JMSException and JMSRuntimeException provide the following information:
@@ -4251,7 +4251,7 @@ If Jakarta Messaging clients use the JTA aware facilities the client program may
 non-portable code, because Jakarta Messaging providers are not required to support
 these interfaces.
 
-The facilities described in this chapter are a special category of JMS.
+The facilities described in this chapter are a special category of Jakarta Messaging.
 They are optional and might only be supported by some Jakarta Messaging providers.
 
 === Concurrent processing of a subscription’s messages
