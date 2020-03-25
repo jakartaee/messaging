@@ -30,34 +30,34 @@ include::scope.adoc[]
 == Introduction
 
 This specification describes the objectives and functionality of the
-Java^TM^ Message Service (JMS).
+Jakarta Messaging.
 
-JMS provides a common way for Java programs to create, send, receive and
+Jakarta Messaging provides a common way for Java programs to create, send, receive and
 read an enterprise messaging system’s messages.
 
-=== Overview of JMS
+=== Overview of Jakarta Messaging
 
 Enterprise messaging products (or as they are sometimes called,
 message-oriented middleware products) are an essential component for
 integrating intra-company operations. They allow separate business
 components to be combined into a reliable, yet flexible, system.
 
-JMS was initially developed to provide a standard Java API for the
+Jakarta Messaging was initially developed to provide a standard Java API for the
 established messaging products that already existed. Since then many
 more messaging products have been developed.
 
-JMS provides a common way for both Java client applications and Java
+Jakarta Messaging provides a common way for both Java client applications and Java
 middle-tier services to use these messaging products. It defines some
 messaging semantics and a corresponding set of Java interfaces.
 
-Since messaging is a peer-to-peer technology, users of JMS are referred
-to generically as _clients_. A JMS _application_ is made up of a set of
+Since messaging is a peer-to-peer technology, users of Jakarta Messaging are referred
+to generically as _clients_. A Jakarta Messaging _application_ is made up of a set of
 application defined messages and a set of clients that exchange them.
 
-Messaging products that implement JMS do so by supplying a _provider_
-that implements the JMS interfaces. Messaging products may support
+Messaging products that implement Jakarta Messaging do so by supplying a _provider_
+that implements the Jakarta Messaging interfaces. Messaging products may support
 clients which use programming languages other than Java. Although such
-support is beyond the scope of JMS, the design of JMS has always
+support is beyond the scope of JMS, the design of Jakarta Messaging has always
 accommodated the need for messaging products to support languages other
 than Java.
 
@@ -75,9 +75,9 @@ contain precisely formatted data that describe specific business
 actions. Through the exchange of these messages each application tracks
 the progress of the enterprise.
 
-==== The objectives of JMS
+==== The objectives of Jakarta Messaging
 
-The objectives of JMS are
+The objectives of Jakarta Messaging are
 
 * to provide Java applications with the messaging functionality needed
 to implement sophisticated enterprise applications
@@ -87,9 +87,9 @@ enterprise messaging products
 * to maximize the portability of Java messaging applications between
 different messaging products
 
-==== JMS domains
+==== Jakarta Messaging domains
 
-JMS supports the two major styles of messaging provided by enterprise
+Jakarta Messaging supports the two major styles of messaging provided by enterprise
 messaging products:
 
 * Point-to-point (PTP) messaging allows a client to send a message to
@@ -102,78 +102,78 @@ _topic_. The client that sends the message _publishes_ it to a specific
 topic. The message is then delivered to all the clients that are
 _subscribed_ to that topic.
 
-==== What JMS does not include
+==== What Jakarta Messaging does not include
 
-JMS does not address the following functionality:
+Jakarta Messaging does not address the following functionality:
 
 * Load balancing/fault tolerance - Many products provide support for
-multiple, cooperating clients implementing a critical service. The JMS
+multiple, cooperating clients implementing a critical service. The Jakarta Messaging
 API does not specify how such clients cooperate to appear to be a
 single, unified service.
 * Error/advisory notification - Most messaging products define system
 messages that provide asynchronous notification of problems or system
-events to clients. JMS does not attempt to standardize these messages.
+events to clients. Jakarta Messaging does not attempt to standardize these messages.
 By following the guidelines defined by JMS, clients can avoid using
 these messages and thus prevent the portability problems their use
 introduces.
-* Administration - JMS does not define an API for administering
+* Administration - Jakarta Messaging does not define an API for administering
 messaging products.
-* Security - JMS does not specify an API for controlling the privacy and
+* Security - Jakarta Messaging does not specify an API for controlling the privacy and
 integrity of messages. It also does not specify how digital signatures
-or keys are distributed to clients. Security is considered to be a JMS
+or keys are distributed to clients. Security is considered to be a Jakarta Messaging
 provider-specific feature that is configured by an administrator rather
-than controlled via the JMS API by clients.
-* Wire protocol - JMS does not define a wire protocol for messaging.
-* Message type repository - JMS does not define a repository for storing
+than controlled via the Jakarta Messaging API by clients.
+* Wire protocol - Jakarta Messaging does not define a wire protocol for messaging.
+* Message type repository - Jakarta Messaging does not define a repository for storing
 message type definitions and it does not define a language for creating
 message type definitions.
 
 ==== Java SE and Jakarta EE support
 
-The JMS API is designed to be suitable for use by both Java client
+The Jakarta Messaging API is designed to be suitable for use by both Java client
 applications using the Java™ Platform, Standard Edition (Java SE), and
 Java middle-tier services using the Java™ Platform, Enterprise Edition
 (Jakarta EE).
 
-A JMS provider must support its use by Java client applications using
-Java SE. It is optional whether a given JMS provider supports its use by
+A Jakarta Messaging provider must support its use by Java client applications using
+Java SE. It is optional whether a given Jakarta Messaging provider supports its use by
 middle-tier applications using Jakarta EE.
 
 The Jakarta EE Specification requires a full Jakarta EE platform
-implementation to include a messaging provider which supports the JMS
+implementation to include a messaging provider which supports the Jakarta Messaging
 API in both Java SE and Jakarta EE applications.
 
 Jakarta EE makes a number of additional features available to messaging
-applications beyond those defined in the JMS specification itself, most
+applications beyond those defined in the Jakarta Messaging specification itself, most
 notably message-driven beans (MDBs) and JTA transactions. Jakarta EE also
-imposes a number of restrictions on the use of the JMS API.
+imposes a number of restrictions on the use of the Jakarta Messaging API.
 
-For more information on the use of JMS by Jakarta EE applications, see
-chapter 12 “Use of JMS API in Jakarta EE applications”.
+For more information on the use of Jakarta Messaging by Jakarta EE applications, see
+chapter 12 “Use of Jakarta Messaging API in Jakarta EE applications”.
 
-=== What is new in JMS 2.0?
+=== What is new in Jakarta Messaging 2.0?
 
 A full list of the new features, changes and clarifications introduced
-in JMS 2.0 is given in section A.1 “Version 2.0” of the “Change history”
+in Jakarta Messaging 2.0 is given in section A.1 “Version 2.0” of the “Change history”
 chapter. Here is a summary:
 
-The JMS 2.0 specification now requires JMS providers to implement both
+The Jakarta Messaging 2.0 specification now requires Jakarta Messaging providers to implement both
 PTP and pub/sub.
 
-The following new messaging features have been added in JMS 2.0:
+The following new messaging features have been added in Jakarta Messaging 2.0:
 
 * Delivery delay: a message producer can now specify that a message must
 not be delivered until after a specified time interval.
 * New send methods have been added to allow an application to send
 messages asynchronously.
-* JMS providers must now set the JMSXDeliveryCount message property.
+* Jakarta Messaging providers must now set the JMSXDeliveryCount message property.
 +
 The following change has been made to aid scalability:
 * Applications which create a durable or non-durable topic subscription
 may now designate them to be “shared”. A shared subscription may have
 multiple consumers.
 +
-Several changes have been made to the JMS API to make it simpler and
+Several changes have been made to the Jakarta Messaging API to make it simpler and
 easier to use:
 * Connection, Session and other objects with a close() method now
 implement the java.lang.AutoCloseable interface to allow them to be used
@@ -190,11 +190,11 @@ the body directly from a Message without the need to cast it first to an
 appropriate subtype.
 +
 A new chapter has been added which describes some additional
-restrictions and behaviour which apply when using the JMS API in the
+restrictions and behaviour which apply when using the Jakarta Messaging API in the
 Jakarta EE web or EJB container. This information was previously only
 available in the EJB and Jakarta EE platform specifications.
 +
-A new chapter has been added which adds a new recommendation for a JMS
+A new chapter has been added which adds a new recommendation for a Jakarta Messaging
 provider to include a resource adapter, and which defines a number of
 activation configuration properties.
 +
@@ -209,39 +209,39 @@ The specification has been clarified in various places.
 === Overview
 
 This chapter describes the environment of message based applications and
-the role JMS plays in this environment.
+the role Jakarta Messaging plays in this environment.
 
-=== What is a JMS application?
+=== What is a Jakarta Messaging application?
 
-A JMS application is composed of the following parts:
+A Jakarta Messaging application is composed of the following parts:
 
-* JMS Clients - These are the Java language programs that send and
+* Jakarta Messaging Clients - These are the Java language programs that send and
 receive messages.
-* Non-JMS Clients - These are clients that use a message system’s native
+* Non-Jakarta Messaging Clients - These are clients that use a message system’s native
 client API instead of JMS. If the application predated the availability
-of JMS it is likely that it will include both JMS and non-JMS clients.
+of Jakarta Messaging it is likely that it will include both Jakarta Messaging and non-Jakarta Messaging clients.
 * Messages - Each application defines a set of messages that are used to
 communicate information between its clients.
-* JMS Provider - This is a messaging system that implements JMS in
+* Jakarta Messaging Provider - This is a messaging system that implements Jakarta Messaging in
 addition to the other administrative and control functionality required
 of a full featured messaging product.
-* Administered Objects - Administered objects are preconfigured JMS
+* Administered Objects - Administered objects are preconfigured Jakarta Messaging
 objects created by an administrator for the use of clients.
 
 === Administration
 
-It is expected that each JMS provider will differ significantly in its
+It is expected that each Jakarta Messaging provider will differ significantly in its
 underlying messaging technology. It is also expected there will be major
 differences in how a provider’s system is installed and administered.
 
-If JMS clients are to be portable, they must be isolated from these
-proprietary aspects of a provider. This is done by defining JMS
+If Jakarta Messaging clients are to be portable, they must be isolated from these
+proprietary aspects of a provider. This is done by defining Jakarta Messaging
 administered objects that are created and customized by a provider’s
 administrator and later used by clients. The client uses them through
-JMS interfaces that are portable. The administrator creates them using
+Jakarta Messaging interfaces that are portable. The administrator creates them using
 provider-specific facilities.
 
-There are two types of JMS administered objects:
+There are two types of Jakarta Messaging administered objects:
 
 * ConnectionFactory - This is the object a client uses to create a
 connection with a provider.
@@ -250,62 +250,62 @@ destination of messages it is sending and the source of messages it
 receives.
 
 Administered objects are placed in a JNDI namespace by an administrator.
-A JMS client typically notes in its documentation the JMS administered
+A Jakarta Messaging client typically notes in its documentation the Jakarta Messaging administered
 objects it requires and how the JNDI names of these objects should be
-provided to it. Figure 2‑1 illustrates how JMS administration ordinarily
+provided to it. Figure 2‑1 illustrates how Jakarta Messaging administration ordinarily
 works.
 
-Figure 2‑1 JMS Administration
+Figure 2‑1 Jakarta Messaging Administration
 
 image:1.png[image,width=390,height=213]
 
 === Two messaging styles
 
-A JMS application can use either the point-to-point (PTP) or the
+A Jakarta Messaging application can use either the point-to-point (PTP) or the
 publish-and-subscribe (pub/sub) style of messaging, which are described
 in more detail later in this specification. An application can also
 combine both styles of messaging in one application. These two styles of
-messaging are often referred to as messaging domains. JMS provides these
+messaging are often referred to as messaging domains. Jakarta Messaging provides these
 two messaging domains because they represent two common models for
 messaging.
 
-When using the JMS API, a developer can use interfaces and methods that
+When using the Jakarta Messaging API, a developer can use interfaces and methods that
 support both models of messaging. When using these interfaces, the
 behavior of the messaging system may be somewhat different, because the
 two messaging domains have different semantics. These semantic
 differences are described in chapter 4 “Messaging domains”.
 
-=== JMS APIs
+=== Jakarta Messaging APIs
 
-For historical reasons JMS offers four alternative sets of interfaces
+For historical reasons Jakarta Messaging offers four alternative sets of interfaces
 for sending and receiving messages.
 
-JMS 1.0 defined two *domain-specific APIs*, one for point-to-point
+Jakarta Messaging 1.0 defined two *domain-specific APIs*, one for point-to-point
 messaging (queues) and one for pub/sub (topics). Although these remain
-part of JMS for reasons of backwards compatibility they should be
+part of Jakarta Messaging for reasons of backwards compatibility they should be
 considered to be completely superseded by the later APIs.
 
-JMS 1.1 introduced a new unified API which offered a single set of
+Jakarta Messaging 1.1 introduced a new unified API which offered a single set of
 interfaces that could be used for both point-to-point and pub/sub
 messaging. This is referred to here as the *classic API*.
 
-JMS 2.0 introduces a *simplified API* which offers all the features of
+Jakarta Messaging 2.0 introduces a *simplified API* which offers all the features of
 the classic API but which requires fewer interfaces and is simpler to
 use.
 
-Each API offers a different set of interfaces for connecting to a JMS
+Each API offers a different set of interfaces for connecting to a Jakarta Messaging
 provider and for sending and receiving messages. However they all share
 a common set of interfaces for representing messages and message
 destinations and to provide various utility features.
 
-All interfaces are in the jakarta.jms package.
+All interfaces are in the jakarta.Jakarta Messaging package.
 
 === Interfaces common to multiple APIs
 
 The main interfaces common to multiple APIs are as follows:
 
 * Message, BytesMessage, MapMessage, ObjectMessage, StreamMessage and
-TextMessage – a message sent to or received from a JMS provider.
+TextMessage – a message sent to or received from a Jakarta Messaging provider.
 * Queue – an administered object that encapsulates the identity of a
 message destination for point-to-point messaging
 * Topic – an administered object that encapsulates the identity of a
@@ -318,7 +318,7 @@ The main interfaces provided by the classic API are as follows:
 
 * ConnectionFactory - an administered object used by a client to create
 a Connection. This interface is also used by the simplified API.
-* Connection - an active connection to a JMS provider
+* Connection - an active connection to a Jakarta Messaging provider
 * Session - a single-threaded context for sending and receiving messages
 * MessageProducer - an object created by a Session that is used for
 sending messages to a queue or topic
@@ -337,7 +337,7 @@ The main interfaces provided by the simplified API are as follows:
 
 * ConnectionFactory - an administered object used by a client to create
 a Connection. This interface is also used by the classic API.
-* JMSContext - an active connection to a JMS provider and a
+* JMSContext - an active connection to a Jakarta Messaging provider and a
 single-threaded context for sending and receiving messages
 * JMSProducer - an object created by a JMSContext that is used for
 sending messages to a queue or topic
@@ -358,7 +358,7 @@ simplified API does not use the Connection and Session interfaces.
 The simplified API has the following goals:
 
 * To reduce the number of objects needed to send and receive messages,
-and in particular to combine the JMS Connection, Session objects into a
+and in particular to combine the Jakarta Messaging Connection, Session objects into a
 single object.
 * To maintain a consistent style with the existing API where possible so
 that users of the old API feel it to be an evolution which they can
@@ -390,7 +390,7 @@ functionality of a Connection and a Session in a single object.
 
 Although the JMSContext does not expose constituent Connection and
 Session objects to applications, the concepts of connection and session
-remain important. A Connection represents a physical link to the JMS
+remain important. A Connection represents a physical link to the Jakarta Messaging
 server, a Session represents a single-threaded context for sending and
 receiving messages, and a JMSContext represents both.
 
@@ -410,7 +410,7 @@ messages may be consumed only synchronously.
 
 Applications running in the Jakarta EE web and EJB containers must not
 create more than one active session on a connection (see Section 12.2
-“Restrictions on the use of JMS API in the Jakarta EE web or EJB
+“Restrictions on the use of Jakarta Messaging API in the Jakarta EE web or EJB
 container”. Since a JMSContext contains a single connection and a single
 session it is ideally suited for use by such applications.
 
@@ -429,7 +429,7 @@ exceptions rather than checked exceptions.
 
 === Legacy domain-specific API interfaces
 
-Although the domain-specific API remains part of JMS for reasons of
+Although the domain-specific API remains part of Jakarta Messaging for reasons of
 backwards compatibility it should be considered to be completely
 superseded by the classic and simplified APIs.
 
@@ -438,7 +438,7 @@ The main interfaces provided by the domain-specific API for
 
 * QueueConnectionFactory - an administered object used by a client to
 create a QueueConnection.
-* QueueConnection - an active connection to a JMS provider
+* QueueConnection - an active connection to a Jakarta Messaging provider
 * QueueSession - a single-threaded context for sending and receiving
 messages
 * QueueSender - an object created by a QueueSession that is used for
@@ -454,7 +454,7 @@ messaging are as follows:
 
 * TopicConnectionFactory - an administered object used by a client to
 create a TopicConnection.
-* TopicConnection - an active connection to a JMS provider
+* TopicConnection - an active connection to a Jakarta Messaging provider
 * TopicSession - a single-threaded context for sending and receiving
 messages
 * TopicPublisher - an object created by a TopicSession that is used for
@@ -489,43 +489,43 @@ messaging |Domain-specific API for pub/sub messaging
 === Terminology for sending and receiving messages
 
 The term _consume_ is used in this document to mean the receipt of a
-message by a JMS client; that is, a JMS provider has received a message
-and has given it to its client. Since JMS supports both synchronous and
+message by a Jakarta Messaging client; that is, a Jakarta Messaging provider has received a message
+and has given it to its client. Since Jakarta Messaging supports both synchronous and
 asynchronous receipt of messages, the term _consume_ is used when there
 is no need to make a distinction between them.
 
 The term _produce_ is used as the most general term for sending a
-message. It means giving a message to a JMS provider for delivery to a
+message. It means giving a message to a Jakarta Messaging provider for delivery to a
 destination.
 
-=== Developing a JMS application
+=== Developing a Jakarta Messaging application
 
-Broadly speaking, a JMS application is one or more JMS clients that
-exchange messages. The application may also involve non-JMS clients;
-however, these clients use the JMS provider’s native API in place of
+Broadly speaking, a Jakarta Messaging application is one or more Jakarta Messaging clients that
+exchange messages. The application may also involve non-Jakarta Messaging clients;
+however, these clients use the Jakarta Messaging provider’s native API in place of
 JMS.
 
-A JMS application can be architected and deployed as a unit. In many
-cases, JMS clients are added incrementally to an existing application.
+A Jakarta Messaging application can be architected and deployed as a unit. In many
+cases, Jakarta Messaging clients are added incrementally to an existing application.
 
-The message definitions used by an application may originate with JMS or
-they may have been defined by the non-JMS part of the application.
+The message definitions used by an application may originate with Jakarta Messaging or
+they may have been defined by the non-Jakarta Messaging part of the application.
 
-==== Developing a JMS client
+==== Developing a Jakarta Messaging client
 
-A typical JMS client using the classic API executes the following JMS
+A typical Jakarta Messaging client using the classic API executes the following Jakarta Messaging
 setup procedure:
 
 * Use JNDI to find a ConnectionFactory object
 * Use JNDI to find one or more Destination objects
-* Use the ConnectionFactory to create a JMS Connection object with
+* Use the ConnectionFactory to create a Jakarta Messaging Connection object with
 message delivery inhibited
-* Use the Connection to create one or more JMS Session objects
+* Use the Connection to create one or more Jakarta Messaging Session objects
 * Use a Session and the Destinations to create the MessageProducer and
 MessageConsumer objects needed
 * Tell the Connection to start delivery of messages
 
-In contrast, a typical JMS client using the simplified API does the
+In contrast, a typical Jakarta Messaging client using the simplified API does the
 following:
 
 * Use JNDI to find a ConnectionFactory object
@@ -535,24 +535,24 @@ following:
 needed.
 * Delivery of messages is started automatically
 
-At this point a client has the basic JMS setup needed to produce and
+At this point a client has the basic Jakarta Messaging setup needed to produce and
 consume messages.
 
 === Security
 
-JMS does not provide features for controlling or configuring message
+Jakarta Messaging does not provide features for controlling or configuring message
 integrity or message privacy.
 
-It is expected that many JMS providers will provide such features. It is
+It is expected that many Jakarta Messaging providers will provide such features. It is
 also expected that configuration of these services will be handled by
 provider-specific administration tools. Clients will get the proper
 security configuration as part of the administered objects they use.
 
 === Multi-threading
 
-JMS could have required that all its objects support concurrent use.
+Jakarta Messaging could have required that all its objects support concurrent use.
 Since support for concurrent access typically adds some overhead and
-complexity, the JMS design restricts its requirement for concurrent
+complexity, the Jakarta Messaging design restricts its requirement for concurrent
 access to those objects that would naturally be shared by a
 multi-threaded client. The remaining objects are designed to be accessed
 by one logical thread of control at a time.
@@ -562,7 +562,7 @@ concurrent use
 
 [cols=",",options="header",]
 |===
-|JMS Object |Supports Concurrent Use
+|Jakarta Messaging Object |Supports Concurrent Use
 |Destination |YES
 |ConnectionFactory |YES
 |Connection |YES
@@ -576,7 +576,7 @@ concurrent use
 
 [cols=",",options="header",]
 |===
-|JMS Object |Supports Concurrent Use
+|Jakarta Messaging Object |Supports Concurrent Use
 |Destination |YES
 |ConnectionFactory |YES
 |JMSContext |NO
@@ -589,7 +589,7 @@ messaging, showing which support concurrent use
 
 [cols=",",options="header",]
 |===
-|JMS Object |Supports Concurrent Use
+|Jakarta Messaging Object |Supports Concurrent Use
 |Destination |YES
 |QueueConnectionFactory |YES
 |QueueConnection |YES
@@ -603,7 +603,7 @@ showing which support concurrent use
 
 [cols=",",options="header",]
 |===
-|JMS Object |Supports Concurrent Use
+|Jakarta Messaging Object |Supports Concurrent Use
 |Destination |YES
 |TopicConnectionFactory |YES
 |TopicConnection |YES
@@ -612,24 +612,24 @@ showing which support concurrent use
 |TopicSubscriber |NO
 |===
 
-JMS defines some specific rules that restrict the concurrent use of
+Jakarta Messaging defines some specific rules that restrict the concurrent use of
 sessions. These apply to the Session object in the classic API and to
 the QueueSession and TopicSession objects in the domain-specific APIs.
 They also apply to the JMSContext object in the simplified API since it
-encompasses a session. Since these rules require more knowledge of JMS
+encompasses a session. Since these rules require more knowledge of Jakarta Messaging
 specifics than we have presented at this point, they will be described
 later. Here we will describe the rationale for imposing them.
 
 There are two reasons for restricting concurrent access to sessions.
-First, sessions are the JMS entity that supports transactions. It is
+First, sessions are the Jakarta Messaging entity that supports transactions. It is
 very difficult to implement transactions that are multi-threaded.
 Second, sessions support asynchronous message consumption. It is
-important that JMS _not_ require that client code used for asynchronous
+important that Jakarta Messaging _not_ require that client code used for asynchronous
 message consumption be capable of handling multiple, concurrent
 messages. In addition, if a session has been set up with multiple,
 asynchronous consumers, it is important that the client is not forced to
 handle the case where these separate consumers are concurrently
-executing. These restrictions make JMS easier to use for typical
+executing. These restrictions make Jakarta Messaging easier to use for typical
 clients. More sophisticated clients can get the concurrency they desire
 by using multiple sessions. In the classic API and the domain-specific
 APIs this means using multiple session objects. In the simplified API
@@ -642,33 +642,33 @@ waiting for them. A message-based application triggering mechanism is
 often used with this style of client. The trigger is typically a
 threshold of waiting messages, etc.
 
-JMS does not provide a mechanism for triggering the execution of a
+Jakarta Messaging does not provide a mechanism for triggering the execution of a
 client. Some providers may supply such a triggering mechanism via their
 administrative facilities.
 
 === Request/reply
 
-JMS provides the JMSReplyTo message header field for specifying the
+Jakarta Messaging provides the JMSReplyTo message header field for specifying the
 Destination where a reply to a message should be sent. The
 JMSCorrelationID header field of the reply can be used to reference the
 original request. See Section “” for more information.
 
-In addition, JMS provides a facility for creating temporary queues and
+In addition, Jakarta Messaging provides a facility for creating temporary queues and
 topics that can be used as a unique destination for replies.
 
 Enterprise messaging products support many styles of request/reply, from
 the simple “one message request yields one message reply” to “one
 message request yields streams of messages from multiple respondents.”
-Rather than architect a specific JMS request/reply abstraction, JMS
+Rather than architect a specific Jakarta Messaging request/reply abstraction, Jakarta Messaging
 provides the basic facilities on which many can be built.
 
 The legacy domain-specific APIs define request/reply helper classes
 (classes written using JMS) for both the point-to-point and pub/sub
 domains that implement a basic form of request/reply. See sections “”
-and “”. JMS providers and clients may provide more specialized
+and “”. Jakarta Messaging providers and clients may provide more specialized
 implementations.
 
-== JMS message model
+== Jakarta Messaging message model
 
 === Background
 
@@ -685,25 +685,25 @@ opaque. Some products provide a repository for storing message
 descriptions that can be used to identify and interpret message content;
 others don’t.
 
-It would be quite difficult for JMS to capture the breadth of this,
+It would be quite difficult for Jakarta Messaging to capture the breadth of this,
 sometimes conflicting, union of message models.
 
 === Goals
 
-The JMS message model has the following goals:
+The Jakarta Messaging message model has the following goals:
 
 * Provide a single, unified message API
 * Provide an API suitable for creating messages that match the format
-used by existing, non-JMS applications
+used by existing, non-Jakarta Messaging applications
 * Support the development of heterogeneous applications that span
 operating systems, machine architectures, and computer languages
 * Support messages containing Java objects
 * Support messages containing Extensible Markup Language pages (see
 http://www.w3.org/XML).
 
-=== JMS messages
+=== Jakarta Messaging messages
 
-JMS messages are composed of the following parts:
+Jakarta Messaging messages are composed of the following parts:
 
 * Header - All messages support the same set of header fields. Header
 fields contain values used by both clients and providers to identify and
@@ -713,20 +713,20 @@ provide a built-in facility for adding optional header fields to a
 message.
 ** Application-specific properties - In effect, this provides a
 mechanism for adding application specific header fields to a message.
-** Standard properties - JMS defines some standard properties that are,
+** Standard properties - Jakarta Messaging defines some standard properties that are,
 in effect, optional header fields.
-** Provider-specific properties – Some JMS providers may require the use
-of provider-specific properties. JMS defines a naming convention for
+** Provider-specific properties – Some Jakarta Messaging providers may require the use
+of provider-specific properties. Jakarta Messaging defines a naming convention for
 these.
-* Body - JMS defines several types of message body which cover the
+* Body - Jakarta Messaging defines several types of message body which cover the
 majority of messaging styles currently in use.
 
 === Message header fields
 
-The following subsections describe each JMS message header field. A
-message’s complete header is transmitted to all JMS clients that receive
-the message. JMS does not define the header fields transmitted to
-non-JMS clients.
+The following subsections describe each Jakarta Messaging message header field. A
+message’s complete header is transmitted to all Jakarta Messaging clients that receive
+the message. Jakarta Messaging does not define the header fields transmitted to
+non-Jakarta Messaging clients.
 
 ==== JMSDestination
 
@@ -767,13 +767,13 @@ All JMSMessageID values must start with the prefix 'ID:'. Uniqueness of
 message ID values across different providers is not required.
 
 Since message IDs take some effort to create and increase a message’s
-size, some JMS providers may be able to optimize message overhead if
+size, some Jakarta Messaging providers may be able to optimize message overhead if
 they are given a hint that message ID is not used by an application.
 Both MessageProducer and JMSProducer provide a method
 setDisableMessageID which allows the application to provide a hint to
 disable message ID. When an application sets a producer to disable
 message ID, it is saying that it does not depend on the value of message
-ID for the messages it produces. If the JMS provider accepts this hint,
+ID for the messages it produces. If the Jakarta Messaging provider accepts this hint,
 these messages must have the message ID set to null; if the provider
 ignores the hint, the message ID must be set to its normal unique value.
 
@@ -790,13 +790,13 @@ between the call and the return. It is in the format of a normal Java
 millis time value.
 
 Since timestamps take some effort to create and increase a message’s
-size, some JMS providers may be able to optimize message overhead if
+size, some Jakarta Messaging providers may be able to optimize message overhead if
 they are given a hint that timestamp is not used by an application. Both
 MessageProducer and JMSProducer provide a method
 setDisableMessageTimestamp which allows the application to provide a
 hint to disable timestamps. When an application sets a producer to
 disable timestamps it is saying that it does not depend on the value of
-timestamp for the messages it produces. If the JMS provider accepts this
+timestamp for the messages it produces. If the Jakarta Messaging provider accepts this
 hint, these messages must have the timestamp set to zero; if the
 provider ignores the hint, the timestamp must be set to its normal
 value.
@@ -813,7 +813,7 @@ JMSCorrelationID can hold one of the following:
 * An application-specific String
 * A provider-native byte[] value.
 
-Since each message sent by a JMS provider is assigned a message ID value
+Since each message sent by a Jakarta Messaging provider is assigned a message ID value
 it is convenient to link messages via message ID. All message ID values
 must start with the 'ID:' prefix.
 
@@ -824,10 +824,10 @@ external information. Application-specified values must not start with
 the 'ID:' prefix; this is reserved for provider-generated message ID
 values.
 
-If a provider supports the native concept of correlation ID, a JMS
+If a provider supports the native concept of correlation ID, a Jakarta Messaging
 client may need to assign specific JMSCorrelationID values to match
-those expected by non-JMS clients. A byte[] value is used for this
-purpose. JMS providers without native correlation ID values are not
+those expected by non-Jakarta Messaging clients. A byte[] value is used for this
+purpose. Jakarta Messaging providers without native correlation ID values are not
 required to support byte[] valuesfootnote:[Their implementation of
 setJMSCorrelationIDAsBytes() and getJMSCorrelationIDAsBytes() may throw
 java.lang.UnsupportedOperationException.] The use of a byte[] value for
@@ -869,28 +869,28 @@ number of times a particular message has been delivered. See section
 The JMSType header field contains a message type identifier supplied by
 a client when a message is sent.
 
-Some JMS providers use a message repository that contains the
+Some Jakarta Messaging providers use a message repository that contains the
 definitions of messages sent by applications. The JMSType header field
 may reference a message’s definition in the provider’s repository.
 
-JMS does not define a standard message definition repository nor does it
+Jakarta Messaging does not define a standard message definition repository nor does it
 define a naming policy for the definitions it contains.
 
 Some messaging systems require that a message type definition for each
 application message be created and that each message specify its type.
-In order to work with such JMS providers, JMS clients should assign a
+In order to work with such Jakarta Messaging providers, Jakarta Messaging clients should assign a
 value to JMSType whether the application makes use of it or not. This
 ensures that the field is properly set for those providers that require
 it.
 
-To ensure portability, JMS clients should use symbolic values for
+To ensure portability, Jakarta Messaging clients should use symbolic values for
 JMSType that can be configured at installation time to the values
 defined in the current provider’s message repository. If string literals
-are used they may not be valid type names for some JMS providers.
+are used they may not be valid type names for some Jakarta Messaging providers.
 
 ==== JMSExpiration
 
-When a message is sent, the JMS provider calculates its expiration time
+When a message is sent, the Jakarta Messaging provider calculates its expiration time
 by adding the time-to-live value specified on the send method to the
 time the message was sent (for transacted sends, this is the time the
 client sends the message, not the time the transaction is committed). It
@@ -907,10 +907,10 @@ header field is set to zero to indicate that the message does not
 expire.
 
 When an undelivered message’s expiration time is reached, the message
-should be destroyed. JMS does not define a notification of message
+should be destroyed. Jakarta Messaging does not define a notification of message
 expiration.
 
-Clients should not receive messages that have expired; however, JMS does
+Clients should not receive messages that have expired; however, Jakarta Messaging does
 not guarantee that this will not happen.
 
 ==== JMSPriority
@@ -920,52 +920,52 @@ The JMSPriority header field contains the message’s priority.
 When a message is sent this value is ignored. After completion of the
 send it holds the value specified by the method sending the message.
 
-JMS defines a ten level priority value with 0 as the lowest priority and
+Jakarta Messaging defines a ten level priority value with 0 as the lowest priority and
 9 as the highest. In addition, clients should consider priorities 0-4 as
 gradations of _normal_ priority and priorities 5-9 as gradations of
 _expedited_ priority.
 
-JMS does not require that a provider strictly implement priority
+Jakarta Messaging does not require that a provider strictly implement priority
 ordering of messages; however, it should do its best to deliver
 expedited messages ahead of normal messages.
 
 ==== How message header values are set
 
-The following table lists the message header fields supported by JMS and
-whether they are set by the JMS provider or by the client application.
+The following table lists the message header fields supported by Jakarta Messaging and
+whether they are set by the Jakarta Messaging provider or by the client application.
 
 Table 3‑1 Message header field values
 
 [cols=",,",options="header",]
 |===
 |Header Fields |Set By |Setter method
-|JMSDestination |JMS provider send method |setJMSDestination +
+|JMSDestination |Jakarta Messaging provider send method |setJMSDestination +
 (not for client use)
 
-|JMSDeliveryMode |JMS provider send method |setJMSDeliveryMode(not for
+|JMSDeliveryMode |Jakarta Messaging provider send method |setJMSDeliveryMode(not for
 client use)
 
-|JMSExpiration |JMS provider send method a|
+|JMSExpiration |Jakarta Messaging provider send method a|
 setJMSExpiration
 
 (not for client use)
 
-|JMSDeliveryTime |JMS provider send method a|
+|JMSDeliveryTime |Jakarta Messaging provider send method a|
 setJMSDeliveryTime
 
 (not for client use)
 
-|JMSPriority |JMS provider send method a|
+|JMSPriority |Jakarta Messaging provider send method a|
 setJMSPriority
 
 (not for client use)
 
-|JMSMessageID |JMS provider send method a|
+|JMSMessageID |Jakarta Messaging provider send method a|
 setJMSMessageID
 
 (not for client use)
 
-|JMSTimestamp |JMS provider send method a|
+|JMSTimestamp |Jakarta Messaging provider send method a|
 setJMSTimestamp
 
 (not for client use)
@@ -977,7 +977,7 @@ setJMSCorrelationIDAsBytes
 
 |JMSType |Client application |setJMSType
 
-|JMSRedelivered |JMS provider prior to delivery a|
+|JMSRedelivered |Jakarta Messaging provider prior to delivery a|
 setJMSRedelivered
 
 (not for client use)
@@ -988,16 +988,16 @@ Message header fields that are defined as being set by the “client
 application” in the above table may be set by the client application,
 using the appropriate setter method, before the message is sent.
 
-Message header fields that are defined as being set by the “JMS provider
+Message header fields that are defined as being set by the “Jakarta Messaging provider
 send method” will be available on the sending client as well as on the
 receiving client. If a message is sent synchronously (see section 7.2
 “Synchronous send”) then these message header fields may be accessed on
 the sending client when the send method returns. If a message is sent
 asynchronously (see section 7.3 “Asynchronous send”) then these message
 header fields may be accessed on the sending client only after the
-completion listener has been invoked. The JMS provider sets these header
+completion listener has been invoked. The Jakarta Messaging provider sets these header
 fields using the appropriate setter methods. These setter methods are
-public to allow a JMS provider to set these fields when handling a
+public to allow a Jakarta Messaging provider to set these fields when handling a
 message whose implementation is not its own. Client applications should
 not use these setter methods. Any values set by calling these methods
 prior to sending a message will be ignored and overwritten.
@@ -1007,25 +1007,25 @@ live and delivery delay of a message using appropriate methods on the
 MessageProducer or JMSProducer object, but not by methods on the Message
 object itself.
 
-Message header fields that are defined as being set by the “JMS provider
-prior to delivery” will be set by the JMS provider on the message
+Message header fields that are defined as being set by the “Jakarta Messaging provider
+prior to delivery” will be set by the Jakarta Messaging provider on the message
 delivered to the receiving client.
 
 ==== Overriding message header fields
 
-JMS permits an administrator to configure JMS to override the client
+Jakarta Messaging permits an administrator to configure Jakarta Messaging to override the client
 specified values for delivery mode, priority, time to live and delivery
 delay. If this is done, the JMSDeliveryMode, JMSPriority, JMSExpiration
 and JMSDeliveryTime header field value must reflect the administratively
 specified value.
 
-JMS does not define specifically how an administrator overrides these
-header field values. A JMS provider is not required to support this
+Jakarta Messaging does not define specifically how an administrator overrides these
+header field values. A Jakarta Messaging provider is not required to support this
 administrative option.
 
 ==== JMSDeliveryTime
 
-When a message is sent, the JMS provider calculates its delivery time by
+When a message is sent, the Jakarta Messaging provider calculates its delivery time by
 adding the delivery delay value specified on the send method to the time
 the message was sent (for transacted sends, this is the time the client
 sends the message, not the time the transaction is committed). It is
@@ -1052,7 +1052,7 @@ this provides a mechanism for adding optional header fields to a
 message.
 
 Properties allow a client, via message selectors (see Section 3.8
-“Message selection”), to have a JMS provider select messages on its
+“Message selection”), to have a Jakarta Messaging provider select messages on its
 behalf using application-specific criteria.
 
 ==== Property names
@@ -1073,21 +1073,21 @@ attempts to set properties at this point, a MessageNotWriteableException
 is thrown.
 
 A property value may duplicate a value in a message’s body or it may
-not. Although JMS does not define a policy for what should or should not
-be made a property, application developers should note that JMS
+not. Although Jakarta Messaging does not define a policy for what should or should not
+be made a property, application developers should note that Jakarta Messaging
 providers will likely handle data in a message’s body more efficiently
 than data in a message’s properties. For best performance, applications
 should only use message properties when they need to customize a
 message’s header. The primary reason for doing this is to support
 customized message selection.
 
-See Section 3.8 “Message selection” for more information about JMS
+See Section 3.8 “Message selection” for more information about Jakarta Messaging
 message properties.
 
 ==== Property value conversion
 
 Properties support the following conversion table. The marked cases must
-be supported. The unmarked cases must throw the JMS
+be supported. The unmarked cases must throw the Jakarta Messaging
 MessageFormatException. The String to numeric conversions must throw the
 java.lang.NumberFormatException if the numeric’s valueOf method does not
 accept the String value as a valid representation. Attempting to read a
@@ -1114,7 +1114,7 @@ Table 3‑2 Property value conversion
 
 ==== Property values as objects
 
-In addition to the type-specific set/get methods for properties, JMS
+In addition to the type-specific set/get methods for properties, Jakarta Messaging
 provides the setObjectProperty/getObjectProperty methods. These support
 the same set of property types using the objectified primitive values.
 Their purpose is to allow the decision of property type to be made at
@@ -1123,7 +1123,7 @@ property value conversions.
 
 The setObjectProperty method accepts values of Boolean, Byte, Short,
 Integer, Long, Float, Double and String. An attempt to use any other
-class must throw a JMS MessageFormatException.
+class must throw a Jakarta Messaging MessageFormatException.
 
 The getObjectProperty method only returns values of null, Boolean, Byte,
 Short, Integer, Long, Float, Double and String. A null value is returned
@@ -1136,7 +1136,7 @@ message’s property values, use getPropertyNames to retrieve a property
 name enumeration and then use the various property get methods to
 retrieve their values.
 
-The getPropertyNames method does not return the names of the JMS
+The getPropertyNames method does not return the names of the Jakarta Messaging
 standard header fields.
 
 ==== Clearing a message’s property values
@@ -1148,7 +1148,7 @@ can then be both created and read.
 Clearing a message’s property entries does not clear the value of its
 body.
 
-JMS does not provide a way to remove an individual property entry once
+Jakarta Messaging does not provide a way to remove an individual property entry once
 it has been added to a message.
 
 ==== Non-existent properties
@@ -1156,9 +1156,9 @@ it has been added to a message.
 Getting a property value for a name which has not been set is handled as
 if the property exists with a null value.
 
-==== JMS defined properties
+==== Jakarta Messaging defined properties
 
-JMS reserves the 'JMSX' property name prefix for JMS defined properties.
+Jakarta Messaging reserves the 'JMSX' property name prefix for Jakarta Messaging defined properties.
 The full set of these properties is provided in Table 3‑3. This table
 defines:
 
@@ -1170,7 +1170,7 @@ when the message is sent, or by the provider when the message is
 received.
 * The purpose of the property
 
-Table 3‑3 JMS defined properties
+Table 3‑3 Jakarta Messaging defined properties
 
 [cols=",,,,",options="header",]
 |===
@@ -1197,7 +1197,7 @@ identifier of the transaction within which this message was produced
 transaction identifier of the transaction within which this message was
 consumed
 
-|JMSXRcvTimestamp |long |Optional |Provider on Receive |The time JMS
+|JMSXRcvTimestamp |long |Optional |Provider on Receive |The time Jakarta Messaging
 delivered the message to the consumer
 
 |JMSXState |int |Optional |Provider a|
@@ -1210,11 +1210,11 @@ Each copy’s state is one of: 1(waiting), 2(ready), 3(expired) or
 
 Since state is of no interest to producers and consumers it is not
 provided to either. It is only of relevance to messages looked up in a
-warehouse and JMS provides no API for this.
+warehouse and Jakarta Messaging provides no API for this.
 
 |===
 
-New JMS defined properties may be added in later versions of JMS.
+New Jakarta Messaging defined properties may be added in later versions of JMS.
 
 The Enumeration ConnectionMetaData.getJMSXPropertyNames() method returns
 the names of the JMSX properties supported by a connection.
@@ -1225,8 +1225,8 @@ message, they are treated like any other absent property. The effect of
 setting a message selector on a property which is set by the provider on
 receive is undefined.
 
-The existence, in a particular message, of optional JMS defined
-properties that are set by a JMS Provider depends on how a particular
+The existence, in a particular message, of optional Jakarta Messaging defined
+properties that are set by a Jakarta Messaging Provider depends on how a particular
 provider controls use of the property. It may choose to include them in
 some messages and omit them in others depending on administrative or
 other criteria.
@@ -1245,14 +1245,14 @@ properties are undefined.
 
 ==== Provider-specific properties
 
-JMS reserves the ‘JMS___<vendor_name>__’ property name prefix for
+Jakarta Messaging reserves the ‘JMS___<vendor_name>__’ property name prefix for
 provider-specific properties. Each provider defines their own value of
-_<vendor_name>_. This is the mechanism a JMS provider uses to make its
-special per message services available to a JMS client.
+_<vendor_name>_. This is the mechanism a Jakarta Messaging provider uses to make its
+special per message services available to a Jakarta Messaging client.
 
 _The purpose of provider-specific properties is to provide special
-features needed to support JMS use with provider-native clients. They
-should not be used for JMS to JMS messaging._
+features needed to support Jakarta Messaging use with provider-native clients. They
+should not be used for Jakarta Messaging to Jakarta Messaging messaging._
 
 ==== JMSXDeliveryCount
 
@@ -1272,13 +1272,13 @@ applications to identify whether a particular message is being
 repeatedly redelivered and take appropriate action.
 
 The value of the JMSXDeliveryCount property is not guaranteed to be
-exactly correct. The JMS provider is not expected to persist this value
+exactly correct. The Jakarta Messaging provider is not expected to persist this value
 to ensure that its value is not lost in the event of a failure.
 
 === Message acknowledgment
 
-All JMS messages support the acknowledge method for use when a client
-has specified that a JMS consumer’s messages are to be explicitly
+All Jakarta Messaging messages support the acknowledge method for use when a client
+has specified that a Jakarta Messaging consumer’s messages are to be explicitly
 acknowledged.
 
 If a client uses automatic acknowledgment, calls to acknowledge are
@@ -1288,8 +1288,8 @@ See Section 6.2.10 “Message acknowledgment” for more information.
 
 === The Message interface
 
-The Message interface is the root interface for all JMS messages. It
-defines the JMS message header fields, property facility and the
+The Message interface is the root interface for all Jakarta Messaging messages. It
+defines the Jakarta Messaging message header fields, property facility and the
 acknowledge method used for all messages.
 
 === Message selection
@@ -1302,22 +1302,22 @@ done with reasonable efficiency by putting the criteria in the message
 and having the receiving client discard the ones it’s not interested in.
 
 When a message is broadcast to many clients, it becomes useful to place
-the criteria into the message header so that it is visible to the JMS
+the criteria into the message header so that it is visible to the Jakarta Messaging
 provider. This allows the provider to handle much of the filtering and
 routing work that would otherwise need to be done by the application.
 
-JMS provides a facility that allows clients to delegate message
-selection to their JMS provider. This simplifies the work of the client
-and allows JMS providers to eliminate the time and bandwidth they would
+Jakarta Messaging provides a facility that allows clients to delegate message
+selection to their Jakarta Messaging provider. This simplifies the work of the client
+and allows Jakarta Messaging providers to eliminate the time and bandwidth they would
 otherwise waste sending messages to clients that don’t need them.
 
 Clients attach application-specific selection criteria to messages using
-message properties. Clients specify message selection criteria using JMS
+message properties. Clients specify message selection criteria using Jakarta Messaging
 _message selector_ expressions.
 
 ==== Message selector
 
-A JMS message selector allows a client to specify, by message header,
+A Jakarta Messaging message selector allows a client to specify, by message header,
 the messages it’s interested in. Only messages whose headers and
 properties match the selector are delivered. The semantics of _not
 delivered_ differ a bit depending on the MessageConsumer being used. See
@@ -1395,7 +1395,7 @@ because a string cannot be used in an arithmetic expression:
 JMSPriority, JMSMessageID, JMSTimestamp, JMSCorrelationID, and JMSType.
 JMSMessageID, JMSCorrelationID, and JMSType values may be null and if so
 are treated as a NULL value.
-** Any name beginning with 'JMSX' is a JMS defined property name.
+** Any name beginning with 'JMSX' is a Jakarta Messaging defined property name.
 ** Any name beginning with 'JMS_' is a provider-specific property name.
 ** Any name that does not begin with 'JMS' is an application-specific
 property name.
@@ -1464,10 +1464,10 @@ field value or a missing property value)
 existence of a non-null header field value or property value)
 ** "prop_name IS NOT NULL"
 
-JMS providers are required to verify the syntactic correctness of a
+Jakarta Messaging providers are required to verify the syntactic correctness of a
 message selector at the time it is presented. A method providing a
-syntactically incorrect selector must result in a JMS
-InvalidSelectorException. JMS providers may also optionally provide some
+syntactically incorrect selector must result in a Jakarta Messaging
+InvalidSelectorException. Jakarta Messaging providers may also optionally provide some
 semantic checking at the time the selector is presented. Not all
 semantic checking can be performed at the time a message selector is
 presented, because property types are not known.
@@ -1533,7 +1533,7 @@ value. When a date or time literal is included in a message selector, it
 should be an integer literal for a millisecond value. The standard way
 to produce millisecond values is to use java.util.Calendar.
 
-Although SQL supports fixed decimal comparison and arithmetic, JMS
+Although SQL supports fixed decimal comparison and arithmetic, Jakarta Messaging
 message selectors do not. This is the reason for restricting exact
 numeric literals to those without a decimal (and the addition of
 numerics with a decimal as an alternate representation for approximate
@@ -1557,7 +1557,7 @@ When a message is received, its header field values can be changed;
 however, its property entries and its body are read-only, as specified
 in this chapter.
 
-The rationale for the read-only restriction is that it gives JMS
+The rationale for the read-only restriction is that it gives Jakarta Messaging
 Providers more freedom in how they implement the management of received
 messages. For instance, they may return a message object that references
 property entries and body values that reside in an internal message
@@ -1568,12 +1568,12 @@ clearBody or clearProperties method to make the body or properties
 writable. If the consumer modifies a received message, and the message
 is subsequently redelivered, the redelivered message must be the
 original, unmodified message (except for headers and properties modified
-by the JMS provider as a result of the redelivery, such as the
+by the Jakarta Messaging provider as a result of the redelivery, such as the
 JMSRedelivered header and the JMSXDeliveryCount property).
 
-=== JMS message body
+=== Jakarta Messaging message body
 
-JMS provides five forms of message body. Each form is defined by a
+Jakarta Messaging provides five forms of message body. Each form is defined by a
 message interface:
 
 * StreamMessage - a message whose body contains a stream of Java
@@ -1585,7 +1585,7 @@ The order of the entries is undefined.
 * TextMessage - a message whose body contains a java.lang.String. The
 inclusion of this message type is based on our presumption that String
 messages will be used extensively. One reason for this is that XML will
-likely become a popular mechanism for representing the content of JMS
+likely become a popular mechanism for representing the content of Jakarta Messaging
 messages.
 * ObjectMessage - a message that contains a serializable Java object. If
 a collection of Java objects is needed, one of the collection classes
@@ -1593,7 +1593,7 @@ provided in JDK 1.2 can be used.
 * BytesMessage - a message that contains a stream of uninterpreted
 bytes. This message type is for literally encoding a body to match an
 existing message format. In many cases, it will be possible to use one
-of the other, self-defining, message types instead. _Although JMS allows
+of the other, self-defining, message types instead. _Although Jakarta Messaging allows
 the use of message properties with byte messages it is typically not
 done since the inclusion of properties may affect the format._
 
@@ -1625,7 +1625,7 @@ object form is needed when types are not known at compile time.
 
 Both StreamMessage and MapMessage support the following conversion
 table. The marked cases must be supported. The unmarked cases must throw
-a JMS MessageFormatException. The String to numeric conversions must
+a Jakarta Messaging MessageFormatException. The String to numeric conversions must
 throw a java.lang.NumberFormatException if the numeric’s valueOf()
 method does not accept the String value as a valid representation.
 
@@ -1667,43 +1667,43 @@ Table 3‑7 Conversions for StreamMessage and MapMessage
 |byte[] | | | | | | | | | |X
 |===
 
-==== Messages for non-JMS clients
+==== Messages for non-Jakarta Messaging clients
 
 A number of enterprise messaging systems support some form of
 self-defining stream and/or map native message type. Although clients
-could use BytesMessage to construct native messages of this form, JMS
+could use BytesMessage to construct native messages of this form, Jakarta Messaging
 provides the StreamMessage and MapMessage types as a more convenient
 API.
 
-For instance, when a client is using a JMS provider that supports a
+For instance, when a client is using a Jakarta Messaging provider that supports a
 native map message; and, it wishes to send a map message that can be
-read by both JMS and native clients, it uses a MapMessage. When the
+read by both Jakarta Messaging and native clients, it uses a MapMessage. When the
 message is sent, the provider translates it into its native form. Native
-clients can then receive it. If a JMS provider receives it, the provider
+clients can then receive it. If a Jakarta Messaging provider receives it, the provider
 translates it back into a MapMessage.
 
-Even when a new JMS application with newly defined messages is written,
+Even when a new Jakarta Messaging application with newly defined messages is written,
 the application may choose to use StreamMessage and MapMessage to ensure
-that later, non-JMS clients will be able to read them.
+that later, non-Jakarta Messaging clients will be able to read them.
 
-If a JMS client sends a StreamMessage or MapMessage, it must be
-translated by a receiving JMS provider into an equivalent StreamMessage
-or MapMessage. When passed between JMS clients, a message must always
+If a Jakarta Messaging client sends a StreamMessage or MapMessage, it must be
+translated by a receiving Jakarta Messaging provider into an equivalent StreamMessage
+or MapMessage. When passed between Jakarta Messaging clients, a message must always
 retain its full form. For instance, a message sent as MapMessage must
-not arrive at a JMS client as a BytesMessage.
+not arrive at a Jakarta Messaging client as a BytesMessage.
 
-If a JMS provider receives a message created by a native client, the
-provider should do its best to transform it into the ‘best’ JMS message
+If a Jakarta Messaging provider receives a message created by a native client, the
+provider should do its best to transform it into the ‘best’ Jakarta Messaging message
 type. For instance, if it is a native stream message it should be
 transformed into a StreamMessage. If this is not possible, the provider
 is always able to transform it into a BytesMessage.
 
-=== Provider implementations of JMS message interfaces
+=== Provider implementations of Jakarta Messaging message interfaces
 
-JMS provides a set of message interfaces that define the JMS message
+Jakarta Messaging provides a set of message interfaces that define the Jakarta Messaging message
 model. It does not provide implementations of these interfaces.
 
-Each JMS provider provides its own implementation of its Session’s
+Each Jakarta Messaging provider provides its own implementation of its Session’s
 message creation methods. This allows a provider to use message
 implementations that are tailored to its needs.
 
@@ -1712,7 +1712,7 @@ implementation is _not_ one of its own. A message with a ‘foreign’
 implementation may not be handled as efficiently as a provider’s own
 implementation; however, it must be handled.
 
-The JMS message interfaces provide write/set methods for setting object
+The Jakarta Messaging message interfaces provide write/set methods for setting object
 values in a message body and message properties. All of these methods
 must be implemented to copy their input objects into the message. The
 value of an input object is allowed to be null and will return null when
@@ -1720,18 +1720,18 @@ accessed. One exception to this is that BytesMessage does not support
 the concept of a null stream and attempting to write a null into it must
 throw java.lang.NullPointerException.
 
-The JMS message interfaces provide read/get methods for accessing
+The Jakarta Messaging message interfaces provide read/get methods for accessing
 objects in a message body and message properties. All of these methods
 must be implemented to return a copy of the accessed message objects.
 
 == Messaging domains
 
-JMS supports two styles of messaging:
+Jakarta Messaging supports two styles of messaging:
 
 * point-to-point (PTP) messaging using _queues_
 * publish-and-subscribe (pub/sub)messaging using _topics_
 
-=== JMS point-to-point model
+=== Jakarta Messaging point-to-point model
 
 ==== Overview
 
@@ -1748,7 +1748,7 @@ And, like real mailboxes, creating and maintaining each queue is
 somewhat costly. Most queues are created administratively and are
 treated as static resources by their clients.
 
-The JMS PTP model defines how a client works with queues: how it finds
+The Jakarta Messaging PTP model defines how a client works with queues: how it finds
 them, how it sends messages to them, and how it receives messages from
 them.
 
@@ -1778,13 +1778,13 @@ consumers on the same queue, then a consumer may not receive all the
 messages on the queue. However those messages that are delivered to the
 consumer will be delivered in the order defined in section 6.2.9.
 
-Apart from the requirements of any message selectors, JMS does not
+Apart from the requirements of any message selectors, Jakarta Messaging does not
 define how messages are distributed between multiple consumers on the
 same queue.
 
 ==== Queue management
 
-JMS does not define facilities for creating, administering, or deleting
+Jakarta Messaging does not define facilities for creating, administering, or deleting
 long-lived queues (it does provide such a mechanism for temporary
 queues). Since most clients use statically defined queues this is not a
 problem.
@@ -1792,12 +1792,12 @@ problem.
 ==== Queue
 
 A Queue object encapsulates a provider-specific queue name. It is the
-way a client specifies the identity of a queue to JMS methods.
+way a client specifies the identity of a queue to Jakarta Messaging methods.
 
 The actual length of time messages are held by a queue and the
 consequences of resource overflow are not defined by JMS.
 
-See chapter 5 “Administered objects” for more information about JMS
+See chapter 5 “Administered objects” for more information about Jakarta Messaging
 Destination objects.
 
 ==== TemporaryQueue
@@ -1820,10 +1820,10 @@ the queue’s messages. It may be an enumeration of the entire content of
 a queue, or it may contain only the messages matching a message
 selector.
 
-Messages may be arriving and expiring while the scan is done. JMS does
+Messages may be arriving and expiring while the scan is done. Jakarta Messaging does
 not require the content of an enumeration to be a static snapshot of
 queue content. Whether these changes are visible or not depends on the
-JMS provider.
+Jakarta Messaging provider.
 
 A message must not be returned by a QueueBrowser before its delivery
 time has been reached.
@@ -1855,13 +1855,13 @@ the client that consumes its messages is active. For this reason, a
 client does not have to take any special precautions to ensure it does
 not miss messages.
 
-=== JMS publish/subscribe model
+=== Jakarta Messaging publish/subscribe model
 
 ==== Overview
 
-The JMS pub/sub model defines how JMS clients publish messages to, and
+The Jakarta Messaging pub/sub model defines how Jakarta Messaging clients publish messages to, and
 subscribe to messages from, a well-known node in a content-based
-hierarchy. JMS calls these nodes _topics_.
+hierarchy. Jakarta Messaging calls these nodes _topics_.
 
 In pub/sub messaging, the term _publish is sometimes used to refer to
 the act of sending messages to a topic instead of the more generic terms
@@ -1887,8 +1887,8 @@ _subscription_ on that topic, and creating a consumer (a
 MessageConsumer, JMSConsumer or TopicSubscriber object) on that
 subscription.
 
-A subscription may be thought of as an entity within the JMS provider
-itself whereas a consumer is a JMS object within the application.
+A subscription may be thought of as an entity within the Jakarta Messaging provider
+itself whereas a consumer is a Jakarta Messaging object within the application.
 
 A subscription will receive a copy of every message that is sent to the
 topic after the subscription is created, except if a message selector is
@@ -1904,7 +1904,7 @@ while another waits for its consumer to process messages ahead of it.
 Some subscriptions are restricted to a single consumer. In this case all
 the messages in the subscription are delivered to that consumer. Some
 subscriptions allow multiple consumers. In this case each message in the
-subscription is delivered to only one consumer. JMS does not define how
+subscription is delivered to only one consumer. Jakarta Messaging does not define how
 messages are distributed between multiple consumers on the same
 subscription.
 
@@ -1944,7 +1944,7 @@ consuming messages from it.
 A durable subscription has a unique identity that is retained by JMS.
 Subsequent consumer objects can resume the subscription in the state it
 was left by the prior consumer. If there are no active consumers on a
-durable subscription, JMS retains the subscription’s messages until they
+durable subscription, Jakarta Messaging retains the subscription’s messages until they
 are consumed or until they expire.
 
 A durable subscription may also be either _unshared_ or _shared_.
@@ -1968,7 +1968,7 @@ is defined in sections “” and 8.3.3 “” below.
 ==== Pub/sub latency
 
 Since there is typically some latency in all pub/sub systems, the exact
-messages seen by a subscriber may vary depending on how quickly a JMS
+messages seen by a subscriber may vary depending on how quickly a Jakarta Messaging
 provider propagates the existence of a new subscriber and the length of
 time a provider retains messages in transit.
 
@@ -1977,14 +1977,14 @@ because it may take a second for the existence of a new subscriber to be
 propagated system wide. When a new subscriber is created, it may receive
 messages sent earlier because a provider may still have them available.
 
-JMS does not define the exact semantics that apply during the interval
-when a pub/sub provider is adjusting to a new client. JMS semantics only
+Jakarta Messaging does not define the exact semantics that apply during the interval
+when a pub/sub provider is adjusting to a new client. Jakarta Messaging semantics only
 apply once the provider has reached a ‘steady state’ with respect to a
 new client.
 
 ==== Subscription name characters and length
 
-The JMS provider must allow a durable or non-durable subscription name
+The Jakarta Messaging provider must allow a durable or non-durable subscription name
 to contain the following characters:
 
 * Java letters
@@ -1993,13 +1993,13 @@ to contain the following characters:
 * Dot (.)
 * Minus (-)
 
-JMS providers may support additional characters to these, but
+Jakarta Messaging providers may support additional characters to these, but
 applications which use them may not be portable.
 
-The JMS provider must allow a durable or non-durable subscription name
+The Jakarta Messaging provider must allow a durable or non-durable subscription name
 to have up to 128 characters.
 
-JMS providers may support names longer than this, but applications which
+Jakarta Messaging providers may support names longer than this, but applications which
 use longer names may not be portable.
 
 ==== Topic management
@@ -2008,7 +2008,7 @@ Some products require that topics be statically defined with associated
 authorization control lists, and so on; others don’t even have the
 concept of topic administration.
 
-JMS does not define facilities for creating, administering, or deleting
+Jakarta Messaging does not define facilities for creating, administering, or deleting
 topics.
 
 A special type of topic called a _temporary topic_ is provided for
@@ -2018,16 +2018,16 @@ Section 4.2.7 “Temporary topics” for more details.
 ==== Topic
 
 A Topic object encapsulates a provider-specific topic name. It is the
-way a client specifies the identity of a topic to JMS methods.
+way a client specifies the identity of a topic to Jakarta Messaging methods.
 
-Many JMS providers group topics into hierarchies and provide various
-options for subscribing to parts of the hierarchy. JMS places no
+Many Jakarta Messaging providers group topics into hierarchies and provide various
+options for subscribing to parts of the hierarchy. Jakarta Messaging places no
 restriction on what a Topic object represents. It might be a leaf in a
 topic hierarchy or it might be a larger part of the hierarchy (for
 subscribing to a general class of information).
 
 The organization of topics and the granularity of subscriptions to them
-is an important part of a pub/sub application’s architecture. JMS does
+is an important part of a pub/sub application’s architecture. Jakarta Messaging does
 not specify a policy for how this should be done. If an application
 takes advantage of a provider-specific topic grouping mechanism, it
 should document this. If the application is installed using a different
@@ -2042,7 +2042,7 @@ whose messages may be consumed only by the connection that created it.
 
 By definition, it does not make sense to create a durable subscription
 to a temporary topic. To do this is a programming error that may or may
-not be detected by a JMS Provider.
+not be detected by a Jakarta Messaging Provider.
 
 See Section 6.2.2 “Creating temporary destinations” for more
 information.
@@ -2052,7 +2052,7 @@ information.
 Unacknowledged messages of a nondurable subscriber should be able to be
 recovered for the lifetime of that nondurable subscriber. When a
 nondurable subscriber terminates, messages waiting for it will probably
-be dropped by the JMS provider whether or not they have been
+be dropped by the Jakarta Messaging provider whether or not they have been
 acknowledged.
 
 Only durable subscriptions are reliably able to recover unacknowledged
@@ -2072,8 +2072,8 @@ to support the creation of publishers and subscribers.
 The amount of resources allocated for message storage and the
 consequences of resource overflow are not defined by JMS.
 
-All JMS providers must be able to run JMS applications that dynamically
-create and delete durable subscriptions. Some JMS providers may, in
+All Jakarta Messaging providers must be able to run Jakarta Messaging applications that dynamically
+create and delete durable subscriptions. Some Jakarta Messaging providers may, in
 addition, provide facilities to administratively configure durable
 subscriptions. If a durable subscription has been administratively
 configured, it is valid for it to silently override the subscription
@@ -2101,8 +2101,8 @@ implementations.
 ==== Reliability
 
 When all messages for a topic must be received, a durable subscriber
-should be used. JMS ensures that messages published while a durable
-subscriber is inactive are retained by JMS and delivered when the
+should be used. Jakarta Messaging ensures that messages published while a durable
+subscriber is inactive are retained by Jakarta Messaging and delivered when the
 subscriber subsequently becomes active.
 
 Non-durable subscribers should only be used when missed messages are
@@ -2131,26 +2131,26 @@ once-and-only-once
 
 === Overview
 
-JMS administered objects are objects containing JMS configuration
-information that are created by a JMS administrator and later used by
-JMS clients. They make it practical to administer JMS applications in
+Jakarta Messaging administered objects are objects containing Jakarta Messaging configuration
+information that are created by a Jakarta Messaging administrator and later used by
+Jakarta Messaging clients. They make it practical to administer Jakarta Messaging applications in
 the enterprise.
 
 _Although the interfaces for administered objects do not explicitly
-depend on JNDI, JMS establishes the convention that JMS clients find
+depend on JNDI, Jakarta Messaging establishes the convention that Jakarta Messaging clients find
 them by looking them up in a namespace using JNDI._
 
 An administrator can place an administered object anywhere in a
-namespace. JMS does not define a naming policy.
+namespace. Jakarta Messaging does not define a naming policy.
 
-This strategy of partitioning JMS and administration provides several
+This strategy of partitioning Jakarta Messaging and administration provides several
 benefits:
 
-* It hides provider-specific configuration details from JMS clients.
-* It abstracts JMS administrative information into Java objects that are
+* It hides provider-specific configuration details from Jakarta Messaging clients.
+* It abstracts Jakarta Messaging administrative information into Java objects that are
 easily organized and administered from a common management console.
 * Since there will be JNDI providers for all popular naming services,
-this means JMS providers can deliver one implementation of administered
+this means Jakarta Messaging providers can deliver one implementation of administered
 objects that will run everywhere.
 
 An administered object should not hold on to any remote resources. Its
@@ -2161,11 +2161,11 @@ Clients should think of administered objects as local Java objects.
 Looking them up should not have any hidden side effects or use
 surprising amounts of local resources.
 
-JMS defines two administered objects, Destination and ConnectionFactory.
+Jakarta Messaging defines two administered objects, Destination and ConnectionFactory.
 
-It is expected that JMS providers will provide the tools an
+It is expected that Jakarta Messaging providers will provide the tools an
 administrator needs to create and configure administered objects in a
-JNDI namespace. JMS provider implementations of administered objects
+JNDI namespace. Jakarta Messaging provider implementations of administered objects
 should be both javax.naming.Referenceable and java.io.Serializable so
 that they can be stored in all JNDI naming contexts. In addition, it is
 recommended that these implementations follow the JavaBeans^TM^ design
@@ -2173,16 +2173,16 @@ patterns.
 
 === Destination
 
-JMS does not define a standard address syntax. Although this was
+Jakarta Messaging does not define a standard address syntax. Although this was
 considered, it was decided that the differences in address semantics
 between existing enterprise messaging products was too wide to bridge
-with a single syntax. Instead, JMS defines the Destination object which
+with a single syntax. Instead, Jakarta Messaging defines the Destination object which
 encapsulates provider-specific addresses.
 
 Since Destination is an administered object it may also contain
 provider-specific configuration information in addition to its address.
 
-JMS also supports a client’s use of provider-specific address names. See
+Jakarta Messaging also supports a client’s use of provider-specific address names. See
 Section 6.2.3 “Creating Destination objects” for more information.
 
 Destination objects support concurrent use.
@@ -2191,7 +2191,7 @@ Destination objects support concurrent use.
 
 A connection factory object encapsulates a set of connection
 configuration parameters that has been defined by an administrator. A
-client uses it to create a connection with a JMS provider.
+client uses it to create a connection with a Jakarta Messaging provider.
 
 * The classic API uses connection factories of type ConnectionFactory.
 * The simplified API uses connection factories of type
@@ -2206,12 +2206,12 @@ Connection factory objects support concurrent use.
 For information on how to use a connection factory to create a
 connection, see section “”.
 
-== Connecting to a JMS provider
+== Connecting to a Jakarta Messaging provider
 
 === Connections
 
-JMS uses the term _connection_ to refer to a client’s active connection
-to its JMS provider. It will typically allocate provider resources
+Jakarta Messaging uses the term _connection_ to refer to a client’s active connection
+to its Jakarta Messaging provider. It will typically allocate provider resources
 outside the Java virtual machine.
 
 A connection is created using a connection factory. For more information
@@ -2268,7 +2268,7 @@ objects. TopicConnection objects support concurrent use.
 
 A connection serves several purposes:
 
-* It encapsulates an open connection with a JMS provider. It typically
+* It encapsulates an open connection with a Jakarta Messaging provider. It typically
 represents an open TCP/IP socket between a client and a provider’s
 service daemon.
 * Its creation is when client authentication takes place.
@@ -2278,9 +2278,9 @@ service daemon.
 
 Due to the authentication and communication setup done when a connection
 is created, the objects that represent a connection are relatively
-heavyweight JMS objects. Most clients will do all their messaging with a
+heavyweight Jakarta Messaging objects. Most clients will do all their messaging with a
 single connection. Other more advanced applications may use several
-connections. JMS does not architect a reason for using multiple
+connections. Jakarta Messaging does not architect a reason for using multiple
 connections (other than when a client acts as a gateway between two
 different providers); however, there may be operational reasons for
 doing so.
@@ -2293,7 +2293,7 @@ name/password.
 If no credentials are specified, the current thread’s credentials are
 used. At this point, the JDK does not define the concept of a thread’s
 default credentials; however, it is likely this will be defined in the
-near future. For now, the identity of the user under which the JMS
+near future. For now, the identity of the user under which the Jakarta Messaging
 client is running should be used.
 
 ==== Client identifier
@@ -2321,30 +2321,30 @@ programming error that should throw an IllegalStateException.
 The purpose of client identifier is to associate a connection and its
 objects with a state maintained on behalf of the client by a provider.
 By definition, the client state identified by a client identifier can be
-‘in use’ by only one client at a time. A JMS provider must prevent
+‘in use’ by only one client at a time. A Jakarta Messaging provider must prevent
 concurrently executing clients from using it.
 
 This prevention may take the form of a JMSException being thrown when
 such use is attempted; it may result in the offending client being
-blocked; or some other solution. A JMS provider must ensure that such
+blocked; or some other solution. A Jakarta Messaging provider must ensure that such
 attempted ‘sharing’ of an individual client state does not result in
 messages being lost or doubly processed.
 
-The only use of a client identifier defined by JMS is its mandatory use
+The only use of a client identifier defined by Jakarta Messaging is its mandatory use
 in identifying an unshared durable subscription or its optional use in
 identifying a shared durable or non-durable subscription.
 
 ==== Connection setup
 
-* In the classic API, a JMS client typically creates a Connection, one
+* In the classic API, a Jakarta Messaging client typically creates a Connection, one
 or more Session objects, and a number of MessageProducer and
 MessageConsumer objects.
-* In the simplified API, a JMS client typically creates a JMSContext and
+* In the simplified API, a Jakarta Messaging client typically creates a JMSContext and
 a number of JMSProducer and JMSConsumer objects.
-* In the domain-specific API for point-to-point messaging, a JMS client
+* In the domain-specific API for point-to-point messaging, a Jakarta Messaging client
 typically creates a QueueConnection, one or more QueueSession objects,
 and a number of QueueSender and QueueReceiver objects.
-* In the domain-specific API for pub/sub messaging, a JMS client
+* In the domain-specific API for pub/sub messaging, a Jakarta Messaging client
 typically creates a TopicConnection, one or more TopicSession objects,
 and a number of TopicPublisher and TopicSubscriber objects.
 
@@ -2377,7 +2377,7 @@ irrespective of whether it is started or stopped.
 
 It is important to note that clients rely on the fact that no messages
 will be delivered to a consumer until its connection has been started.
-JMS Providers must ensure that this is the case.
+Jakarta Messaging Providers must ensure that this is the case.
 
 ==== Pausing delivery of incoming messages
 
@@ -2421,17 +2421,17 @@ this is not portable.
 ==== ConnectionMetaData
 
 All the objects that represent a connection provide a ConnectionMetaData
-object. This object provides the latest version of JMS supported by the
+object. This object provides the latest version of Jakarta Messaging supported by the
 provider as well as the provider’s product name and version.
 
-It also provides a list of the JMS defined property names supported by
+It also provides a list of the Jakarta Messaging defined property names supported by
 the connection.
 
 ==== ExceptionListener
 
-If a JMS provider detects a problem with a connection, it will inform
+If a Jakarta Messaging provider detects a problem with a connection, it will inform
 the connection’s ExceptionListener, if one has been registered. To
-retrieve an ExceptionListener, the JMS provider calls the connection’s
+retrieve an ExceptionListener, the Jakarta Messaging provider calls the connection’s
 getExceptionListener() method. This method returns the ExceptionListener
 for the connection. If no ExceptionListener is registered, the value
 null is returned__.__ The connection can then use the listener by
@@ -2450,16 +2450,16 @@ ExceptionListener is registered with multiple connections then it is
 undefined whether these connections could call onException from
 different threads simultaneously.
 
-A JMS provider should attempt to resolve connection problems itself
+A Jakarta Messaging provider should attempt to resolve connection problems itself
 prior to notifying the client of them.
 
 The exceptions delivered to ExceptionListener are those that have no
-other place to be reported. If an exception is thrown on a JMS call it,
+other place to be reported. If an exception is thrown on a Jakarta Messaging call it,
 by definition, must not be delivered to an ExceptionListener (in other
 words, ExceptionListener is not for the purpose of monitoring all
 exceptions thrown by a connection).
 
-There is no restriction on the use of the JMS API by the listener's
+There is no restriction on the use of the Jakarta Messaging API by the listener's
 onException method. However since that method will only be called when
 there is a serious problem with the connection, any attempt to use that
 connection may fail and cause exceptions.
@@ -2486,7 +2486,7 @@ value to indicate this ‘last message’ case.
 If one or more of the connection’s session’s message listeners is
 processing a message at the point when connection close is invoked, all
 the facilities of the connection and its sessions must remain available
-to those listeners until they return control to the JMS provider.
+to those listeners until they return control to the Jakarta Messaging provider.
 
 When connection close is invoked it should not return until message
 processing has been shut down in an orderly fashion. This means that all
@@ -2495,7 +2495,7 @@ pending receives have returned.
 
 Closing a Connection, QueueConnection or TopicConnection closes its
 constituent sessions, producers, consumers or queue browsers. The
-connection close is sufficient to signal the JMS provider that all
+connection close is sufficient to signal the Jakarta Messaging provider that all
 resources for the connection should be released.
 
 Closing a JMSContext closes the underlying session and any underlying
@@ -2546,7 +2546,7 @@ sessions. Invoking the acknowledge method of a received message from a
 closed connection’s sessions must throw an IllegalStateException. These
 semantics ensure that closing a connection does not cause messages to be
 lost for queues and durable subscriptions which require reliable
-processing by a subsequent execution of their JMS client.
+processing by a subsequent execution of their Jakarta Messaging client.
 
 Once a connection has been closed, an attempt to use it or its sessions
 or their message consumers and producers must throw an
@@ -2559,7 +2559,7 @@ Closing a closed connection must NOT throw an exception.
 
 === Sessions
 
-In JMS a _session_ is a single-threaded contextfootnote:[There are no
+In Jakarta Messaging a _session_ is a single-threaded contextfootnote:[There are no
 restrictions on the number of threads that can use a session or any
 objects it creates. The restriction is that the resources of a session
 should not be used concurrently by multiple threads. It is up to the
@@ -2569,7 +2569,7 @@ delivery, use one thread for setup in stopped mode and then start
 asynchronous delivery. In more complex cases the user must provide
 explicit synchronization.] for producing and consuming messages.
 Although it may allocate provider resources outside the Java virtual
-machine, it is considered a lightweight JMS object.
+machine, it is considered a lightweight Jakarta Messaging object.
 
 * In the classic API a session is represented by a Session object and is
 creating using one of the following methods on Connection:
@@ -2654,13 +2654,13 @@ connection is closed.
 
 ==== Creating Destination objects
 
-Most clients will use Destination objects that are JMS administered
+Most clients will use Destination objects that are Jakarta Messaging administered
 objects that they have looked up via JNDI. This is the most portable
 approach.
 
 Some specialized clients may need to create Destination objects by
 dynamically manufacturing one using a provider specific destination
-name. Sessions provide a JMS provider-specific method for doing this.
+name. Sessions provide a Jakarta Messaging provider-specific method for doing this.
 
 ==== Optimized message implementations
 
@@ -2668,7 +2668,7 @@ A session provides the following methods to create messages:
 createMessage, createBytesMessage, createMapMessage,
 createObjectMessage, createStreamMessage and createTextMessage.
 
-These methods allow the JMS provider to create message implementations
+These methods allow the Jakarta Messaging provider to create message implementations
 which are optimized for that particular provider and allow the provider
 to minimize its overhead for handling messages.
 
@@ -2677,9 +2677,9 @@ mean that messages must be sent using a message producer created from
 the same session. Messages may be sent using any session, not just the
 session used to create the message.
 
-Furthermore, sessions must be capable of sending all JMS messages
+Furthermore, sessions must be capable of sending all Jakarta Messaging messages
 regardless of how they may be implemented. See section 3.12 “Provider
-implementations of JMS message interfaces”.
+implementations of Jakarta Messaging message interfaces”.
 
 ==== Threading restrictions on a session
 
@@ -2775,7 +2775,7 @@ become dedicated to the thread of control that delivers messages to the
 listener and the application must not subsequently call methods on the
 JMSContext from another thread of control. However this restriction does
 not apply to applications which call setMessageListener to set a second
-or subsequent message listener. The JMS provider will be responsible for
+or subsequent message listener. The Jakarta Messaging provider will be responsible for
 ensuring that a second message listener may be safely configured even if
 the underlying connection has been started.
 
@@ -2799,32 +2799,32 @@ always has a current transaction within which its work is done.
 
 JTS or some other transaction monitor facility may be used to combine a
 session’s transaction with transactions on other resources (databases,
-other JMS Sessions, etc.). Since Java distributed transactions are
+other Jakarta Messaging Sessions, etc.). Since Java distributed transactions are
 controlled via the JTA transaction demarcation API, use of the session’s
-commit and rollback methods in this context throws a JMS
+commit and rollback methods in this context throws a Jakarta Messaging
 TransactionInProgressException.
 
 ==== Distributed transactions
 
-JMS does not require that a provider support distributed transactions;
+Jakarta Messaging does not require that a provider support distributed transactions;
 however, it does define that if a provider supplies this support it
 should be done via the JTA XAResource API.
 
-A JMS provider may also be a distributed transaction monitor. If it is,
+A Jakarta Messaging provider may also be a distributed transaction monitor. If it is,
 it should provide control of the transaction via the JTA API.
 
-Although it is possible for a JMS client to handle distributed
-transactions directly, it is recommended that JMS clients avoid doing
-this. JMS clients that use the XA-based interfaces described in Chapter
-11 “JMS application server facilities” may not be portable across
-different JMS implementations, because these interfaces are optional.
-Support for JTA in JMS is targeted at systems vendors who will be
-integrating JMS into their application server products. See Chapter 11
-“JMS application server facilities” for more information.
+Although it is possible for a Jakarta Messaging client to handle distributed
+transactions directly, it is recommended that Jakarta Messaging clients avoid doing
+this. Jakarta Messaging clients that use the XA-based interfaces described in Chapter
+11 “Jakarta Messaging application server facilities” may not be portable across
+different Jakarta Messaging implementations, because these interfaces are optional.
+Support for JTA in Jakarta Messaging is targeted at systems vendors who will be
+integrating Jakarta Messaging into their application server products. See Chapter 11
+“Jakarta Messaging application server facilities” for more information.
 
 ==== Message order
 
-JMS clients need to understand when they can depend on message order and
+Jakarta Messaging clients need to understand when they can depend on message order and
 when they cannot.
 
 ===== Order of message receipt
@@ -2835,12 +2835,12 @@ Section 6.2.10 “Message acknowledgment” for more details. The messages
 for each of a session’s consumers are interleaved in a session’s input
 message stream.
 
-JMS defines that messages sent by a session to a destination must be
+Jakarta Messaging defines that messages sent by a session to a destination must be
 received in the order in which they were sent (see Section 6.2.9.2
 “Order of message sends” for a few qualifications). This defines a
 partial ordering constraint on a session’s input message stream.
 
-JMS does not define order of message receipt across destinations or
+Jakarta Messaging does not define order of message receipt across destinations or
 across a destination’s messages sent from multiple sessions. This aspect
 of a session’s input message stream order is timing-dependent. It is not
 under application control.
@@ -2857,7 +2857,7 @@ particular destination. Several things can affect this order:
 messages.
 * Messages with a later delivery time may be delivered after messages
 with an earlier delivery time.
-* A client may not receive a NON_PERSISTENT message due to a JMS
+* A client may not receive a NON_PERSISTENT message due to a Jakarta Messaging
 provider failure.
 * If both PERSISTENT and NON_PERSISTENT messages are sent to a
 destination, order is only guaranteed within delivery mode. That is, a
@@ -2865,7 +2865,7 @@ later NON_PERSISTENT message may arrive ahead of an earlier PERSISTENT
 message; however, it will never arrive ahead of an earlier
 NON_PERSISTENT message with the same priority.
 * A client may use a transacted session to group its sent messages into
-atomic units (the producer component of a JMS transaction). A
+atomic units (the producer component of a Jakarta Messaging transaction). A
 transaction’s order of messages to a particular destination is
 significant. The order of sent messages across destinations is not
 significant. See Section 6.2.7 “Transactions” for more information.
@@ -2881,7 +2881,7 @@ and recovery is handled manually:
 
 * DUPS_OK_ACKNOWLEDGE - This option instructs the session to lazily
 acknowledge the delivery of messages. This is likely to result in the
-delivery of some duplicate messages if JMS fails. It it should therefore
+delivery of some duplicate messages if Jakarta Messaging fails. It it should therefore
 only be used by consumers that are tolerant of duplicate messages. Its
 benefit is the reduction of session overhead achieved by minimizing the
 work the session does to prevent duplicates.
@@ -2896,7 +2896,7 @@ been delivered by its session.
 
 When CLIENT_ACKNOWLEDGE mode is used, a client may build up a large
 number of unacknowledged messages while attempting to process them. A
-JMS provider should provide administrators with a way to limit client
+Jakarta Messaging provider should provide administrators with a way to limit client
 over-run so that clients are not driven to resource exhaustion and
 ensuing failure when some resource they are using is temporarily
 blocked.
@@ -2915,7 +2915,7 @@ JMSXDeliveryCount property of messages it redelivers due to a recovery.
 
 ==== Duplicate delivery of messages
 
-A JMS provider must never deliver a second copy of an acknowledged
+A Jakarta Messaging provider must never deliver a second copy of an acknowledged
 message.
 
 When a client uses the AUTO_ACKNOWLEDGE mode, it is not in direct
@@ -2930,8 +2930,8 @@ circumstances, and the JMSXDeliveryCount property must be incremented.
 
 ==== Duplicate production of messages
 
-JMS providers must never produce duplicate messages. This means that a
-client that produces a message can rely on its JMS provider to ensure
+Jakarta Messaging providers must never produce duplicate messages. This means that a
+client that produces a message can rely on its Jakarta Messaging provider to ensure
 that consumers of the message will receive it only once. No client error
 can cause a provider to duplicate a message.
 
@@ -2941,7 +2941,7 @@ the transaction was committed or rolled back. The same ambiguity exists
 when a failure occurs between the non-transactional send of a PERSISTENT
 message and the return from the sending method.
 
-It is up to a JMS application to deal with this ambiguity. In some
+It is up to a Jakarta Messaging application to deal with this ambiguity. In some
 cases, this may cause a client to produce functionally duplicate
 messages.
 
@@ -2954,14 +2954,14 @@ Even though the Java language provides built-in support for
 multithreading, writing multithreaded programs is still more difficult
 than writing single-threaded ones.
 
-For this reason, JMS does not cause concurrent execution of client code
+For this reason, Jakarta Messaging does not cause concurrent execution of client code
 unless a client explicitly requests it. One way this is done is to
 define that a session serializes all asynchronous delivery of messages.
 
 To receive messages asynchronously, a client creates a consumer object
 (MessageConsumer, JMSConsumer, QueueReceiver or TopicConsumer) and uses
 the setMessageListener method to register with it an object that
-implements the JMS MessageListener interface. _In effect, a session uses
+implements the Jakarta Messaging MessageListener interface. _In effect, a session uses
 a single thread to run all its message listeners_. While the thread is
 busy executing one listener, all other messages to be asynchronously
 delivered to the session must wait.
@@ -3019,7 +3019,7 @@ JMSContext because this is not portable.
 
 When a session is closed, there is no need to close its constituent
 producers, consumers or queue browsers. The session close is sufficient
-to signal the JMS provider that all resources for the session should be
+to signal the Jakarta Messaging provider that all resources for the session should be
 released.
 
 Note that closing a connection will cause any sessions created from it
@@ -3102,7 +3102,7 @@ send(Destination destination, Message message)
 
 ____
 The following methods on JMSProducer allow the application to supply the
-message body directly. The JMS provider automatically creates a message
+message body directly. The Jakarta Messaging provider automatically creates a message
 of the appropriate type before sending.
 ____
 
@@ -3154,12 +3154,12 @@ listed above.
 
 These methods will block until the message has been sent. If necessary
 the call will block until a confirmation message has been received back
-from the JMS server.
+from the Jakarta Messaging server.
 
 === Asynchronous send
 
 Clients may alternatively send a message asynchronously. This permits
-the JMS provider to perform part of the work involved in sending the
+the Jakarta Messaging provider to perform part of the work involved in sending the
 message in a separate thread.
 
 * In the classic API the following methods on MessageProducer may be
@@ -3186,7 +3186,7 @@ inherited from MessageProducer and listed above.
 be used to send a message asynchronously using any of the methods
 inherited from MessageProducer and listed above.
 
-When the message has been successfully sent the JMS provider invokes the
+When the message has been successfully sent the Jakarta Messaging provider invokes the
 callback method onCompletion on an application-specified
 CompletionListener object. Only when that callback has been invoked can
 the application be sure that the message has been successfully sent with
@@ -3197,27 +3197,27 @@ therefore wait for the callback to be invoked before continuing.
 The following information is intended to give an indication of how an
 asynchronous send would typically be implemented.
 
-In some JMS providers, a normal synchronous send involves sending the
-message to a remote JMS server and then waiting for an acknowledgement
+In some Jakarta Messaging providers, a normal synchronous send involves sending the
+message to a remote Jakarta Messaging server and then waiting for an acknowledgement
 to be received before returning. It is expected that such a provider
 would implement an asynchronous send by sending the message to the
-remote JMS server and then returning without waiting for an
-acknowledgement. When the acknowledgement is received, the JMS provider
+remote Jakarta Messaging server and then returning without waiting for an
+acknowledgement. When the acknowledgement is received, the Jakarta Messaging provider
 would notify the application by invoking the onCompletion method on the
 application-specified CompletionListener object. If for some reason the
-acknowledgement is not received the JMS provider would notify the
+acknowledgement is not received the Jakarta Messaging provider would notify the
 application by invoking the CompletionListener’s onException method.
 
-In those cases where the JMS specification permits a lower level of
+In those cases where the Jakarta Messaging specification permits a lower level of
 reliability, a normal synchronous send might not wait for an
 acknowledgement. In that case it is expected that an asynchronous send
-would be similar to a synchronous send: the JMS provider would send the
-message to the remote JMS server and then return without waiting for an
-acknowledgement. However the JMS provider would still notify the
+would be similar to a synchronous send: the Jakarta Messaging provider would send the
+message to the remote Jakarta Messaging server and then return without waiting for an
+acknowledgement. However the Jakarta Messaging provider would still notify the
 application that the send had completed by invoking the onCompletion
 method on the application-specified CompletionListener object.
 
-It is up to the JMS provider to decide exactly what is performed in the
+It is up to the Jakarta Messaging provider to decide exactly what is performed in the
 calling thread and what, if anything, is performed asynchronously, so
 long as it satisfies the requirements given in the following sections:
 
@@ -3225,7 +3225,7 @@ long as it satisfies the requirements given in the following sections:
 
 After the send operation has completed successfully, which means that
 the message has been successfully sent with the same degree of
-confidence as if a normal synchronous send had been performed, the JMS
+confidence as if a normal synchronous send had been performed, the Jakarta Messaging
 provider must invoke the CompletionListener’s onCompletion method.The
 CompletionListener must not be invoked earlier than this.
 
@@ -3233,11 +3233,11 @@ CompletionListener must not be invoked earlier than this.
 
 If an exception is encountered during the call to the send method then
 an appropriate exception should be thrown in the thread that is calling
-the send method. In this case the JMS provider must not invoke the
+the send method. In this case the Jakarta Messaging provider must not invoke the
 CompletionListener’s onCompletion or onException method.
 
 If an exception is encountered which cannot be thrown in the thread that
-is calling the send method then the JMS provider must call the
+is calling the send method then the Jakarta Messaging provider must call the
 CompletionListener’s onException method.
 
 In both cases if an exception occurs it is undefined whether or not the
@@ -3245,7 +3245,7 @@ message was successfully sent.
 
 ==== Message order
 
-If the same producer is used to send multiple messages then JMS message
+If the same producer is used to send multiple messages then Jakarta Messaging message
 ordering requirements (see section 6.2.9 “Message order”) must be
 satisfied. This applies even if a combination of synchronous and
 asynchronous sends has been performed. The application is not required
@@ -3255,12 +3255,12 @@ message.
 ==== Close, commit or rollback
 
 If the application calls close to close the producer, session or
-connection then the JMS provider must block until any incomplete send
+connection then the Jakarta Messaging provider must block until any incomplete send
 operations have been completed and all CompletionListener callbacks have
 returned before closing the object and returning.
 
 If the session is transacted (uses a local transaction) then when the
-commit or rollback method is called the JMS provider must block until
+commit or rollback method is called the Jakarta Messaging provider must block until
 any incomplete send operations have been completed and all
 CompletionListener callbacks have returned before performing the commit
 or rollback.
@@ -3302,9 +3302,9 @@ required.
 
 ==== Message headers
 
-JMS defines a number of message header fields and message properties
-which must be set by the “JMS provider on send”. See section 3.4.11 “How
-message header values are set” and section 3.5.9 “JMS defined
+Jakarta Messaging defines a number of message header fields and message properties
+which must be set by the “Jakarta Messaging provider on send”. See section 3.4.11 “How
+message header values are set” and section 3.5.9 “Jakarta Messaging defined
 properties”. If the send is asynchronous these fields and properties may
 be accessed on the sending client only after the CompletionListener has
 been invoked. If the CompletionListener’s onException method is called
@@ -3326,14 +3326,14 @@ performing an asynchronous send. However the CompletionListener’s
 callback methods must not use the session if an application thread might
 be using the session at the same time.
 
-==== Use of the CompletionListener by the JMS provider
+==== Use of the CompletionListener by the Jakarta Messaging provider
 
 A session will only invoke one CompletionListener callback method at a
 time. For a given MessageProducer or JMSContext, callbacks (both
 onCompletion and onException) will be performed in the same order as the
 corresponding calls to the asynchronous send method.
 
-A JMS provider must not invoke the CompletionListener from the thread
+A Jakarta Messaging provider must not invoke the CompletionListener from the thread
 that is calling the asynchronous send method.
 
 ==== Restrictions on the use of the Message object
@@ -3346,12 +3346,12 @@ See section “”.
 After the send method has returned, the application must not attempt to
 read the headers, properties or body of the Message object until the
 CompletionListener’s onCompletion or onException method has been called.
-This is because the JMS provider may be modifying the Message object in
+This is because the Jakarta Messaging provider may be modifying the Message object in
 another thread during this time.
 
-A JMS provider may throw a JMSException if the application attempts to
+A Jakarta Messaging provider may throw a JMSException if the application attempts to
 access or modify the Message object after the send method has returned
-and before the CompletionListener has been invoked. If the JMS provider
+and before the CompletionListener has been invoked. If the Jakarta Messaging provider
 does not throw an exception then the behaviour is undefined.
 
 === Setting message delivery options
@@ -3410,24 +3410,24 @@ calling send.
 
 === Message delivery mode
 
-JMS supports two modes of message delivery.
+Jakarta Messaging supports two modes of message delivery.
 
 * The NON_PERSISTENT mode is the lowest overhead delivery mode because
-it does not require that the message be logged to stable storage. A JMS
+it does not require that the message be logged to stable storage. A Jakarta Messaging
 provider failure can cause a NON_PERSISTENT message to be lost.
-* The PERSISTENT mode instructs the JMS provider to take extra care to
-ensure the message is not lost in transit due to a JMS provider failure.
+* The PERSISTENT mode instructs the Jakarta Messaging provider to take extra care to
+ensure the message is not lost in transit due to a Jakarta Messaging provider failure.
 
-A JMS provider must deliver a NON_PERSISTENT message _at-most-once._
+A Jakarta Messaging provider must deliver a NON_PERSISTENT message _at-most-once._
 This means it may lose the message, but it must not deliver it twice.
 
-A JMS provider must deliver a PERSISTENT message _once-and-only-once_.
-This means a JMS provider failure must not cause it to be lost, and it
+A Jakarta Messaging provider must deliver a PERSISTENT message _once-and-only-once_.
+This means a Jakarta Messaging provider failure must not cause it to be lost, and it
 must not deliver it twice.
 
 PERSISTENT (once-and-only-once) and NON_PERSISTENT (at-most-once)
-message delivery are a way for a JMS client to select between delivery
-techniques that may lose a messages if a JMS provider dies and those
+message delivery are a way for a Jakarta Messaging client to select between delivery
+techniques that may lose a messages if a Jakarta Messaging provider dies and those
 which take extra effort to ensure that messages can survive such a
 failure. There is typically a performance/reliability trade-off implied
 by this choice. When a client selects the NON_PERSISTENT delivery mode,
@@ -3457,8 +3457,8 @@ the send method to the time the message was sent (for transacted sends,
 this is the time the client sends the message, not the time the
 transaction is committed).
 
-A JMS provider should do its best to accurately expire messages;
-however, JMS does not define the accuracy provided. It is not acceptable
+A Jakarta Messaging provider should do its best to accurately expire messages;
+however, Jakarta Messaging does not define the accuracy provided. It is not acceptable
 to simply ignore time-to-live.
 
 An application may specify the required time-to-live using the method
@@ -3480,7 +3480,7 @@ send method to the time the message was sent (for transacted sends, this
 is the time the client sends the message, not the time the transaction
 is committed).
 
-A message’s delivery time is the earliest time when a JMS provider may
+A message’s delivery time is the earliest time when a Jakarta Messaging provider may
 deliver the message to a consumer. The provider must not deliver
 messages before the delivery time has been reached.
 
@@ -3678,7 +3678,7 @@ See also section 6.1.2 “Client identifier”.
 
 A durable subscription is used by an application that needs to receive
 all the messages published on a topic, including the ones published when
-there is no consumer associated with it. The JMS provider retains a
+there is no consumer associated with it. The Jakarta Messaging provider retains a
 record of this durable subscription and ensures that all messages from
 the topic’s publishers are retained until they are delivered to, and
 acknowledged by, a consumer on the durable subscription or until they
@@ -3751,7 +3751,7 @@ See also section 6.1.2 “Client identifier”.
 
 A durable subscription is used by an application that needs to receive
 all the messages published on a topic, including the ones published when
-there is no consumer associated with it. The JMS provider retains a
+there is no consumer associated with it. The Jakarta Messaging provider retains a
 record of this durable subscription and ensures that all messages from
 the topic’s publishers are retained until they are delivered to, and
 acknowledged by, a consumer on the durable subscription or until they
@@ -3914,7 +3914,7 @@ set to byte[].class (or java.lang.Object).
 The result of this method throwing a MessageFormatRuntimeException
 depends on the session mode:
 
-* AUTO_ACKNOWLEDGE or DUPS_OK_ACKNOWLEDGE: The JMS provider will behave
+* AUTO_ACKNOWLEDGE or DUPS_OK_ACKNOWLEDGE: The Jakarta Messaging provider will behave
 as if the unsuccessful call to receiveBody or receiveBodyNoWait had not
 occurred. The message will be delivered again before any subsequent
 messages.
@@ -3922,7 +3922,7 @@ messages.
 This is not considered to be redelivery and does not cause the
 JMSRedelivered message header field to be set or the JMSXDeliveryCount
 message property to be incremented.
-* CLIENT_ACKNOWLEDGE: The JMS provider will behave as if the call to
+* CLIENT_ACKNOWLEDGE: The Jakarta Messaging provider will behave as if the call to
 receiveBody or receiveBodyNoWait had been successful and will not
 deliver the message again.
 +
@@ -3933,7 +3933,7 @@ have the failed message redelivered, it must call recover on the
 JMSContext. The redelivered message’s JMSRedelivered message header
 field will be set and its JMSXDeliveryCount message property will be
 incremented.
-* Transacted session: The JMS provider will behave as if the call to
+* Transacted session: The Jakarta Messaging provider will behave as if the call to
 receiveBody or receiveBodyNoWait had been successful and will not
 deliver the message again.
 +
@@ -3946,7 +3946,7 @@ and its JMSXDeliveryCount message property will be incremented.
 
 === Receiving messages asynchronously
 
-A client can register an object that implements the JMS MessageListener
+A client can register an object that implements the Jakarta Messaging MessageListener
 interface with a consumer. As messages arrive for the consumer, the
 provider delivers them by calling the listener’s onMessage method.
 
@@ -3959,7 +3959,7 @@ The result of a listener throwing a RuntimeException depends on the
 session’s acknowledgment mode.
 
 * AUTO_ACKNOWLEDGE or DUPS_OK_ACKNOWLEDGE - the message will be
-immediately redelivered. The number of times a JMS provider will
+immediately redelivered. The number of times a Jakarta Messaging provider will
 redeliver the same message before giving up is provider-dependent. The
 JMSRedelivered message header field will be set, and the
 JMSXDeliveryCount message property incremented, for a message
@@ -3971,7 +3971,7 @@ redelivered, it must manually recover the session.
 The client can either commit or roll back the session (in other words, a
 RuntimeException does not automatically rollback the session).
 
-JMS providers should flag clients with message listeners that are
+Jakarta Messaging providers should flag clients with message listeners that are
 throwing RuntimeException as possibly malfunctioning.
 
 See Section “” for information about how onMessage calls are serialized
@@ -4018,7 +4018,7 @@ the consumer is closed.
 rollback the transaction as normal. It makes no difference whether this
 occurs before or after the consumer is closed.
 
-== Other JMS facilities
+== Other Jakarta Messaging facilities
 
 === Reliability
 
@@ -4029,21 +4029,21 @@ a queue or a durable subscription.
 In some cases, an application may only require at-most-once message
 delivery for some of its messages. This is accomplished by publishing
 NON_PERSISTENT messages. These messages typically have lower overhead;
-however, they may be lost if a JMS provider fails. Both PERSISTENT and
+however, they may be lost if a Jakarta Messaging provider fails. Both PERSISTENT and
 NON_PERSISTENT messages can be published to the same destination.
 
 Normally, a consumer fully processes each message before acknowledging
-its receipt to JMS. This ensures that JMS does not discard a partially
+its receipt to JMS. This ensures that Jakarta Messaging does not discard a partially
 processed message due to machine failure, etc. A consumer accomplishes
 this by using either a transacted or CLIENT_ACKNOWLEDGE session.
 Unacknowledged messages redelivered due to system failure must have the
 JMSRedelivered message header field set, and the JMSXDeliveryCount
-incremented, by the JMS provider, as described in sections 3.4.7
+incremented, by the Jakarta Messaging provider, as described in sections 3.4.7
 “JMSRedelivered” and 3.5.11 “JMSXDeliveryCount”
 
 If a NON_PERSISTENT message is delivered to a durable subscription or a
 queue, delivery is not guaranteed if the durable subscription becomes
-inactive (that is, if it has no current subscriber) or if the JMS
+inactive (that is, if it has no current subscriber) or if the Jakarta Messaging
 provider is shut down and later restarted.
 
 _It is expected that important messages will be produced with a
@@ -4056,11 +4056,11 @@ a message has been properly produced, reliably delivered, and accurately
 consumed. Non-transactional production and consumption can also achieve
 the same level of assurance; however, this requires careful programming.
 
-A JMS provider may have resource restrictions that limit the number of
+A Jakarta Messaging provider may have resource restrictions that limit the number of
 messages that can be held for high-volume destinations or non-responsive
 clients. If messages are dropped due to resource limits, this is usually
 a serious administrative issue that needs attention. Correct functioning
-of JMS requires that clients are responsive and that adequate resources
+of Jakarta Messaging requires that clients are responsive and that adequate resources
 to service them are available.
 
 _Once-and-only-once message delivery, as described in this
@@ -4068,11 +4068,11 @@ specification, has the important caveat that it does not cover message
 destruction due to message expiration or other administrative
 destruction criteria. It also does not cover loss due to resource
 restrictions. Configuration of adequate resources and processing power
-for JMS applications is the job of administrators, who must be aware of
-their JMS provider’s reliability features._
+for Jakarta Messaging applications is the job of administrators, who must be aware of
+their Jakarta Messaging provider’s reliability features._
 
 NON_PERSISTENT messages, nondurable subscriptions, and temporary
-destinations are by definition unreliable. A JMS provider shutdown or
+destinations are by definition unreliable. A Jakarta Messaging provider shutdown or
 failure will likely cause the loss of NON_PERSISTENT messages and the
 loss of messages held by temporary destinations and nondurable
 subscriptions. The termination of an application will likely cause the
@@ -4081,7 +4081,7 @@ destinations of the application.
 
 === Method inheritance across messaging domains
 
-When JMS 1.1 unified the domain-specific APIs for point-to-point and
+When Jakarta Messaging 1.1 unified the domain-specific APIs for point-to-point and
 pub/sub messaging into a single “unified” API (now referred to as the
 “classic” API), some methods that are not appropriate to a messaging
 domain became inherited by the domain-specific interfaces. For example,
@@ -4091,7 +4091,7 @@ the createBrowser method, though that method must not be used by a
 topic, as topics do not support queue browsers. Table 9‑1outlines these
 instances.
 
-If an application attempts to call any of the methods listed, the JMS
+If an application attempts to call any of the methods listed, the Jakarta Messaging
 provider must throw an IllegalStateException.
 
 Table 9‑1 methods that throw an IllegalStateException
@@ -4114,21 +4114,21 @@ Table 9‑1 methods that throw an IllegalStateException
 | |createTemporaryQueue
 |===
 
-== JMS exceptions
+== Jakarta Messaging exceptions
 
 === Overview
 
-This chapter provides an overview of JMS exception handling and defines
-the standard JMS exceptions.
+This chapter provides an overview of Jakarta Messaging exception handling and defines
+the standard Jakarta Messaging exceptions.
 
 === JMSException and JMSRuntimeException
 
-JMS defines two sets of exceptions:
+Jakarta Messaging defines two sets of exceptions:
 
 * JMSException is the base class for all checked exceptions
 * JMSRuntimeException is the base class for all unchecked exceptions.
 
-In general, methods on interfaces defined in JMS 1.1 and earlier throw
+In general, methods on interfaces defined in Jakarta Messaging 1.1 and earlier throw
 checked exceptions, whilst methods on the JMSContext, JMSProducer and
 JMSConsumer interfaces that were defined for the simplified API throw
 unchecked exceptions.
@@ -4146,13 +4146,13 @@ JMSException and JMSRuntimeException provide the following information:
 * A provider-specific string describing the error - This string is the
 standard Java exception message, and is available via getMessage().
 * A provider-specific string error code
-* A reference to another exception - Often a JMS exception will be the
+* A reference to another exception - Often a Jakarta Messaging exception will be the
 result of a lower level problem. If appropriate, this lower level
-exception can be linked to the JMS exception.
+exception can be linked to the Jakarta Messaging exception.
 
 Methods which throw checked exceptions include only JMSException in
-their signatures. JMS methods can throw any JMS standard exception as
-well as any JMS provider specific exception. *The javadoc for these
+their signatures. Jakarta Messaging methods can throw any Jakarta Messaging standard exception as
+well as any Jakarta Messaging provider specific exception. *The javadoc for these
 methods documents only the mandatory exception cases.*
 
 Methods which only throw unchecked exceptions do not include any
@@ -4161,21 +4161,21 @@ the mandatory exception cases.
 
 === Standard exceptions
 
-In addition to JMSException and JMSRuntimeException, JMS defines several
+In addition to JMSException and JMSRuntimeException, Jakarta Messaging defines several
 additional exceptions that standardize the reporting of basic error
 conditions.
 
-There are only a few cases where JMS mandates that a specific JMS
+There are only a few cases where Jakarta Messaging mandates that a specific Jakarta Messaging
 exception must be thrown. These cases are indicated by the words *must
 be* in the exception description. *These cases are the only ones on
 which client logic* should depend on a specific problem resulting in a
-specific JMS exception being thrown.
+specific Jakarta Messaging exception being thrown.
 
-In the remainder of cases, it is strongly suggested that JMS providers
-use one of the standard exceptions where possible. JMS providers may
+In the remainder of cases, it is strongly suggested that Jakarta Messaging providers
+use one of the standard exceptions where possible. Jakarta Messaging providers may
 also derive provider-specific exceptions from these if needed.
 
-JMS defines the following standard exceptions. In most cases there is a
+Jakarta Messaging defines the following standard exceptions. In most cases there is a
 checked exception (a subclass of JMSException) and a corresponding
 unchecked exception (a subclass of JMSRuntimeException). The unchecked
 version may only be thrown on those methods whose method signature does
@@ -4199,13 +4199,13 @@ client identifier to a value that is rejected by a provider.
 These exceptions *must be* thrown when a destination is either not
 understood by a provider or is no longer valid.
 * InvalidSelectorException and InvalidSelectorRuntimeException: These
-exceptions *must be* thrown when a JMS client attempts to give a
+exceptions *must be* thrown when a Jakarta Messaging client attempts to give a
 provider a message selector with invalid syntax.
 * MessageEOFException: This exception *must be* thrown when an
 unexpected end of stream has been reached when a StreamMessage or
 BytesMessage is being read.
 * MessageFormatException and MessageFormatRuntimeException: These
-exceptions *must be* thrown when a JMS client attempts to use a data
+exceptions *must be* thrown when a Jakarta Messaging client attempts to use a data
 type not supported by a message or attempts to read data in a message as
 the wrong type. They must also be thrown when equivalent type errors are
 made with message property values. For example, a MessageFormatException
@@ -4216,14 +4216,14 @@ message it cannot accept. Note that the special case of a failure caused
 by attempting to read improperly formatted String data as numeric values
 must throw the java.lang.NumberFormatException.
 * MessageNotReadableException: This exception *must be* thrown when a
-JMS client attempts to read a write-only message.
+Jakarta Messaging client attempts to read a write-only message.
 * MessageNotWriteableException and MessageNotWriteableRuntimeException:
-These exceptions *must be* thrown when a JMS client attempts to write to
+These exceptions *must be* thrown when a Jakarta Messaging client attempts to write to
 a read-only message.
 * ResourceAllocationException and ResourceAllocationRuntimeException:
 This exception is thrown when a provider is unable to allocate the
 resources required by a method. For example, this exception should be
-thrown when a call to _createTopicConnection_ fails due to lack of JMS
+thrown when a call to _createTopicConnection_ fails due to lack of Jakarta Messaging
 provider resources.
 * TransactionInProgressException and
 TransactionInProgressRuntimeException: These exceptions are thrown when
@@ -4238,30 +4238,30 @@ rollback of the current transaction. A
 TransactionRolledBackRuntimeException *must be* thrown when a call to
 JMSContext.commit() results in a rollback of the current transaction
 
-== JMS application server facilities
+== Jakarta Messaging application server facilities
 
 === Overview
 
-This chapter describes JMS facilities for concurrent processing of a
-subscription’s messages. It also defines how a JMS provider supplies JTA
+This chapter describes Jakarta Messaging facilities for concurrent processing of a
+subscription’s messages. It also defines how a Jakarta Messaging provider supplies JTA
 aware sessions. These facilities are primarily intended for the use of
-the JMS provider.
+the Jakarta Messaging provider.
 
-If JMS clients use the JTA aware facilities the client program may be
-non-portable code, because JMS providers are not required to support
+If Jakarta Messaging clients use the JTA aware facilities the client program may be
+non-portable code, because Jakarta Messaging providers are not required to support
 these interfaces.
 
 The facilities described in this chapter are a special category of JMS.
-They are optional and might only be supported by some JMS providers.
+They are optional and might only be supported by some Jakarta Messaging providers.
 
 === Concurrent processing of a subscription’s messages
 
-JMS provides a special facility for creating a consumer that can
+Jakarta Messaging provides a special facility for creating a consumer that can
 concurrently consume messages.
 
 This facility partitions the work into three roles:
 
-* JMS provider - its role is to deliver the messages.
+* Jakarta Messaging provider - its role is to deliver the messages.
 * Application Server - its role is to create the consumer and manage the
 threads used by the concurrent MessageListener objects.
 * Application - its role is to define a subscription with a destination
@@ -4294,7 +4294,7 @@ programmer to process messages. It would also be given the destination
 and message selector that specified the messages the listener was to
 consume.
 
-An application server would take care of creating the JMS connection,
+An application server would take care of creating the Jakarta Messaging connection,
 ConnectionConsumer, and session objects it needs to handle message
 processing. It would create as many MessageListener instances as it
 needed and register each with its own session.
@@ -4306,13 +4306,13 @@ constructor parameter.
 ==== ServerSession
 
 A ServerSession is an object implemented by an application server. It is
-used by an application server to associate a thread with a JMS session.
+used by an application server to associate a thread with a Jakarta Messaging session.
 
 A ServerSession implements two methods:
 
-* getSession() - returns the ServerSession’s JMS session.
+* getSession() - returns the ServerSession’s Jakarta Messaging session.
 * start() - starts the execution of the ServerSession thread and results
-in the execution of the associated JMS session’s run method.
+in the execution of the associated Jakarta Messaging session’s run method.
 
 ==== ServerSessionPool
 
@@ -4324,7 +4324,7 @@ Its only method is getServerSession(). This removes a ServerSession from
 the pool and gives it to the caller (which is assumed to be a
 ConnectionConsumer) to use for consuming one or more messages.
 
-JMS does not architect how the pool is implemented. It could be a static
+Jakarta Messaging does not architect how the pool is implemented. It could be a static
 pool of ServerSession objects or it could use a sophisticated algorithm
 to dynamically create ServerSession objects as needed.
 
@@ -4353,7 +4353,7 @@ use at the expense of some serialization of a message processing.
 
 ==== How a ConnectionConsumer uses a ServerSession
 
-A ConnectionConsumer implemented by a JMS provider uses a ServerSession
+A ConnectionConsumer implemented by a Jakarta Messaging provider uses a ServerSession
 to process one or more messages that have arrived. It does this as
 follows:
 
@@ -4368,14 +4368,14 @@ into a Session. A ConnectionConsumer for a QueueConnection will expect
 to load its messages into a QueueSession, as one for a TopicConnection
 would expect to load a TopicSession.
 
-Note that JMS does not architect how the ConnectionConsumer loads the
+Note that Jakarta Messaging does not architect how the ConnectionConsumer loads the
 session with messages. Since both the ConnectionConsumer and session are
-implemented by the same JMS provider, they can accomplish the load using
+implemented by the same Jakarta Messaging provider, they can accomplish the load using
 a private mechanism.
 
 ==== How an application server implements a ServerSession
 
-JMS does not architect the implementation of a ServerSession. A typical
+Jakarta Messaging does not architect the implementation of a ServerSession. A typical
 implementation is presented here to illustrate the concept:
 
 [arabic]
@@ -4396,14 +4396,14 @@ ServerSession’s thread and the cycle starts again.
 
 ==== The result
 
-JMS has defined a flexible mechanism that partitions the job of
+Jakarta Messaging has defined a flexible mechanism that partitions the job of
 concurrent message consumption into roles that are well suited for each
 participant.
 
 The application programmer provides a simple to write, single threaded
 implementation of MessageListener.
 
-The JMS provider retains control of its messages until they are
+The Jakarta Messaging provider retains control of its messages until they are
 delivered to the MessageListener. This ensures it is under direct
 control of message acknowledgment.
 
@@ -4424,30 +4424,30 @@ image:7.png[image,width=356,height=418]
 === Support for distributed transactions
 
 Some application servers provide support for grouping resource use into
-a distributed transaction. To include JMS transactions in a distributed
+a distributed transaction. To include Jakarta Messaging transactions in a distributed
 transaction, an application server requires a Java Transaction API (JTA)
-capable JMS provider.
+capable Jakarta Messaging provider.
 
 ==== XA connection factory
 
-A JMS provider exposes its JTA support using XA equivalents of the
+A Jakarta Messaging provider exposes its JTA support using XA equivalents of the
 normal connection factory objects.
 
-* For applications which use the classic or simplified APIs, a JMS
-provider exposes its JTA support using a JMS XAConnectionFactory which
+* For applications which use the classic or simplified APIs, a Jakarta Messaging
+provider exposes its JTA support using a Jakarta Messaging XAConnectionFactory which
 an application server uses to create XAConnection or JMSXAContext
 objects.
 * For applications which use the domain-specific API for point-to-point
-messaging, a JMS provider exposes its JTA support using a JMS
+messaging, a Jakarta Messaging provider exposes its JTA support using a Jakarta Messaging
 XAQueueConnectionFactory which the application server uses to create
 XAQueueConnection objects.
 * For applications which use the domain-specific API for pub/sub
-messaging, a JMS provider exposes its JTA support using a JMS
+messaging, a Jakarta Messaging provider exposes its JTA support using a Jakarta Messaging
 XATopicConnectionFactory which the application server uses to create
 XATopicConnection objects.
 
 These connection factory objects provide the same authentication options
-as normal connection factory objects. They are JMS administered objects
+as normal connection factory objects. They are Jakarta Messaging administered objects
 just like normal connection factory objects. It is expected that
 application servers will find them using JNDI.
 
@@ -4499,9 +4499,9 @@ standard X/Open XA Resource interface.
 
 An XAResource provides some fairly sophisticated facilities for
 interleaving work on multiple transactions, recovering a list of
-transactions in progress, and so on. A JTA aware JMS provider must fully
+transactions in progress, and so on. A JTA aware Jakarta Messaging provider must fully
 implement this functionality. This could be done by using the services
-of a database that supports XA, or a JMS provider may choose to
+of a database that supports XA, or a Jakarta Messaging provider may choose to
 implement this functionality from scratch.
 
 It is important to note that a distributed transaction context does
@@ -4509,20 +4509,20 @@ _not_ flow with a message; that is, the receipt of the message cannot be
 part of the same transaction that produced the message. This is the
 fundamental difference between messaging and synchronized processing.
 Message producers and consumers use an alternative approach to
-reliability that is built upon a JMS provider’s ability to supply a
+reliability that is built upon a Jakarta Messaging provider’s ability to supply a
 once-and-only-once message delivery guarantee.
 
 To reiterate, the act of producing and/or consuming messages in a
 Session can be transactional. The act of producing and consuming a
 specific message across different sessions cannot.
 
-=== JMS application server interfaces
+=== Jakarta Messaging application server interfaces
 
 The domain-specific APIs for point-to-point and pub/sub messaging
-provide their own versions of JTA aware JMS facilities.
+provide their own versions of JTA aware Jakarta Messaging facilities.
 
 However the classic API provides common interfaces, which should be used
-in preference to the domain-specific interfaces. These are listed as JMS
+in preference to the domain-specific interfaces. These are listed as Jakarta Messaging
 common interfaces in .
 
 Table 11‑1 Relationship of optional interfaces in domains
@@ -4546,12 +4546,12 @@ Table 11‑1 Relationship of optional interfaces in domains
 |XAJMSContext |_Not domain-specific_ |_Not domain-specific_
 |===
 
-== Use of JMS API in Jakarta EE applications
+== Use of Jakarta Messaging API in Jakarta EE applications
 
 === Overview
 
 The Java™ Platform, Enterprise Edition (Jakarta EE) Specification, v7
-requires support for the JMS API as part of the full Jakarta EE platform.
+requires support for the Jakarta Messaging API as part of the full Jakarta EE platform.
 
 The Jakarta EE platform provides a number of additional features which are
 not available in the Java Platform Standard Edition (Java SE). These
@@ -4560,36 +4560,36 @@ include the following:
 * Support for distributed transactions which are demarcated either
 programmatically, using methods on javax.transaction.UserTransaction, or
 automatically by the container. These are referred to in this
-specification as JTA transactions to distinguish them from JMS local
+specification as JTA transactions to distinguish them from Jakarta Messaging local
 transactions.
-* Support for JMS message-driven beans.
+* Support for Jakarta Messaging message-driven beans.
 
 These features are defined in detail in other specifications including
 the Jakarta EE 7 specification and the Enterprise JavaBeans 3.2
 specification. However the use of the Jakarta EE platform imposes
-restrictions on the way that the JMS API may be used by applications,
+restrictions on the way that the Jakarta Messaging API may be used by applications,
 and those restrictions are described here.
 
-The JMS specification does not define how a Jakarta EE container integrates
-with its JMS provider. Different Jakarta EE containers may integrate with
-their JMS provider in different ways.
+The Jakarta Messaging specification does not define how a Jakarta EE container integrates
+with its Jakarta Messaging provider. Different Jakarta EE containers may integrate with
+their Jakarta Messaging provider in different ways.
 
-=== Restrictions on the use of JMS API in the Jakarta EE web or EJB container
+=== Restrictions on the use of Jakarta Messaging API in the Jakarta EE web or EJB container
 
-JMS applications which run in the Jakarta EE web or EJB container are
-subject to a number of restrictions in the way the JMS API may be used.
+Jakarta Messaging applications which run in the Jakarta EE web or EJB container are
+subject to a number of restrictions in the way the Jakarta Messaging API may be used.
 These restrictions are necessary for the following reasons:
 
-* In a Jakarta EE web or EJB container, a JMS provider operates as a
+* In a Jakarta EE web or EJB container, a Jakarta Messaging provider operates as a
 transactional resource manager which must participate in JTA
 transactions as defined in the Jakarta EE platform specification. This
-overrides the behaviour of JMS sessions as defined elsewhere in the JMS
-specification. For more details see section 12.3 “Behaviour of JMS
+overrides the behaviour of Jakarta Messaging sessions as defined elsewhere in the Jakarta Messaging
+specification. For more details see section 12.3 “Behaviour of Jakarta Messaging
 sessions in the Jakarta EE web or EJB container”.
 * The Jakarta EE web or EJB containers need to be able to manage the
 threads used to run applications.
 * The Jakarta EE web and EJB containers perform connection management which
-may include the pooling of JMS connections.
+may include the pooling of Jakarta Messaging connections.
 +
 The restrictions described in this section do not apply to the Jakarta EE
 application client container.
@@ -4670,9 +4670,9 @@ jakarta.jms.JMSRuntimeException (if not) when called by an application
 running in the Jakarta EE web or EJB container. This is recommended but not
 required.
 
-=== Behaviour of JMS sessions in the Jakarta EE web or EJB container
+=== Behaviour of Jakarta Messaging sessions in the Jakarta EE web or EJB container
 
-The behaviour of JMS Session and JMSContext objects in respect of +
+The behaviour of Jakarta Messaging Session and JMSContext objects in respect of +
 transactions and message acknowledgement is different for applications +
 which run in a Jakarta EE web or EJB container than it is for
 applications +
@@ -4707,22 +4707,22 @@ DUPS_OK_ACKNOWLEDGE then the session will be non-transacted and messages
 will be acknowledged according to the specified acknowledgement mode.
 * If the session parameters specify that the session should be
 non-transacted with an acknowledgement mode of CLIENT_ACKNOWLEDGE then
-the JMS provider is recommended to ignore the specified parameters and
+the Jakarta Messaging provider is recommended to ignore the specified parameters and
 instead provide a non-transacted, auto-acknowledged session. However the
-JMS provider may alternatively provide a non-transacted session with
+Jakarta Messaging provider may alternatively provide a non-transacted session with
 client acknowledgement.
 * If the session parameters specify that the session should be
 transacted, +
-then the JMS provider is recommended to ignore the specified parameters
+then the Jakarta Messaging provider is recommended to ignore the specified parameters
 and instead provide a non-transacted, auto-acknowledged session. However
-the JMS provider may alternatively provide a local transacted session.
+the Jakarta Messaging provider may alternatively provide a local transacted session.
 * Applications running in a Jakarta EE web or EJB container are recommended
 to specify no session parameters or to specify that the session be
 non-transacted with an acknowledgement mode of AUTO_ACKNOWLEDGE or
 DUPS_OK_ACKNOWLEDGE.
 * It is not recommended that applications specify client acknowledgement
 or a local transaction since applications may not be portable.
-Furthermore if the JMS provider does support the use of client
+Furthermore if the Jakarta Messaging provider does support the use of client
 acknowledgement and local transactions when there is no JTA transaction,
 the application would need to be written differently dependent on
 whether there was a JTA transaction or not.
@@ -4762,9 +4762,9 @@ Similarly, if a Session or JMSContext is created when there is no active
 JTA transaction but subsequently used to send or receive messages when
 there is an active JTA transaction then the behaviour is undefined.
 
-The Bean Provider should not make use of the JMS request/reply paradigm
-(sending of a JMS message, followed by the synchronous receipt of a
-reply to that message) within a single transaction. Because a JMS
+The Bean Provider should not make use of the Jakarta Messaging request/reply paradigm
+(sending of a Jakarta Messaging message, followed by the synchronous receipt of a
+reply to that message) within a single transaction. Because a Jakarta Messaging
 message is typically not delivered to its final destination until the
 transaction commits, the receipt of the reply within the same
 transaction will not take place.
@@ -4818,7 +4818,7 @@ For example:
 private JMSContext context;
 
 If the JMSConnectionFactory annotation is omitted then the platform
-default JMS connection factory will be used.
+default Jakarta Messaging connection factory will be used.
 
 The annotation jakarta.jms.JMSPasswordCredential may be used to specify a
 user name and password which will be used when the JMSContext is
@@ -4863,7 +4863,7 @@ session mode is specified or the JMSSessionMode annotation is omitted a
 session mode of JMSContext.AUTO_ACKNOWLEDGE will be used.
 
 For more information about the use of session mode when creating a
-messaging context, see section 12.3 “Behaviour of JMS sessions in the
+messaging context, see section 12.3 “Behaviour of Jakarta Messaging sessions in the
 Jakarta EE web or EJB container” and the API documentation for the
 ConnectionFactory method createContext(int sessionMode).
 
@@ -4946,36 +4946,36 @@ The Jakarta EE Connector Architecture (JCA) specification defines a
 standard architecture for connecting the Jakarta EE platform to enterprise
 information systems (EISs).
 
-A JMS provider (whether it forms part of a Jakarta EE application server or
+A Jakarta Messaging provider (whether it forms part of a Jakarta EE application server or
 not) is recommended to include a resource adapter which connects to that
-JMS provider and which conforms to the Jakarta EE Connector Architecture
+Jakarta Messaging provider and which conforms to the Jakarta EE Connector Architecture
 specification and as further specified in this chapter.
 
 === MDB activation properties
 
 Message-driven beans are defined in the Enterprise JavaBeans
-specification. JMS defines the following activation properties for
+specification. Jakarta Messaging defines the following activation properties for
 message-driven beans.
 
-Table 13‑1 MDB activation properties defined by JMS
+Table 13‑1 MDB activation properties defined by Jakarta Messaging
 
 [cols=",",options="header",]
 |===
 |*Activation property* |*Description*
 |destinationLookup |This property may be used to specify the lookup name
 of an administratively-defined jakarta.jms.Queue or jakarta.jms.Topic object
-which defines the JMS queue or topic from which the endpoint
+which defines the Jakarta Messaging queue or topic from which the endpoint
 (message-driven bean) is to receive messages.
 
 |connectionFactoryLookup |This property may be used to specify the
 lookup name of an administratively-defined jakarta.jms.ConnectionFactory,
 jakarta.jms.QueueConnectionFactory or jakarta.jms.TopicConnectionFactory
-object that will be used to connect to the JMS provider from which the
+object that will be used to connect to the Jakarta Messaging provider from which the
 endpoint (message-driven bean) is to receive messages.
 
 |acknowledgeMode a|
 If bean-managed transaction demarcation is used, this property may be
-used to indicate whether JMS AUTO_ACKNOWLEDGE semantics or
+used to indicate whether Jakarta Messaging AUTO_ACKNOWLEDGE semantics or
 DUPS_OK_ACKNOWLEDGE semantics should apply.
 
 This property may be set to either Auto-acknowledge or
@@ -5000,7 +5000,7 @@ property is not specified, a default of NonDurable will be used.
 
 |clientId a|
 This property may be used to specify the client identifier that will be
-used when connecting to the JMS provider from which the endpoint
+used when connecting to the Jakarta Messaging provider from which the endpoint
 (message-driven bean) is to receive messages.
 
 Setting this property is always optional.
@@ -5016,8 +5016,8 @@ It is not defined whether a shared or unshared subscription is used.
 
 == Examples of the classic API
 
-This chapter gives some code examples that show how a JMS client could
-use the JMS classic API. It also demonstrates how to use several message
+This chapter gives some code examples that show how a Jakarta Messaging client could
+use the Jakarta Messaging classic API. It also demonstrates how to use several message
 types.
 
 It is recommended that either the classic API or the simplified API be
@@ -5054,7 +5054,7 @@ need to get a ConnectionFactory and use it to set up both a Connection
 and a Session.
 
 An administrator typically has created and configured a
-ConnectionFactory for the JMS client’s use. The client program typically
+ConnectionFactory for the Jakarta Messaging client’s use. The client program typically
 uses the JNDI API to look up the ConnectionFactory__.__
 
 import javax.naming.*;
@@ -5164,7 +5164,7 @@ connection.start();
 
 ==== Using a TextMessage
 
-There are several JMS Message formats. For this example, the stock quote
+There are several Jakarta Messaging Message formats. For this example, the stock quote
 information is sent as a text string that is read and displayed by the
 client.
 
@@ -5338,7 +5338,7 @@ sector.
 ==== Using durable subscriptions
 
 Durable subscriptions are used to receive messages from a topic. When a
-JMS client creates a durable subscription, the client can later
+Jakarta Messaging client creates a durable subscription, the client can later
 disconnect from the topic. When the client program re-connects, it can
 receive the messages that arrived while it was disconnected. In this
 example, the topic provides information about news updates.
@@ -5429,9 +5429,9 @@ set when subsequently creating a consumer on it.
 first created then the same message selector must be specified when
 subsequently creating a consumer on it.
 
-=== JMS message types
+=== Jakarta Messaging message types
 
-There are five JMS message types. This section provides an example of
+There are five Jakarta Messaging message types. This section provides an example of
 how to create and unpack each of these types. In each example, the data
 sent in the message is stock-quote-related data. In all cases, the code
 that creates the actual content of the messages is omitted.
@@ -5795,11 +5795,11 @@ returned by getObject to the appropriate type.
 == Examples of the simplified API
 
 The examples in this section compare the use of the classic and
-simplified JMS APIs for some common JMS operations.
+simplified Jakarta Messaging APIs for some common Jakarta Messaging operations.
 
 === Sending a message (Jakarta EE)
 
-This example compares the use of the classic and simplified JMS APIs for
+This example compares the use of the classic and simplified Jakarta Messaging APIs for
 sending a TextMessage in a Jakarta EE web or EJB container.
 
 ==== Example using the classic API
@@ -5878,7 +5878,7 @@ context.send(dataQueue, body);
 
 === Sending a message (Java SE)
 
-This example compares the use of the classic and simplified JMS APIs for
+This example compares the use of the classic and simplified Jakarta Messaging APIs for
 sending a TextMessage in a Java SE environment.
 
 ==== Example using the classic API
@@ -5948,7 +5948,7 @@ Note that sendMessageNew does not need to throw JMSException.
 === Sending a message with properties (Java SE)
 
 This example is similar to the previous example in that it compares the
-use of the classic and simplified JMS APIs for sending a TextMessage in
+use of the classic and simplified Jakarta Messaging APIs for sending a TextMessage in
 a Java SE environment.
 
 However this example also configures various attributes of the message
@@ -5956,7 +5956,7 @@ that is sent:
 
 * The message property "foo" is set to a value of "bar".
 * The message is sent using a delivery mode of NON_PERSISTENT.
-* The JMS provider is informed that message timestamps are not required.
+* The Jakarta Messaging provider is informed that message timestamps are not required.
 
 ==== Example using the classic API
 
@@ -6038,7 +6038,7 @@ Note that sendMessageNew does not need to throw JMSException.
 
 === Receiving a message synchronously (Jakarta EE)
 
-This example compares the use of the classic and simplified JMS APIs for
+This example compares the use of the classic and simplified Jakarta Messaging APIs for
 synchronously receiving a TextMessage in a Jakarta EE web or EJB container.
 
 ==== Example using the classic API
@@ -6128,7 +6128,7 @@ return consumer.receiveBody(String.class);
 
 === Receiving a message synchronously (Java SE)
 
-This example compares the use of the classic and simplified JMS APIs for
+This example compares the use of the classic and simplified Jakarta Messaging APIs for
 synchronously receiving a TextMessage in a Java SE environment.
 
 ==== Example using the classic API
@@ -6203,7 +6203,7 @@ Note that receiveMessageNew does not need to throw JMSException.
 
 === Receiving a message synchronously from a durable subscription (Jakarta EE)
 
-This example compares the use of the classic and simplified JMS APIs for
+This example compares the use of the classic and simplified Jakarta Messaging APIs for
 synchronously receiving a TextMessage from a durable topic subscription
 in a Jakarta EE web or EJB container.
 
@@ -6296,7 +6296,7 @@ return consumer.receiveBody(String.class);
 
 === Receiving messages asynchronously (Java SE)
 
-This example compares the use of the classic and simplified JMS APIs for
+This example compares the use of the classic and simplified Jakarta Messaging APIs for
 asynchronously receiving TextMessage objects in a Java SE environment.
 
 ==== Example using the classic API
@@ -6382,7 +6382,7 @@ Note that receiveMessagesNew does not need to throw JMSException.
 
 === Receiving a message asynchronously from a durable subscription (Java SE)
 
-This example compares the use of the classic and simplified JMS APIs for
+This example compares the use of the classic and simplified Jakarta Messaging APIs for
 asynchronously receiving a TextMessage from a durable topic subscription
 in a Java SE environment.
 
@@ -6475,7 +6475,7 @@ Note that receiveMessagesNew does not need to throw JMSException.
 
 === Receiving messages in multiple threads (Java SE)
 
-This example compares the use of the classic and simplified JMS APIs for
+This example compares the use of the classic and simplified Jakarta Messaging APIs for
 asynchronously receiving TextMessage objects from a queue using multiple
 threads in a Java SE environment. In this example two threads are used,
 which means two sessions are needed. In this example, both sessions use
@@ -6578,7 +6578,7 @@ returns a suitable JNDI InitialContext.
 
 === Receiving synchronously and sending a message in the same local transaction (Java SE)
 
-This example compares the use of the classic and simplified JMS APIs for
+This example compares the use of the classic and simplified Jakarta Messaging APIs for
 the use case in which a Java SE application repeatedly consumes a
 message from one queue and forwards it to another queue in a Java SE
 environment. In this example each message is received and forwarded in
@@ -6703,7 +6703,7 @@ Note that receiveAndSendMessageNew does not need to throw JMSException.
 
 === Request/reply pattern using a TemporaryQueue (Jakarta EE)
 
-This example compares the use of the classic and simplified JMS APIs for
+This example compares the use of the classic and simplified Jakarta Messaging APIs for
 implementing a request/reply pattern in a Jakarta EE EJB container.
 
 In this example, a session bean (the requestor) sends a request message
@@ -6721,7 +6721,7 @@ request messages. When it receives a message it creates a reply message
 and sends it to the reply queue specified in the setJMSReplyTo property
 of the incoming message.
 
-When implementing this pattern, the following features of JMS must be
+When implementing this pattern, the following features of Jakarta Messaging must be
 borne in mind:
 
 * The same Connection object that was used to create the TemporaryQueue
@@ -7189,87 +7189,87 @@ TextMessage which throw JMSException.
 
 === Version 2.0 
 
-All changes made for JMS 2.0 are represented by individual issues in the
-JMS specification issue tracker at
+All changes made for Jakarta Messaging 2.0 are represented by individual issues in the
+Jakarta Messaging specification issue tracker at
 http://http://java.net/jira/browse/JMS_SPEC. The appropriate issue
 number (e.g. JMS_SPEC-64) is given for each change below.
 
 ==== Reorganisation of chapters
 
-This introduction of the simplified API in JMS 2.0 has necessitated a
+This introduction of the simplified API in Jakarta Messaging 2.0 has necessitated a
 major reorganisation of this specification.
 
-The structure of the JMS 1.1 specification reflected the domain-specific
-APIs introduced in JMS 1.0, with section titles such as
+The structure of the Jakarta Messaging 1.1 specification reflected the domain-specific
+APIs introduced in Jakarta Messaging 1.0, with section titles such as
 “QueueConnection” and “TopicSubscriber”. This was an inappropriate
-structure even in JMS 1.1 since these interfaces had been superseded in
-JMS 1.1 by the “unified” API. The addition of the simplified API in JMS
+structure even in Jakarta Messaging 1.1 since these interfaces had been superseded in
+Jakarta Messaging 1.1 by the “unified” API. The addition of the simplified API in Jakarta Messaging
 2.0 makes that structure even more inappropriate.
 
 This version of the specification has therefore been completely
 restructured along functional lines, with chapter headings such as
-“connecting to a JMS provider” and “receiving messages”. These describe
+“connecting to a Jakarta Messaging provider” and “receiving messages”. These describe
 each area of functionality in generic terms followed by a description of
 how it is implemented in the various APIs. In general these chapters
 contain the same text as in the previous version.
 
 In addition the following completely new chapters have been added:
 
-* chapter 12 “Use of JMS API in Jakarta EE applications”
+* chapter 12 “Use of Jakarta Messaging API in Jakarta EE applications”
 * chapter 13 “Resource adapter”
 
-==== JMS providers must implement both PTP and Pub-Sub (JMS_SPEC-50)
+==== Jakarta Messaging providers must implement both PTP and Pub-Sub (JMS_SPEC-50)
 
-The specification has been amended to state that a JMS provider must
+The specification has been amended to state that a Jakarta Messaging provider must
 implement both point-to-point messaging (queues) and publish-subscribe
 messaging (topics). This was already required by the Jakarta EE 6
 specification, section EE.2.7, but was not previously required by the
-JMS specification itself.
+Jakarta Messaging specification itself.
 
-The sentence that stated “Providers of JMS point-to-point functionality
+The sentence that stated “Providers of Jakarta Messaging point-to-point functionality
 are not required to provide publish/subscribe functionality and vice
 versa” has been removed.
 
-==== Use of JMS API in Jakarta EE applications (JMS_SPEC-45 and JMS_SPEC-27)
+==== Use of Jakarta Messaging API in Jakarta EE applications (JMS_SPEC-45 and JMS_SPEC-27)
 
-A new chapter 12 “Use of JMS API in Jakarta EE applications” has been
+A new chapter 12 “Use of Jakarta Messaging API in Jakarta EE applications” has been
 added. This chapter incorporates and clarifies various additional
 requirements which were previously only described in the Jakarta EE and EJB
-specifications. Section 12.2 “Restrictions on the use of JMS API in the
+specifications. Section 12.2 “Restrictions on the use of Jakarta Messaging API in the
 Jakarta EE web or EJB container” includes a list of methods which may not
 be used in a Jakarta EE web or EJB container and section 12.3 “Behaviour of
-JMS sessions in the Jakarta EE web or EJB container” clarifies how the
+Jakarta Messaging sessions in the Jakarta EE web or EJB container” clarifies how the
 arguments to createSession are mostly ignored when used in a Jakarta EE web
 or EJB container.
 
 The specification been updated to refer to Jakarta EE 7 rather than J2EE
-1.3. A reference has also been added to the new chapter 12 “Use of JMS
+1.3. A reference has also been added to the new chapter 12 “Use of Jakarta Messaging
 API in Jakarta EE applications”.
 
-Section 1.4.8 “Integration of JMS with the EJB components” has been
-deleted. It is superseded by the new chapter 12 “Use of JMS API in Java
+Section 1.4.8 “Integration of Jakarta Messaging with the EJB components” has been
+deleted. It is superseded by the new chapter 12 “Use of Jakarta Messaging API in Java
 EE applications”.
 
 ==== Resource adapter (JMS_SPEC-25)
 
 A new chapter 13 “Resource adapter” has been added which recommends, but
-does not require, that a JMS provider (whether it forms part of a Java
+does not require, that a Jakarta Messaging provider (whether it forms part of a Java
 EE application server or not) includes a resource adapter which connects
-to that JMS provider and which conforms to the Jakarta EE Connector
+to that Jakarta Messaging provider and which conforms to the Jakarta EE Connector
 Architecture specification.
 
 ==== MDB activation properties (JMS_SPEC-30, JMS_SPEC-54, JMS_SPEC-55)
 
 A new section 13.1 “MDB activation properties” has been added which
-defines a set of activation properties for use with JMS message-driven
+defines a set of activation properties for use with Jakarta Messaging message-driven
 beans.
 
 * The acknowledgeMode, messageSelector, destinationType,
 subscriptionDurability, clientId and subscriptionName properties were
 previously defined in appendix B “Activation Configuration for Message
-Inflow to JMS Endpoints” in the Jakarta EE Connector Architecture
+Inflow to Jakarta Messaging Endpoints” in the Jakarta EE Connector Architecture
 specification, version 1.6. Their definition has now have been moved to
-the JMS specification.
+the Jakarta Messaging specification.
 * The connectionFactoryLookup property is new and may be used to specify
 the the lookup name of an administratively-defined connection factory
 which will be used used by the MDB.
@@ -7278,7 +7278,7 @@ the lookup name of an administratively-defined queue or topic from which
 the MDB will receive messages.
 * The activation property clientId is now optional when using a durable
 subscription on a topic. This reflects the new shared durable
-subscriptions feature in JMS 2.0 which does not require clientId to be
+subscriptions feature in Jakarta Messaging 2.0 which does not require clientId to be
 set.
 
 These MDB activation properties are also defined in the Enterprise
@@ -7311,19 +7311,19 @@ methods which return a MessageConsumer.
 These are intended to replace the existing createDurableSubscription
 methods which return a TopicSubscriber. A TopicSubscriber is a
 domain-specific interface whose use has been discouraged since the
-domain-independent interfaces were introduced in JMS 1.1.
+domain-independent interfaces were introduced in Jakarta Messaging 1.1.
 
 ==== Multiple consumers now allowed on the same topic subscription (JMS_SPEC-40)
 
-In JMS 1.1, a durable or non-durable topic subscription was not
+In Jakarta Messaging 1.1, a durable or non-durable topic subscription was not
 permitted to have more than one consumer at a time. This meant that the
 work of processing messages on a subscription could not be shared
 amongst multiple threads, connections or JVMs, thereby limiting
-scalability. This restriction has therefore been removed in JMS 2.0.
+scalability. This restriction has therefore been removed in Jakarta Messaging 2.0.
 
 ===== Non-durable subscriptions
 
-In order to maintain backwards compatibility with JMS 1.1, the existing
+In order to maintain backwards compatibility with Jakarta Messaging 1.1, the existing
 methods for creating non-durable subscriptions remain unchanged.
 Subscriptions created using the existing createConsumer methods on
 Session and TopicSession and the existing createSubscriber methods on
@@ -7342,7 +7342,7 @@ supported for shared non-durable subscriptions.
 
 ===== Durable subscriptions
 
-In order to maintain backwards compatibility with JMS 1.1, the existing
+In order to maintain backwards compatibility with Jakarta Messaging 1.1, the existing
 methods for creating durable subscriptions also remain unchanged.
 Subscriptions created using the existing createDurableSubscriber methods
 on Session and TopicSession, as well as the new createDurableConsumer
@@ -7362,12 +7362,12 @@ durable subscriptions.
 
 ==== Client ID optional on shared durable subscriptions (JMS_SPEC-39)
 
-In JMS 1.1 it was mandatory for the client identifier to be set when
+In Jakarta Messaging 1.1 it was mandatory for the client identifier to be set when
 creating or activating a durable subscription.
 
-In JMS 2.0, shared durable subscriptions (see A.1.8 above) will not have
+In Jakarta Messaging 2.0, shared durable subscriptions (see A.1.8 above) will not have
 this restriction. However in order to maintain backwards compatibility
-with JMS 1.1, unshared durable subscriptions will continue to require
+with Jakarta Messaging 1.1, unshared durable subscriptions will continue to require
 the client identifier to be set.
 
 ==== Delivery delay (JMS_SPEC-44)
@@ -7395,7 +7395,7 @@ now define a default delivery delay for messages sent by a producer.
 ==== Sending messages asynchronously (JMS_SPEC-43)
 
 New send methods have been added to MessageProducer which allow messages
-to be sent asynchronously. These methods permit the JMS provider to
+to be sent asynchronously. These methods permit the Jakarta Messaging provider to
 perform part of the work involved in sending the message in a separate
 thread. When the send is complete, a callback method is invoked on an
 object supplied by the caller. Similar methods are available for
@@ -7426,14 +7426,14 @@ to add a second example which uses the the try-with-resources statement.
 ==== JMSXDeliveryCount (JMS_SPEC-42)
 
 The existing message property JMSXDeliveryCount has been made mandatory.
-It was previously optional. This means that JMS providers must set this
+It was previously optional. This means that Jakarta Messaging providers must set this
 property to the number of times the message has been delivered.
 
 A new section 3.5.11 “JMSXDeliveryCount” has been added which describes
 this property and explains how it is not required to be guaranteed in
 all possible cases, such as after a server failure.
 
-Section 3.5.9 “JMS defined properties” has been updated accordingly.
+Section 3.5.9 “Jakarta Messaging defined properties” has been updated accordingly.
 Some of the wording in this section has been rearranged to reflect the
 fact that some properties are optional but that one (JMSXDeliveryCount)
 is now mandatory. A clarification has been added to state that the
@@ -7459,7 +7459,7 @@ been amended to mention the JMSXDeliveryCount property as well.
 Three new objects JMSContext, JMSProducer and JMSConsumer have been
 added which together combine the functionality of the existing
 Connection, Session , MessageProducer and MessageConsumer objects. This
-provides an alternative API for using JMS which is referred to in this
+provides an alternative API for using Jakarta Messaging which is referred to in this
 specification as the “simplified API”.
 
 JMSContext objects may be created using new methods on
@@ -7474,7 +7474,7 @@ Connection, Session, MessageProducer and MessageConsumer objects) or the
 “simplified API” (the JMSContext, JMSProducer and JMSConsumer objects).
 
 The two APIs are intended to offer similar functionality. The classic
-API is not deprecated and will remain part of JMS indefinitely.
+API is not deprecated and will remain part of Jakarta Messaging indefinitely.
 
 Section 15 “Examples of the simplified API” contains a number of
 examples which compare the use of the simplified and classic APIs in a
@@ -7506,10 +7506,10 @@ to demonstrate the use of the getBody method.
 
 ==== Subscription name characters and length
 
-JMS 1.1 did not define what characters were valid in a durable
+Jakarta Messaging 1.1 did not define what characters were valid in a durable
 subscription name, or what length of name was supported.
 
-JMS 2.0 defines a minimum set of characters that must be valid in a
+Jakarta Messaging 2.0 defines a minimum set of characters that must be valid in a
 durable or non-durable subscription name. It also defines that
 subscription names of up to 128 characters long must be supported.
 
@@ -7532,7 +7532,7 @@ ExceptionListener is used:
 * The existing text which states that a connection “serializes execution
 of its ExceptionListener” has been extended to explain what this means.
 * A note has been added to state that there are no restrictions on the
-use of the JMS API by the listener’s onException method.
+use of the Jakarta Messaging API by the listener’s onException method.
 
 In addition, the following changes to javadoc comments have been made:
 
@@ -7558,13 +7558,13 @@ The specification has been clarified to clarify the required behaviour
 if various stop or close methods are called from within the onMessage
 method of a MessageListener.
 
-The JMS 1.1 specification states that the stop method on Connection and
+The Jakarta Messaging 1.1 specification states that the stop method on Connection and
 the close methods on Connection, Session and MessageConsumer must not
 return until any message listeners have returned. This means that if
 these methods are called from a message listener on its own Connection,
 Session or MessageConsumer then deadlock would occur.
 
-The JMS 2.0 specification amends the required behaviour to avoid the
+The Jakarta Messaging 2.0 specification amends the required behaviour to avoid the
 possibility of deadlock.
 
 If a MessageListener’s onMessage method calls stop or close on its own
@@ -7588,11 +7588,11 @@ For details see the following sections:
 * Section 6.2.15 “Closing a session”
 * Section 8.8 “Closing a consumer”.
 
-The JMS 1.1 specification states that the close methods on Connection or
+The Jakarta Messaging 1.1 specification states that the close methods on Connection or
 Session are exempt from the requirement that the resources of a session
 may only be used by one thread at a time.
 
-In JMS 2.0 this exemption also applies to the close method on
+In Jakarta Messaging 2.0 this exemption also applies to the close method on
 JMSContext, and has been extended to cover the close methods on a
 MessageConsumer or JMSConsumer.
 
@@ -7605,7 +7605,7 @@ For details see the following sections:
 
 The specification has been amended to clarify the effect of setting the
 noLocal argument when creating a durable subscription. This was poorly
-defined in JMS 1.1.
+defined in Jakarta Messaging 1.1.
 
 The new definition of noLocal is given in section 8.3.3 “Unshared
 durable subscriptions”. This states that when a durable subscription is
@@ -7615,7 +7615,7 @@ the same client identifier will not be added to the durable
 subscription. It also states that if the client identifier is unset then
 setting noLocal to true will cause an exception to be thrown.
 
-==== Clarification: message headers that are intended to be set by the JMS provder (JMS_SPEC-34)
+==== Clarification: message headers that are intended to be set by the Jakarta Messaging provder (JMS_SPEC-34)
 
 The specification has been clarified to state that the following methods
 on Message are not for use by client applications and setting them does
@@ -7633,7 +7633,7 @@ explain this.
 The javadoc comments for the createQueue and createTopic methods on
 Session and JMSContext have been reworded to clarify that these methods
 simply create a Queue or Topic object which encapsulates the name of the
-queue or topic and do not create the physical queue or topic in the JMS
+queue or topic and do not create the physical queue or topic in the Jakarta Messaging
 provider.
 
 In addition a note has been added to these javadoc comments to explain
@@ -7643,7 +7643,7 @@ some providers may create them automatically when needed.
 
 ==== Clarification: Definition of JMSExpiration (JMS_SPEC-82)
 
-In the JMS 1.1 specification, section 3.4.9 “JMSExpiration”, a message’s
+In the Jakarta Messaging 1.1 specification, section 3.4.9 “JMSExpiration”, a message’s
 expiration time was defined as “the sum of the time-to-live value
 specified on the send method and the current GMT value”.
 
@@ -7661,7 +7661,7 @@ section 7.8 “Message time-to-live”.
 
 ==== Correction: Reconnecting to a durable subscription (JMS_SPEC-80)
 
-In the JMS 1.1 specification, section 9.3.3.2 “Reconnect to a topic
+In the Jakarta Messaging 1.1 specification, section 9.3.3.2 “Reconnect to a topic
 using a durable subscription” stated that “the client must be attached
 to the same Connection”. This was incorrect and has now been corrected
 to state that the client must use a connection with the same client
@@ -7672,7 +7672,7 @@ on an existing durable subscription” and rewritten to make it clearer.
 
 ==== Correction: MapMessage when name is null (JMS_SPEC-77)
 
-In the JMS 1.1 API documentation for jakarta.jms.MapMessage, the method
+In the Jakarta Messaging 1.1 API documentation for jakarta.jms.MapMessage, the method
 setBytes (String name, byte[] value) is defined as throwing a
 NullPointerException “if the name is null, or if the name is an empty
 string.”
@@ -7683,7 +7683,7 @@ IllegalArgumentException is thrown “if the name is null or if the name
 is an empty string.”
 
 This appears to be an error in the API documentation. This is confirmed
-by the JMS compliance tests which already expect setBytes to throw a
+by the Jakarta Messaging compliance tests which already expect setBytes to throw a
 IllegalArgumentException.
 
 The API documentation for setBytes has therefore been changed to match
