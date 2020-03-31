@@ -298,7 +298,7 @@ provider and for sending and receiving messages. However they all share
 a common set of interfaces for representing messages and message
 destinations and to provide various utility features.
 
-All interfaces are in the jakarta.Jakarta Messaging package.
+All interfaces are in the jakarta.jms package.
 
 === Interfaces common to multiple APIs
 
