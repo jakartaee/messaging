@@ -277,19 +277,19 @@ differences are described in chapter 4 “Messaging domains”.
 
 === Jakarta Messaging APIs
 
-For historical reasons Jakarta Messaging offers four alternative sets of interfaces
+For historical reasons Jakarta Messaging offers three alternative sets of interfaces
 for sending and receiving messages.
 
-Jakarta Messaging 1.0 defined two *domain-specific APIs*, one for point-to-point
+JMS 1.0 defined two *domain-specific APIs*, one for point-to-point
 messaging (queues) and one for pub/sub (topics). Although these remain
 part of Jakarta Messaging for reasons of backwards compatibility they should be
 considered to be completely superseded by the later APIs.
 
-Jakarta Messaging 1.1 introduced a new unified API which offered a single set of
+JMS 1.1 introduced a new unified API which offered a single set of
 interfaces that could be used for both point-to-point and pub/sub
 messaging. This is referred to here as the *classic API*.
 
-Jakarta Messaging 2.0 introduces a *simplified API* which offers all the features of
+JMS 2.0 introduces a *simplified API* which offers all the features of
 the classic API but which requires fewer interfaces and is simpler to
 use.
 
