@@ -25,7 +25,6 @@ include::license-efsl.adoc[]
 
 // == Scope
 :sectnums:
-include::scope.adoc[]
 
 == Introduction
 
