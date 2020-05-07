@@ -142,7 +142,7 @@ API in both Java SE and Jakarta EE applications.
 
 Jakarta EE makes a number of additional features available to messaging
 applications beyond those defined in the Jakarta Messaging specification itself, most
-notably message-driven beans (MDBs) and JTA transactions. Jakarta EE also
+notably message-driven beans (MDBs) and Jakarta transactions. Jakarta EE also
 imposes a number of restrictions on the use of the Jakarta Messaging API.
 
 For more information on the use of Jakarta Messaging by Jakarta EE applications, see
@@ -2796,7 +2796,7 @@ always has a current transaction within which its work is done.
 JTS or some other transaction monitor facility may be used to combine a
 session’s transaction with transactions on other resources (databases,
 other Jakarta Messaging Sessions, etc.). Since Java distributed transactions are
-controlled via the JTA transaction demarcation API, use of the session’s
+controlled via the Jakarta Transactions transaction demarcation API, use of the session’s
 commit and rollback methods in this context throws a Jakarta Messaging
 TransactionInProgressException.
 
@@ -2804,17 +2804,17 @@ TransactionInProgressException.
 
 Jakarta Messaging does not require that a provider support distributed transactions;
 however, it does define that if a provider supplies this support it
-should be done via the JTA XAResource API.
+should be done via the Jakarta Transactions XAResource API.
 
 A Jakarta Messaging provider may also be a distributed transaction monitor. If it is,
-it should provide control of the transaction via the JTA API.
+it should provide control of the transaction via the Jakarta Transactions API.
 
 Although it is possible for a Jakarta Messaging client to handle distributed
 transactions directly, it is recommended that Jakarta Messaging clients avoid doing
 this. Jakarta Messaging clients that use the XA-based interfaces described in Chapter
 11 “Jakarta Messaging application server facilities” may not be portable across
 different Jakarta Messaging implementations, because these interfaces are optional.
-Support for JTA in Jakarta Messaging is targeted at systems vendors who will be
+Support for Jakarta Transactions in Jakarta Messaging is targeted at systems vendors who will be
 integrating Jakarta Messaging into their application server products. See Chapter 11
 “Jakarta Messaging application server facilities” for more information.
 
@@ -4238,11 +4238,11 @@ JMSContext.commit() results in a rollback of the current transaction
 === Overview
 
 This chapter describes Jakarta Messaging facilities for concurrent processing of a
-subscription’s messages. It also defines how a Jakarta Messaging provider supplies JTA
+subscription’s messages. It also defines how a Jakarta Messaging provider supplies Jakarta Transactions
 aware sessions. These facilities are primarily intended for the use of
 the Jakarta Messaging provider.
 
-If Jakarta Messaging clients use the JTA aware facilities the client program may be
+If Jakarta Messaging clients use the Jakarta Transactions aware facilities the client program may be
 non-portable code, because Jakarta Messaging providers are not required to support
 these interfaces.
 
@@ -4420,24 +4420,24 @@ image:7.png[image,width=356,height=418]
 
 Some application servers provide support for grouping resource use into
 a distributed transaction. To include Jakarta Messaging transactions in a distributed
-transaction, an application server requires a Java Transaction API (JTA)
+transaction, an application server requires a Jakarta Transactions API
 capable Jakarta Messaging provider.
 
 ==== XA connection factory
 
-A Jakarta Messaging provider exposes its JTA support using XA equivalents of the
+A Jakarta Messaging provider exposes its Jakarta Transactions support using XA equivalents of the
 normal connection factory objects.
 
 * For applications which use the classic or simplified APIs, a Jakarta Messaging
-provider exposes its JTA support using a Jakarta Messaging XAConnectionFactory which
+provider exposes its Jakarta Transactions support using a Jakarta Messaging XAConnectionFactory which
 an application server uses to create XAConnection or JMSXAContext
 objects.
 * For applications which use the domain-specific API for point-to-point
-messaging, a Jakarta Messaging provider exposes its JTA support using a Jakarta Messaging
+messaging, a Jakarta Messaging provider exposes its Jakarta Transactions support using a Jakarta Messaging
 XAQueueConnectionFactory which the application server uses to create
 XAQueueConnection objects.
 * For applications which use the domain-specific API for pub/sub
-messaging, a Jakarta Messaging provider exposes its JTA support using a Jakarta Messaging
+messaging, a Jakarta Messaging provider exposes its Jakarta Transactions support using a Jakarta Messaging
 XATopicConnectionFactory which the application server uses to create
 XATopicConnection objects.
 
@@ -4494,7 +4494,7 @@ standard X/Open XA Resource interface.
 
 An XAResource provides some fairly sophisticated facilities for
 interleaving work on multiple transactions, recovering a list of
-transactions in progress, and so on. A JTA aware Jakarta Messaging provider must fully
+transactions in progress, and so on. A Jakarta Transactions aware Jakarta Messaging provider must fully
 implement this functionality. This could be done by using the services
 of a database that supports XA, or a Jakarta Messaging provider may choose to
 implement this functionality from scratch.
@@ -4514,7 +4514,7 @@ specific message across different sessions cannot.
 === Jakarta Messaging application server interfaces
 
 The domain-specific APIs for point-to-point and pub/sub messaging
-provide their own versions of JTA aware Jakarta Messaging facilities.
+provide their own versions of Jakarta Transactions aware Jakarta Messaging facilities.
 
 However the classic API provides common interfaces, which should be used
 in preference to the domain-specific interfaces. These are listed as Jakarta Messaging
@@ -4555,7 +4555,7 @@ include the following:
 * Support for distributed transactions which are demarcated either
 programmatically, using methods on javax.transaction.UserTransaction, or
 automatically by the container. These are referred to in this
-specification as JTA transactions to distinguish them from Jakarta Messaging local
+specification as Jakarta transactions to distinguish them from Jakarta Messaging local
 transactions.
 * Support for Jakarta Messaging message-driven beans.
 
@@ -4576,7 +4576,7 @@ subject to a number of restrictions in the way the Jakarta Messaging API may be 
 These restrictions are necessary for the following reasons:
 
 * In a Jakarta EE web container or Enterprise Beans container, a Jakarta Messaging provider operates as a
-transactional resource manager which must participate in JTA
+transactional resource manager which must participate in Jakarta
 transactions as defined in the Jakarta EE platform specification. This
 overrides the behaviour of Jakarta Messaging sessions as defined elsewhere in the Jakarta Messaging
 specification. For more details see section 12.3 “Behaviour of Jakarta Messaging sessions in the Jakarta EE web container or Enterprise Beans container”.
@@ -4674,14 +4674,14 @@ application +
 client container.
 
 When an application creates a Session or JMSContext in a Jakarta EE web container +
-or Enterprise Beans container, and there is an active JTA transaction in progress, +
-then the session that is created will participate in the JTA +
-transaction and will be committed or rolled back when the JTA +
+or Enterprise Beans container, and there is an active Jakarta transaction in progress, +
+then the session that is created will participate in the Jakarta +
+transaction and will be committed or rolled back when the Jakarta +
 transaction is committed or rolled back. Any session parameters that +
 are specified when creating the Session or JMSContext are ignored. The +
 use of local transactions or client acknowledgement is not permitted.
 
-This applies irrespective of whether the JTA transaction is demarcated +
+This applies irrespective of whether the Jakarta transaction is demarcated +
 automatically by the container or programmatically using methods on +
 javax.transaction.UserTransaction.
 
@@ -4691,7 +4691,7 @@ specify whether the session should use a local transaction and, if the +
 session is non-transacted, what the acknowledgement mode should be.
 
 When an application uses one of the createSession methods to create +
-a Session, and there is no active JTA transaction in progress, +
+a Session, and there is no active Jakarta transaction in progress, +
 then:
 
 * If the session parameters specify that the session should be
@@ -4716,12 +4716,12 @@ DUPS_OK_ACKNOWLEDGE.
 * It is not recommended that applications specify client acknowledgement
 or a local transaction since applications may not be portable.
 Furthermore if the Jakarta Messaging provider does support the use of client
-acknowledgement and local transactions when there is no JTA transaction,
+acknowledgement and local transactions when there is no Jakarta transaction,
 the application would need to be written differently dependent on
-whether there was a JTA transaction or not.
+whether there was a Jakarta transaction or not.
 
 When an application uses one of the createContext methods to create +
-a JMSContext, and there is no active JTA transaction in progress, +
+a JMSContext, and there is no active Jakarta transaction in progress, +
 then:
 
 * If the specified session mode is AUTO_ACKNOWLEDGE or
@@ -4736,24 +4736,24 @@ non-transacted with an acknowledgement mode of AUTO_ACKNOWLEDGE or
 DUPS_OK_ACKNOWLEDGE.
 * The use of local transactions or client acknowledgement is not
 permitted in a Jakarta EE web container or Enterprise Beans container even if there is no active +
-JTA transaction because this would require applications to be written +
-differently depending on whether there was a JTA transaction or not.
+Jakarta transaction because this would require applications to be written +
+differently depending on whether there was a Jakarta transaction or not.
 
 When programmatic transaction demarcation is being used, the session
-should be both created and used within an active JTA transaction.
+should be both created and used within an active Jakarta transaction.
 
-If a Session or JMSContext is created when there is an active JTA
+If a Session or JMSContext is created when there is an active Jakarta
 transaction, then after that transaction is committed or rolled back the
-session remains available for use in any subsequent JTA transaction
+session remains available for use in any subsequent Jakarta transaction
 until the Session or JMSContext is closed.
 
 However, if a Session or JMSContext is created when there is an active
-JTA transaction but is subsequently used to send or receive messages
-when there is no active JTA transaction then the behaviour is undefined.
+Jakarta transaction but is subsequently used to send or receive messages
+when there is no active Jakarta transaction then the behaviour is undefined.
 
 Similarly, if a Session or JMSContext is created when there is no active
-JTA transaction but subsequently used to send or receive messages when
-there is an active JTA transaction then the behaviour is undefined.
+Jakarta transaction but subsequently used to send or receive messages when
+there is an active Jakarta transaction then the behaviour is undefined.
 
 The Bean Provider should not make use of the Jakarta Messaging request/reply paradigm
 (sending of a Jakarta Messaging message, followed by the synchronous receipt of a
@@ -4846,10 +4846,10 @@ to any of JMSContext.SESSION_TRANSACTED, JMSContext.CLIENT_ACKNOWLEDGE,
 JMSContext.AUTO_ACKNOWLEDGE or JMSContext.DUPS_OK_ACKNOWLEDGE. If no
 session mode is specified or the JMSSessionMode annotation is omitted a
 session mode of JMSContext.AUTO_ACKNOWLEDGE will be used.
-* In a Jakarta EE web container or Enterprise Beans container, when there is an active JTA
+* In a Jakarta EE web container or Enterprise Beans container, when there is an active Jakarta
 transaction in progress, session mode is ignored and the JMSSessionMode
 annotation is unnecessary.
-* In a Jakarta EE web container or Enterprise Beans container, when there is no active JTA
+* In a Jakarta EE web container or Enterprise Beans container, when there is no active Jakarta
 transaction in progress, session mode may be set to either of
 JMSContext.AUTO_ACKNOWLEDGE or JMSContext.DUPS_OK_ACKNOWLEDGE. If no
 session mode is specified or the JMSSessionMode annotation is omitted a
@@ -4870,20 +4870,20 @@ container. When the object falls out of scope, the container will
 automatically call close().
 
 The scope of an injected JMSContext object will depend on whether there
-is a JTA transaction in progress at the point where a particular method
+is a Jakarta transaction in progress at the point where a particular method
 on the JMSContext is called.
 
-* If a method is called on an injected JMSContext when there is a JTA
+* If a method is called on an injected JMSContext when there is a Jakarta
 transaction (either bean-managed or container-managed), the scope of the
-JMSContext will be @TransactionScoped. This scope is defined in the JTA
+JMSContext will be @TransactionScoped. This scope is defined in the Jakarta Transactions
 specification. This means that:
 ** The JMSContext object will be automatically created the first time a
 method on the JMSContext is called within the transaction.
 ** The JMSContext object will be automatically closed when the
 transaction is committed or rolled back.
-** Within the same JTA transaction, JMSContext objects injected using
+** Within the same Jakarta transaction, JMSContext objects injected using
 identical annotations will refer to the same JMSContext object.
-* If a method is called on an injected JMSContext when there is no JTA
+* If a method is called on an injected JMSContext when there is no Jakarta
 transaction then the scope of the JMSContext will be @RequestScoped.
 This scope is defined in the CDI specification. This means that:
 ** The JMSContext object will be automatically created the first time a
@@ -4892,10 +4892,10 @@ method on the JMSContext is called within a request.
 ends.
 ** Within the same request, JMSContext objects injected using identical
 annotations will refer to the same JMSContext object.
-* If a method is called on an injected JMSContext both in a JTA
-transaction and outside a JTA transaction then separate JMSContext
+* If a method is called on an injected JMSContext both in a Jakarta
+transaction and outside a Jakarta transaction then separate JMSContext
 objects will be used in each case, with a separate JMSContext object
-being used for each JTA transaction as described above.
+being used for each Jakarta transaction as described above.
 
 ==== Restrictions on use of injected JMSContext objects
 
@@ -7289,7 +7289,7 @@ subscription” have been updated to use this new method.
 
 In addition, a second new Connection method createSession() has been
 added. This has no arguments and is intended for use in a Jakarta EE web container or
-Enterprise Beans container in the case when there is an active JTA transaction, when
+Enterprise Beans container in the case when there is an active Jakarta transaction, when
 the sessionMode supplied to createSession(int sessionMode) is ignored.
 
 ==== New createDurableConsumer methods (JMS_SPEC-51)
