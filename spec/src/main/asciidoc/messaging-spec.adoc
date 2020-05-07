@@ -277,7 +277,7 @@ differences are described in chapter 4 “Messaging domains”.
 
 === Jakarta Messaging APIs
 
-For historical reasons Jakarta Messaging offers three alternative sets of interfaces
+For historical reasons Jakarta Messaging offers four alternative sets of interfaces
 for sending and receiving messages.
 
 JMS 1.0 defined two *domain-specific APIs*, one for point-to-point
