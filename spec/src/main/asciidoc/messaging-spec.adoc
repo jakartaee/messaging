@@ -4560,7 +4560,7 @@ transactions.
 * Support for Jakarta Messaging message-driven beans.
 
 These features are defined in detail in other specifications including
-the Jakarta EE 7 specification and the Enterprise JavaBeans 3.2
+the Jakarta EE 7 specification and the Jakarta Enterprise Beans 3.2
 specification. However the use of the Jakarta EE platform imposes
 restrictions on the way that the Jakarta Messaging API may be used by applications,
 and those restrictions are described here.
@@ -4945,7 +4945,7 @@ specification and as further specified in this chapter.
 
 === MDB activation properties
 
-Message-driven beans are defined in the Enterprise JavaBeans
+Message-driven beans are defined in the Jakarta Enterprise Beans
 specification. Jakarta Messaging defines the following activation properties for
 message-driven beans.
 
@@ -7270,8 +7270,8 @@ subscription on a topic. This reflects the new shared durable
 subscriptions feature in Jakarta Messaging 2.0 which does not require clientId to be
 set.
 
-These MDB activation properties are also defined in the Enterprise
-JavaBeans specification, version 3.2.
+These MDB activation properties are also defined in the Jakarta Enterprise
+Beans specification, version 3.2.
 
 ==== New methods to create a session (JMS_SPEC-45)
 
