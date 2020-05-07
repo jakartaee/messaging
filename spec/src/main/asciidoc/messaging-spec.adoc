@@ -23,10 +23,7 @@ endif::[]
 :sectnums!:
 include::license-efsl.adoc[]
 
-// == Scope
 :sectnums:
-include::scope.adoc[]
-
 == Introduction
 
 This specification describes the objectives and functionality of the
@@ -191,8 +188,8 @@ appropriate subtype.
 +
 A new chapter has been added which describes some additional
 restrictions and behaviour which apply when using the Jakarta Messaging API in the
-Jakarta EE web or EJB container. This information was previously only
-available in the EJB and Jakarta EE platform specifications.
+Jakarta EE web container or the Enterprise Beans container. This information was previously only
+available in the Jakarta Enterprise Beans and Jakarta EE platform specifications.
 +
 A new chapter has been added which adds a new recommendation for a Jakarta Messaging
 provider to include a resource adapter, and which defines a number of
@@ -405,13 +402,12 @@ Applications that consume messages will use one of several methods on
 JMSContext to create a jakarta.jms.JMSConsumer object. This provides a
 similar API to a MessageConsumer for consuming messages from a
 particular queue or topic. Messages may be consumed either synchronously
-or asynchronously, except in a Jakarta EE web or EJB container where
+or asynchronously, except in a Jakarta EE web containers or Enterprise Beans container where
 messages may be consumed only synchronously.
 
-Applications running in the Jakarta EE web and EJB containers must not
+Applications running in the Jakarta EE web containers and Enterprise Beans containers must not
 create more than one active session on a connection (see Section 12.2
-“Restrictions on the use of Jakarta Messaging API in the Jakarta EE web or EJB
-container”. Since a JMSContext contains a single connection and a single
+“Restrictions on the use of Jakarta Messaging API in the Jakarta EE web container or Enterprise Beans container”. Since a JMSContext contains a single connection and a single
 session it is ideally suited for use by such applications.
 
 Applications running in a Java SE environment or in the Jakarta EE
@@ -3276,10 +3272,9 @@ IllegalStateRuntimeException (depending on the method signature).
 
 ==== Restrictions on usage in Jakarta EE
 
-An asynchronous send is not permitted in a Jakarta EE EJB or web container.
+An asynchronous send is not permitted in a Jakarta EE web container or Enterprise Beans container.
 
-The following methods must therefore not be used in a Jakarta EE web or EJB
-container:
+The following methods must therefore not be used in a Jakarta EE web container or Enterprise Beans container:
 
 * jakarta.jms.MessageProducer method send(Message message,
 CompletionListener completionListener)
@@ -3297,7 +3292,7 @@ completionListener)
 All the methods listed in this section may throw a
 jakarta.jms.JMSException (if allowed by the method) or a
 jakarta.jms.JMSRuntimeException (if not) when called by an application
-running in the Jakarta EE web or EJB container. This is recommended but not
+running in the Jakarta EE web container or Enterprise Beans container. This is recommended but not
 required.
 
 ==== Message headers
@@ -4574,27 +4569,26 @@ The Jakarta Messaging specification does not define how a Jakarta EE container i
 with its Jakarta Messaging provider. Different Jakarta EE containers may integrate with
 their Jakarta Messaging provider in different ways.
 
-=== Restrictions on the use of Jakarta Messaging API in the Jakarta EE web or EJB container
+=== Restrictions on the use of Jakarta Messaging API in the Jakarta EE web container or Enterprise Beans container
 
-Jakarta Messaging applications which run in the Jakarta EE web or EJB container are
+Jakarta Messaging applications which run in the Jakarta EE web container or Enterprise Beans container are
 subject to a number of restrictions in the way the Jakarta Messaging API may be used.
 These restrictions are necessary for the following reasons:
 
-* In a Jakarta EE web or EJB container, a Jakarta Messaging provider operates as a
+* In a Jakarta EE web container or Enterprise Beans container, a Jakarta Messaging provider operates as a
 transactional resource manager which must participate in JTA
 transactions as defined in the Jakarta EE platform specification. This
 overrides the behaviour of Jakarta Messaging sessions as defined elsewhere in the Jakarta Messaging
-specification. For more details see section 12.3 “Behaviour of Jakarta Messaging
-sessions in the Jakarta EE web or EJB container”.
-* The Jakarta EE web or EJB containers need to be able to manage the
+specification. For more details see section 12.3 “Behaviour of Jakarta Messaging sessions in the Jakarta EE web container or Enterprise Beans container”.
+* The Jakarta EE web containers or Enterprise Beans containers need to be able to manage the
 threads used to run applications.
-* The Jakarta EE web and EJB containers perform connection management which
+* The Jakarta EE web containers and Enterprise Beans containers perform connection management which
 may include the pooling of Jakarta Messaging connections.
 +
 The restrictions described in this section do not apply to the Jakarta EE
 application client container.
 
-Applications running in the Jakarta EE web and EJB containers must not
+Applications running in the Jakarta EE web containers and Enterprise Beans containers must not
 attempt to create more than one active (not closed) Session object per
 connection.
 
@@ -4607,10 +4601,10 @@ the first JMSContext already contains a connection and session and this
 method would create a second session on the same connection.
 
 The following methods are intended for use by the application server and
-their use by applications running in the Jakarta EE web or EJB container
+their use by applications running in the Jakarta EE web container or Enterprise Beans container
 may interfere with the container’s ability to properly manage the
 threads used in the runtime environment. They must therefore not be
-called by applications running in the Jakarta EE web or EJB container:
+called by applications running in the Jakarta EE web container or Enterprise Beans container:
 
 * jakarta.jms.Session method setMessageListener
 * jakarta.jms.Session method getMessageListener
@@ -4622,19 +4616,19 @@ called by applications running in the Jakarta EE web or EJB container:
 +
 The following methods may interfere with the container’s ability to
 properly manage the threads used in the runtime environment and must not
-be used by applications running in the Jakarta EE web or EJB container:
+be used by applications running in the Jakarta EE web container or Enterprise Beans container:
 * jakarta.jms.MessageConsumer method setMessageListener
 * jakarta.jms.MessageConsumer method getMessageListener
 * jakarta.jms.JMSContext method setMessageListener
 * jakarta.jms.JMSContext method getMessageListener
 +
-This restriction means that applications running in the Jakarta EE web or
-EJB container which need to receive messages asynchronously may only do
+This restriction means that applications running in the Jakarta EE web container or
+Enterprise Beans container which need to receive messages asynchronously may only do
 so using message-driven beans.
 
 The following methods may interfere with the container’s management of
 connections and must not be used by applications running in the Jakarta EE
-web or EJB container:
+web container or Enterprise Beans container:
 
 * jakarta.jms.Connection method setClientID
 * jakarta.jms.Connection method stop
@@ -4647,9 +4641,8 @@ Applications which need to use a specific client identifier must set it
 on the connection factory, as described in section 6.1.2 “Client
 identifier”.
 
-An asynchronous send is not permitted in a Jakarta EE web or EJB container.
-The following methods must therefore not be used in a Jakarta EE web or EJB
-container:
+An asynchronous send is not permitted in a Jakarta EE web contaienr or Enterprise Beans container.
+The following methods must therefore not be used in a Jakarta EE web web container or Enterprise Beans container:
 
 * jakarta.jms.MessageProducer method send(Message message,
 CompletionListener completionListener)
@@ -4667,21 +4660,21 @@ completionListener)
 All the methods listed in this section may throw a
 jakarta.jms.JMSException (if allowed by the method) or a
 jakarta.jms.JMSRuntimeException (if not) when called by an application
-running in the Jakarta EE web or EJB container. This is recommended but not
+running in the Jakarta EE web container or Enterprise Beans container. This is recommended but not
 required.
 
-=== Behaviour of Jakarta Messaging sessions in the Jakarta EE web or EJB container
+=== Behaviour of Jakarta Messaging sessions in the Jakarta EE web container or Enterprise Beans container
 
 The behaviour of Jakarta Messaging Session and JMSContext objects in respect of +
 transactions and message acknowledgement is different for applications +
-which run in a Jakarta EE web or EJB container than it is for
+which run in a Jakarta EE web container or Enterprise Beans container than it is for
 applications +
 which run in a normal Java SE environment or in the Jakarta EE
 application +
 client container.
 
-When an application creates a Session or JMSContext in a Jakarta EE web +
-or EJB container, and there is an active JTA transaction in progress, +
+When an application creates a Session or JMSContext in a Jakarta EE web container +
+or Enterprise Beans container, and there is an active JTA transaction in progress, +
 then the session that is created will participate in the JTA +
 transaction and will be committed or rolled back when the JTA +
 transaction is committed or rolled back. Any session parameters that +
@@ -4716,7 +4709,7 @@ transacted, +
 then the Jakarta Messaging provider is recommended to ignore the specified parameters
 and instead provide a non-transacted, auto-acknowledged session. However
 the Jakarta Messaging provider may alternatively provide a local transacted session.
-* Applications running in a Jakarta EE web or EJB container are recommended
+* Applications running in a Jakarta EE web web container or Enterprise Beans container are recommended
 to specify no session parameters or to specify that the session be
 non-transacted with an acknowledgement mode of AUTO_ACKNOWLEDGE or
 DUPS_OK_ACKNOWLEDGE.
@@ -4737,12 +4730,12 @@ will be acknowledged according to the specified acknowledgement mode.
 * If the specified session mode is CLIENT_ACKNOWLEDGE or
 SESSION_TRANSACTED then it will be ignored and a session mode of
 AUTO_ACKNOWLEDGE used.
-* Applications running in a Jakarta EE web or EJB container are recommended
+* Applications running in a Jakarta EE web container or Enterprise Beans container are recommended
 to specify no session parameters or to specify that the session be
 non-transacted with an acknowledgement mode of AUTO_ACKNOWLEDGE or
 DUPS_OK_ACKNOWLEDGE.
 * The use of local transactions or client acknowledgement is not
-permitted in a Jakarta EE web or EJB container even if there is no active +
+permitted in a Jakarta EE web container or Enterprise Beans container even if there is no active +
 JTA transaction because this would require applications to be written +
 differently depending on whether there was a JTA transaction or not.
 
@@ -4853,10 +4846,10 @@ to any of JMSContext.SESSION_TRANSACTED, JMSContext.CLIENT_ACKNOWLEDGE,
 JMSContext.AUTO_ACKNOWLEDGE or JMSContext.DUPS_OK_ACKNOWLEDGE. If no
 session mode is specified or the JMSSessionMode annotation is omitted a
 session mode of JMSContext.AUTO_ACKNOWLEDGE will be used.
-* In a Jakarta EE web or EJB container, when there is an active JTA
+* In a Jakarta EE web container or Enterprise Beans container, when there is an active JTA
 transaction in progress, session mode is ignored and the JMSSessionMode
 annotation is unnecessary.
-* In a Jakarta EE web or EJB container, when there is no active JTA
+* In a Jakarta EE web container or Enterprise Beans container, when there is no active JTA
 transaction in progress, session mode may be set to either of
 JMSContext.AUTO_ACKNOWLEDGE or JMSContext.DUPS_OK_ACKNOWLEDGE. If no
 session mode is specified or the JMSSessionMode annotation is omitted a
@@ -4864,7 +4857,7 @@ session mode of JMSContext.AUTO_ACKNOWLEDGE will be used.
 
 For more information about the use of session mode when creating a
 messaging context, see section 12.3 “Behaviour of Jakarta Messaging sessions in the
-Jakarta EE web or EJB container” and the API documentation for the
+Jakarta EE web container or Enterprise Beans container” and the API documentation for the
 ConnectionFactory method createContext(int sessionMode).
 
 ==== Scope of injected JMSContext objects
@@ -4937,18 +4930,17 @@ JMSContext is injected.
 These methods must throw a IllegalStateRuntimeException if the
 JMSContext is injected. These restrictions do not apply when the
 JMSContext is managed by the application; though note that several of
-these methods are in any case prohibited in a Jakarta EE web or EJB
-container.
+these methods are in any case prohibited in a Jakarta EE web container or Enterprise Beans container.
 
 == Resource adapter
 
-The Jakarta EE Connector Architecture (JCA) specification defines a
+The Jakarta Connectors specification defines a
 standard architecture for connecting the Jakarta EE platform to enterprise
 information systems (EISs).
 
 A Jakarta Messaging provider (whether it forms part of a Jakarta EE application server or
 not) is recommended to include a resource adapter which connects to that
-Jakarta Messaging provider and which conforms to the Jakarta EE Connector Architecture
+Jakarta Messaging provider and which conforms to the Jakarta Connectors
 specification and as further specified in this chapter.
 
 === MDB activation properties
@@ -5800,7 +5792,7 @@ simplified Jakarta Messaging APIs for some common Jakarta Messaging operations.
 === Sending a message (Jakarta EE)
 
 This example compares the use of the classic and simplified Jakarta Messaging APIs for
-sending a TextMessage in a Jakarta EE web or EJB container.
+sending a TextMessage in a Jakarta EE web container or Enterprise Beans container.
 
 ==== Example using the classic API
 
@@ -6039,7 +6031,7 @@ Note that sendMessageNew does not need to throw JMSException.
 === Receiving a message synchronously (Jakarta EE)
 
 This example compares the use of the classic and simplified Jakarta Messaging APIs for
-synchronously receiving a TextMessage in a Jakarta EE web or EJB container.
+synchronously receiving a TextMessage in a Jakarta EE web container or Enterprise Beans container.
 
 ==== Example using the classic API
 
@@ -6205,7 +6197,7 @@ Note that receiveMessageNew does not need to throw JMSException.
 
 This example compares the use of the classic and simplified Jakarta Messaging APIs for
 synchronously receiving a TextMessage from a durable topic subscription
-in a Jakarta EE web or EJB container.
+in a Jakarta EE web container or Enterprise Beans container.
 
 ==== Example using the classic API
 
@@ -6704,7 +6696,7 @@ Note that receiveAndSendMessageNew does not need to throw JMSException.
 === Request/reply pattern using a TemporaryQueue (Jakarta EE)
 
 This example compares the use of the classic and simplified Jakarta Messaging APIs for
-implementing a request/reply pattern in a Jakarta EE EJB container.
+implementing a request/reply pattern in a Jakarta EE Enterprise Beans container.
 
 In this example, a session bean (the requestor) sends a request message
 to some queue (the request queue). The setJMSReplyTo property of the
@@ -7234,29 +7226,26 @@ versa” has been removed.
 
 A new chapter 12 “Use of Jakarta Messaging API in Jakarta EE applications” has been
 added. This chapter incorporates and clarifies various additional
-requirements which were previously only described in the Jakarta EE and EJB
+requirements which were previously only described in the Jakarta EE and Jakarta Enterprise Beans
 specifications. Section 12.2 “Restrictions on the use of Jakarta Messaging API in the
-Jakarta EE web or EJB container” includes a list of methods which may not
-be used in a Jakarta EE web or EJB container and section 12.3 “Behaviour of
-Jakarta Messaging sessions in the Jakarta EE web or EJB container” clarifies how the
-arguments to createSession are mostly ignored when used in a Jakarta EE web
-or EJB container.
+Jakarta EE web container or Enterprise Beans container” includes a list of methods which may not
+be used in a Jakarta EE web container or Enterprise Beans container and section 12.3 “Behaviour of
+Jakarta Messaging sessions in the Jakarta EE web container or Enterprise Beans container” clarifies how the
+arguments to createSession are mostly ignored when used in a Jakarta EE web container
+or Enterprise Beans container.
 
 The specification been updated to refer to Jakarta EE 7 rather than J2EE
 1.3. A reference has also been added to the new chapter 12 “Use of Jakarta Messaging
 API in Jakarta EE applications”.
 
-Section 1.4.8 “Integration of Jakarta Messaging with the EJB components” has been
-deleted. It is superseded by the new chapter 12 “Use of Jakarta Messaging API in Java
-EE applications”.
+Section 1.4.8 “Integration of Jakarta Messaging with the Jakarta Enterprise Beans components” has been
+deleted. It is superseded by the new chapter 12 “Use of Jakarta Messaging API in Jakarta EE applications”.
 
 ==== Resource adapter (JMS_SPEC-25)
 
 A new chapter 13 “Resource adapter” has been added which recommends, but
-does not require, that a Jakarta Messaging provider (whether it forms part of a Java
-EE application server or not) includes a resource adapter which connects
-to that Jakarta Messaging provider and which conforms to the Jakarta EE Connector
-Architecture specification.
+does not require, that a Jakarta Messaging provider (whether it forms part of a Jakarta EE application server or not) includes a resource adapter which connects
+to that Jakarta Messaging provider and which conforms to the Jakarta Connectors specification.
 
 ==== MDB activation properties (JMS_SPEC-30, JMS_SPEC-54, JMS_SPEC-55)
 
@@ -7267,7 +7256,7 @@ beans.
 * The acknowledgeMode, messageSelector, destinationType,
 subscriptionDurability, clientId and subscriptionName properties were
 previously defined in appendix B “Activation Configuration for Message
-Inflow to Jakarta Messaging Endpoints” in the Jakarta EE Connector Architecture
+Inflow to Jakarta Messaging Endpoints” in the Jakarta Connectors
 specification, version 1.6. Their definition has now have been moved to
 the Jakarta Messaging specification.
 * The connectionFactoryLookup property is new and may be used to specify
@@ -7299,8 +7288,8 @@ Examples 14.1.4 “Creating a Session” and 14.3.3.1 “Creating a durable
 subscription” have been updated to use this new method.
 
 In addition, a second new Connection method createSession() has been
-added. This has no arguments and is intended for use in a Jakarta EE web or
-EJB container in the case when there is an active JTA transaction, when
+added. This has no arguments and is intended for use in a Jakarta EE web container or
+Enterprise Beans container in the case when there is an active JTA transaction, when
 the sessionMode supplied to createSession(int sessionMode) is ignored.
 
 ==== New createDurableConsumer methods (JMS_SPEC-51)
