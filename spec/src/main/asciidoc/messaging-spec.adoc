@@ -129,8 +129,7 @@ message type definitions.
 
 The Jakarta Messaging API is designed to be suitable for use by both Java client
 applications using the Java™ Platform, Standard Edition (Java SE), and
-Java middle-tier services using the Java™ Platform, Enterprise Edition
-(Jakarta EE).
+Java middle-tier services using Jakarta EE.
 
 A Jakarta Messaging provider must support its use by Java client applications using
 Java SE. It is optional whether a given Jakarta Messaging provider supports its use by
@@ -4545,7 +4544,7 @@ Table 11‑1 Relationship of optional interfaces in domains
 
 === Overview
 
-The Java™ Platform, Enterprise Edition (Jakarta EE) Specification, v7
+The Jakarta EE Platform Specification
 requires support for the Jakarta Messaging API as part of the full Jakarta EE platform.
 
 The Jakarta EE platform provides a number of additional features which are
@@ -4560,7 +4559,7 @@ transactions.
 * Support for Jakarta Messaging message-driven beans.
 
 These features are defined in detail in other specifications including
-the Jakarta EE 7 specification and the Jakarta Enterprise Beans 3.2
+the Jakarta EE Platform specification and the Jakarta Enterprise Beans
 specification. However the use of the Jakarta EE platform imposes
 restrictions on the way that the Jakarta Messaging API may be used by applications,
 and those restrictions are described here.
