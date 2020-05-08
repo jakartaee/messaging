@@ -646,7 +646,7 @@ administrative facilities.
 Jakarta Messaging provides the JMSReplyTo message header field for specifying the
 Destination where a reply to a message should be sent. The
 JMSCorrelationID header field of the reply can be used to reference the
-original request. See Section “” for more information.
+original request. See Section 3.4 “Message header fields” for more information.
 
 In addition, Jakarta Messaging provides a facility for creating temporary queues and
 topics that can be used as a unique destination for replies.
@@ -659,8 +659,8 @@ provides the basic facilities on which many can be built.
 
 The legacy domain-specific APIs define request/reply helper classes
 (classes written using Jakarta Messaging) for both the point-to-point and pub/sub
-domains that implement a basic form of request/reply. See sections “”
-and “”. Jakarta Messaging providers and clients may provide more specialized
+domains that implement a basic form of request/reply. See sections 4.1.7
+“QueueRequestor” and 4.2.10 “TopicRequestor”. Jakarta Messaging providers and clients may provide more specialized
 implementations.
 
 == Jakarta Messaging message model
@@ -742,7 +742,7 @@ when the message was sent.
 When a message is sent this value is ignored. After completion of the
 send, it holds the delivery mode specified by the sending method.
 
-See Section  “” for more information.
+See Section 7.7 “Message delivery mode” for more information.
 
 ==== JMSMessageID
 
@@ -1177,7 +1177,8 @@ user sending the message
 application sending the message
 
 |JMSXDeliveryCount |int |Mandatory |Provider on Receive |The number of
-message delivery attempts. See section “”.
+message delivery attempts. See section 3.5.11
+“JMSXDeliveryCount”.
 
 |JMSXGroupID |String |Optional |Client |The identity of the message
 group this message is part of
@@ -1923,7 +1924,7 @@ A non-durable subscription may be either _unshared_ or _shared_.
 have only a single consumer object associated with it. It is created
 automatically when the consumer object is created. It is not persisted
 and is deleted automatically when the consumer object is closed. See
-section “” .
+section 8.3.1 “Unshared non-durable subscriptions” .
 * A _shared non-durable subscription_ is identified by name and an
 optional client identifier, and may have several consumer objects
 consuming messages from it. It is created automatically when the first
@@ -1946,7 +1947,8 @@ A durable subscription may also be either _unshared_ or _shared_.
 
 * An _unshared durable subscription_ is identified by name and client
 identifier (which must be set) and may have only a single consumer
-object associated with it. See section 8.3.3 “”
+object associated with it. See section 8.3.3 “Unshared durable
+subscriptions”
 * A _shared durable subscription_ is identified by name and an optional
 client identifier, and may have several consumer objects consuming
 messages from it. See section 8.3.4 “Shared durable subscriptions”
@@ -1958,7 +1960,8 @@ _inactive_.
 
 When an unshared non-durable or durable subscription is created, the
 noLocal parameter may be specified. The effect of setting this parameter
-is defined in sections “” and 8.3.3 “” below.
+is defined in sections 8.3.1 “Unshared non-durable subscriptions” and 8.3.3
+“Unshared durable subscriptions” below.
 
 ==== Pub/sub latency
 
@@ -2199,7 +2202,7 @@ factories of type TopicConnectionFactory.
 Connection factory objects support concurrent use.
 
 For information on how to use a connection factory to create a
-connection, see section “”.
+connection, see section 6.1 “Connections”.
 
 == Connecting to a Jakarta Messaging provider
 
@@ -2591,7 +2594,7 @@ createTopicSession(boolean transacted, int acknowledgeMode)
 A session serves several purposes:
 
 * It is a factory for producer and consumer objects. These are described
-in chapter 7 “Sending messages” and chapter “”.
+in chapter 7 “Sending messages” and chapter 8 “Receiving messages”.
 * It is a factory for TemporaryTopic and TemporaryQueue objects.
 * It provides a way to create Queue or Topic objects for those clients
 that need to dynamically manipulate provider-specific destination names.
@@ -3071,7 +3074,8 @@ specifies the topic to which the producer will send messages. If topic
 is set to null then the topic must be specified on every send operation.
 
 A producer may be used to send a message either synchronously or
-asynchronously. For more details see sections “” and “”.
+asynchronously. For more details see sections 7.2 “Synchronous send” and
+7.3 “Asynchronous send”.
 
 Each time a client creates a producer, it defines a new sequence of
 messages that have no ordering relationship with the messages it has
@@ -3335,7 +3339,7 @@ that is calling the asynchronous send method.
 Applications which perform an asynchronous send must take account of the
 restriction that a Message object is designed to be accessed by one
 logical thread of control at a time and does not support concurrent use.
-See section “”.
+See section 2.14 “Multi-threading”.
 
 After the send method has returned, the application must not attempt to
 read the headers, properties or body of the Message object until the
@@ -3429,8 +3433,8 @@ it is indicating that it values performance over reliability; a
 selection of PERSISTENT reverses the requested trade-off.
 
 _The use of PERSISTENT messages does not guarantee that all messages are
-always delivered to every eligible consumer._ See Section “” for further
-discussion on this topic.
+always delivered to every eligible consumer._ See Section 9.1
+“Reliability” for further discussion on this topic.
 
 An application may specify the required delivery mode using the method
 setDeliveryMode on the producer object. This sets the delivery mode of
@@ -3463,7 +3467,7 @@ to the send method used to send the message. Note however that the
 setTimeToLive method on Message cannot be used to set the time-to-live
 of a message.
 
-See also section  “”.
+See also section 3.4.9 “JMSExpiration”.
 
 === Message delivery delay
 
@@ -3488,7 +3492,7 @@ all messages sent using that producer. Note however that the
 setDeliveryDelay method on Message cannot be used to set the delivery
 delay of a message.
 
-See also section “”.
+See also section 3.4.13 “JMSDeliveryTime”.
 
 === JMSProducer method chaining
 
@@ -3540,7 +3544,7 @@ topic” below.
 
 A consumer can be created with a message selector. This allows the
 client to restrict the messages delivered to the consumer to those that
-match the selector. See Section “” for more information.
+match the selector. See Section 3.8.1 “Message selector” for more information.
 
 A client may either synchronously receive a consumer’s messages or have
 the provider asynchronously deliver them as they arrive. See sections
@@ -3968,8 +3972,7 @@ RuntimeException does not automatically rollback the session).
 Jakarta Messaging providers should flag clients with message listeners that are
 throwing RuntimeException as possibly malfunctioning.
 
-See Section “” for information about how onMessage calls are serialized
-by a session.
+See Section 6.2.13 “Serial execution of client code” for information about how onMessage calls are serialized by a session.
 
 === Closing a consumer
 
