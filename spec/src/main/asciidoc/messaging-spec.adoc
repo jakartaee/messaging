@@ -2804,7 +2804,7 @@ TransactionInProgressException.
 
 Jakarta Messaging does not require that a provider support distributed transactions;
 however, it does define that if a provider supplies this support it
-should be done via the Jakarta Transactions XAResource API.
+should be done via the Java XAResource API.
 
 A Jakarta Messaging provider may also be a distributed transaction monitor. If it is,
 it should provide control of the transaction via the Jakarta Transactions API.
