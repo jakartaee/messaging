@@ -4553,7 +4553,7 @@ not available in the Java Platform Standard Edition (Java SE). These
 include the following:
 
 * Support for distributed transactions which are demarcated either
-programmatically, using methods on javax.transaction.UserTransaction, or
+programmatically, using methods on jakarta.transaction.UserTransaction, or
 automatically by the container. These are referred to in this
 specification as Jakarta transactions to distinguish them from Jakarta Messaging local
 transactions.
@@ -4683,7 +4683,7 @@ use of local transactions or client acknowledgement is not permitted.
 
 This applies irrespective of whether the Jakarta transaction is demarcated +
 automatically by the container or programmatically using methods on +
-javax.transaction.UserTransaction.
+jakarta.transaction.UserTransaction.
 
 The term “session parameters” here refers to the arguments that may be +
 passed into a call to the createSession or createContext methods to +
@@ -4791,7 +4791,7 @@ close method when the object is not longer needed.
 ==== Injection syntax
 
 Applications may declare a field of type jakarta.jms.JMSContext and
-annotate it with the javax.inject.Inject annotation:
+annotate it with the jakarta.inject.Inject annotation:
 
 @Inject
 
