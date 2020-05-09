@@ -1241,9 +1241,9 @@ properties are undefined.
 
 ==== Provider-specific properties
 
-Jakarta Messaging reserves the ‘JMS___<vendor_name>__’ property name prefix for
+Jakarta Messaging reserves the ‘JMS_<vendor_name>’ property name prefix for
 provider-specific properties. Each provider defines their own value of
-_<vendor_name>_. This is the mechanism a Jakarta Messaging provider uses to make its
+__<vendor_name>__. This is the mechanism a Jakarta Messaging provider uses to make its
 special per message services available to a Jakarta Messaging client.
 
 _The purpose of provider-specific properties is to provide special
@@ -6814,6 +6814,7 @@ Note that in this example it is not possible to eliminate the need to
 declare to catch JMSException since it uses methods on Message and
 TextMessage which throw JMSException.
 
+[appendix]
 == Change history
 
 === Version 2.0 
