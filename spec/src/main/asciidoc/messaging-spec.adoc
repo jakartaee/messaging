@@ -5873,6 +5873,7 @@ public void sendMessageNew(String body) throws NamingException {
         context.createProducer().send(dataQueue,body);
     }
 }
+----
 
 In the above example, `getInitialContext()` is an application method which
 returns a suitable JNDI InitialContext.
@@ -6809,6 +6810,7 @@ public void onMessage(Message message) {
     }
 }
 }
+----
 
 Note that in this example it is not possible to eliminate the need to
 declare to catch JMSException since it uses methods on Message and
