@@ -1439,15 +1439,15 @@ _arithmetic-expr3_ (comparison operator)
 operation is unknown.
 * _identifier_ [NOT] LIKE _pattern-value_ [ESCAPE _escape-character_]
 (comparison operator, where _identifier_ has a String value;
-_pattern-value_ is a string literal where '_' stands for any single
+_pattern-value_ is a string literal where '\_' stands for any single
 character; '%' stands for any sequence of characters, including the
 empty sequence, and all other characters stand for themselves. The
-optional _escape-character_ is a single-character string literal whose
+optional __escape-character__ is a single-character string literal whose
 character is used to escape the special meaning of the '_' and '%' in
 pattern-value.)
 ** "phone LIKE '12%3'" is true for '123' or '12993' and false for '1234'
 ** "word LIKE 'l_se'" is true for 'lose' and false for 'loose'
-** "underscored LIKE '\_%' ESCAPE '\'" is true for '_foo' and false for
+** "underscored LIKE '_%' ESCAPE '\'" is true for '_foo' and false for
 'bar'
 ** "phone NOT LIKE '12%3'" is false for '123' and '12993' and true for
 '1234'
@@ -3846,7 +3846,7 @@ methods return a Message object.
 Table 8‑1 MessageConsumer,JMSConsumer, QueueReceiver and TopicSubscriber
 methods to receive a message synchronously
 
-[cols=",",options="header",]
+[cols=",",]
 |===
 |Message receive (); |Returns the next message produced for this
 JMSConsumer
@@ -3865,7 +3865,7 @@ methods on JMSConsumer to receive a message body directly.
 
 Table 8‑2 JMSConsumer methods to receive a message body synchronously
 
-[cols=",",options="header",]
+[cols=",",]
 |===
 |<T> T receiveBody( +
 Class<T> c); |Receives the next message produced for this JMSConsumer
