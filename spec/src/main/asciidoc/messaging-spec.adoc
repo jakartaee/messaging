@@ -5838,6 +5838,7 @@ This example compares the use of the classic and simplified Jakarta Messaging AP
 
 Here’s how you might do this using the classic API:
 
+----
 public void sendMessageOld(String body)
     throws JMSException, NamingException{
 
@@ -5854,6 +5855,7 @@ public void sendMessageOld(String body)
         messageProducer.send(textMessage);
     }
 }
+----
 
 In the above example, `getInitialContext()` is an application method which
 returns a suitable JNDI InitialContext.
@@ -5999,6 +6001,7 @@ public String receiveMessageNew() {
     return consumer.receiveBody(String.class);
     }
 }
+----
 
 Note that receiveMessageNew does not need to throw JMSException.
 
@@ -6020,6 +6023,7 @@ public String receiveMessageNew() {
     JMSConsumer consumer = context.createConsumer(dataQueue);
     return consumer.receiveBody(String.class);
 }
+----
 
 === Receiving a message synchronously (Java SE)
 
@@ -6049,6 +6053,7 @@ public String receiveMessageOld()
         return textMessage.getText();
     }
 }
+----
 
 In the above example, getInitialContext() is an application method which
 returns a suitable JNDI InitialContext.
@@ -6071,6 +6076,7 @@ public String receiveMessageNew() throws NamingException {
         return consumer.receiveBody(String.class);
     }
 }
+----
 
 In the above example, getInitialContext() is an application method which
 returns a suitable JNDI InitialContext.
