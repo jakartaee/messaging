@@ -3086,25 +3086,28 @@ previously sent.
 * In the classic API the following methods on MessageProducer may be
 used to send a message synchronously:
 +
+----
 send(Message message)
-+
+
 send(Message message, int deliveryMode, int priority, long timeToLive)
-+
+
 send(Destination destination, Message message, int deliveryMode, int
 priority, long timeToLive)
-+
+
 send(Destination destination, Message message)
+----
+
 * In the simplified API the following method on JMSProducer may be used
 to send a message:
 +
+----
 send(Destination destination, Message message)
-
-____
+----
++
 The following methods on JMSProducer allow the application to supply the
-message body directly. The Jakarta Messaging provider automatically creates a message
-of the appropriate type before sending.
-____
-
+message body directly. The Jakarta Messaging provider automatically creates a message of the appropriate type before sending.
++
+----
 send(Destination destination, String body)
 
 send(Destination destination, Map<String,Object> body)
@@ -3114,39 +3117,44 @@ send(Destination destination, byte[] body)
 send(Destination destination, Serializable body)
 
 send(Destination destination, String body)
-
-____
+----
++
 All the send method on JMSProducer will send the message synchronously
 unless the JMSProducer has been configured to perform an asynchronous
 send.
-____
+
 
 * In the domain-specific API for point-to-point messaging the following
 methods on QueueSender may be used to send a message synchronously:
 +
+----
 send(Message message)
-+
+
 send(Message message, int deliveryMode, int priority, long timeToLive)
-+
+
 send(Queue queue, Message message)
-+
+
 send(Queue queue, Message message, int deliveryMode, int priority, long
 timeToLive)
+----
 +
 These are in addition to the methods inherited from MessageProducer and
 listed above.
+
 * In the domain-specific API for pub/sub messaging the following methods
 on TopicPublisher may be used to send a message synchronously:
 +
+----
 publish(Message message)
-+
+
 publish(Message message, int deliveryMode, int priority, long
 timeToLive)
-+
+
 publish(Topic topic, Message message)
-+
+
 publish(Topic topic, Message message, int deliveryMode, int priority,
 long timeToLive)
+----
 +
 These are in addition to the methods inherited from MessageProducer and
 listed above.
@@ -3164,29 +3172,33 @@ message in a separate thread.
 * In the classic API the following methods on MessageProducer may be
 used to send a message asynchronously
 +
+----
 send(Message message, CompletionListener completionListener)
-+
+
 send(Message message, int deliveryMode, int priority, long timeToLive,
 CompletionListener completionListener)
-+
+
 send(Destination destination, Message message, CompletionListener
 completionListener)
-+
+
 send(Destination destination, Message message, int deliveryMode, int
 priority, long timeToLive, CompletionListener completionListener)
+----
+
 * In the simplified API a JMSProducer may be used to send a message
-asynchronously by using calling the method setAsync(CompletionListener
-completionListener) on the JMSProducer prior to calling one of the
+asynchronously by using calling the method `setAsync(CompletionListener
+completionListener)` on the JMSProducer prior to calling one of the
 normal send methods listed in section 7.2 “Synchronous send”.
+
 * In the domain-specific API for point-to-point messaging a QueueSender
 may be used to send a message asynchronously using any of the methods
 inherited from MessageProducer and listed above.
+
 * In the domain-specific API for pub/sub messaging a TopicPublisher may
 be used to send a message asynchronously using any of the methods
 inherited from MessageProducer and listed above.
 
-When the message has been successfully sent the Jakarta Messaging provider invokes the
-callback method onCompletion on an application-specified
+When the message has been successfully sent the Jakarta Messaging provider invokes the callback method onCompletion on an application-specified
 CompletionListener object. Only when that callback has been invoked can
 the application be sure that the message has been successfully sent with
 the same degree of confidence as if a normal synchronous send had been
@@ -3370,7 +3382,7 @@ delivery delay”.
 === Setting message properties
 
 Prior to sending a message, the client application may use methods on
-the Message object to set message properties.
+the `Message` object to set message properties.
 
 Applications using the simplified API may also set message properties on
 the JMSProducer. There are nine methods on JMSProducer, all called
@@ -3500,19 +3512,14 @@ In the simplified API, the various setter methods on JMSProducer all
 return the JMSProducer object. This allows method calls to be chained
 together, allowing a fluid programming style. For example:
 
-____
+----
 context.createProducer().
-
-setProperty("foo", "bar").
-
-setTimeToLive(10000).
-
-setDeliveryMode(NON_PERSISTENT).
-
-setDisableMessageTimestamp(true).
-
-send(dataQueue, body);
-____
+    setProperty("foo", "bar").
+    setTimeToLive(10000).
+    setDeliveryMode(NON_PERSISTENT).
+    setDisableMessageTimestamp(true).
+    send(dataQueue, body);
+----
 
 Instances of JMSProducer are intended to be lightweight objects which
 can be created freely and which do not consume significant resources.
@@ -4795,9 +4802,10 @@ close method when the object is not longer needed.
 Applications may declare a field of type jakarta.jms.JMSContext and
 annotate it with the jakarta.inject.Inject annotation:
 
+----
 @Inject
-
 private JMSContext context;
+----
 
 The container will inject a JMSContext. This object will have a scope as
 defined by section 12.4.4 “Scope of injected JMSContext objects”.
@@ -4806,11 +4814,11 @@ The annotation jakarta.jms.JMSConnectionFactory may be used to specify the
 JNDI lookup name of the ConnectionFactory used to create the JMSContext.
 For example:
 
+----
 @Inject
-
 @JMSConnectionFactory("jms/connectionFactory")
-
 private JMSContext context;
+----
 
 If the JMSConnectionFactory annotation is omitted then the platform
 default Jakarta Messaging connection factory will be used.
@@ -4819,26 +4827,23 @@ The annotation jakarta.jms.JMSPasswordCredential may be used to specify a
 user name and password which will be used when the JMSContext is
 created. For example:
 
+----
 @Inject
-
 @JMSConnectionFactory("jms/connectionFactory")
-
 @JMSPasswordCredential(
-
-userName="admin",password="mypassword")
-
+    userName="admin",password="mypassword")
 private JMSContext context;
+----
 
 The annotation jakarta.jms.JMSSessionMode may be used to specify the
 session mode of the JMSContext. For example:
 
+----
 @Inject
-
 @JMSConnectionFactory("jms/connectionFactory")
-
 @JMSSessionMode(JMSContext.AUTO_ACKNOWLEDGE)
-
 private JMSContext context;
+----
 
 The meaning and possible values of session mode are the same as for the
 ConnectionFactory method createContext(int sessionMode):
@@ -5049,17 +5054,16 @@ and a Session.
 
 An administrator typically has created and configured a
 ConnectionFactory for the Jakarta Messaging client’s use. The client program typically
-uses the JNDI API to look up the ConnectionFactory__.__
+uses the JNDI API to look up the ConnectionFactory.
 
+----
 import javax.naming.*;
-
 import jakarta.jms.*;
 
 Context namingContext = new InitialContext();
-
 ConnectionFactory ConnectionFactory =
-
-(ConnectionFactory) namingContext.lookup("myCF");
+    (ConnectionFactory) namingContext.lookup("myCF");
+----
 
 ==== Getting a Destination
 
@@ -5067,34 +5071,37 @@ An administrator has created and configured a Queue named "StockSource"
 which is where stock quote messages are sent and received. Again, the
 destination can be looked up using the JNDI API.
 
+----
 Queue stockQueue = (Queue)namingContext.lookup("StockSource");
+----
 
 ==== Creating a Connection
 
 Having obtained the ConnectionFactory, the client program uses it to
 create a Connection.
 
+----
 Connection connection = connectionFactory.createConnection();
+----
 
 A Connection must be closed after use. This may be done explicitly using
 the close method:
 
+----
 connection.close();
+----
 
 Alternatively a connection may be closed automatically using the
 try-with-resources statement:
 
-try (Connection connection=connectionFactory.createConnection();)\{
-
-// use connection in this try block
-
-// it will be closed when try block completes
-
-} catch (JMSException e)\{
-
-// exception handling
-
+----
+try (Connection connection=connectionFactory.createConnection()) {
+    // use connection in this try block
+    // it will be closed when try block completes
+} catch (JMSException e) {
+    // exception handling
 }
+----
 
 ==== Creating a Session
 
@@ -5112,11 +5119,12 @@ non-transacted and,
 * if the session is non-transacted, what mode should be used for
 acknowledging the receipt of messages.
 
+----
 // Session is not transacted and
-
 // uses AUTO_ACKNOWLEDGE for message acknowledgement
 
 Session session=connection.createSession(Session.AUTO_ACKNOWLEDGE);
+----
 
 ==== Creating a MessageProducer
 
@@ -5126,9 +5134,11 @@ messages to the destination. The MessageProducer is created by using the
 Session.createProducer method, supplying as a parameter the destination
 to which the messages are sent.
 
+----
 // stockQueue was previously looked up using JNDI
 
 MessageProducer producer = session.createProducer(stockQueue);
+----
 
 ==== Creating a MessageConsumer
 
@@ -5142,9 +5152,11 @@ which in this example is the Queue stockQueue. A MessageConsumer is
 created using the Session.createConsumer method, supplying one
 parameter, the destination from which messages are received.
 
+----
 // stockQueue was previously looked up using JNDI
 
 MessageConsumer consumer = session.createConsumer(stockQueue);
+----
 
 ==== Starting message delivery
 
@@ -5154,7 +5166,9 @@ asynchronously delivered messages. Now that the setup is complete, the
 Connection is told to begin the delivery of messages to its
 MessageConsumer.
 
+----
 connection.start();
+----
 
 ==== Using a TextMessage
 
@@ -5164,13 +5178,13 @@ client.
 
 The following demonstrates how to create such a message:
 
+----
 String stockData; // Stock information as a string
 
 // Set the message's text to be the stockData string
-
 TextMessage message = session.createTextMessage();
-
 message.setText(stockData);
+----
 
 === Sending and receiving messages
 
@@ -5186,9 +5200,10 @@ messages. This section describes how to:
 To send a message, use the MessageProducer.send method, supplying a
 Message object for the method’s parameter.
 
+----
 // Send the message
-
 producer.send(message);
+----
 
 ==== Receiving a message synchronously
 
@@ -5197,16 +5212,19 @@ MessageConsumer.receive method. This call blocks indefinitely until a
 message arrives on the queue. The same method can be used to receive
 from a topic.
 
+----
 Message stockMessage = consumer.receive();
+----
 
 To limit the amount of time that the client blocks, use a timeout
 parameter with the receive method. If no messages arrive by the end of
 the timeout, then the receive method returns. The timeout parameter is
 expressed in milliseconds.
 
+----
 // Wait up to 4 seconds for a message
-
 Message stockMessage = receiver.receive(4000);
+----
 
 ==== Unpacking a TextMessage
 
@@ -5217,17 +5235,19 @@ The receive method returns a Message object. You can cast this to a
 TextMessage and call the getText method. This returns the message
 content as a string:
 
+----
 // extract stock information from message
-
 String newStockData = ((TextMessage)stockMessage)getText();
+----
 
 Alternatively you can call the Message object’s getBody method. In this
 case you do not need to cast the Message to a TextMessage. Instead you
 need to pass in the type expected:
 
+----
 // extract stock information from message
-
 String newStockData= stockMessage.getBody(String.class);
+----
 
 === Other messaging features
 
@@ -5244,30 +5264,29 @@ perform some other common messaging functions:
 In order to receive message asynchronously as they are delivered to the
 message consumer, the client program needs to create a message listener
 that implements the MessageListener interface. An implementation of the
-MessageListener interface, called StockListener.java__,__ might look
+MessageListener interface, called `StockListener.java`, might look
 like this:
 
+----
 import jakarta.jms.*;
 
-public class StockListener implements MessageListener \{
-
-public void onMessage(Message message) \{
-
-// Unpack and handle the messages received
-
-...
-
+public class StockListener implements MessageListener {
+    public void onMessage(Message message) {
+    // Unpack and handle the messages received
+    ...
+    }
 }
-
-}
+----
 
 The client program registers the MessageListener object with the
 MessageConsumer object in the following way:
 
-StockListener myListener = new StockListener(); +
- +
-// consumer is a MessageConsumer object +
+----
+StockListener myListener = new StockListener();
+
+// consumer is a MessageConsumer object
 consumer.setMessageListener(myListener);
+----
 
 The Connection must be started for the message delivery to begin. The
 MessageListener is asynchronously notified whenever a message has been
@@ -5275,21 +5294,17 @@ published to the queue. This is done via the onMessage method in the
 MessageListener interface. It is up to the client to process the message
 there.
 
-public void onMessage(Message message) \{
+----
+public void onMessage(Message message) {
 
 // Unpack and handle the messages received
-
-String newStockData =
-
-((TextMessage)message).getText();
-
-if(...) \{
-
-// Logic related to the data
-
+    String newStockData =
+        ((TextMessage)message).getText();
+    if(...) {
+        // Logic related to the data
+    }
 }
-
-}
+----
 
 ==== Using message selection
 
@@ -5299,32 +5314,31 @@ selectors work against properties that are assigned to the message.
 
 In this example, the client program is only interested in technology
 related stocks. The sender of the messages assigns a value to a message
-property called StockSector. The values the sender assigns include
-"Technology", "Financial", "Manufacturing", "Emerging", and "Global".
+property called `StockSector`. The values the sender assigns include
+"`Technology`", "`Financial`", "`Manufacturing`", "`Emerging`", and "`Global`".
 The message sender assigns these property values by using the
-Message.setStringProperty method.
+`Message.setStringProperty` method.
 
+----
 String stockData; // Stock information as a String
 
 // Set the message's text to be the stockData string
-
 TextMessage message = session.createTextMessage();
-
 message.setText(stockData);
 
 // Set the message property "StockSector"
-
 message.setStringProperty("StockSector", "Technology");
+----
 
 When the client program that receives the stock quote messages creates a
 MessageConsumer, it can supply a message selector string which specifies
 which messages it will receive.
 
+----
 String selector = new String("(StockSector = 'Technology')");
-
 MessageConsumer consumer =
-
-session.createConsumer(stockQueue,selector);
+    session.createConsumer(stockQueue,selector);
+----
 
 The client program receives only messages related to the technology
 sector.
@@ -5347,37 +5361,33 @@ up ConnectionFactory and a Destination, and creating a Connection and
 Session, as described in section 14.1 “Preparing to send and receive
 messages”.
 
+----
 import javax.naming.*;
-
 import jakarta.jms.*;
 
 // Look up connection factory
-
 Context namingContext = new InitialContext();
-
 ConnectionFactory connectionFactory =
-
-(ConnectionFactory) namingContext.lookup("ConnectionFactory")
+    (ConnectionFactory) namingContext.lookup("ConnectionFactory")
 
 // Look up destination
-
 Topic newsFeedTopic = namingContext.lookup("BreakingNews");
 
 // Create connection and session
-
 Connection connection = ConnectionFactory.createConnection();
-
 Session session=connection.createSession(Session.AUTO_ACKNOWLEDGE);
+----
 
 Having performed the normal setup, the client program can now create a
 durable subscription on the destination. To do this, the client program
-uses the Session method createDurableConsumer__.__
+uses the Session method `createDurableConsumer`.
 
+----
 MessageConsumer consumer =
+    session.createDurableConsumer(newsFeedTopic,"mySubscription");
+----
 
-session.createDurableConsumer(newsFeedTopic,"mySubscription");
-
-The name "mySubscription" is used as an identifier of the durable
+The name "`mySubscription`" is used as an identifier of the durable
 subscription.
 
 At this point, the client program can start the connection and receive
@@ -5394,19 +5404,19 @@ subscription by calling the Session method createDurableConsumer,
 supplying the same parameters that were specified when the durable
 subscription was first created.
 
+----
 // Create a consumer on an existing durable subscription
-
 MessageConsumer consumer =
-
-session.createDurableConsumer(newsFeedTopic, "mySubscription");
+    session.createDurableConsumer(newsFeedTopic, "mySubscription");
+----
 
 Any messages which were added to the subscription whilst it had no
 consumer will be delivered.
 
-A durable subscription created using createDurableConsumer may only have
+A durable subscription created using `createDurableConsumer` may only have
 one consumer at a time.
 
-A durable subscription created using createSharedDurableConsumer may
+A durable subscription created using `createSharedDurableConsumer` may
 have may have more than one consumer at a time. Each message from the
 subscription will be delivered to only one of the consumers on that
 subscription.
@@ -5433,33 +5443,38 @@ that creates the actual content of the messages is omitted.
 ==== Creating a TextMessage
 
 In this example, the stock quote information is sent as a
-TextMessage__.__ A TextMessage carries the message as a text string that
+TextMessage. A TextMessage carries the message as a text string that
 can be read by the client.
 
 The following code demonstrates how to create such a message:
 
+----
 String stockData; // Stock information as a string
 
 TextMessage message = session.createTextMessage();
 
 // Set the stockData string to the message body
-
 message.setText(stockData);
+----
 
 ==== Unpacking a TextMessage
 
-_There are two ways to extract the text from a_ TextMessage__. You can
-call the__ getText _method on_ TextMessage__:__
+There are two ways to extract the text from a TextMessage. You can
+call the `getText` method on TextMessage:
 
+----
 String stockData = stockMessage.getText();
+----
 
-Alternatively you can call the getBody method on Message, which is the
+Alternatively you can call the `getBody` method on Message, which is the
 common supertype of all message types. In this case you need to pass in
 the body type expected:
 
+----
 String stockData = stockMessage.getBody(String.class);
+----
 
-The use of getBody avoids the need to cast a newly-received Message
+The use of `getBody` avoids the need to cast a newly-received Message
 object to a TextMessage.
 
 ==== Creating a BytesMessage
@@ -5470,29 +5485,28 @@ interpret and display as a stock quote. This is sent as a BytesMessage.
 
 Such a message can be constructed in the following way:
 
+----
 // Stock information as a byte array
-
 byte[] stockData;
-
 BytesMessage message = session.createBytesMessage();
-
 message.writeBytes(stockData);
+----
 
 ==== Unpacking a BytesMessage
 
 There are several ways to extract the byte array from a BytesMessage.
-The simplest is to call the readBytes method on BytesMessage. This
+The simplest is to call the `readBytes` method on BytesMessage. This
 copies the bytes to the specified byte array.
 
+----
 int bodyLength = message.getBodyLength();
-
 byte[] stockData = new byte[bodyLength];
-
 int bytesCopied = message.readBytes(stockData);
+----
 
-The readBytes method can also be used to read bytes in increments, by
+The `readBytes` method can also be used to read bytes in increments, by
 supplying a byte array whose length is less than the number of bytes
-available. The readBytes method will fill the array and set the return
+available. The `readBytes` method will fill the array and set the return
 value to the number of bytes copied. A subsequent call reads the next
 increment and so on.
 
@@ -5501,7 +5515,9 @@ common supertype of all message types. In this case you need to pass in
 the body type expected. This method creates a byte array of the required
 size and copies all the bytes to it:
 
+----
 byte[] stockData = message.getBody(byte[].class);
+----
 
 The use of getBody avoids the need to cast a newly-received Message
 object to a BytesMessage.
@@ -5522,35 +5538,27 @@ To construct the MapMessage, the client program uses the various set
 methods (setString, setLong, and so forth) that are associated with
 MapMessage, and sets each named value in the MapMessage.
 
+----
 String stockName; // Name of the stock
-
 double stockValue; // Current value of the stock
-
 long stockTime; // Time stock quote was updated */
-
 double stockDiff; // +/- change in the stock quote*/
-
 String stockInfo; // Information on this stock */
-
 MapMessage message = session.createMapMessage();
+----
 
 Note that the following can be set in any order.
 
+----
 // First parameter is the name of the map element,
-
 // Second parameter is the value
-
 message.setString("Name", "ORCL");
-
 message.setDouble("Value", stockValue);
-
 message.setLong("Time", stockTime);
-
 message.setDouble("Diff", stockDiff);
-
 message.setString(
-
-"Info", "Recent server announcement causes market interest");
+    "Info", "Recent server announcement causes market interest");
+----
 
 ==== Unpacking a MapMessage
 
@@ -5560,42 +5568,37 @@ You can use the various get methods associated with MapMessage to get
 the values in the named MapMessage elements. In the following example,
 the client program expects certain MapMessage elements.
 
+----
 String stockName; // Name of the stock
-
 double stockValue; // Current value of the stock
-
 long stockTime; // Time stock quote was updated
-
 double stockDiff; // +/- change in the stock
-
 String stockInfo; // Information on this stock
+----
 
 The data is retrieved from the message by using a get method and
 providing the name of the value desired. The elements from the
 MapMessage can be obtained in any order.
 
+----
 stockName = message.getString("Name");
-
 stockDiff = message.getDouble("Diff");
-
 stockValue = message.getDouble("Value");
-
 stockTime = message.getLong("Time");
+----
 
 Alternatively you can call the getBody method on Message, which is the
 common supertype of all message types. In this case you need to pass in
-the body type expected. This method returns a java.util.Map containing
+the body type expected. This method returns a `java.util.Map` containing
 all the keys and values in the MapMessage.
 
+----
 Map stockData = message.getBody(Map.class);
-
 stockName = (String)stockData.getString("Name");
-
 stockDiff = (Double)stockData.getDouble("Diff");
-
 stockValue = (Double)stockData.getDouble("Value");
-
 stockTime = (Long)stockData.getLong("Time");
+----
 
 The use of getBody avoids the need to cast a newly-received Message
 object to a BytesMessage.
@@ -5624,163 +5627,134 @@ potentially discard each field in turn.
 In the following example, the values for each of the following have
 already been set:
 
+----
 String stockName; // Name of the stock
-
 double stockValue; // Current value of the stock
-
 long stockTime; // Time stock quote was updated
-
 double stockDiff; // +/- change in the stock quote
-
 String stockInfo; // Information on this stock
 
 // Create message
-
 StreamMessage message = session.createStreamMessage();
+----
 
 The following elements have to be written to the StreamMessage in the
 order they will be read. Notice that they are not separately named
-properties, as in MapMessage__.__
+properties, as in MapMessage.
 
-// Set data for message +
-message.writeString(stockName); +
-message.writeDouble(stockValue); +
-message.writeLong(stockTime); +
-message.writeDouble(stockDiff); +
+----
+// Set data for message
+message.writeString(stockName);
+message.writeDouble(stockValue);
+message.writeLong(stockTime);
+message.writeDouble(stockDiff);
 message.writeString(stockInfo);
+----
 
 ==== Unpacking a StreamMessage
 
 The elements of a StreamMessage have to be read in the order they were
 written.
 
+----
 String stockName; // Name of the stock quote
-
 double stockValue; // Current value of the stock
-
 long stockTime; // Time stock quote was updated
-
 double stockDiff; // +/- change in the stock quote
-
 String stockInfo; // Information on this stock
 
 stockName = message.readString();
-
 stockValue = message.readDouble();
-
 stockTime = message.readLong();
-
 stockDiff = message.readDouble();
-
 stockInfo = message.readString();
+----
 
 The getBody method cannot be used with a StreamMessage.
 
 ==== Creating an ObjectMessage
 
-The stock information could be sent in the form of a special StockObject
+The stock information could be sent in the form of a special `StockObject`
 Java object. This object can then be sent as the body of a
 ObjectMessage. The ObjectMessage can be used to send Java objects.
 
-These values are set using methods that are unique to the StockObject
-implementation. For example, StockObject may have methods that set the
-various data values. An application using StockObject might look like
+These values are set using methods that are unique to the `StockObject`
+implementation. For example, `StockObject` may have methods that set the
+various data values. An application using `StockObject` might look like
 this:
 
+----
 String stockName; // Name of the stock quote
-
 double stockValue; // Current value of the stock
-
 long stockTime; // Time stock quote was updated
-
 double stockDiff; // +/- change in the stock quote
-
 String stockInfo; // Information on this stock
 
 // Create a StockObject
-
 StockObject stockObject = new StockObject();
 
 // Establish the values for the StockObject
-
 stockObject.setName(stockName);
-
 stockObject.setValue(stockValue);
-
 stockObject.setTime(stockTime);
-
 stockObject.setDiff(stockDiff);
-
 stockObject.setInfo(stockInfo);
+----
 
-To create an ObjectMessage with the StockObject as the message body, you
+To create an ObjectMessage with the `StockObject` as the message body, you
 would do the following:
 
-// Create an ObjectMessage +
-ObjectMessage message = session.createObjectMessage(); +
- +
-// Set the body of the message to the StockObject
+----
+// Create an ObjectMessage
+ObjectMessage message = session.createObjectMessage();
 
+// Set the body of the message to the StockObject
 message.setObject(stockObject);
+----
 
 ==== Unpacking an ObjectMessage
 
 There are two ways to extract the object from an ObjectMessage. You can
 call the getObject method on ObjectMessage:
 
+----
 // Retrieve the StockObject from the message
-
 StockObject stockObject = (StockObject)message.getObject();
 
 // Extract data from the StockObject using StockObject methods
-
 String stockName; // Name of the stock quote
-
 double stockValue; // Current value of the stock
-
 long stockTime; // Time stock quote was updated
-
 double stockDiff; // +/- change in the stock quote
-
 String stockInfo; // Information on this stock
 
 stockName = stockObject.getName();
-
 stockValue = stockObject.getValue();
-
 stockTime = stockObject.getTime();
-
 stockDiff = stockObject.getDiff();
-
 stockInfo = stockObject.getInfo();
+----
 
 Alternatively you can call the getBody method on Message, which is the
 common supertype of all message types. In this case you need to specify
 the object type expected:
 
+----
 StockObject stockObject = message.getBody(StockObject.class);
 
 // Extract data from the StockObject using StockObject methods
-
 String stockName; // Name of the stock quote
-
 double stockValue; // Current value of the stock
-
 long stockTime; // Time stock quote was updated
-
 double stockDiff; // +/- change in the stock quote
-
 String stockInfo; // Information on this stock
 
 stockName = stockObject.getName();
-
 stockValue = stockObject.getValue();
-
 stockTime = stockObject.getTime();
-
 stockDiff = stockObject.getDiff();
-
 stockInfo = stockObject.getInfo();
+----
 
 The use of getBody avoids the need to cast a newly-received Message
 object to an ObjectMessage. It also avoids the need to cast the object
@@ -5800,52 +5774,41 @@ sending a TextMessage in a Jakarta EE web container or Enterprise Beans containe
 
 Here’s how you might do this using the classic API:
 
-@Resource(lookup = "jms/connectionFactory") +
+----
+@Resource(lookup = "jms/connectionFactory")
 ConnectionFactory connectionFactory;
 
 @Resource(lookup="jms/dataQueue")
-
 Queue dataQueue;
 
-public void sendMessageOld (String body) throws JMSException \{
-
-try (Connection connection =
-
-connectionFactory.createConnection())\{
-
-Session session = connection.createSession();
-
-MessageProducer producer = session.createProducer(dataQueue);
-
-TextMessage textMessage = session.createTextMessage(body);
-
-messageProducer.send(textMessage);
-
+public void sendMessageOld (String body) throws JMSException {
+    try (Connection connection =
+        connectionFactory.createConnection()){
+        Session session = connection.createSession();
+        MessageProducer producer = session.createProducer(dataQueue);
+        TextMessage textMessage = session.createTextMessage(body);
+        messageProducer.send(textMessage);
+    }
 }
-
-}
+----
 
 ==== Example using the simplified API
 
 Here’s how you might do this using the simplified API:
 
+----
 @Resource(lookup = "jms/connectionFactory")
-
 ConnectionFactory connectionFactory;
 
 @Resource(lookup="jms/dataQueue")
-
 Queue dataQueue;
 
-public void sendMessageNew (String body) \{
-
-try (JMSContext context = connectionFactory.createContext();)\{
-
-context.createProducer().send(dataQueue,body);
-
+public void sendMessageNew (String body) {
+    try (JMSContext context = connectionFactory.createContext();){
+        context.createProducer().send(dataQueue,body);
+    }
 }
-
-}
+----
 
 Note that sendMessageNew does not need to throw JMSException.
 
@@ -5854,87 +5817,64 @@ Note that sendMessageNew does not need to throw JMSException.
 Here's how you might do this using the simplified API with the
 JMSContext created by injection:
 
+----
 @Inject
-
 @JMSConnectionFactory("jms/connectionFactory")
-
 private JMSContext context;
 
 @Resource(mappedName = "jms/dataQueue")
-
 private Queue dataQueue;
 
-public void sendMessageNew(String body) \{
-
-context.send(dataQueue, body);
-
+public void sendMessageNew(String body) {
+    context.send(dataQueue, body);
 }
+----
 
 === Sending a message (Java SE)
 
-This example compares the use of the classic and simplified Jakarta Messaging APIs for
-sending a TextMessage in a Java SE environment.
+This example compares the use of the classic and simplified Jakarta Messaging APIs for sending a TextMessage in a Java SE environment.
 
 ==== Example using the classic API
 
 Here’s how you might do this using the classic API:
 
-*public* *void* sendMessageOld(String body)
+public void sendMessageOld(String body)
+    throws JMSException, NamingException{
 
-*throws* JMSException, NamingException\{
-
-InitialContext namingContext = getInitialContext();
-
-ConnectionFactory connectionFactory = (ConnectionFactory)
-
-namingContext.lookup("jms/connectionFactory");
-
-Queue dataQueue = (Queue) namingContext.lookup("jms/dataQueue")
-
-*try* (Connection connection =
-
-connectionFactory.createConnection()) \{
-
-Session session = connection.createSession();
-
-MessageProducer messageProducer =
-
-session.createProducer(dataQueue);
-
-TextMessage textMessage = session.createTextMessage(body);
-
-messageProducer.send(textMessage);
-
+    InitialContext namingContext = getInitialContext();
+    ConnectionFactory connectionFactory = (ConnectionFactory)
+    namingContext.lookup("jms/connectionFactory");
+    Queue dataQueue = (Queue) namingContext.lookup("jms/dataQueue")
+    try (Connection connection =
+            connectionFactory.createConnection()) {
+        Session session = connection.createSession();
+        MessageProducer messageProducer =
+        session.createProducer(dataQueue);
+        TextMessage textMessage = session.createTextMessage(body);
+        messageProducer.send(textMessage);
+    }
 }
 
-}
-
-In the above example, getInitialContext() is an application method which
+In the above example, `getInitialContext()` is an application method which
 returns a suitable JNDI InitialContext.
 
 ==== Example using the simplified API
 
 Here’s how you might do this using the simplified API:
 
-public void sendMessageNew(String body) throws NamingException \{
+----
+public void sendMessageNew(String body) throws NamingException {
 
-InitialContext namingContext = getInitialContext();
-
-ConnectionFactory connectionFactory = (ConnectionFactory)
-
-namingContext.lookup("jms/connectionFactory");
-
-Queue dataQueue = (Queue)namingContext.lookup("jms/dataQueue");
-
-try (JMSContext context=connectionFactory.createContext();)\{
-
-context.createProducer().send(dataQueue,body);
-
+    InitialContext namingContext = getInitialContext();
+    ConnectionFactory connectionFactory = (ConnectionFactory)
+        namingContext.lookup("jms/connectionFactory");
+    Queue dataQueue = (Queue)namingContext.lookup("jms/dataQueue");
+    try (JMSContext context=connectionFactory.createContext();){
+        context.createProducer().send(dataQueue,body);
+    }
 }
 
-}
-
-In the above example, getInitialContext() is an application method which
+In the above example, `getInitialContext()` is an application method which
 returns a suitable JNDI InitialContext.
 
 Note that sendMessageNew does not need to throw JMSException.
@@ -5948,47 +5888,35 @@ a Java SE environment.
 However this example also configures various attributes of the message
 that is sent:
 
-* The message property "foo" is set to a value of "bar".
-* The message is sent using a delivery mode of NON_PERSISTENT.
+* The message property "`foo`" is set to a value of "`bar`".
+* The message is sent using a delivery mode of `NON_PERSISTENT`.
 * The Jakarta Messaging provider is informed that message timestamps are not required.
 
 ==== Example using the classic API
 
 Here’s how you might do this using the classic API:
 
-*public* *void* sendMessageOld(String body)
+----
+public void sendMessageOld(String body)
+throws JMSException, NamingException{
 
-*throws* JMSException, NamingException\{
+    InitialContext namingContext = getInitialContext();
+    ConnectionFactory connectionFactory = (ConnectionFactory)
+        namingContext.lookup("jms/connectionFactory");
+    Queue dataQueue = (Queue) namingContext.lookup("jms/dataQueue");
 
-InitialContext namingContext = getInitialContext();
-
-ConnectionFactory connectionFactory = (ConnectionFactory)
-
-namingContext.lookup("jms/connectionFactory");
-
-Queue dataQueue = (Queue) namingContext.lookup("jms/dataQueue");
-
-*try* (Connection connection =
-
-connectionFactory.createConnection()) \{
-
-Session session = connection.createSession();
-
-MessageProducer producer = session.createProducer(dataQueue);
-
-TextMessage textMessage = session.createTextMessage(body);
-
-textMessage.setStringProperty("foo", "bar");
-
-messageProducer.setDeliveryMode(NON_PERSISTENT);
-
-messageProducer.setDisableMessageTimestamp(true);
-
-messageProducer.send(textMessage);
-
+    try (Connection connection =
+            connectionFactory.createConnection()) {
+        Session session = connection.createSession();
+        MessageProducer producer = session.createProducer(dataQueue);
+        TextMessage textMessage = session.createTextMessage(body);
+        textMessage.setStringProperty("foo", "bar");
+        messageProducer.setDeliveryMode(NON_PERSISTENT);
+        messageProducer.setDisableMessageTimestamp(true);
+        messageProducer.send(textMessage);
+    }
 }
-
-}
+----
 
 In the above example, getInitialContext() is an application method which
 returns a suitable JNDI InitialContext.
@@ -5997,33 +5925,24 @@ returns a suitable JNDI InitialContext.
 
 Here’s how you might do this using the simplified API:
 
-public void sendMessageNew(String body) throws NamingException\{
+----
+public void sendMessageNew(String body) throws NamingException{
 
-InitialContext namingContext = getInitialContext();
+    InitialContext namingContext = getInitialContext();
+    ConnectionFactory connectionFactory = (ConnectionFactory)
+    namingContext.lookup("jms/connectionFactory");
+    Queue dataQueue = (Queue)namingContext.lookup("jms/dataQueue");
 
-ConnectionFactory connectionFactory = (ConnectionFactory)
-
-namingContext.lookup("jms/connectionFactory");
-
-Queue dataQueue = (Queue)namingContext.lookup("jms/dataQueue");
-
-try (JMSContext context = connectionFactory.createContext();)\{
-
-context.createProducer().
-
-setProperty("foo", "bar").
-
-setTimeToLive(10000).
-
-setDeliveryMode(NON_PERSISTENT).
-
-setDisableMessageTimestamp(true).
-
-send(dataQueue, body);
-
+    try (JMSContext context = connectionFactory.createContext()){
+        context.createProducer().
+            setProperty("foo", "bar").
+            setTimeToLive(10000).
+            setDeliveryMode(NON_PERSISTENT).
+            setDisableMessageTimestamp(true).
+            send(dataQueue, body);
+    }
 }
-
-}
+----
 
 In the above example, getInitialContext() is an application method which
 returns a suitable JNDI InitialContext.
@@ -6039,60 +5958,45 @@ synchronously receiving a TextMessage in a Jakarta EE web container or Enterpris
 
 Here’s how you might do this using the classic API:
 
+----
 @Resource(lookup = "jms/connectionFactory")
-
 ConnectionFactory connectionFactory;
 
 @Resource(lookup="jms/dataQueue")
-
 Queue dataQueue;
 
-public String receiveMessageOld() throws JMSException \{
+public String receiveMessageOld() throws JMSException {
 
-try (Connection connection =
-
-connectionFactory.createConnection()) \{
-
-connection.start();
-
-Session session = connection.createSession();
-
-MessageConsumer consumer = session.createConsumer(dataQueue);
-
-TextMessage TextMessage =
-
-(TextMessage)messageConsumer.receive();
-
-String body = textMessage.getText();
-
-return body;
-
+    try (Connection connection =
+            connectionFactory.createConnection()) {
+        connection.start();
+        Session session = connection.createSession();
+        MessageConsumer consumer = session.createConsumer(dataQueue);
+        TextMessage TextMessage =
+            (TextMessage)messageConsumer.receive();
+        String body = textMessage.getText();
+        return body;
+    }
 }
-
-}
+----
 
 ==== Example using the simplified API
 
 Here’s how you might do this using the simplified API.
 
+----
 @Resource(lookup = "jms/connectionFactory")
-
 ConnectionFactory connectionFactory;
 
 @Resource(lookup="jms/dataQueue")
-
 Queue dataQueue;
 
-public String receiveMessageNew() \{
+public String receiveMessageNew() {
 
-try (JMSContext context = connectionFactory.createContext();)\{
-
-JMSConsumer consumer = context.createConsumer(demoQueue);
-
-return consumer.receiveBody(String.class);
-
-}
-
+    try (JMSContext context = connectionFactory.createContext();){
+    JMSConsumer consumer = context.createConsumer(demoQueue);
+    return consumer.receiveBody(String.class);
+    }
 }
 
 Note that receiveMessageNew does not need to throw JMSException.
@@ -6102,22 +6006,18 @@ Note that receiveMessageNew does not need to throw JMSException.
 Here's how you might do this using the simplified API with the
 JMSContext created by injection:
 
+----
 @Inject
-
 @JMSConnectionFactory("jms/connectionFactory")
-
 private JMSContext context;
 
 @Resource(lookup="jms/dataQueue")
-
 Queue dataQueue;
 
-public String receiveMessageNew() \{
+public String receiveMessageNew() {
 
-JMSConsumer consumer = context.createConsumer(dataQueue);
-
-return consumer.receiveBody(String.class);
-
+    JMSConsumer consumer = context.createConsumer(dataQueue);
+    return consumer.receiveBody(String.class);
 }
 
 === Receiving a message synchronously (Java SE)
@@ -6129,36 +6029,24 @@ synchronously receiving a TextMessage in a Java SE environment.
 
 Here’s how you might do this using the classic API:
 
+----
 public String receiveMessageOld()
+        throws JMSException, NamingException {
 
-throws JMSException, NamingException \{
+    InitialContext namingContext = getInitialContext();
+    ConnectionFactory connectionFactory = (ConnectionFactory)
+        namingContext.lookup("jms/connectionFactory");
+    Queue inboundQueue = (Queue)
+        namingContext.lookup("jms/dataQueue");
 
-InitialContext namingContext = getInitialContext();
-
-ConnectionFactory connectionFactory = (ConnectionFactory)
-
-namingContext.lookup("jms/connectionFactory");
-
-Queue inboundQueue = (Queue)
-
-namingContext.lookup("jms/dataQueue");
-
-try (Connection connection =
-
-connectionFactory.createConnection();)\{
-
-Session session = connection.createSession(AUTO_ACKNOWLEDGE);
-
-MessageConsumer consumer = session.createConsumer(dataQueue);
-
-connection.start();
-
-TextMessage TextMessage = (TextMessage) consumer.receive();
-
-return textMessage.getText();
-
-}
-
+    try (Connection connection =
+            connectionFactory.createConnection();){
+        Session session = connection.createSession(AUTO_ACKNOWLEDGE);
+        MessageConsumer consumer = session.createConsumer(dataQueue);
+        connection.start();
+        TextMessage TextMessage = (TextMessage) consumer.receive();
+        return textMessage.getText();
+    }
 }
 
 In the above example, getInitialContext() is an application method which
@@ -6168,26 +6056,19 @@ returns a suitable JNDI InitialContext.
 
 Here’s how you might do this using the simplified API.
 
-public String receiveMessageNew() throws NamingException \{
+----
+public String receiveMessageNew() throws NamingException {
 
-InitialContext namingContext = getInitialContext();
+    InitialContext namingContext = getInitialContext();
+    ConnectionFactory connectionFactory = (ConnectionFactory)
+        namingContext.lookup("jms/connectionFactory");
+    Queue dataQueue = (Queue) namingContext.lookup("jms/dataQueue");
 
-ConnectionFactory connectionFactory = (ConnectionFactory)
-
-namingContext.lookup("jms/connectionFactory");
-
-Queue dataQueue = (Queue) namingContext.lookup("jms/dataQueue");
-
-try (JMSContext context =
-
-connectionFactory.createContext(AUTO_ACKNOWLEDGE);) \{
-
-JMSConsumer consumer = context.createConsumer(dataQueue);
-
-return consumer.receiveBody(String.class);
-
-}
-
+    try (JMSContext context =
+            connectionFactory.createContext(AUTO_ACKNOWLEDGE);) {
+        JMSConsumer consumer = context.createConsumer(dataQueue);
+        return consumer.receiveBody(String.class);
+    }
 }
 
 In the above example, getInitialContext() is an application method which
@@ -6205,61 +6086,47 @@ in a Jakarta EE web container or Enterprise Beans container.
 
 Here’s how you might do this using the classic API.
 
+----
 @Resource(lookup = "jms/connectionFactory")
-
 ConnectionFactory connectionFactory;
 
 @Resource(lookup = "jms/newsFeedTopic")
-
 Topic newsFeedTopic;
 
-public String receiveMessageOld() throws JMSException \{
+public String receiveMessageOld() throws JMSException {
 
-try (Connection connection =
-
-connectionFactory.createConnection()) \{
-
-Session session = connection.createSession();
-
-MessageConsumer consumer =
-
-session.createDurableConsumer(newsFeedTopic, "mysub");
-
-connection.start();
-
-TextMessage textMessage = (TextMessage)consumer.receive();
-
-return textMessage.getText();
-
+    try (Connection connection =
+            connectionFactory.createConnection()) {
+        Session session = connection.createSession();
+        MessageConsumer consumer =
+            session.createDurableConsumer(newsFeedTopic, "mysub");
+        connection.start();
+        TextMessage textMessage = (TextMessage)consumer.receive();
+        return textMessage.getText();
+    }
 }
-
-}
+----
 
 ==== Example using the simplified API
 
 Here’s how you might do this using the simplified API.
 
+----
 @Resource(lookup = "jms/connectionFactory")
-
 ConnectionFactory connectionFactory;
 
 @Resource(lookup="jms/newsFeedTopic")
-
 Topic newsFeedTopic;
 
-public String receiveMessageNew() \{
+public String receiveMessageNew() {
 
-try (JMSContext context = connectionFactory.createContext();)\{
-
-JMSConsumer consumer =
-
-context. createDurableConsumer (newsFeedTopic,"mysub");
-
-return consumer.receiveBody(String.class);
-
+    try (JMSContext context = connectionFactory.createContext()){
+        JMSConsumer consumer =
+            context. createDurableConsumer (newsFeedTopic,"mysub");
+        return consumer.receiveBody(String.class);
+    }
 }
-
-}
+----
 
 Note that receiveMessageNew does not need to throw an exception.
 
@@ -6268,25 +6135,21 @@ Note that receiveMessageNew does not need to throw an exception.
 Here's how you might do this using the simplified API with the
 JMSContext created by injection:
 
+----
 @Inject
-
 @JMSConnectionFactory("jms/connectionFactory")
-
 private JMSContext context;
 
 @Resource(lookup="jms/newsFeedTopic")
-
 Topic newsFeedTopic;
 
-public String receiveMessageNew() \{
+public String receiveMessageNew() {
 
-JMSConsumer consumer =
-
-context.createDurableConsumer(newsFeedTopic, "mysub");
-
-return consumer.receiveBody(String.class);
-
+    JMSConsumer consumer =
+        context.createDurableConsumer(newsFeedTopic, "mysub");
+    return consumer.receiveBody(String.class);
 }
+----
 
 === Receiving messages asynchronously (Java SE)
 
@@ -6298,41 +6161,29 @@ asynchronously receiving TextMessage objects in a Java SE environment.
 Here’s how you might do this using the classic API, using a message
 listener class MyListener:
 
+----
 public void receiveMessagesOld()
+throws JMSException, NamingException{
 
-throws JMSException, NamingException\{
+    InitialContext namingContext = getInitialContext();
+    ConnectionFactory connectionFactory = (ConnectionFactory)
+        namingContext.lookup("jms/connectionFactory");
+    Queue dataQueue =
+        (Queue) namingContext.lookup("jms/dataQueue");
 
-InitialContext namingContext = getInitialContext();
+    try (Connection connection =
+            connectionFactory.createConnection();){
+        Session session = connection.createSession(_AUTO_ACKNOWLEDGE_);
+        MessageConsumer consumer = session.createConsumer(dataQueue);
+        MessageListener messageListener = new MyListener();
+        consumer.setMessageListener(messageListener);
+        connection.start();
 
-ConnectionFactory connectionFactory = (ConnectionFactory)
-
-namingContext.lookup("jms/connectionFactory");
-
-Queue dataQueue =
-
-(Queue) namingContext.lookup("jms/dataQueue");
-
-try (Connection connection =
-
-connectionFactory.createConnection();)\{
-
-Session session = connection.createSession(_AUTO_ACKNOWLEDGE_);
-
-MessageConsumer consumer = session.createConsumer(dataQueue);
-
-MessageListener messageListener = new MyListener();
-
-consumer.setMessageListener(messageListener);
-
-connection.start();
-
-// wait for messages to be received
-
-// details omitted
-
+        // wait for messages to be received
+        // details omitted
+    }
 }
-
-}
+----
 
 In the above example, getInitialContext() is an application method which
 returns a suitable JNDI InitialContext.
@@ -6341,33 +6192,25 @@ returns a suitable JNDI InitialContext.
 
 Here’s how you might do this using the simplified API.
 
-public void receiveMessagesNew() throws NamingException \{
+----
+public void receiveMessagesNew() throws NamingException {
 
-InitialContext namingContext = getInitialContext();
+    InitialContext namingContext = getInitialContext();
+    ConnectionFactory connectionFactory = (ConnectionFactory)
+        namingContext.lookup("jms/connectionFactory");
+    Queue dataQueue =
+        (Queue) namingContext.lookup("jms/dataQueue");
 
-ConnectionFactory connectionFactory = (ConnectionFactory)
+    try (JMSContext context = connectionFactory.createContext();){
+        JMSConsumer consumer = context.createConsumer(demoQueue);
+        MessageListener messageListener = new MyListener();
+        consumer.setMessageListener(messageListener);
 
-namingContext.lookup("jms/connectionFactory");
-
-Queue dataQueue =
-
-(Queue) namingContext.lookup("jms/dataQueue");
-
-try (JMSContext context = connectionFactory.createContext();)\{
-
-JMSConsumer consumer = context.createConsumer(demoQueue);
-
-MessageListener messageListener = new MyListener();
-
-consumer.setMessageListener(messageListener);
-
-// wait for messages to be received
-
-// details omitted
-
+        // wait for messages to be received
+        // details omitted
+    }
 }
-
-}
+----
 
 In the above example, getInitialContext() is an application method which
 returns a suitable JNDI InitialContext.
@@ -6383,45 +6226,32 @@ in a Java SE environment.
 ==== Example using the classic API
 
 Here’s how you might do this using the classic API, using a message
-listener class MyListener:
+listener class `MyListener`:
 
+----
 public void receiveMessagesOld()
-
-throws JMSException, NamingException\{
+        throws JMSException, NamingException{
 
 InitialContext namingContext = getInitialContext();
-
 ConnectionFactory connectionFactory = (ConnectionFactory)
-
-namingContext.lookup("jms/connectionFactory");
-
+    namingContext.lookup("jms/connectionFactory");
 Topic newsFeedTopic = (Topic)
+    namingContext.lookup("jms/newsFeedTopic");
+    
+    try (Connection connection =
+            connectionFactory.createConnection();) {
+        Session session = connection.createSession(AUTO_ACKNOWLEDGE);
+        MessageConsumer consumer =
+            session.createDurableConsumer(newsFeedTopic, "mysub");
+        MessageListener messageListener = new MyListener();
+        consumer.setMessageListener(messageListener);
+        connection.start();
 
-namingContext.lookup("jms/newsFeedTopic");
-
-try (Connection connection =
-
-connectionFactory.createConnection();) \{
-
-Session session = connection.createSession(AUTO_ACKNOWLEDGE);
-
-MessageConsumer consumer =
-
-session.createDurableConsumer(newsFeedTopic, "mysub");
-
-MessageListener messageListener = new MyListener();
-
-consumer.setMessageListener(messageListener);
-
-connection.start();
-
-// wait for messages to be received
-
-//details omitted
-
+        // wait for messages to be received
+        //details omitted
+    }
 }
-
-}
+----
 
 In the above example, getInitialContext() is an application method which
 returns a suitable JNDI InitialContext.
@@ -6430,37 +6260,27 @@ returns a suitable JNDI InitialContext.
 
 Here’s how you might do this using the simplified API:
 
-public void receiveMessagesNew() throws NamingException \{
+----
+public void receiveMessagesNew() throws NamingException {
 
-InitialContext namingContext = getInitialContext();
-
-ConnectionFactory connectionFactory = (ConnectionFactory)
-
-namingContext.lookup("jms/connectionFactory");
-
-Topic newsfeedTopic = (Topic)
-
-namingContext.lookup("jms/newsfeedTopic");
-
-try (JMSContext context =
-
-connectionFactory.createContext(AUTO_ACKNOWLEDGE);)\{
-
-JMSConsumer consumer =
-
-context.createDurableConsumer(inboundTopic, "mysub");
-
-MessageListener messageListener = new MyListener();
-
-consumer.setMessageListener(messageListener);
-
-// wait for messages to be received
-
-// details omitted
-
+    InitialContext namingContext = getInitialContext();
+    ConnectionFactory connectionFactory = (ConnectionFactory)
+        namingContext.lookup("jms/connectionFactory");
+    Topic newsfeedTopic = (Topic)
+        namingContext.lookup("jms/newsfeedTopic");
+    
+    try (JMSContext context =
+            connectionFactory.createContext(AUTO_ACKNOWLEDGE);){
+        JMSConsumer consumer =
+            context.createDurableConsumer(inboundTopic, "mysub");
+        MessageListener messageListener = new MyListener();
+        consumer.setMessageListener(messageListener);
+        
+        // wait for messages to be received
+        // details omitted
+    }
 }
-
-}
+----
 
 In the above example, getInitialContext() is an application method which
 returns a suitable JNDI InitialContext.
@@ -6478,49 +6298,36 @@ the same connection.
 ==== Example using the classic API
 
 Here’s how you might do this using the classic API, using a message
-listener class MyListener:
+listener class `MyListener`:
 
+----
 public void receiveMessagesOld()
+        throws JMSException, NamingException {
 
-throws JMSException, NamingException \{
-
-InitialContext namingContext = getInitialContext();
-
-ConnectionFactory connectionFactory = (ConnectionFactory)
-
-namingContext.lookup("jms/connectionFactory");
-
-Queue dataQueue = (Queue) namingContext.lookup("jms/dataQueue");
-
-try (Connection connection =
-
-connectionFactory.createConnection();)\{
-
-Session s1 = connection.createSession(AUTO_ACKNOWLEDGE);
-
-MessageConsumer consumer1 = s1.createConsumer(dataQueue);
-
-MyListener messageListener1 = new MyListener("One");
-
-messageConsumer1.setMessageListener(messageListener1);
-
-Session s2 = connection.createSession(AUTO_ACKNOWLEDGE);
-
-MessageConsumer consumer2 = s2.createConsumer(dataQueue);
-
-MyListener messageListener2 = new MyListener("Two");
-
-messageConsumer2.setMessageListener(messageListener2);
-
-connection.start();
-
-// wait for messages to be received
-
-// details omitted
-
+    InitialContext namingContext = getInitialContext();
+    ConnectionFactory connectionFactory = (ConnectionFactory)
+        namingContext.lookup("jms/connectionFactory");
+    Queue dataQueue = (Queue) namingContext.lookup("jms/dataQueue");
+    
+    try (Connection connection =
+            connectionFactory.createConnection();){
+        Session s1 = connection.createSession(AUTO_ACKNOWLEDGE);
+        MessageConsumer consumer1 = s1.createConsumer(dataQueue);
+        MyListener messageListener1 = new MyListener("One");
+        messageConsumer1.setMessageListener(messageListener1);
+        
+        Session s2 = connection.createSession(AUTO_ACKNOWLEDGE);
+        MessageConsumer consumer2 = s2.createConsumer(dataQueue);
+        MyListener messageListener2 = new MyListener("Two");
+        messageConsumer2.setMessageListener(messageListener2);
+        
+        connection.start();
+        
+        // wait for messages to be received
+        // details omitted
+    }
 }
-
-}
+----
 
 In the above example, getInitialContext() is an application method which
 returns a suitable JNDI InitialContext.
@@ -6529,43 +6336,32 @@ returns a suitable JNDI InitialContext.
 
 Here’s how you might do this using the simplified API:
 
-public void receiveMessagesNew() throws NamingException \{
+----
+public void receiveMessagesNew() throws NamingException {
+    
+    InitialContext namingContext = getInitialContext();
+    ConnectionFactory connectionFactory = (ConnectionFactory)
+        namingContext.lookup("jms/connectionFactory");
+    Queue dataQueue = (Queue) namingContext.lookup("jms/dataQueue");
+    
+    try (JMSContext context1 =
+            connectionFactory.createContext(AUTO_ACKNOWLEDGE);
+        JMSContext context2 =
+            context1.createContext(AUTO_ACKNOWLEDGE)){
 
-InitialContext namingContext = getInitialContext();
-
-ConnectionFactory connectionFactory = (ConnectionFactory)
-
-namingContext.lookup("jms/connectionFactory");
-
-Queue dataQueue = (Queue) namingContext.lookup("jms/dataQueue");
-
-try (JMSContext context1 =
-
-connectionFactory.createContext(AUTO_ACKNOWLEDGE);
-
-JMSContext context2 =
-
-context1.createContext(AUTO_ACKNOWLEDGE);)\{
-
-JMSConsumer consumer1 = context1.createConsumer(dataQueue);
-
-MyListener messageListener1 = new MyListener("One");
-
-consumer1.setMessageListener(messageListener1);
-
-JMSConsumer consumer2 = context2.createConsumer(dataQueue);
-
-MyListener messageListener2 = new MyListener("Two");
-
-consumer2.setMessageListener(messageListener2);
-
-// wait for messages to be received
-
-// details omitted
-
+        JMSConsumer consumer1 = context1.createConsumer(dataQueue);
+        MyListener messageListener1 = new MyListener("One");
+        consumer1.setMessageListener(messageListener1);
+        
+        JMSConsumer consumer2 = context2.createConsumer(dataQueue);
+        MyListener messageListener2 = new MyListener("Two");
+        consumer2.setMessageListener(messageListener2);
+        
+        // wait for messages to be received
+        // details omitted
+    }
 }
-
-}
+----
 
 In the above example, getInitialContext() is an application method which
 returns a suitable JNDI InitialContext.
@@ -6588,56 +6384,37 @@ could also be consumed asynchronously using a MessageListener.
 
 Here’s how you might do this using the classic API:
 
+----
 public void receiveAndSendMessageOld()
+        throws JMSException, NamingException {
 
-throws JMSException, NamingException \{
-
-InitialContext namingContext = getInitialContext();
-
-ConnectionFactory connectionFactory = (ConnectionFactory)
-
-namingContext.lookup("jms/connectionFactory");
-
-Queue dataQueue = (Queue) namingContext.lookup("jms/dataQueue");
-
-Queue outboundQueue = (Queue)
-
-namingContext.lookup("jms/outboundQueue");
-
-try (Connection connection =
-
-connectionFactory.createConnection();)\{
-
-Session session = +
-connection.createSession(SESSION_TRANSACTED);
-
-MessageConsumer consumer = session.createConsumer(dataQueue);
-
-MessageProducer producer =
-
-session.createProducer(outboundQueue);
-
-connection.start();
-
-TextMessage textMessage = null;
-
-do \{
-
-textMessage = (TextMessage) consumer.receive(1000);
-
-if (textMessage!=null)\{
-
-producer.send(textMessage);
-
-session.commit();
-
+    InitialContext namingContext = getInitialContext();
+    ConnectionFactory connectionFactory = (ConnectionFactory)
+        namingContext.lookup("jms/connectionFactory");
+    Queue dataQueue = (Queue) namingContext.lookup("jms/dataQueue");
+    Queue outboundQueue = (Queue)
+        namingContext.lookup("jms/outboundQueue");
+    
+    try (Connection connection =
+            connectionFactory.createConnection()){
+        Session session = 
+            connection.createSession(SESSION_TRANSACTED);
+        MessageConsumer consumer = session.createConsumer(dataQueue);
+        MessageProducer producer =
+            session.createProducer(outboundQueue);
+        connection.start();
+        
+        TextMessage textMessage = null;
+        do {
+            textMessage = (TextMessage) consumer.receive(1000);
+            if (textMessage!=null){
+                producer.send(textMessage);
+                session.commit();
+                }
+        } while (textMessage!=null);
+    }
 }
-
-} while (textMessage!=null);
-
-}
-
-}
+----
 
 In the above example, getInitialContext() is an application method which
 returns a suitable JNDI InitialContext.
@@ -6646,49 +6423,32 @@ returns a suitable JNDI InitialContext.
 
 Here’s how you might do this using the simplified API:
 
-public void receiveAndSendMessageNew() throws NamingException \{
+----
+public void receiveAndSendMessageNew() throws NamingException {
 
-InitialContext namingContext = getInitialContext();
+    InitialContext namingContext = getInitialContext();
+    ConnectionFactory connectionFactory = (ConnectionFactory)
+        namingContext.lookup("jms/connectionFactory");
+    Queue dataQueue =
+        (Queue) namingContext.lookup("jms/dataQueue");
+    Queue outboundQueue =
+        (Queue) namingContext.lookup("jms/outboundQueue");
 
-ConnectionFactory connectionFactory = (ConnectionFactory)
-
-namingContext.lookup("jms/connectionFactory");
-
-Queue dataQueue =
-
-(Queue) namingContext.lookup("jms/dataQueue");
-
-Queue outboundQueue =
-
-(Queue) namingContext.lookup("jms/outboundQueue");
-
-try (JMSContext context =
-
-connectionFactory.createContext(SESSION_TRANSACTED);)\{
-
-JMSConsumer consumer = context.createConsumer(dataQueue);
-
-TextMessage textMessage = null;
-
-do \{
-
-textMessage = (TextMessage) consumer.receive(1000);
-
-if (textMessage != null) \{
-
-context.createProducer().send(
-
-outboundQueue, textMessage);
-
-context.commit();
-
+    try (JMSContext context =
+            connectionFactory.createContext(SESSION_TRANSACTED);){
+        JMSConsumer consumer = context.createConsumer(dataQueue);
+        TextMessage textMessage = null;
+        do {
+            textMessage = (TextMessage) consumer.receive(1000);
+            if (textMessage != null) {
+                context.createProducer().send(
+                outboundQueue, textMessage);
+                context.commit();
+            }
+        } while (textMessage != null);
+    }
 }
-
-} while (textMessage != null);
-
-}
-
-}
+----
 
 In the above example, getInitialContext() is an application method which
 returns a suitable JNDI InitialContext.
@@ -6732,157 +6492,108 @@ Here’s how you might implement the requestor this using the classic API:
 
 There are two session beans involved in sending the request message.
 
-The first session bean RequestReplyOld creates the creates the temporary
-reply queue, calls a second bean SenderBeanOld to send the request in a
+The first session bean `RequestReplyOld` creates the creates the temporary
+reply queue, calls a second bean `SenderBeanOld` to send the request in a
 separate transaction and then listens for the reply:
 
+----
 @Stateless
-
 @LocalBean
-
-public class RequestReplyOld \{
+public class RequestReplyOld {
 
 @Resource(lookup = "jms/connectionFactory")
-
 ConnectionFactory connectionFactory;
 
 @EJB private SenderBeanOld senderBean;
 
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
-
-public String requestReplyOld(String request) throws JMSException \{
-
-try (Connection connection =
-
-connectionFactory.createConnection()) \{
-
-Session session = connection.createSession();
-
-TemporaryQueue replyQueue = session.createTemporaryQueue();
-
-// call a second bean to
-
-// send the request message in a separate transaction
-
-senderBean.sendRequestOld(request,replyQueue);
-
-// now receive the reply, using the same connection
-
-// as was used to create the temporary reply queue
-
-MessageConsumer consumer= session.createConsumer(replyQueue);
-
-connection.start();
-
-TextMessage reply = (TextMessage) consumer.receive();
-
-return reply.getText();
-
+public String requestReplyOld(String request) throws JMSException {
+    
+    try (Connection connection =
+            connectionFactory.createConnection()) {
+        Session session = connection.createSession();
+        TemporaryQueue replyQueue = session.createTemporaryQueue();
+        
+        // call a second bean to
+        // send the request message in a separate transaction
+        senderBean.sendRequestOld(request,replyQueue);
+        
+        // now receive the reply, using the same connection
+        // as was used to create the temporary reply queue
+        MessageConsumer consumer= session.createConsumer(replyQueue);
+        connection.start();
+        TextMessage reply = (TextMessage) consumer.receive();
+        return reply.getText();
+    }
 }
-
 }
+----
 
-}
-
-The second session bean SenderBeanOld simply sends the request to the
+The second session bean `SenderBeanOld` simply sends the request to the
 request queue in a separate transaction:
 
+----
 @Stateless
-
 @LocalBean
-
-public class SenderBeanOld \{
+public class SenderBeanOld {
 
 @Resource(lookup = "jms/connectionFactory")
-
 ConnectionFactory connectionFactory;
 
 @Resource(lookup="jms/requestQueue")
-
 Queue requestQueue;
 
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-
 public void sendRequestOld(
+        String requestString, TemporaryQueue replyQueue)
+        throws JMSException {
 
-String requestString, TemporaryQueue replyQueue)
-
-throws JMSException \{
-
-try (Connection connection =
-
-connectionFactory.createConnection()) \{
-
-Session session = connection.createSession();
-
-TextMessage requestMessage =
-
-session.createTextMessage(requestString);
-
-requestMessage.setJMSReplyTo(replyQueue);
-
-MessageProducer messageProducer =
-
-session.createProducer(requestQueue);
-
-messageProducer.send(requestMessage);
-
+    try (Connection connection =
+            connectionFactory.createConnection()) {
+        Session session = connection.createSession();
+        TextMessage requestMessage =
+            session.createTextMessage(requestString);
+        requestMessage.setJMSReplyTo(replyQueue);
+        MessageProducer messageProducer =
+            session.createProducer(requestQueue);
+        messageProducer.send(requestMessage);
+    }
 }
-
 }
+----
 
-}
-
-Here is the message-driven bean RequestResponderOld which receives
+Here is the message-driven bean `RequestResponderOld` which receives
 request messages and sends responses:
 
+----
 @MessageDriven(mappedName = "jms/requestQueue")
-
-public class RequestResponderOld implements MessageListener \{
+public class RequestResponderOld implements MessageListener {
 
 @Resource(lookup = "jms/connectionFactory")
-
 ConnectionFactory connectionFactory;
 
-public void onMessage(Message message) \{
+public void onMessage(Message message) {
 
-try (Connection connection =
-
-connectionFactory.createConnection())\{
-
-Session session = connection.createSession();
-
-// extract request from request message
-
-String request = ((TextMessage)message).getText();
-
-// extract temporary reply destination from request message
-
-Destination replyDestination = message.getJMSReplyTo();
-
-// prepare response
-
-TextMessage replyMessage =
-
-session.createTextMessage("Reply to: "+request);
-
-// send response
-
-MessageProducer messageProducer =
-
-session.createProducer(replyDestination);
-
-messageProducer.send(replyMessage);
-
-} catch (JMSException ex) \{
-
-// log an error here
-
+    try (Connection connection =
+        connectionFactory.createConnection()){
+    Session session = connection.createSession();
+    // extract request from request message
+    String request = ((TextMessage)message).getText();
+    // extract temporary reply destination from request message
+    Destination replyDestination = message.getJMSReplyTo();
+    // prepare response
+    TextMessage replyMessage =
+        session.createTextMessage("Reply to: "+request);
+    // send response
+    MessageProducer messageProducer =
+        session.createProducer(replyDestination);
+    messageProducer.send(replyMessage);
+    } catch (JMSException ex) {
+        // log an error here
+    }
 }
-
 }
-
-}
+----
 
 ==== Example using the simplified API
 
@@ -6891,143 +6602,105 @@ Here’s how the same example might look when using the simplified API:
 There are two session beans involved in sending the request message. The
 first bean
 
-The first session bean RequestReplyNew creates the creates the temporary
-reply queue, calls a second bean SenderBeanNew to send the request in a
+The first session bean `RequestReplyNew` creates the creates the temporary
+reply queue, calls a second bean `SenderBeanNew` to send the request in a
 separate transaction and then listens for the reply:
 
+----
 @Stateless
-
 @LocalBean
-
-public class RequestReplyNew \{
+public class RequestReplyNew {
 
 @Resource(lookup = "jms/connectionFactory")
-
 ConnectionFactory connectionFactory;
 
 @EJB private SenderBeanNew senderBean;
 
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
+public String requestReplyNew(String request) throws JMSException {
 
-public String requestReplyNew(String request) throws JMSException \{
+    try (JMSContext context = connectionFactory.createContext()) {
+        TemporaryQueue replyQueue = context.createTemporaryQueue();
 
-try (JMSContext context = connectionFactory.createContext()) \{
+        // send the request message in a separate transaction
+        // so use a separate bean
+        // this call may throw JMSException
+        senderBean.sendRequestNew(request,replyQueue);
 
-TemporaryQueue replyQueue = context.createTemporaryQueue();
-
-// send the request message in a separate transaction
-
-// so use a separate bean
-
-// this call may throw JMSException
-
-senderBean.sendRequestNew(request,replyQueue);
-
-// now receive the reply, using the same connection
-
-// as was used to create the temporary reply queue
-
-JMSConsumer consumer = context.createConsumer(replyQueue);
-
-return consumer.receiveBody(String.class);
-
+        // now receive the reply, using the same connection
+        // as was used to create the temporary reply queue
+        JMSConsumer consumer = context.createConsumer(replyQueue);
+        return consumer.receiveBody(String.class);
+    }
 }
-
 }
+----
 
-}
-
-The second session bean SenderBeanNew simply sends the request to the
+The second session bean `SenderBeanNew` simply sends the request to the
 request queue in a separate transaction:
 
+----
 @Stateless
-
 @LocalBean
-
-public class SenderBeanNew \{
+public class SenderBeanNew {
 
 @Resource(lookup = "jms/connectionFactory")
-
 ConnectionFactory connectionFactory;
 
 @Resource(lookup="jms/requestQueue")
-
 Queue requestQueue;
 
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-
 public void sendRequestNew(
+        String requestString, TemporaryQueue replyQueue)
+        throws JMSException {
 
-String requestString, TemporaryQueue replyQueue)
-
-throws JMSException \{
-
-try (JMSContext context = connectionFactory.createContext()) \{
-
-TextMessage requestMessage =
-
-context.createTextMessage(requestString);
-
-// this call may throw JMSException
-
-requestMessage.setJMSReplyTo(replyQueue);
-
-context.createProducer().send(
-
-requestQueue,requestMessage);
-
+    try (JMSContext context = connectionFactory.createContext()) {
+        TextMessage requestMessage =
+            context.createTextMessage(requestString);
+        // this call may throw JMSException
+        requestMessage.setJMSReplyTo(replyQueue);
+        context.createProducer().send(
+            requestQueue,requestMessage);
+    }
 }
-
 }
+----
 
-}
-
-Here is the message-driven bean RequestResponderNew which receives
+Here is the message-driven bean `RequestResponderNew` which receives
 request messages and sends responses:
 
+----
 @MessageDriven(mappedName = "jms/requestQueue")
-
-public class RequestResponderNew implements MessageListener \{
+public class RequestResponderNew implements MessageListener {
 
 @Resource(lookup = "jms/connectionFactory")
-
 ConnectionFactory connectionFactory;
 
-public void onMessage(Message message) \{
+public void onMessage(Message message) {
 
-try (JMSContext context = connectionFactory.createContext())\{
+    try (JMSContext context = connectionFactory.createContext()){
 
-// extract request from request message
+        // extract request from request message
+        // this may throw a JMSException
+        String request = ((TextMessage)message).getText();
 
-// this may throw a JMSException
+        // extract temporary reply destination from request message
+        // this may throw a JMSException
+        Destination replyDestination = message.getJMSReplyTo();
 
-String request = ((TextMessage)message).getText();
+        // prepare response
+        TextMessage replyMessage =
+            context.createTextMessage("Reply to: "+request);
 
-// extract temporary reply destination from request message
-
-// this may throw a JMSException
-
-Destination replyDestination = message.getJMSReplyTo();
-
-// prepare response
-
-TextMessage replyMessage =
-
-context.createTextMessage("Reply to: "+request);
-
-// send response
-
-context.createProducer().send(replyDestination,replyMessage);
-
-} catch (JMSException ex) \{
-
-// log an error here
-
+        // send response
+        context.createProducer().send(replyDestination,replyMessage);
+    } catch (JMSException ex) {
+        // log an error here
+    }
 }
-
 }
-
-}
+----
 
 Note that in this example it is not possible to eliminate the need to
 declare to catch JMSException since it uses methods on Message and
@@ -7041,138 +6714,100 @@ with the JMSContext created by injection:
 There are two session beans involved in sending the request message. The
 first bean
 
-The first session bean RequestReplyNew creates the creates the temporary
-reply queue, calls a second bean SenderBeanNew to send the request in a
+The first session bean `RequestReplyNew` creates the creates the temporary
+reply queue, calls a second bean `SenderBeanNew` to send the request in a
 separate transaction and then listens for the reply:
 
+----
 @Stateless
-
 @LocalBean
-
-public class RequestReplyNew \{
+public class RequestReplyNew {
 
 @Inject
-
 @JMSConnectionFactory("jms/connectionFactory2")
-
 private JMSContext context;
 
 @EJB private SenderBeanNew senderBean;
 
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
+public String requestReplyNew(String request) throws JMSException {
 
-public String requestReplyNew(String request) throws JMSException \{
+    TemporaryQueue replyQueue = context.createTemporaryQueue();
 
-TemporaryQueue replyQueue = context.createTemporaryQueue();
+    // send the request message in a separate transaction
+    // so use a separate bean
+    // this call may throw JMSException
+    senderBean.sendRequestNew(request,replyQueue);
 
-// send the request message in a separate transaction
-
-// so use a separate bean
-
-// this call may throw JMSException
-
-senderBean.sendRequestNew(request,replyQueue);
-
-// now receive the reply, using the same connection
-
-// as was used to create the temporary reply queue
-
-JMSConsumer consumer = context.createConsumer(replyQueue);
-
-return consumer.receiveBody(String.class);
-
+    // now receive the reply, using the same connection
+    // as was used to create the temporary reply queue
+    JMSConsumer consumer = context.createConsumer(replyQueue);
+    return consumer.receiveBody(String.class);
 }
-
 }
+----
 
-The second session bean SenderBeanNew simply sends the request to the
+The second session bean `SenderBeanNew` simply sends the request to the
 request queue in a separate transaction:
 
+----
 @Stateless
-
 @LocalBean
-
-public class SenderBeanNew \{
+public class SenderBeanNew {
 
 @Inject
-
 @JMSConnectionFactory("jms/connectionFactory")
-
 private JMSContext context;
 
 @Resource(lookup="jms/requestQueue")
-
 Queue requestQueue;
 
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-
 public void sendRequestNew(
+        String requestString, TemporaryQueue replyQueue)
+        throws JMSException {
 
-String requestString, TemporaryQueue replyQueue)
-
-throws JMSException \{
-
-TextMessage requestMessage =
-
-context.createTextMessage(requestString);
-
-// this call may throw JMSException
-
-requestMessage.setJMSReplyTo(replyQueue);
-
-context.createProducer().send(requestQueue,requestMessage);
-
+    TextMessage requestMessage =
+        context.createTextMessage(requestString);
+    // this call may throw JMSException
+    requestMessage.setJMSReplyTo(replyQueue);
+    context.createProducer().send(requestQueue,requestMessage);
 }
-
 }
+----
 
-Here is the message-driven bean RequestResponderNew which receives
+Here is the message-driven bean `RequestResponderNew` which receives
 request messages and sends responses:
 
+----
 @MessageDriven(mappedName = "jms/requestQueue")
-
-public class RequestResponderNew implements MessageListener \{
+public class RequestResponderNew implements MessageListener {
 
 @Inject
-
 @JMSConnectionFactory("jms/connectionFactory")
-
 private JMSContext context;
 
-public void onMessage(Message message) \{
+public void onMessage(Message message) {
 
-try \{
+    try {
+        // extract request from request message
+        // this may throw a JMSException
+        String request = ((TextMessage)message).getText();
 
-// extract request from request message
+        // extract temporary reply destination from request message
+        // this may throw a JMSException
+        Destination replyDestination = message.getJMSReplyTo();
 
-// this may throw a JMSException
+        // prepare response
+        TextMessage replyMessage =
+            context.createTextMessage("Reply to: "+request);
 
-String request = ((TextMessage)message).getText();
-
-// extract temporary reply destination from request message
-
-// this may throw a JMSException
-
-Destination replyDestination = message.getJMSReplyTo();
-
-// prepare response
-
-TextMessage replyMessage =
-
-context.createTextMessage("Reply to: "+request);
-
-// send response
-
-context.createProducer().send(replyDestination,replyMessage);
-
-} catch (JMSException ex) \{
-
-// log an error here
-
+        // send response
+        context.createProducer().send(replyDestination,replyMessage);
+    } catch (JMSException ex) {
+        // log an error here
+    }
 }
-
-}
-
 }
 
 Note that in this example it is not possible to eliminate the need to
