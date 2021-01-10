@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 1997, 2020 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2021 Contributors to the Eclipse Foundation
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0, which is available at
@@ -30,6 +31,18 @@ public class TransactionInProgressException extends JMSException {
      * Explicitly set serialVersionUID to be the same as the implicit serialVersionUID of the Java Message Service 1.1 version
      */
     private static final long serialVersionUID = -5611340150426335231L;
+
+    /**
+     * Constructs a {@code TransactionInProgressException} with the specified reason, error code
+     * and linked exception.
+     *
+     * @param reason a description of the exception
+     * @param errorCode a string specifying the vendor-specific error code
+     *
+     **/
+    public TransactionInProgressException(String reason, String errorCode, Exception linkedException) {
+        super(reason, errorCode, linkedException);
+    }
 
     /**
      * Constructs a {@code TransactionInProgressException} with the specified reason and error code.
