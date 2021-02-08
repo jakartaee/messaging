@@ -912,7 +912,7 @@ public interface Message {
      * Sets the message's expiration value.
      *
      * <p>
-     * This method is for use by Jakarta Messaging providers only to set this field when a message is sent. This message cannot be used by
+     * This method is for use by Jakarta Messaging providers only to set this field when a message is sent. This method cannot be used by
      * clients to configure the expiration time of the message. This method is public to allow a Jakarta Messaging provider to set this
      * field when sending a message whose implementation is not its own.
      *
