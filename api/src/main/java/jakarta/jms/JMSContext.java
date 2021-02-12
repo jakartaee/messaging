@@ -769,7 +769,7 @@ public interface JMSContext extends AutoCloseable {
      * @throws InvalidDestinationRuntimeException if an invalid destination is specified.
      * @throws InvalidSelectorRuntimeException if the message selector is invalid.
      */
-    JMSConsumer createConsumer(Destination destination, java.lang.String messageSelector);
+    JMSConsumer createConsumer(Destination destination, String messageSelector);
 
     /**
      * Creates a {@code JMSConsumer} for the specified destination, specifying a message selector and the {@code noLocal}
@@ -796,7 +796,7 @@ public interface JMSContext extends AutoCloseable {
      * @throws InvalidDestinationRuntimeException if an invalid destination is specified.
      * @throws InvalidSelectorRuntimeException if the message selector is invalid.
      */
-    JMSConsumer createConsumer(Destination destination, java.lang.String messageSelector, boolean noLocal);
+    JMSConsumer createConsumer(Destination destination, String messageSelector, boolean noLocal);
 
     /**
      * Creates a {@code Queue} object which encapsulates a specified provider-specific queue name.
@@ -1223,7 +1223,7 @@ public interface JMSContext extends AutoCloseable {
      * @throws InvalidDestinationRuntimeException if an invalid topic is specified.
      * @throws InvalidSelectorRuntimeException if the message selector is invalid.
      */
-    JMSConsumer createSharedConsumer(Topic topic, String sharedSubscriptionName, java.lang.String messageSelector);
+    JMSConsumer createSharedConsumer(Topic topic, String sharedSubscriptionName, String messageSelector);
 
     /**
      * Creates a {@code QueueBrowser} object to peek at the messages on the specified queue.

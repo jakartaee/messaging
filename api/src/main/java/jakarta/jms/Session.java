@@ -569,7 +569,7 @@ public interface Session extends Runnable, AutoCloseable {
      *
      * @since JMS 1.1
      */
-    MessageConsumer createConsumer(Destination destination, java.lang.String messageSelector) throws JMSException;
+    MessageConsumer createConsumer(Destination destination, String messageSelector) throws JMSException;
 
     /**
      * Creates a {@code MessageConsumer} for the specified destination, specifying a message selector and the
@@ -603,7 +603,7 @@ public interface Session extends Runnable, AutoCloseable {
      *
      * @since JMS 1.1
      */
-    MessageConsumer createConsumer(Destination destination, java.lang.String messageSelector, boolean noLocal) throws JMSException;
+    MessageConsumer createConsumer(Destination destination, String messageSelector, boolean noLocal) throws JMSException;
 
     /**
      * Creates a shared non-durable subscription with the specified name on the specified topic (if one does not already
@@ -697,7 +697,7 @@ public interface Session extends Runnable, AutoCloseable {
      *
      * @since JMS 2.0
      */
-    MessageConsumer createSharedConsumer(Topic topic, String sharedSubscriptionName, java.lang.String messageSelector) throws JMSException;
+    MessageConsumer createSharedConsumer(Topic topic, String sharedSubscriptionName, String messageSelector) throws JMSException;
 
     /**
      * Creates a {@code Queue} object which encapsulates a specified provider-specific queue name.
