@@ -3847,7 +3847,7 @@ calling createConsumer or createDurableConsumer.
 === Receiving messages synchronously
 
 A client application can request the next message from a consumer by
-callinge receive, receive(long timeout) or receiveNoWait methods. These
+calling receive, receive(long timeout) or receiveNoWait methods. These
 methods return a Message object.
 
 Table 8‑1 MessageConsumer,JMSConsumer, QueueReceiver and TopicSubscriber
