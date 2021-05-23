@@ -1,6 +1,6 @@
-# Notices for Eclipse Project for JMS
+# Notices for the Jakarta Messaging project
 
-This content is produced and maintained by the Eclipse Project for JMS project.
+This content is produced and maintained by the Jakarta Messaging project.
 
 * Project home: https://projects.eclipse.org/projects/ee4j.jms
 
@@ -31,6 +31,7 @@ SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 The project maintains the following source code repositories:
 
 * https://github.com/eclipse-ee4j/jms-api
+* https://github.com/eclipse-ee4j/jms-propsals
 
 ## Third-party Content
 
