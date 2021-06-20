@@ -6,14 +6,14 @@ Thanks for your interest in this project.
 
 The Jakarta Messaging API is a Message Oriented Middleware API for the Java platform for sending messages between two or more clients. It is a programming model to handle the producer-consumer messaging problem.
 
-* https://projects.eclipse.org/projects/ee4j.jms
+* https://projects.eclipse.org/projects/ee4j.messaging
 
 ## Developer resources
 
 Information regarding source code management, builds, coding standards, and
 more.
 
-* https://projects.eclipse.org/projects/ee4j.jms/developer
+* https://projects.eclipse.org/projects/ee4j.messaging/developer
 
 The project maintains the following source code repositories:
 
@@ -22,7 +22,7 @@ The project maintains the following source code repositories:
 
 The project maintains the following Continuous Integration server:
 
-* https://ci.eclipse.org/jms/
+* https://ci.eclipse.org/messaging
 
 If you want to propose ideas or suggest solutions, please read the following information:
 
