@@ -1,13 +1,7 @@
 # Jakarta Messaging
 
-This repository contain the API definition source code for the Jakarta Messaging API. This is used  to generate the official Javadocs.
+This repository contains the API definition source code for the Jakarta Messaging API. This is used to generate the official Javadocs and specification document.
 
-Web-site details are TBD
+## Meeting minutes
 
-## Repository structure
-
-This project uses `maven` as build tool, sources follows maven project structure.
-
-## Build from Source
-
-Navigate to the directory and Type `mvn clean package` to produce java api jar file. `mvn javadoc:jar` will produce javadoc jar file.  
+* [16th June 2021](minutes/2021-06-16.md)
