@@ -89,7 +89,7 @@ public @interface JMSDestinationDefinition {
     String destinationName() default "";
 
     /**
-     * Jakarta Messaging destination property. This may be a vendor-specific property or a less commonly used {@code ConnectionFactory}
+     * Jakarta Messaging destination property. This may be a vendor-specific property or a less commonly used destination
      * property.
      *
      * <p>
