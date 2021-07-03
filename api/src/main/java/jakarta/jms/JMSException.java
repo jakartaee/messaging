@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 1997, 2020 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2021 Contributors to the Eclipse Foundation
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0, which is available at
@@ -50,6 +51,20 @@ public class JMSException extends Exception {
      * {@code Exception} reference.
      **/
     private Exception linkedException;
+
+    /**
+     * Constructs a {@code JMSException} with the specified reason, error code
+     * and linked exception.
+     *
+     * @param reason a description of the exception
+     * @param errorCode a string specifying the vendor-specific error code
+     * @param linkedException the linked {@code Exception}
+     **/
+    public JMSException(String reason, String errorCode, Exception linkedException) {
+        super(reason);
+        this.errorCode = errorCode;
+        this.linkedException = linkedException;
+    }
 
     /**
      * Constructs a {@code JMSException} with the specified reason and error code.
