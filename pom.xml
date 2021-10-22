@@ -2,6 +2,7 @@
 <!--
 
     Copyright (c) 2017, 2020 Oracle and/or its affiliates. All rights reserved.
+    Copyright 2021 Contributors to the Eclipse Foundation
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -53,9 +54,9 @@
     </modules>
 
     <scm>
-        <connection>scm:git:git://github.com/eclipse-ee4j/jms-api.git</connection>
-        <developerConnection>scm:git:git@github.com:eclipse-ee4j/jms-api.git</developerConnection>
-        <url>https://github.com/eclipse-ee4j/jms-api</url>
+        <connection>scm:git:git://github.com/eclipse-ee4j/messaging.git</connection>
+        <developerConnection>scm:git:git@github.com:eclipse-ee4j/messaging.git</developerConnection>
+        <url>https://github.com/eclipse-ee4j/messaging</url>
     </scm>
 
     <build>
