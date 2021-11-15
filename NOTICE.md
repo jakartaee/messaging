@@ -2,7 +2,7 @@
 
 This content is produced and maintained by the Jakarta Messaging project.
 
-* Project home: https://projects.eclipse.org/projects/ee4j.jms
+* Project home: https://projects.eclipse.org/projects/ee4j.messaging
 
 ## Trademarks
 
@@ -30,8 +30,8 @@ SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
 The project maintains the following source code repositories:
 
-* https://github.com/eclipse-ee4j/jms-api
-* https://github.com/eclipse-ee4j/jms-propsals
+* https://github.com/eclipse-ee4j/messaging
+* https://github.com/eclipse-ee4j/messaging-propsals
 
 ## Third-party Content
 

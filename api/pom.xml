@@ -2,6 +2,7 @@
 <!--
 
     Copyright (c) 2017, 2020 Oracle and/or its affiliates. All rights reserved.
+    Copyright 2021 Contributors to the Eclipse Foundation
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0, which is available at
@@ -211,8 +212,8 @@
                             <windowtitle>Jakarta Messaging API documentation</windowtitle>
                             <header><![CDATA[<br>Jakarta Messaging API v${project.version}]]></header>
                             <bottom><![CDATA[
-Comments to: <a href="mailto:jms-dev@eclipse.org">jms-dev@eclipse.org</a>.<br>
-Copyright &#169; 2018, 2020 Eclipse Foundation. All rights reserved.<br>
+Comments to: <a href="mailto:messaging-dev@eclipse.org">messaging-dev@eclipse.org</a>.<br>
+Copyright &#169; 2018, 2021 Eclipse Foundation. All rights reserved.<br>
 Use is subject to <a href="{@docRoot}/doc-files/speclicense.html" target="_top">license terms</a>.]]>
                             </bottom>
                             <docfilessubdirs>true</docfilessubdirs>

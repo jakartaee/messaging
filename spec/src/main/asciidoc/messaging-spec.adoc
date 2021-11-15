@@ -1,10 +1,10 @@
 //
-// Copyright (c) 2017, 2020 Contributors to the Eclipse Foundation
+// Copyright (c) 2017, 2021 Contributors to the Eclipse Foundation
 //
 
 = Jakarta Messaging
-:authors: Jakarta Messaging Team, https://projects.eclipse.org/projects/ee4j.jms
-:email: https://dev.eclipse.org/mailman/listinfo/jms-dev
+:authors: Jakarta Messaging Team, https://projects.eclipse.org/projects/ee4j.messaging
+:email: https://dev.eclipse.org/mailman/listinfo/messaging-dev
 :version-label!:
 :doctype: book
 :license: Eclipse Foundation Specification License v1.0

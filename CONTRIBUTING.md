@@ -17,8 +17,8 @@ more.
 
 The project maintains the following source code repositories:
 
-* https://github.com/eclipse-ee4j/jms-api
-* https://github.com/eclipse-ee4j/jms-propsals
+* https://github.com/eclipse-ee4j/messaging
+* https://github.com/eclipse-ee4j/messaging-propsals
 
 The project maintains the following Continuous Integration server:
 
@@ -26,7 +26,7 @@ The project maintains the following Continuous Integration server:
 
 If you want to propose ideas or suggest solutions, please read the following information:
 
-* [Use cases and proposals](https://github.com/eclipse-ee4j/jms-api/wiki#use-cases-and-proposals)
+* [Use cases and proposals](https://github.com/eclipse-ee4j/messaging/wiki#use-cases-and-proposals)
 
 ## Eclipse Contributor Agreement
 
@@ -48,7 +48,7 @@ https://www.eclipse.org/projects/handbook/#resources-commit
 
 Contact the project developers via the project's "dev" list.
 
-* https://accounts.eclipse.org/mailing-list/jms-dev
+* https://accounts.eclipse.org/mailing-list/messaging-dev
 
 ## Eclipse Development Process
 
