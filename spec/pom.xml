@@ -98,6 +98,7 @@
                                 <idprefix />
                                 <idseparator>-</idseparator>
                                 <docinfo1>true</docinfo1>
+                                <imagesdir>images</imagesdir>
                             </attributes>
                         </configuration>
                     </execution>
@@ -125,6 +126,7 @@
                                 <idseparator>-</idseparator>
                                 <docinfo1>true</docinfo1>
                                 <embedAssets>true</embedAssets>
+                                <imagesdir>images</imagesdir>
                             </attributes>
                         </configuration>
                     </execution>
