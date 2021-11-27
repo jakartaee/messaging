@@ -59,7 +59,7 @@
             <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
-                <version>2.0.0-RC.1</version>
+                <version>2.2.1</version>
                 <dependencies>
                     <dependency>
                         <groupId>org.jruby</groupId>
@@ -98,6 +98,7 @@
                                 <idprefix />
                                 <idseparator>-</idseparator>
                                 <docinfo1>true</docinfo1>
+                                <imagesdir>images</imagesdir>
                             </attributes>
                         </configuration>
                     </execution>
@@ -125,6 +126,7 @@
                                 <idseparator>-</idseparator>
                                 <docinfo1>true</docinfo1>
                                 <embedAssets>true</embedAssets>
+                                <imagesdir>images</imagesdir>
                             </attributes>
                         </configuration>
                     </execution>
