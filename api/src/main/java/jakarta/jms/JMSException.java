@@ -104,7 +104,7 @@ public class JMSException extends Exception {
      * @return the linked {@code Exception}, null if none
      **/
     public Exception getLinkedException() {
-        return (linkedException);
+        return linkedException;
     }
 
     /**
