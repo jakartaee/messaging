@@ -56,6 +56,15 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
+   <dependencies>
+     <!-- Optional for jakarta.annotation.Resource javadoc refs -->
+     <dependency>
+       <groupId>jakarta.annotation</groupId>
+       <artifactId>jakarta.annotation-api</artifactId>
+       <version>2.1.0-B1</version>
+       <scope>provided</scope>
+     </dependency>
+   </dependencies>
    <build>
         <resources>
              <resource>
@@ -97,17 +106,40 @@
                     </execution>
                 </executions>
             </plugin>
-            
-           <!-- Restricts the Java version to 1.8 -->
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+
+          <!--
+          Use the JDK 11+ compiler but with -source 1.8 for all
+          but the module-info.java file.
+          -->
+          <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version>
+            <!-- This is the common/default-compile execution configuration -->
+            <configuration>
+              <release>11</release>
+              <compilerArgs>
+                <arg>-Xlint:all</arg>
+              </compilerArgs>
+              <showDeprecation>true</showDeprecation>
+              <showWarnings>true</showWarnings>
+            </configuration>
+            <executions>
+              <!-- This runs after the default-compile execution to rebuild with 8 -->
+              <execution>
+                <id>base-compile</id>
+                <goals>
+                  <goal>compile</goal>
+                </goals>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <compilerArgument>-Xlint:unchecked</compilerArgument>
+                  <release>8</release>
+                  <excludes>
+                    <exclude>module-info.java</exclude>
+                  </excludes>
                 </configuration>
-            </plugin>
+              </execution>
+            </executions>
+          </plugin>
+
 
             <!-- First sets properties for the maven-bundle-plugin and later checks if they are indeed used. -->
             <plugin>
@@ -197,35 +229,35 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>3.3.1</version>
+                <configuration>
+                  <source>1.8</source>
+                  <additionalJOption>-Xdoclint:none</additionalJOption>
+                  <description>Jakarta Messaging API documentation</description>
+                  <doctitle>Jakarta Messaging API documentation</doctitle>
+                  <windowtitle>Jakarta Messaging API documentation</windowtitle>
+                  <header><![CDATA[<br>Jakarta Messaging API v${project.version}]]></header>
+                  <bottom><![CDATA[
+  Comments to: <a href="mailto:messaging-dev@eclipse.org">messaging-dev@eclipse.org</a>.<br>
+  Copyright &#169; 2018, 2022 Eclipse Foundation. All rights reserved.<br>
+  Use is subject to <a href="{@docRoot}/doc-files/speclicense.html" target="_top">license terms</a>.]]>
+                  </bottom>
+                  <docfilessubdirs>true</docfilessubdirs>
+                  <groups>
+                    <group>
+                      <title>Jakarta Messaging API Documentation</title>
+                      <packages>
+                        jakarta.jms
+                      </packages>
+                    </group>
+                  </groups>
+                </configuration>
                 <executions>
                     <execution>
                         <id>attach-api-javadocs</id>
                         <goals>
                             <goal>jar</goal>
                         </goals>
-                        <configuration>
-                            <source>1.8</source>
-                            <additionalJOption>-Xdoclint:none</additionalJOption>
-                            <description>Jakarta Messaging API documentation</description>
-                            <doctitle>Jakarta Messaging API documentation</doctitle>
-                            <windowtitle>Jakarta Messaging API documentation</windowtitle>
-                            <header><![CDATA[<br>Jakarta Messaging API v${project.version}]]></header>
-                            <bottom><![CDATA[
-Comments to: <a href="mailto:messaging-dev@eclipse.org">messaging-dev@eclipse.org</a>.<br>
-Copyright &#169; 2018, 2021 Eclipse Foundation. All rights reserved.<br>
-Use is subject to <a href="{@docRoot}/doc-files/speclicense.html" target="_top">license terms</a>.]]>
-                            </bottom>
-                            <docfilessubdirs>true</docfilessubdirs>
-                            <groups>
-                                <group>
-                                    <title>Jakarta Messaging API Documentation</title>
-                                    <packages>
-                                        jakarta.jms
-                                    </packages>
-                                </group>
-                            </groups>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
