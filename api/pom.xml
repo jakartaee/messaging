@@ -108,8 +108,7 @@
             </plugin>
 
           <!--
-          Use the JDK 11+ compiler but with -source 1.8 for all
-          but the module-info.java file.
+          Use the JDK 11+ compiler
           -->
           <plugin>
             <artifactId>maven-compiler-plugin</artifactId>
@@ -123,21 +122,6 @@
               <showDeprecation>true</showDeprecation>
               <showWarnings>true</showWarnings>
             </configuration>
-            <executions>
-              <!-- This runs after the default-compile execution to rebuild with 8 -->
-              <execution>
-                <id>base-compile</id>
-                <goals>
-                  <goal>compile</goal>
-                </goals>
-                <configuration>
-                  <release>8</release>
-                  <excludes>
-                    <exclude>module-info.java</exclude>
-                  </excludes>
-                </configuration>
-              </execution>
-            </executions>
           </plugin>
 
 
