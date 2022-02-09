@@ -12,7 +12,7 @@ This project uses `maven` as build tool, sources follows maven project structure
 
 Prerequisites:
 
-* JDK8+
+* JDK11+
 * Maven 3.5.4+
 
 Navigate to the directory and Type `mvn clean package` to produce java api jar file. `mvn javadoc:jar` will produce javadoc jar file.
