@@ -6825,6 +6825,13 @@ TextMessage which throw JMSException.
 [appendix]
 == Change history
 
+=== Version 3.0
+* The namespace changed from `javax` to `jakarta`
+* `JMS` renamed to `Jakarta Messaging`
+* `Java EE` renamed to `Jakarta EE`
+* Added `speclicense.html`
+* Added module `api` and `spec`
+
 === Version 2.0 
 
 All changes made for Jakarta Messaging 2.0 are represented by individual issues in the
