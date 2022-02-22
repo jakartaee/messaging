@@ -6832,8 +6832,6 @@ TextMessage which throw JMSException.
 * https://github.com/jakartaee/messaging/pull/306[issue_306] Remove useless parentheses
 * https://github.com/jakartaee/messaging/pull/298[issue_298] Repeatable annotation for the connection factory
 * https://github.com/jakartaee/messaging/pull/298[issue_298] Repeatable annotation for the destination definition
-* https://github.com/jakartaee/messaging/pull/296[issue_296] Update `JMSDestinationDefinition` Javadoc comment
-* https://github.com/jakartaee/messaging/pull/292[issue_292] New constructors in exception classes
 
 ==== Other improvements
 * https://github.com/jakartaee/messaging/pull/313[issue_313] Update required JDK version to 11
