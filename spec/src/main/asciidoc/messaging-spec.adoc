@@ -6825,6 +6825,22 @@ TextMessage which throw JMSException.
 [appendix]
 == Change history
 
+=== Version 3.1
+
+==== API changes
+* https://github.com/jakartaee/messaging/pull/311[issue_311] Bump `maven-bundle-plugin` version from 4.2.1 to 5.1.4
+* https://github.com/jakartaee/messaging/pull/306[issue_306] Remove useless parentheses
+* https://github.com/jakartaee/messaging/pull/298[issue_298] Repeatable annotation for the connection factory
+* https://github.com/jakartaee/messaging/pull/298[issue_298] Repeatable annotation for the destination definition
+
+==== Other improvements
+* https://github.com/jakartaee/messaging/pull/313[issue_313] Update required JDK version to 11
+* https://github.com/jakartaee/messaging/pull/309[issue_309] Add a JPMS module-info
+* https://github.com/jakartaee/messaging/pull/291[issue_291] Version bump from 3.0 to 3.1
+* https://github.com/jakartaee/messaging/pull/289[issue_289] Typo fixed
+* https://github.com/jakartaee/messaging/pull/287[issue_287] Comment fixed
+* https://github.com/jakartaee/messaging/pull/284[issue_284] Minor updates to spec copyright and version referenced in javadoc
+
 === Version 3.0
 * The namespace changed from `javax` to `jakarta`
 * `JMS` renamed to `Jakarta Messaging`
