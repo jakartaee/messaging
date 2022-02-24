@@ -748,7 +748,7 @@ public interface JMSContext extends AutoCloseable {
      *
      * <p>
      * There is no need to explicitly call the {@link #start()} method as it is done automatically when the consumer
-     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart()}.
+     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart(boolean)}.
      *
      * @param destination the {@code Destination} to access.
      *
@@ -767,7 +767,7 @@ public interface JMSContext extends AutoCloseable {
      *
      * <p>
      * There is no need to explicitly call the {@link #start()} method as it is done automatically when the consumer
-     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart()}.
+     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart(boolean)}.
      *
      * @param destination the {@code Destination} to access
      * @param messageSelector only messages with properties matching the message selector expression are delivered. A value
@@ -796,7 +796,7 @@ public interface JMSContext extends AutoCloseable {
      *
      * <p>
      * There is no need to explicitly call the {@link #start()} method as it is done automatically when the consumer
-     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart()}.
+     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart(boolean)}.
      *
      * @param destination the {@code Destination} to access
      * @param messageSelector only messages with properties matching the message selector expression are delivered. A value
@@ -1063,7 +1063,7 @@ public interface JMSContext extends AutoCloseable {
      *
      * <p>
      * There is no need to explicitly call the {@link #start()} method as it is done automatically when the consumer
-     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart()}.
+     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart(boolean)}.
      *
      * @param topic the non-temporary {@code Topic} to subscribe to
      * @param name the name used to identify this subscription
@@ -1133,7 +1133,7 @@ public interface JMSContext extends AutoCloseable {
      *
      * <p>
      * There is no need to explicitly call the {@link #start()} method as it is done automatically when the consumer
-     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart()}.
+     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart(boolean)}.
      *
      * @param topic the non-temporary {@code Topic} to subscribe to
      * @param name the name used to identify this subscription
@@ -1191,7 +1191,7 @@ public interface JMSContext extends AutoCloseable {
      *
      * <p>
      * There is no need to explicitly call the {@link #start()} method as it is done automatically when the consumer
-     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart()}.
+     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart(boolean)}.
      *
      * @param topic the {@code Topic} to subscribe to
      * @param sharedSubscriptionName the name used to identify the shared non-durable subscription
@@ -1238,7 +1238,7 @@ public interface JMSContext extends AutoCloseable {
      *
      * <p>
      * There is no need to explicitly call the {@link #start()} method as it is done automatically when the consumer
-     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart()}.
+     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart(boolean)}.
      *
      * @param topic the {@code Topic} to subscribe to
      * @param sharedSubscriptionName the name used to identify the shared non-durable subscription
