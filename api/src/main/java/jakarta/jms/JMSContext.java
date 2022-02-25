@@ -186,7 +186,7 @@ public interface JMSContext extends AutoCloseable {
      * <li>if the client ID has been administratively configured or
      * <li>if the {@code JMSContext} is container-managed (injected).
      * </ul>
-     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to set the client ID for the the JMSContext's connection for
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to set the client ID for the JMSContext's connection for
      * one of the following reasons:
      * <ul>
      * <li>an internal error has occurred or
@@ -263,7 +263,7 @@ public interface JMSContext extends AutoCloseable {
     /**
      * Starts (or restarts) delivery of incoming messages by the JMSContext's connection. A call to {@code start} on a
      * connection that has already been started is ignored. Also, it is normally not necessary for application to call this
-     * method, since the the underlying connection used by the JMSContext will be started automatically when a
+     * method, since the underlying connection used by the JMSContext will be started automatically when a
      * consumer is created.
      *
      * <p>
