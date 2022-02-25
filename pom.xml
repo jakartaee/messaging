@@ -34,6 +34,14 @@
 
     <name>Jakarta Messaging</name>
     <description>Jakarta Messaging Parent</description>
+
+    <properties>
+        <!-- spec.status: DRAFT, BETA, etc., or "Final Release for final -->
+        <spec.status>DRAFT</spec.status>
+        <!-- Version of the specification in the generated documents. Should be x.y for final version, not x.y.z -->
+        <spec.version>3.1</spec.version>
+    </properties>
+    
     <url>https://projects.eclipse.org/projects/ee4j.jms</url>
     <licenses>
         <license>

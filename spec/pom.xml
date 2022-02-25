@@ -47,10 +47,6 @@
         <asciidoctorj.version>2.3.0</asciidoctorj.version>
         <asciidoctorj.pdf.version>1.5.3</asciidoctorj.pdf.version>
         <jruby.version>9.2.11.1</jruby.version>
-        <!-- spec.status: DRAFT, BETA, etc., or "Final Release for final -->
-        <spec.status>DRAFT</spec.status>
-        <!-- Version of the specification in the generated documents. Should be x.y for final version, not x.y.z -->
-        <spec.version>${project.version}</spec.version>
         <maven.build.timestamp.format>MMMM dd, yyyy</maven.build.timestamp.format>
         <revisiondate>${maven.build.timestamp}</revisiondate>
     </properties>
