@@ -47,8 +47,6 @@
         <asciidoctorj.version>2.3.0</asciidoctorj.version>
         <asciidoctorj.pdf.version>1.5.3</asciidoctorj.pdf.version>
         <jruby.version>9.2.11.1</jruby.version>
-        <!-- status: DRAFT, BETA, etc., or blank for final -->
-        <status>DRAFT</status>
         <maven.build.timestamp.format>MMMM dd, yyyy</maven.build.timestamp.format>
         <revisiondate>${maven.build.timestamp}</revisiondate>
     </properties>
@@ -86,10 +84,10 @@
                         </goals>
                         <configuration>
                             <backend>html5</backend>
-                            <outputFile>${project.build.directory}/generated-docs/messaging-spec-${project.version}.html</outputFile>
+                            <outputFile>${project.build.directory}/generated-docs/jakarta-messaging-spec-${spec.version}.html</outputFile>
                             <attributes>
                                 <doctype>book</doctype>
-                                <status>${status}</status>
+                                <status>${spec.status}</status>
                                 <data-uri />
                                 <icons>font</icons>
                                 <toc>left</toc>
@@ -110,12 +108,12 @@
                         </goals>
                         <configuration>
                             <backend>pdf</backend>
-                            <outputFile>${project.build.directory}/generated-docs/messaging-spec-${project.version}.pdf</outputFile>
+                            <outputFile>${project.build.directory}/generated-docs/jakarta-messaging-spec-${spec.version}.pdf</outputFile>
                             <attributes>
                                 <pdf-stylesdir>${project.basedir}/src/main/theme</pdf-stylesdir>
                                 <pdf-style>jakartaee</pdf-style>
                                 <doctype>book</doctype>
-                                <status>${status}</status>
+                                <status>${spec.status}</status>
                                 <data-uri />
                                 <icons>font</icons>
                                 <pagenums />
@@ -135,8 +133,8 @@
                     <sourceDocumentName>messaging-spec.adoc</sourceDocumentName>
                     <sourceHighlighter>coderay</sourceHighlighter>
                     <attributes>
-                        <revnumber>${project.version}</revnumber>
-                        <revremark>${status}</revremark>
+                        <revnumber>${spec.version}</revnumber>
+                        <revremark>${spec.status}</revremark>
                         <revdate>${revisiondate}</revdate>
                     </attributes>
                 </configuration>

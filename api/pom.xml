@@ -109,7 +109,7 @@
                 <version>2.1</version>
                 <configuration>
                     <spec>
-                        <specVersion>3.1</specVersion>
+                        <specVersion>${spec.version}</specVersion>
                         <specImplVersion>${project.version}</specImplVersion>
                         <apiPackage>jakarta.jms</apiPackage>
                     </spec>
