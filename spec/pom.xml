@@ -47,7 +47,7 @@
         <asciidoctorj.version>2.3.0</asciidoctorj.version>
         <asciidoctorj.pdf.version>1.5.3</asciidoctorj.pdf.version>
         <jruby.version>9.2.11.1</jruby.version>
-        <!-- status: DRAFT, BETA, etc., or blank for final -->
+        <!-- status: DRAFT, BETA, etc., or "Final Release for final -->
         <status>DRAFT</status>
         <maven.build.timestamp.format>MMMM dd, yyyy</maven.build.timestamp.format>
         <revisiondate>${maven.build.timestamp}</revisiondate>
