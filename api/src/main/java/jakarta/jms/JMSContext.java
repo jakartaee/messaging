@@ -186,7 +186,7 @@ public interface JMSContext extends AutoCloseable {
      * <li>if the client ID has been administratively configured or
      * <li>if the {@code JMSContext} is container-managed (injected).
      * </ul>
-     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to set the client ID for the the JMSContext's connection for
+     * @exception JMSRuntimeException if the Jakarta Messaging provider fails to set the client ID for the JMSContext's connection for
      * one of the following reasons:
      * <ul>
      * <li>an internal error has occurred or
@@ -262,7 +262,9 @@ public interface JMSContext extends AutoCloseable {
 
     /**
      * Starts (or restarts) delivery of incoming messages by the JMSContext's connection. A call to {@code start} on a
-     * connection that has already been started is ignored.
+     * connection that has already been started is ignored. Also, it is normally not necessary for application to call this
+     * method, since the underlying connection used by the JMSContext will be started automatically when a
+     * consumer is created.
      *
      * <p>
      * This method must not be used if the {@code JMSContext} is container-managed (injected). Doing so will cause a
@@ -744,6 +746,10 @@ public interface JMSContext extends AutoCloseable {
      * <p>
      * A client uses a {@code JMSConsumer} object to receive messages that have been sent to a destination.
      *
+     * <p>
+     * There is no need to explicitly call the {@link #start()} method as it is done automatically when the consumer
+     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart(boolean)}.
+     *
      * @param destination the {@code Destination} to access.
      *
      * @return The created {@code JMSConsumer} object.
@@ -758,6 +764,10 @@ public interface JMSContext extends AutoCloseable {
      *
      * <p>
      * A client uses a {@code JMSConsumer} object to receive messages that have been sent to a destination.
+     *
+     * <p>
+     * There is no need to explicitly call the {@link #start()} method as it is done automatically when the consumer
+     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart(boolean)}.
      *
      * @param destination the {@code Destination} to access
      * @param messageSelector only messages with properties matching the message selector expression are delivered. A value
@@ -783,6 +793,10 @@ public interface JMSContext extends AutoCloseable {
      * used to publish messages to that topic. If {@code noLocal} is set to true then the {@code JMSConsumer} will not
      * receive messages published to the topic by its own connection. The default value of this argument is false. If the
      * destination is a queue then the effect of setting {@code noLocal} to true is not specified.
+     *
+     * <p>
+     * There is no need to explicitly call the {@link #start()} method as it is done automatically when the consumer
+     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart(boolean)}.
      *
      * @param destination the {@code Destination} to access
      * @param messageSelector only messages with properties matching the message selector expression are delivered. A value
@@ -1047,6 +1061,10 @@ public interface JMSContext extends AutoCloseable {
      * There is no restriction on durable subscriptions and shared non-durable subscriptions having the same name and
      * clientId (which may be unset). Such subscriptions would be completely separate.
      *
+     * <p>
+     * There is no need to explicitly call the {@link #start()} method as it is done automatically when the consumer
+     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart(boolean)}.
+     *
      * @param topic the non-temporary {@code Topic} to subscribe to
      * @param name the name used to identify this subscription
      *
@@ -1113,6 +1131,10 @@ public interface JMSContext extends AutoCloseable {
      * There is no restriction on durable subscriptions and shared non-durable subscriptions having the same name and
      * clientId (which may be unset). Such subscriptions would be completely separate.
      *
+     * <p>
+     * There is no need to explicitly call the {@link #start()} method as it is done automatically when the consumer
+     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart(boolean)}.
+     *
      * @param topic the non-temporary {@code Topic} to subscribe to
      * @param name the name used to identify this subscription
      * @param messageSelector only messages with properties matching the message selector expression are added to the
@@ -1167,6 +1189,10 @@ public interface JMSContext extends AutoCloseable {
      * There is no restriction on durable subscriptions and shared non-durable subscriptions having the same name and
      * clientId (which may be unset). Such subscriptions would be completely separate.
      *
+     * <p>
+     * There is no need to explicitly call the {@link #start()} method as it is done automatically when the consumer
+     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart(boolean)}.
+     *
      * @param topic the {@code Topic} to subscribe to
      * @param sharedSubscriptionName the name used to identify the shared non-durable subscription
      *
@@ -1209,6 +1235,10 @@ public interface JMSContext extends AutoCloseable {
      * <p>
      * There is no restriction on durable subscriptions and shared non-durable subscriptions having the same name and
      * clientId (which may be unset). Such subscriptions would be completely separate.
+     *
+     * <p>
+     * There is no need to explicitly call the {@link #start()} method as it is done automatically when the consumer
+     * is created, unless the {@code autoStart} property is set to {@code false} with {@link #setAutoStart(boolean)}.
      *
      * @param topic the {@code Topic} to subscribe to
      * @param sharedSubscriptionName the name used to identify the shared non-durable subscription
