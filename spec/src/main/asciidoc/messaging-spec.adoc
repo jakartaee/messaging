@@ -4650,7 +4650,7 @@ Applications which need to use a specific client identifier must set it
 on the connection factory, as described in section 6.1.2 “Client
 identifier”.
 
-An asynchronous send is not permitted in a Jakarta EE web contaienr or Enterprise Beans container.
+An asynchronous send is not permitted in a Jakarta EE web container or Enterprise Beans container.
 The following methods must therefore not be used in a Jakarta EE web web container or Enterprise Beans container:
 
 * jakarta.jms.MessageProducer method send(Message message,
@@ -5061,7 +5061,7 @@ import javax.naming.*;
 import jakarta.jms.*;
 
 Context namingContext = new InitialContext();
-ConnectionFactory ConnectionFactory =
+ConnectionFactory connectionFactory =
     (ConnectionFactory) namingContext.lookup("myCF");
 ----
 
@@ -5223,7 +5223,7 @@ expressed in milliseconds.
 
 ----
 // Wait up to 4 seconds for a message
-Message stockMessage = receiver.receive(4000);
+Message stockMessage = consumer.receive(4000);
 ----
 
 ==== Unpacking a TextMessage
@@ -5237,7 +5237,7 @@ content as a string:
 
 ----
 // extract stock information from message
-String newStockData = ((TextMessage)stockMessage)getText();
+String newStockData = ((TextMessage)stockMessage).getText();
 ----
 
 Alternatively you can call the Message object’s getBody method. In this
