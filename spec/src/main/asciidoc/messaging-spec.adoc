@@ -1905,11 +1905,11 @@ messages are distributed between multiple consumers on the same
 subscription.
 
 The order in which messages are delivered to a consumer is described in
-section 6.2.10 “Message order” below. By definition, if a subscription
+section 6.2.9 “Message order” below. By definition, if a subscription
 uses a message selector, or there are other consumers on the same
 subscription, then a consumer may not receive all the messages sent to
 the topic. However those messages that are delivered to the consumer
-will be delivered in the order defined in section 6.2.10.
+will be delivered in the order defined in section 6.2.9.
 
 Subscriptions may be _durable_ or _non-durable_.
 
