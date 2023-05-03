@@ -7273,7 +7273,7 @@ the same client identifier will not be added to the durable
 subscription. It also states that if the client identifier is unset then
 setting noLocal to true will cause an exception to be thrown.
 
-==== Clarification: message headers that are intended to be set by the Jakarta Messaging provder (JMS_SPEC-34)
+==== Clarification: message headers that are intended to be set by the Jakarta Messaging provider (JMS_SPEC-34)
 
 The specification has been clarified to state that the following methods
 on Message are not for use by client applications and setting them does
