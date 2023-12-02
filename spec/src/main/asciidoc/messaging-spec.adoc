@@ -479,6 +479,8 @@ messaging |Domain-specific API for pub/sub messaging
 |Session | |QueueSession |TopicSession
 
 |MessageProducer |JMSProducer |QueueSender |TopicPublisher
+
+|MessageConsumer |JMSConsumer |QueueReceiver |TopicSubscriber
 |===
 
 === Terminology for sending and receiving messages
