@@ -30,7 +30,7 @@
 
     <groupId>jakarta.jms</groupId>
     <artifactId>jakarta.jms-api</artifactId>
-    <version>3.1.0-SNAPSHOT</version>
+    <version>3.2.0-SNAPSHOT</version>
     <name>Jakarta Messaging API</name>
     <description>
         Jakarta Messaging describes a means for Java applications to create, send, 
@@ -55,7 +55,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.release>11</maven.compiler.release>
         <!-- Version of the specification in the generated documents. Should be x.y for final version, not x.y.z -->
-        <spec.version>3.1</spec.version>
+        <spec.version>3.2</spec.version>
     </properties>
 
     <dependencies>
@@ -202,7 +202,7 @@
                     <header><![CDATA[<br>Jakarta Messaging API v${project.version}]]></header>
                     <bottom><![CDATA[
   Comments to: <a href="mailto:messaging-dev@eclipse.org">messaging-dev@eclipse.org</a>.<br>
-  Copyright &#169; 2018, 2022 Eclipse Foundation. All rights reserved.<br>
+  Copyright &#169; 2018, 2024 Eclipse Foundation. All rights reserved.<br>
   Use is subject to <a href="{@docRoot}/doc-files/speclicense.html" target="_top">license terms</a>.]]>
                     </bottom>
                     <docfilessubdirs>true</docfilessubdirs>
