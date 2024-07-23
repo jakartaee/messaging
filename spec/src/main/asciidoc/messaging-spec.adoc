@@ -5828,7 +5828,7 @@ private JMSContext context;
 private Queue dataQueue;
 
 public void sendMessageNew(String body) {
-    context.send(dataQueue, body);
+    context.createProducer().send(dataQueue, body);
 }
 ----
 
