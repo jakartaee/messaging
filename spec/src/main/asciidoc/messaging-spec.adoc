@@ -1449,7 +1449,7 @@ character is used to escape the special meaning of the '_' and '%' in
 pattern-value.)
 ** "phone LIKE '12%3'" is true for '123' or '12993' and false for '1234'
 ** "word LIKE 'l_se'" is true for 'lose' and false for 'loose'
-** "underscored LIKE '_%' ESCAPE '\'" is true for '_foo' and false for
+** "underscored LIKE '\_%' ESCAPE '\'" is true for '_foo' and false for
 'bar'
 ** "phone NOT LIKE '12%3'" is false for '123' and '12993' and true for
 '1234'
