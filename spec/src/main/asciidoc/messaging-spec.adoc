@@ -1411,7 +1411,7 @@ boolean literals.
 * Standard bracketing () for ordering expression evaluation is
 supported.
 * Logical operators in precedence order: NOT, AND, OR
-* Comparison operators: =, >, >=, <, <=, <> (not equal)
+* Comparison operators: =, >, >=, <, \<=, <> (not equal)
 ** Only like type values can be compared. One exception is that it is
 valid to compare exact numeric values and approximate numeric values
 (the type conversion required is defined by the rules of Java numeric
@@ -1427,7 +1427,7 @@ are equal if and only if they contain the same sequence of characters.
 ** Arithmetic operations must use Java numeric promotion.
 * _arithmetic-expr1_ [NOT] BETWEEN _arithmetic-expr2_ and
 _arithmetic-expr3_ (comparison operator)
-** "age BETWEEN 15 AND 19" is equivalent to "age >= 15 AND age <= 19"
+** "age BETWEEN 15 AND 19" is equivalent to "age >= 15 AND age \<= 19"
 ** "age NOT BETWEEN 15 AND 19" is equivalent to "age < 15 OR age > 19"
 * _identifier_ [NOT] IN (_string-literal1_, _string-literal2_,...)
 (comparison operator where _identifier_ has a String or NULL value).
