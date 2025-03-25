@@ -2198,7 +2198,7 @@ client uses it to create a connection with a Jakarta Messaging provider.
 ConnectionFactory.
 * The domain-specific API for point-to-point messaging uses connection
 factories of type QueueConnectionFactory.
-* The domain-specified API for pub-sub messaging uses connection
+* The domain-specific API for pub-sub messaging uses connection
 factories of type TopicConnectionFactory.
 
 Connection factory objects support concurrent use.
@@ -2255,7 +2255,7 @@ createQueueConnection(String userName, String password)
 +
 A QueueConnection object may be used to create separate QueueSession
 objects. QueueConnection objects support concurrent use.
-* In the domain-specified API for pub-sub messaging a connection is
+* In the domain-specific API for pub-sub messaging a connection is
 represented by a TopicConnection object and is created using one of the
 following methods on TopicConnectionFactory:
 +
@@ -2587,7 +2587,7 @@ represented by a QueueSession object and is created using the following
 method on QueueConnection:
 +
 createQueueSession(boolean transacted, int acknowledgeMode)
-* In the domain-specified API for pub-sub messaging a session is
+* In the domain-specific API for pub-sub messaging a session is
 represented by a TopicSession object and is created using the following
 method on TopicConnection:
 +
@@ -3069,7 +3069,7 @@ represented by a QueueSender object and is created using the method
 createSender(Queue queue) on QueueSession. The queue parameter specifies
 the queue to which the producer will send messages. If queue is set to
 null then the queue must be specified on every send operation.
-* In the domain-specified API for pub-sub messaging a producer is
+* In the domain-specific API for pub-sub messaging a producer is
 represented by a TopicPublisher object and is created using the method
 createPublisher(Topic topic)on TopicSession. The topic parameter
 specifies the topic to which the producer will send messages. If topic
@@ -3540,7 +3540,7 @@ object and is created using one of several methods on JMSContext.
 * In the domain-specific API for point-to-point messaging a consumer is
 represented by a QueueReceiver object and is created using one of
 several methods on QueueSession.
-* In the domain-specified API for pub-sub messaging a consumer is
+* In the domain-specific API for pub-sub messaging a consumer is
 represented by a TopicSubscriber object and is created using one of
 several methods on TopicSession.
 +
