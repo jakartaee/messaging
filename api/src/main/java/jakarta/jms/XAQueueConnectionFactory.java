@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 1997, 2020 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 1997, 2025 Oracle and/or its affiliates and others. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0, which is available at
@@ -20,7 +20,7 @@ package jakarta.jms;
  * An {@code XAQueueConnectionFactory} provides the same create options as a {@code QueueConnectionFactory} (optional).
  *
  * <p>
- * The {@code XATopicConnectionFactory} interface is optional. Jakarta Messaging providers are not required to support this interface.
+ * The {@code XAQueueConnectionFactory} interface is optional. Jakarta Messaging providers are not required to support this interface.
  * This interface is for use by Jakarta Messaging providers to support transactional environments. Client programs are strongly
  * encouraged to use the transactional support available in their environment, rather than use these XA interfaces
  * directly.
